@@ -6,8 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint:es": "next lint",
+    "lint:typescript": "tsc"
   },
+  "pre-commit": [
+    "lint:es",
+    "lint:typescript"
+  ],
   "dependencies": {
     "next": "14.1.0",
     "react": "^18",
@@ -15,11 +20,15 @@
     "styled-components": "^6.1.8"
   },
   "devDependencies": {
+    "@swc/core": "^1.3.106",
+    "@swc/plugin-styled-components": "^1.5.115",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "babel-plugin-styled-components": "^2.1.4",
     "eslint": "^8",
     "eslint-config-next": "14.1.0",
+    "pre-commit": "^1.2.2",
     "typescript": "^5"
   }
 }
