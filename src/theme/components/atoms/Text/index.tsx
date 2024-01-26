@@ -1,5 +1,6 @@
+"use client";
+
 import styled, { css } from "styled-components";
-import { theme } from "../../../constants";
 
 export interface IText {
   secondaryFont?: boolean;
@@ -22,6 +23,7 @@ export interface IText {
   red?: boolean;
   white?: boolean;
   black?: boolean;
+  yellow?: boolean;
 
   size?: string | number;
   tiny?: boolean;
@@ -63,6 +65,7 @@ export const Text = styled.span<IText>`
   }}
 
   ${({ uppercase, lowercase, capitalize }) => {
+    console.warn(uppercase);
     if (uppercase)
       return css`
         text-transform: uppercase;
@@ -102,7 +105,7 @@ export const Text = styled.span<IText>`
     `;
   }};
 
-  ${({ color, theme, primary, red, white, black }) => {
+  ${({ color, theme, primary, red, white, black, yellow }) => {
     if (color)
       return css`
         color: ${color};
@@ -122,6 +125,10 @@ export const Text = styled.span<IText>`
     if (white)
       return css`
         color: ${theme.color.white};
+      `;
+    if (yellow)
+      return css`
+        color: ${theme.color.yellow};
       `;
     return css`
       color: ${theme.color.black};

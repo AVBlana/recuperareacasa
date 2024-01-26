@@ -1,6 +1,6 @@
 import React, { useCallback, useRef, useState } from "react";
 import { Text } from "../Text";
-import { useOutsideAlerter } from "@/app/theme/hooks/useOutsideAlerter";
+import { useOutsideAlerter } from "@/theme/hooks/useOutsideAlerter";
 
 interface Props<DataType> {
   label: string;
