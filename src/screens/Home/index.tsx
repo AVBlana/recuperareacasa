@@ -1,39 +1,43 @@
 import { Spacer, Text } from "@/theme/components";
+import Box from "@/theme/components/atoms/Box";
+import Footer from "@/theme/components/organisms/Footer";
 import Header from "@/theme/components/organisms/Header";
 import styled from "styled-components";
 
 export const HomeScreen = () => {
   return (
-    <>
+    <Box style={{ paddingTop: 120 }}>
       <Header />
       <Text huge bold uppercase yellow>
         test
       </Text>
-      <SectionBox id="about">
+      <SectionBox id="despre">
         <Text white huge bolder>
-          About Section
+          Sectiune Despre
         </Text>
-        {/* Add your about content here */}
       </SectionBox>
-      <SectionBox id="services">
+      <SectionBox id="servicii">
         <Text white huge bolder>
-          Services Section
+          Sectiune Servicii
         </Text>
-        {/* Add your services content here */}
       </SectionBox>
-      <SectionBox id="prices">
+      <SectionBox id="echipa">
         <Text white huge bolder>
-          Prices Section
+          Sectiune Echipa
         </Text>
-        {/* Add your services content here */}
+      </SectionBox>
+      <SectionBox id="galerie">
+        <Text white huge bolder>
+          Sectiune Galerie
+        </Text>
       </SectionBox>
       <SectionBox id="contact">
         <Text white huge bolder>
-          Contact Section
+          Sectiune Contact
         </Text>
-        {/* Add your contact content here */}
       </SectionBox>
-    </>
+      <Footer />
+    </Box>
   );
 };
 

@@ -2,7 +2,8 @@ import { DefaultTheme } from "styled-components";
 
 const theme: DefaultTheme = {
   color: {
-    primary: "#4340D6",
+    primary: "#2A5550",
+    secondary: "#5BB286",
     green: "#00cb6a",
     yellow: "#f3ba2f",
     white: "white",
