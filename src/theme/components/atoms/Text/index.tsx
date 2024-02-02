@@ -40,6 +40,14 @@ export interface IText {
 export const Text = styled.span<IText>`
   text-align: ${({ textAlign }) => textAlign || "left"};
 
+  ${({ theme, secondaryFont }) => {
+    if (secondaryFont) {
+      return css`
+        font-family: ${theme.text.secondary}, sans-serif;
+      `;
+    }
+  }}
+
   ${({ whiteSpace }) => {
     if (whiteSpace) {
       return css`
@@ -47,7 +55,7 @@ export const Text = styled.span<IText>`
       `;
     }
   }}
-
+  
   ${({ textOverflow }) => {
     if (textOverflow) {
       return css`

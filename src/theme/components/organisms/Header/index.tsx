@@ -22,7 +22,9 @@ const Header = () => {
   const theme = useTheme();
   return (
     <>
-      <Box style={{ position: "fixed", top: 0, left: 0, right: 0 }}>
+      <Box
+        style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100 }}
+      >
         <Flex
           style={{
             background: theme.color.primary,
