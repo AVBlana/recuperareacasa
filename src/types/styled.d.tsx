@@ -33,9 +33,8 @@ declare module "styled-components" {
       bigger: number;
       biggest: number;
       huge: number;
-      bold: string;
-      semiBold: string;
-      regular: string;
+      primary: string;
+      secondary: string;
     };
     shadow: {
       big: string;

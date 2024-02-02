@@ -21,7 +21,7 @@ const NavItem = ({
           alignItems: "center",
         }}
       >
-        <Text primary big semiBold>
+        <Text primary big semiBold secondaryFont>
           {label}
         </Text>
       </StyledNavItem>

@@ -32,9 +32,8 @@ const theme: DefaultTheme = {
     bigger: 20,
     biggest: 24,
     huge: 32,
-    bold: "Roboto_700Bold",
-    semiBold: "Roboto_500Medium",
-    regular: "Roboto_400Regular",
+    primary: "Inter",
+    secondary: "Philosopher",
   },
   shadow: {
     big: "0px 4px 8px rgba(0, 0, 0, 0.1)",
