@@ -5,6 +5,7 @@ import Image from "@/theme/components/atoms/Image";
 import Modal from "@/theme/components/molecules/Modal";
 import Footer from "@/theme/components/organisms/Footer";
 import Header from "@/theme/components/organisms/Header";
+import Review from "@/theme/components/organisms/Review";
 import { useState } from "react";
 import styled, { useTheme } from "styled-components";
 
@@ -38,6 +39,7 @@ export const HomeScreen = () => {
           Sectiune Contact
         </Text>
       </SectionBox>
+      <Review />
       <Footer />
     </Box>
   );
