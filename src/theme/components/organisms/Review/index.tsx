@@ -1,60 +1,107 @@
 import styled from "styled-components";
-import Box from "../../atoms/Box";
-import { Text } from "../..";
-import Flex from "../../atoms/Flex";
-import Image from "../../atoms/Image";
-import { ArrowLeftIcon } from "../../molecules/Icons/ArrowLeftIcon";
-import { ArrowRightIcon } from "../../molecules/Icons/ArrowRightIcon";
-import { theme } from "@/theme/constants";
+import ReviewCard from "../../molecules/ReviewCard";
+import { useState } from "react";
 
 const Review = () => {
+  const reviews = [
+    {
+      rating: 5,
+      text: "Exceptional physiotherapy services! The team here is knowledgeable, friendly, and helped me recover from my injury with personalized care. Highly recommended!",
+      reviewer: "Emma Thompson",
+      image: "/assets/emma-thompson.jpg",
+      title: "Fitness Enthusiast",
+    },
+    {
+      rating: 4,
+      text: "I had a positive experience with this physiotherapy clinic. The staff was professional, and the facilities were well-maintained. They provided effective treatment that significantly improved my mobility.",
+      reviewer: "Michael Rodriguez",
+      image: "/assets/michael-rodriguez.jpg",
+      title: "Athlete",
+    },
+    {
+      rating: 5,
+      text: "The physiotherapists at this clinic are top-notch. They took the time to understand my condition and tailored a treatment plan that worked wonders. I'm grateful for their expertise and dedication.",
+      reviewer: "Sophia Lee",
+      image: "/assets/sophia-lee.jpg",
+      title: "Dancer",
+    },
+    {
+      rating: 4,
+      text: "I visited this physiotherapy center for rehabilitation after surgery. The staff was caring, and the exercises they prescribed were effective in speeding up my recovery. I'm satisfied with the results.",
+      reviewer: "Daniel Harper",
+      image: "/assets/daniel-harper.jpg",
+      title: "Post-Surgery Recovery",
+    },
+    {
+      rating: 5,
+      text: "Outstanding service! The physiotherapists here are not only skilled but also compassionate. They went above and beyond to ensure I felt comfortable throughout my sessions. My recovery exceeded my expectations.",
+      reviewer: "Olivia Miller",
+      image: "/assets/olivia-miller.jpg",
+      title: "Patient Care Advocate",
+    },
+  ];
+
+  const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
+
+  const handleNextReview = () => {
+    setCurrentReviewIndex((prevIndex) => (prevIndex + 1) % reviews.length);
+  };
+
+  const handlePrevReview = () => {
+    setCurrentReviewIndex((prevIndex) =>
+      prevIndex === 0 ? reviews.length - 1 : prevIndex - 1
+    );
+  };
+
   return (
-    <>
+    <StyledReviewContainer>
+      <StyledGradientBox />
       <StyledReviewBox>
-        <Text>Star ratting system</Text>
-        <Text big>
-          Enumerating objects: 63, done. Counting objects: 100% (63/63), done.
-          Delta compression using up to 12 threads Compressing objects: 100%
-          (29/29), done. Writing objects: 100% (36/36), 375.68 KiB | 4.58 MiB/s,
-          done. Total 36 (delta 10), reused 0 (delta 0), pack-reused 0 remote:
-          Resolving deltas: 100% (10/10), completed with 10 local objects. To
-          github.com:AVBlana/recuperareacasa.git
-        </Text>
-        <Flex>
-          <Box>
-            <Image width={80} height={80} src="/assets/review-bg.jpg" alt="" />
-          </Box>
-          <Box>
-            <Text></Text>
-            <Text></Text>
-          </Box>
-          <Flex>
-            <Box style={{ padding: 20 }}>
-              <ArrowLeftIcon size={40} fill={theme.color.white} />
-            </Box>
-            <Box style={{ padding: 20 }}>
-              <ArrowRightIcon size={40} fill={theme.color.white} />
-            </Box>
-          </Flex>
-        </Flex>
+        <ReviewCard
+          review={reviews[currentReviewIndex]}
+          onPrevReview={handlePrevReview}
+          onNextReview={handleNextReview}
+        />
       </StyledReviewBox>
-    </>
+      <StyledImageBox />
+    </StyledReviewContainer>
   );
 };
 
-const StyledReviewBox = styled.div`
+const StyledReviewContainer = styled.div`
+  position: relative;
+  height: 550px;
+`;
+
+const StyledGradientBox = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: linear-gradient(to right, #2a5550, rgba(255, 69, 0, 0));
+  z-index: 1;
+`;
+
+const StyledReviewBox = styled.div`
+  position: absolute;
+  top: 100px;
+  left: 80px;
+  right: 30px;
+  bottom: 100px;
+  z-index: 2;
+`;
+
+const StyledImageBox = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-image: url(./assets/review-bg.jpg);
   background-size: cover;
   background-position: center;
-  height: 550px;
-  padding-left: 30px;
-  padding-right: 30px;
-  padding-top: 100px;
-  padding-bottom: 100px;
-  display: flex;
-  flex-direction: column;
-  gap: 60px;
+  z-index: 0;
 `;
 
 export default Review;

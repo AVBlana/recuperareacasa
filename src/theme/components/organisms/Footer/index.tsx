@@ -46,38 +46,45 @@ const Footer = () => {
               </Link>
             </Box>
             <Flex style={{ gap: 10 }}>
-              <StyledSocialBox>
-                <FbIcon size={16} fill={theme.color.primary}></FbIcon>
-              </StyledSocialBox>
-              <StyledSocialBox>
-                <YtIcon size={16} fill={theme.color.primary}></YtIcon>
-              </StyledSocialBox>
+              <Link href="">
+                <StyledSocialBox>
+                  <FbIcon size={16} fill={theme.color.primary}></FbIcon>
+                </StyledSocialBox>
+              </Link>
+              <Link href="">
+                <StyledSocialBox>
+                  <YtIcon size={16} fill={theme.color.primary}></YtIcon>
+                </StyledSocialBox>
+              </Link>
             </Flex>
           </Box>
-          <Box
-            style={{ gap: 30, alignItems: "start", justifyContent: "start" }}
-          >
+          <Box style={{ gap: 30 }}>
             <Text big secondaryFont>
               Companie
             </Text>
-            <Box style={{ gap: 5, margin: -20 }}>
+            <Box style={{ gap: 5 }}>
               <NavItem
+                alignLeft
                 label="Despre"
                 onClick={() => scrollToSection("despre")}
               />
               <NavItem
+                alignLeft
                 label="Servicii"
                 onClick={() => scrollToSection("servicii")}
               />
               <NavItem
+                alignLeft
                 label="Echipa"
                 onClick={() => scrollToSection("echipa")}
               />
               <NavItem
+                alignLeft
                 label="Galerie"
                 onClick={() => scrollToSection("galerie")}
               />
               <NavItem
+                alignLeft
                 label="Contact"
                 onClick={() => scrollToSection("contact")}
               />
@@ -140,7 +147,7 @@ const StyledBackgroundBox = styled.div`
   gap: 50px;
   padding-top: 48px;
   padding-bottom: 24px;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 80px;
+  padding-right: 80px;
 `;
 export default Footer;
