@@ -60,7 +60,7 @@ const Footer = () => {
             <Text big secondaryFont>
               Companie
             </Text>
-            <Box>
+            <Box style={{ gap: 5, margin: -20 }}>
               <NavItem
                 label="Despre"
                 onClick={() => scrollToSection("despre")}
