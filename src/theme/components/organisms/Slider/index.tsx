@@ -8,18 +8,16 @@ import Flex from "../../atoms/Flex";
 import { rgba } from "polished";
 
 const Slider = () => {
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
   return (
     <>
       <Box style={{ background: rgba(0, 0, 0, 0.5) }}>
         <StyledSliderBox>
+          <GradientLayer />
+
           <Box
             style={{
+              position: "relative",
+              zIndex: 2,
               justifyContent: "center",
               alignItems: "center",
               gap: 30,
@@ -33,23 +31,34 @@ const Slider = () => {
                 paddingBottom: 4,
                 background: theme.color.primary,
                 borderRadius: 20,
-                width: "fit-content",
                 justifyContent: "center",
+                alignItems: "center",
               }}
             >
               <Text white big secondaryFont>
-                Esti pe maini bune !
+                Esti pe maini bune!
               </Text>
             </Flex>
 
-            <Text secondaryFont white style={{ fontSize: 100 }}>
-              Fizioterapie la tine acasa !
-            </Text>
-            <Text white big>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum
-              laborum quos voluptas molestias quis. In labore soluta accusantium
-              cupiditate odit.
-            </Text>
+            <Box
+              style={{
+                width: "75%",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Text secondaryFont white style={{ fontSize: 100 }}>
+                Fizioterapie la tine acasa!
+              </Text>
+              <Text white big style={{ lineHeight: "150%" }}>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
+                cum natus est maiores, inventore sit fugiat, voluptatum illum
+                harum facere neque qui quaerat dolorum cumque distinctio dicta.
+                Quia animi iste rerum repellendus natus beatae ab eaque eos
+                recusandae, cumque consequuntur magnam praesentium
+                exercitationem vero quas excepturi in voluptate. Sed, in.
+              </Text>
+            </Box>
             <Flex
               style={{
                 background: theme.color.secondary,
@@ -74,14 +83,24 @@ const Slider = () => {
   );
 };
 
+const GradientLayer = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+`;
+
 const StyledSliderBox = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   height: 100vh;
   background-image: url(./assets/img8.jpg);
   background-size: cover;
   background-position: center;
-  top: -80px;
   align-items: center;
   justify-content: center;
 `;
