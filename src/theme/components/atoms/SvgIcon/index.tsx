@@ -1,4 +1,4 @@
-import { SVGProps } from "react";
+import React from "react";
 
 export const SvgIcon = ({
   width,
@@ -6,6 +6,7 @@ export const SvgIcon = ({
   size,
   viewBox,
   children,
+  src, // Added src prop
   ...props
 }: SVGIconProps) => {
   return (
@@ -16,13 +17,16 @@ export const SvgIcon = ({
       height={size || height || "100%"}
       {...props}
     >
+      {/* Use the src prop to dynamically load the SVG file */}
+      {src && <image href={src} width="100%" height="100%" />}
       {children}
     </svg>
   );
 };
 
-export interface SVGIconProps extends SVGProps<SVGSVGElement> {
+export interface SVGIconProps extends React.SVGProps<SVGSVGElement> {
   size?: number;
+  src?: string; // Added src prop
 }
 
 export default SvgIcon;
