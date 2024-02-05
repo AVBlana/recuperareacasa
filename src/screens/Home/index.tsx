@@ -11,6 +11,11 @@ import { useState } from "react";
 import styled, { useTheme } from "styled-components";
 import Slider from "@/theme/components/organisms/Slider";
 import Services from "@/theme/components/organisms/Services";
+import MovingText from "@/theme/components/molecules/MovingText";
+import Counter from "@/theme/components/atoms/Counter";
+import Counters from "@/theme/components/organisms/Counters";
+import CTA from "@/theme/components/organisms/CTA";
+import InteractiveBox from "@/theme/components/organisms/Interactive";
 
 export const HomeScreen = () => {
   return (
@@ -18,6 +23,11 @@ export const HomeScreen = () => {
       <Header />
       <Slider />
       <Services />
+      <MovingText />
+      <CTA />
+      <InteractiveBox />
+
+      <Counters />
 
       <Text huge bold uppercase yellow>
         test
