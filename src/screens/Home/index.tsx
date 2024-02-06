@@ -16,6 +16,11 @@ import Counter from "@/theme/components/atoms/Counter";
 import Counters from "@/theme/components/organisms/Counters";
 import CTA from "@/theme/components/organisms/CTA";
 import InteractiveBox from "@/theme/components/organisms/Interactive";
+import About from "@/theme/components/organisms/About";
+import ProcessCard from "@/theme/components/molecules/StepCard";
+import Steps from "@/theme/components/organisms/Steps";
+import Team from "@/theme/components/organisms/Team";
+import Form from "@/theme/components/molecules/Form";
 
 export const HomeScreen = () => {
   return (
@@ -24,10 +29,12 @@ export const HomeScreen = () => {
       <Slider />
       <Services />
       <MovingText />
-      <CTA />
-      <InteractiveBox />
-
+      <About />
       <Counters />
+      <InteractiveBox />
+      <CTA />
+      <Team />
+      <Steps />
 
       <Text huge bold uppercase yellow>
         test

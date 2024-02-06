@@ -1,3 +1,4 @@
+import { theme } from "@/theme/constants";
 import React from "react";
 
 type InputProps = {
@@ -15,6 +16,7 @@ export function InputBox({ type, label, value, onChange }: InputProps) {
         type={type}
         value={value}
         onChange={(e) => onChange(e.target.value)}
+        style={{ padding: 10, borderRadius: 10, background: theme.color.white }}
       />
     </div>
   );

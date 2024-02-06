@@ -11,20 +11,27 @@ interface CounterProps {
 
 const Counter: React.FC<CounterProps> = ({ targetValue, title }) => {
   const [count, setCount] = useState(0);
+  const [displayedValue, setDisplayedValue] = useState<number | string>(0);
 
   useEffect(() => {
-    const incrementValue = () => {
+    const countUpInterval = setInterval(() => {
       if (count < targetValue) {
-        setCount(count + 1);
+        setCount((prevCount) => prevCount + 1);
       }
-    };
+    }, 0.0000000000000001);
 
-    const intervalSpeed = targetValue > 10 ? 0.000001 : 1; // Adjusted interval speed
-    const intervalId = setInterval(incrementValue, intervalSpeed);
+    if (count >= 1000) {
+      const displayKValue = Math.floor(count / 1000);
+      setDisplayedValue(`${displayKValue}K`);
+    } else {
+      setDisplayedValue(count);
+    }
 
-    return () => {
-      clearInterval(intervalId);
-    };
+    if (count === targetValue) {
+      clearInterval(countUpInterval);
+    }
+
+    return () => clearInterval(countUpInterval);
   }, [count, targetValue]);
 
   return (
@@ -32,7 +39,9 @@ const Counter: React.FC<CounterProps> = ({ targetValue, title }) => {
       <Text bold secondaryFont big style={{ color: theme.color.secondary }}>
         {title}
       </Text>
-      <AnimatedNumber animate={count === targetValue}>+{count}</AnimatedNumber>
+      <AnimatedNumber animate={count === targetValue}>
+        +{displayedValue}
+      </AnimatedNumber>
       <SvgIcon
         size={24}
         fill={theme.color.secondary}

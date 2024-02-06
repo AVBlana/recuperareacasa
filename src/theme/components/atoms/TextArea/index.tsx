@@ -1,3 +1,4 @@
+import { theme } from "@/theme/constants";
 import React from "react";
 
 type TextAreaProps = {
@@ -6,16 +7,18 @@ type TextAreaProps = {
   onChange: (value: string) => void;
 };
 
-export function SimpleTextArea({
-  placeholder,
-  value,
-  onChange,
-}: TextAreaProps) {
+export function TextArea({ placeholder, value, onChange }: TextAreaProps) {
   return (
     <textarea
       placeholder={placeholder}
       value={value}
       onChange={(e) => onChange(e.target.value)}
+      style={{
+        padding: 10,
+        borderRadius: 10,
+        background: theme.color.white,
+        color: theme.color.black,
+      }}
     />
   );
 }

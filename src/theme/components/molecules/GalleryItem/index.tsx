@@ -55,7 +55,13 @@ const GalleryItem = ({
           onClose={() => setIsModalVisible(false)}
           isVisible={isModalVisible}
         >
-          <Box style={{ width: 600, overflowX: "hidden" }}>
+          <Box
+            style={{
+              width: 600,
+              overflowX: "hidden",
+              background: theme.color.white,
+            }}
+          >
             <Image
               width={600}
               height={600}

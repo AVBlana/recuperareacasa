@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { FbIcon, Text, YtIcon } from "../..";
 import Image from "../../atoms/Image";
 import styled, { useTheme } from "styled-components";
@@ -10,8 +10,20 @@ import NavItem from "../../atoms/NavItem";
 import { CaretRIcon } from "../../molecules/Icons/CaretRight";
 import Box from "../../atoms/Box";
 import Flex from "../../atoms/Flex";
+import Form from "../../molecules/Form";
+import Modal from "../../molecules/Modal";
 
 const Header = () => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalVisible(false);
+  };
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -111,26 +123,27 @@ const Header = () => {
             />
           </Flex>
 
-          <Flex
-            style={{
-              color: theme.color.white,
-              background: theme.color.secondary,
-              paddingTop: theme.spacings.medium,
-              paddingBottom: theme.spacings.medium,
-              paddingLeft: theme.spacings.bigger,
-              paddingRight: theme.spacings.bigger,
-              borderRadius: 20,
-              gap: theme.spacings.tiny,
-              cursor: "pointer",
-              alignItems: "center",
-            }}
-          >
+          <Flex style={{ gap: theme.spacings.tiny, alignItems: "center" }}>
             <Button
               label="Consultație Online"
-              onClick={() => scrollToSection("form")}
-            ></Button>
+              onClick={handleOpenModal}
+              style={{
+                color: theme.color.white,
+                background: theme.color.secondary,
+                paddingTop: theme.spacings.medium,
+                paddingBottom: theme.spacings.medium,
+                paddingLeft: theme.spacings.bigger,
+                paddingRight: theme.spacings.bigger,
+                borderRadius: 20,
+                cursor: "pointer",
+              }}
+            />
+
             <CaretRIcon size={9} fill="white" />
           </Flex>
+          <Modal isVisible={isModalVisible} onClose={handleCloseModal}>
+            <Form />
+          </Modal>
         </Flex>
       </Box>
     </>

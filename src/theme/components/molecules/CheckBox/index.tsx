@@ -1,3 +1,4 @@
+import { theme } from "@/theme/constants";
 import React from "react";
 
 type CheckboxProps = {
@@ -31,8 +32,20 @@ export function Checkbox({
           checked={checked}
           onChange={handleCheckboxChange}
           id={label}
+          style={{
+            width: 20,
+            height: 20,
+          }}
         />
-        <label htmlFor={label}>{label}</label>
+        <label
+          style={{
+            fontFamily: theme.text.secondary,
+            fontSize: theme.text.medium,
+          }}
+          htmlFor={label}
+        >
+          {label}
+        </label>
       </div>
     </>
   );
