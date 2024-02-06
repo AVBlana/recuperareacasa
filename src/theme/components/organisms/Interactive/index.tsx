@@ -18,22 +18,22 @@ const interacts = [
   },
   {
     number: "03",
-    label: "Cervical",
+    label: "Zona Cervicală",
     image: "/assets/img3.jpg",
   },
   {
     number: "04",
-    label: "Toracal",
+    label: "Zona Toracală",
     image: "/assets/img4.jpg",
   },
   {
     number: "05",
-    label: "Lombar",
+    label: "Zona Lombară",
     image: "/assets/img5.jpg",
   },
   {
     number: "06",
-    label: "Zona Bazinului",
+    label: "Zona Bazinului,",
     image: "/assets/img6.jpg",
   },
   {
@@ -64,65 +64,70 @@ const InteractiveBox: React.FC = () => {
   }, []); // Empty dependency array ensures this effect runs only once on mount
 
   return (
-    <StyledInteractiveBox>
-      <LeftBox>
-        {interacts.map((interact, index) => (
-          <StyledLabelBox
-            key={interact.number}
-            onMouseEnter={() => handleLabelHover(interact.label)}
-            onMouseLeave={() => handleLabelHover(null)}
-            hovered={hoveredLabel === interact.label}
-            isFirst={index === 0}
-          >
-            <Text
-              big
-              secondaryFont
-              primary
-              style={{
-                color:
-                  hoveredLabel === interact.label ||
-                  interact.label === interacts[0].label
-                    ? theme.color.secondary
-                    : theme.color.primary,
-              }}
+    <Box style={{ alignItems: "center" }}>
+      <StyledInteractiveBox>
+        <LeftBox>
+          {interacts.map((interact, index) => (
+            <StyledLabelBox
+              key={interact.number}
+              onMouseEnter={() => handleLabelHover(interact.label)}
+              onMouseLeave={() => handleLabelHover(null)}
+              hovered={hoveredLabel === interact.label}
+              isFirst={index === 0}
             >
-              {interact.number}
-            </Text>
-            <Text
-              huge
-              secondaryFont
-              primary
+              <Text
+                big
+                secondaryFont
+                primary
+                style={{
+                  color:
+                    hoveredLabel === interact.label ||
+                    interact.label === interacts[0].label
+                      ? theme.color.secondary
+                      : theme.color.primary,
+                }}
+              >
+                {interact.number}
+              </Text>
+              <Text
+                huge
+                secondaryFont
+                primary
+                style={{
+                  color:
+                    hoveredLabel === interact.label ||
+                    interact.label === interacts[0].label
+                      ? theme.color.secondary
+                      : theme.color.primary,
+                }}
+              >
+                {interact.label}
+              </Text>
+            </StyledLabelBox>
+          ))}
+        </LeftBox>
+        <RightBox>
+          <ImageBox>
+            <Image
+              width={600}
+              height={600}
+              src={
+                interacts.find((i) => i.label === hoveredLabel)?.image ||
+                interacts[0].image
+              }
+              alt=""
               style={{
-                color:
-                  hoveredLabel === interact.label ||
-                  interact.label === interacts[0].label
-                    ? theme.color.secondary
-                    : theme.color.primary,
+                borderRadius: 1000,
+                borderStyle: "solid",
+                borderWidth: 3,
+                borderColor: theme.color.primary,
+                objectFit: "cover",
               }}
-            >
-              {interact.label}
-            </Text>
-          </StyledLabelBox>
-        ))}
-      </LeftBox>
-      <RightBox>
-        <ImageBox>
-          <Image
-            width={600}
-            height={600}
-            src={interacts.find((i) => i.label === hoveredLabel)?.image || ""}
-            alt=""
-            style={{
-              borderRadius: 1000,
-              borderStyle: "solid",
-              borderWidth: 3,
-              borderColor: theme.color.primary,
-              objectFit: "cover",
-            }}
-          />
-        </ImageBox>
-      </RightBox>
-    </StyledInteractiveBox>
+            />
+          </ImageBox>
+        </RightBox>
+      </StyledInteractiveBox>
+    </Box>
   );
 };
 
@@ -130,20 +135,22 @@ const StyledInteractiveBox = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 100px 80px;
-  gap: 60px;
+  justify-content: center;
+  padding-left: 80px;
+  padding-right: 80px;
+  padding-bottom: 100px;
+  max-width: 1440px;
 `;
 
 const LeftBox = styled.div`
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
-  height: 250px;
 `;
 
 const StyledLabelBox = styled.div<{ hovered: boolean; isFirst: boolean }>`
   display: flex;
   flex-direction: row;
+  gap: 8px;
   cursor: ${({ hovered }) => (hovered ? "pointer" : "default")};
   padding: ${({ theme }) => theme.spacings.small}px;
   transition: color 0.3s, transform 0.3s;

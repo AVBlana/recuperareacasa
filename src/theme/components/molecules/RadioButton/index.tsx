@@ -1,3 +1,4 @@
+import { theme } from "@/theme/constants";
 import React from "react";
 
 type RadioProps = {
@@ -28,6 +29,10 @@ export function RadioButton({
         id={label}
         checked={isSelected}
         onChange={handleRadioChange}
+        style={{
+          width: 20,
+          height: 20,
+        }}
       />
       <label htmlFor={label}>{label}</label>
     </div>

@@ -46,7 +46,7 @@ const Modal = ({
         ></Box>
         <Box
           style={{
-            background: theme.color.white,
+            // background: theme.color.white,
             minWidth: 320,
             maxHeight: "90vh",
             position: "relative",

@@ -1,16 +1,19 @@
 import styled from "styled-components";
 import Counter from "../../atoms/Counter";
 import Flex from "../../atoms/Flex";
+import Box from "../../atoms/Box";
 
 const Counters = () => {
   return (
     <>
-      <StyledCountersBox>
-        <Counter targetValue={12} title="Ani de experiență" />
-        <Counter targetValue={12500} title="Cazuri rezolvate" />
-        <Counter targetValue={2500} title="Cazuri speciale" />
-        <Counter targetValue={11900} title="Clienți mulțumiți" />
-      </StyledCountersBox>
+      <Box style={{ alignItems: "center", justifyContent: "center" }}>
+        <StyledCountersBox>
+          <Counter targetValue={12} title="Ani de experiență" />
+          <Counter targetValue={12500} title="Cazuri rezolvate" />
+          <Counter targetValue={2500} title="Cazuri speciale" />
+          <Counter targetValue={11900} title="Clienți mulțumiți" />
+        </StyledCountersBox>
+      </Box>
     </>
   );
 };
@@ -21,6 +24,7 @@ const StyledCountersBox = styled.div`
   justify-content: center;
   padding: 100px 80px;
   gap: 40;
+  max-width: 1440px;
 `;
 
 export default Counters;

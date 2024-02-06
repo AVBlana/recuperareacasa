@@ -1,3 +1,4 @@
+import { theme } from "@/theme/constants";
 import React, { ChangeEvent, FC, InputHTMLAttributes } from "react";
 
 const _inputTypes = ["text", "email", "password", "checkbox"];
@@ -27,6 +28,11 @@ const Input: FC<InputProps> = ({
       className="a-input"
       value={value}
       onChange={onChange}
+      style={{
+        padding: 10,
+        borderRadius: 10,
+        background: theme.color.white,
+      }}
       {...rest}
     />
   );
