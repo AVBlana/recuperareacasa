@@ -11,55 +11,47 @@ import { ArrowRightIcon } from "../../molecules/Icons/ArrowRightIcon";
 const Services = () => {
   const services = [
     {
-      label: "Head Pain",
-      title: "Service 1",
+      label: "200 Ron",
+      title: "Kinetoterapie de recuperare",
       svg: "/assets/headPain.svg",
       image: "/assets/img1.jpg",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum reiciendis praesentium eligendi, debitis nostrum labore. Praesentium, magnam dolore magni enim esse consequuntur soluta repellat aspernatur rerum fugiat impedit perspiciatis pariatur ipsa provident animi neque ullam molestiae dignissimos accusamus odit numquam iste a! Iusto porro culpa libero maiores, ratione iste labore.",
+      desc: "Kinetoterapie de recuperare - Terapie manuala",
     },
     {
-      label: "Leg Pain",
-      title: "Service 2",
+      label: "150 Ron",
+      title: "Masaj sportiv și de recuperare",
       svg: "/assets/legPain.svg",
       image: "/assets/img2.jpg",
       desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius est illum corporis, pariatur doloribus magni, dignissimos nisi ut minus vel nam deleniti quam quisquam cumque deserunt odio explicabo modi numquam?",
     },
     {
-      label: "Leg Pain",
-      title: "Service 3",
+      label: "150 Ron",
+      title: "Masaj de relaxare",
       svg: "/assets/torsoPain.svg",
       image: "/assets/img3.jpg",
       desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius est illum corporis, pariatur doloribus magni, dignissimos nisi ut minus vel nam deleniti quam quisquam cumque deserunt odio explicabo modi numquam?",
     },
     {
-      label: "Leg Pain",
-      title: "Service 4",
+      label: "30 Ron",
+      title: "Aplicare Kinesio tape",
       svg: "/assets/headPain.svg",
       image: "/assets/img4.jpg",
       desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius est illum corporis, pariatur doloribus magni, dignissimos nisi ut minus vel nam deleniti quam quisquam cumque deserunt odio explicabo modi numquam?",
     },
     {
-      label: "Leg Pain",
-      title: "Service 5",
+      label: "30 Ron",
+      title: "Eletroterapie",
       svg: "/assets/headPain.svg",
       image: "/assets/img5.jpg",
       desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius est illum corporis, pariatur doloribus magni, dignissimos nisi ut minus vel nam deleniti quam quisquam cumque deserunt odio explicabo modi numquam?",
     },
     {
-      label: "Leg Pain",
-      title: "Service 6",
+      label: "100 Ron",
+      title: "Dry Needling",
       svg: "/assets/headPain.svg",
       image: "/assets/img6.jpg",
       desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius est illum corporis, pariatur doloribus magni, dignissimos nisi ut minus vel nam deleniti quam quisquam cumque deserunt odio explicabo modi numquam?",
     },
-    {
-      label: "Leg Pain",
-      title: "Service 7",
-      svg: "/assets/headPain.svg",
-      image: "/assets/img7.jpg",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius est illum corporis, pariatur doloribus magni, dignissimos nisi ut minus vel nam deleniti quam quisquam cumque deserunt odio explicabo modi numquam?",
-    },
-    // Add more service objects as needed
   ];
 
   const itemsPerPage = 5;
@@ -99,10 +91,9 @@ const Services = () => {
               Gandim diferit
             </Text>
             <Text style={{ width: 200 }}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam
-              porro molestiae ratione, ullam libero corrupti odio blanditiis,
-              deserunt amet nesciunt voluptatibus iure? Quibusdam, quis sit
-              itaque quaerat quia id fuga.
+              Specializăm tratamentul kineto pentru a acoperi atât aspectele
+              fizice, cât și cele psihice. Echipa noastră de kinetoterapeuți
+              oferă servicii personalizate pentru o recuperare completă.
             </Text>
           </Box>
 

@@ -21,10 +21,8 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
       style={{ backgroundImage: `url(${service.image})` }}
       data-desc={service.desc}
     >
-      {/* Gradient layer */}
       <StyledGradientBox />
 
-      {/* Content */}
       <Flex
         style={{
           alignItems: "center",
@@ -32,7 +30,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
           zIndex: 2,
         }}
       >
-        <Box>
+        <Box style={{ maxWidth: 120 }}>
           <Text semiBold style={{ color: theme.color.secondary }}>
             {service.label}
           </Text>

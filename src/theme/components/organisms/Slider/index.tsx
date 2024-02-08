@@ -19,8 +19,8 @@ const Slider = () => {
     <VideoBackgroundWrapper>
       {isVideoVisible && (
         <VideoBackground
+          // src=""
           src="https://www.youtube.com/embed/T4NgK7SydUQ?autoplay=1&loop=1&mute=1&start=60"
-          frameBorder="0"
           allowFullScreen
         ></VideoBackground>
       )}
@@ -71,12 +71,14 @@ const Slider = () => {
                 justifyContent: "center",
               }}
             >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
-              cum natus est maiores, inventore sit fugiat, voluptatum illum
-              harum facere neque qui quaerat dolorum cumque distinctio dicta.
-              Quia animi iste rerum repellendus natus beatae ab eaque eos
-              recusandae, cumque consequuntur magnam praesentium exercitationem
-              vero quas excepturi in voluptate. Sed, in.
+              Bine ai venit pe platforma noastră dedicată recuperării la
+              domiciliu! Suntem aici pentru tine, punând accentul pe tratarea
+              întregii tale persoane, nu doar a problemei de sănătate. Echipa
+              noastră de specialiști aduce în casele tale idei inovatoare și
+              programe personalizate pentru a-ți îmbunătăți starea de sănătate
+              și a te sprijini în călătoria ta către recuperare. Descoperă o
+              abordare holistă, unde ne concentrăm asupra ta ca individ, nu doar
+              asupra simptomelor tale!
             </Text>
           </Box>
           <Link

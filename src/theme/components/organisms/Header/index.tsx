@@ -10,8 +10,9 @@ import NavItem from "../../atoms/NavItem";
 import { CaretRIcon } from "../../molecules/Icons/CaretRight";
 import Box from "../../atoms/Box";
 import Flex from "../../atoms/Flex";
-import Form from "../../molecules/Form";
+import Form from "../Form";
 import Modal from "../../molecules/Modal";
+import FullScreenModal from "../../molecules/FullscreenModal";
 
 const Header = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -48,26 +49,26 @@ const Header = () => {
             alignItems: "center",
           }}
         >
-          <Link href="mailto:contact@recuperareacasa.ro">
+          <Link href="mailto:info@recuperareacasa.ro">
             <Flex style={{ alignItems: "center" }}>
               <IconBox>
                 <MailIcon size={16} fill={theme.color.secondary} />
               </IconBox>
               <Flex>
                 <Text small white>
-                  contact@recuperareacasa.ro
+                  info@recuperareacasa.ro
                 </Text>
               </Flex>
             </Flex>
           </Link>
           <Flex style={{ gap: theme.spacings.tiny }}>
-            <Link href="phone:+40 123 456 789">
+            <Link href="phone:+40 727 860 759">
               <Flex style={{ alignItems: "center" }}>
                 <IconBox>
                   <PhoneIcon size={16} fill={theme.color.secondary} />
                 </IconBox>
                 <Text small white>
-                  +40 123 456 789
+                  +40 727 860 759
                 </Text>
               </Flex>
             </Link>
@@ -141,9 +142,12 @@ const Header = () => {
 
             <CaretRIcon size={9} fill="white" />
           </Flex>
-          <Modal isVisible={isModalVisible} onClose={handleCloseModal}>
-            <Form />
-          </Modal>
+          <FullScreenModal
+            isVisible={isModalVisible}
+            onClose={handleCloseModal}
+          >
+            <Form onClose={handleCloseModal} />
+          </FullScreenModal>
         </Flex>
       </Box>
     </>
