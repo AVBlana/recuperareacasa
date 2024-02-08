@@ -20,56 +20,47 @@ import About from "@/theme/components/organisms/About";
 import ProcessCard from "@/theme/components/molecules/StepCard";
 import Steps from "@/theme/components/organisms/Steps";
 import Team from "@/theme/components/organisms/Team";
-import Form from "@/theme/components/molecules/Form";
+import Form from "@/theme/components/organisms/Form";
 
 export const HomeScreen = () => {
   return (
     <Box style={{ paddingTop: 120, background: theme.color.white }}>
       <Header />
       <Slider />
-      <Services />
+
+      <SectionBox id="servicii">
+        <Services />
+      </SectionBox>
+
       <MovingText />
-      <About />
-      <Counters />
+
+      <SectionBox id="despre">
+        <About />
+        <Counters />
+      </SectionBox>
+
       <InteractiveBox />
       <CTA />
-      <Team />
-      <Steps />
 
-      <Text huge bold uppercase yellow>
-        test
-      </Text>
-      <SectionBox id="despre">
-        <Text secondaryFont primary huge bolder>
-          Sectiune Despre
-        </Text>
-      </SectionBox>
-      <SectionBox id="servicii">
-        <Text secondaryFont primary huge bolder>
-          Sectiune Servicii
-        </Text>
-      </SectionBox>
-      <SectionBox id="echipa">
-        <Text secondaryFont primary huge bolder>
-          Sectiune Echipa
-        </Text>
+      <SectionBox id="echipa" style={{ alignItems: "center" }}>
+        <Team />
+        <Steps />
       </SectionBox>
 
-      <SectionBox id="contact">
-        <Text secondaryFont primary huge bolder>
-          Sectiune Contact
-        </Text>
+      <SectionBox id="galerie">
+        <Gallery />
       </SectionBox>
-      <Gallery />
 
       <Review />
-      <Footer />
+
+      <SectionBox id="contact">
+        <Footer />
+      </SectionBox>
     </Box>
   );
 };
 
 const SectionBox = styled.div`
   display: flex;
-  height: 100vh;
   flex-direction: column;
 `;

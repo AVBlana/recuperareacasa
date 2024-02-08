@@ -6,13 +6,19 @@ import { SvgIcon, Text } from "../..";
 import { theme } from "@/theme/constants";
 import Button from "../../atoms/Button";
 import { CaretRIcon } from "../../molecules/Icons/CaretRight";
+import FullScreenModal from "../../molecules/FullscreenModal";
+import Form from "../Form";
+import { useState } from "react";
 
 const About = () => {
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalVisible(false);
   };
 
   return (
@@ -44,60 +50,73 @@ const About = () => {
             >
               Drespre Recuperare Acasă
             </Text>
-            <Text
-              style={{ width: 280, paddingBottom: 24 }}
-              huge
-              secondaryFont
-              primary
+            <Box style={{ gap: 10 }}>
+              <Text
+                style={{ width: 280, paddingBottom: 24 }}
+                huge
+                secondaryFont
+                primary
+              >
+                Tratăm Persoana, Nu Doar Problema.
+              </Text>
+              <Text small style={{ lineHeight: "140%" }}>
+                Serviciile nostre de recuperare medicală la domiciliu oferă
+                programe personalizate ce includ tehnici de terapie manuală,
+                masaj, dry needling și kinetoterapie.
+              </Text>
+              <Text small style={{ lineHeight: "140%" }}>
+                Echipa noastră de specialiști asigură ghidare online, oferind
+                exerciții și intervenții terapeutice adaptate nevoilor tale
+                individuale.
+              </Text>
+              <Text small style={{ lineHeight: "140%" }}>
+                Cu accent pe monitorizare și evaluare constantă, vei experimenta
+                o abordare completă pentru recuperarea ta în confortul propriei
+                case.
+              </Text>
+            </Box>
+
+            <Box
+              style={{
+                gap: 20,
+                paddingTop: 40,
+                paddingBottom: 40,
+                justifyContent: "center",
+              }}
             >
-              Tratăm Persoana, Nu Doar Problema.
-            </Text>
-            <Text small style={{ paddingBottom: 40 }}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. At nisi
-              dolores ab eligendi tenetur, sit optio est, facere quibusdam
-              praesentium omnis rem debitis doloremque deserunt quidem ad
-              reiciendis molestias. Odit?
-            </Text>
-            <Flex style={{ paddingBottom: 40, gap: 40 }}>
-              <Box
-                style={{
-                  gap: 24,
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <Flex style={{ gap: 24, alignItems: "center" }}>
-                  <SvgIcon size={24} src="/assets/checkedSVG.svg" />
-                  <Text bigger secondaryFont primary semiBold>
-                    Lorem ipsum dolor sit amet.
+              <Text bigger secondaryFont primary semiBold>
+                Ce ne diferențiază ?
+              </Text>
+              <Box style={{ gap: 10 }}>
+                <Flex style={{ gap: 20, alignItems: "center" }}>
+                  <Box>
+                    <SvgIcon size={20} src="/assets/checkedSVG.svg" />
+                  </Box>
+                  <Text small style={{ lineHeight: "140%" }}>
+                    Abordarea inovatoare și gândirea creativă în furnizarea
+                    serviciilor de recuperare
                   </Text>
                 </Flex>
-                <Text small>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Possimus, et. Reiciendis voluptates porro voluptate atque
-                  totam nihil! Laudantium, ea corporis.
-                </Text>
-              </Box>
-              <Box
-                style={{
-                  gap: 24,
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <Flex style={{ gap: 24, alignItems: "center" }}>
-                  <SvgIcon size={24} src="/assets/checkedSVG.svg" />
-                  <Text bigger secondaryFont primary semiBold>
-                    Lorem ipsum dolor sit amet.
+                <Flex style={{ gap: 20, alignItems: "center" }}>
+                  <Box>
+                    <SvgIcon size={20} src="/assets/checkedSVG.svg" />
+                  </Box>
+                  <Text small style={{ lineHeight: "140%" }}>
+                    Punctăm nu doar prin calitatea intervențiilor, ci și prin
+                    evaluarea continuă și monitorizarea atentă a progresului.
                   </Text>
                 </Flex>
-                <Text small>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Possimus, et. Reiciendis voluptates porro voluptate atque
-                  totam nihil! Laudantium, ea corporis.
-                </Text>
+                <Flex style={{ gap: 20, alignItems: "center" }}>
+                  <Box>
+                    <SvgIcon size={20} src="/assets/checkedSVG.svg" />
+                  </Box>
+                  <Text small style={{ lineHeight: "140%" }}>
+                    Întelegem unicitatea ficărui caz și adaptăm soluțiile pentru
+                    a asigura cele mai bune rezultate
+                  </Text>
+                </Flex>
               </Box>
-            </Flex>
+            </Box>
             <Flex
               style={{
                 color: theme.color.white,
@@ -113,11 +132,14 @@ const About = () => {
                 maxWidth: 200,
               }}
             >
-              <Button
-                label="Programeaza-te"
-                onClick={() => scrollToSection("form")}
-              ></Button>
+              <Button label="Programeaza-te" onClick={handleOpenModal}></Button>
               <CaretRIcon size={9} fill="white" />
+              <FullScreenModal
+                isVisible={isModalVisible}
+                onClose={handleCloseModal}
+              >
+                <Form onClose={handleCloseModal} />
+              </FullScreenModal>
             </Flex>
           </Box>
         </Flex>

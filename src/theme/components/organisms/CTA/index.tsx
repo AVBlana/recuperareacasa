@@ -2,18 +2,49 @@ import styled from "styled-components";
 import { SvgIcon, Text } from "../..";
 import Flex from "../../atoms/Flex";
 import Box from "../../atoms/Box";
+import FullScreenModal from "../../molecules/FullscreenModal";
+import Form from "../Form";
+import { useState } from "react";
+import Button from "../../atoms/Button";
 
 const StyledSvgIcon = styled(SvgIcon)`
   transition: transform 0.3s ease-in-out;
 `;
 
 const CTA = () => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalVisible(false);
+  };
   return (
     <>
       <StyledCtaContainer>
         <StyledImageBox>
           <StyledCtaBox>
+            <Button
+              label=""
+              onClick={handleOpenModal}
+              style={{
+                position: "absolute",
+                top: 0,
+                bottom: 0,
+                left: 0,
+                right: 0,
+                zIndex: 2,
+              }}
+            ></Button>
             <StyledSvgIcon size={250} src="/assets/CTAtext.svg" />
+            <FullScreenModal
+              isVisible={isModalVisible}
+              onClose={handleCloseModal}
+            >
+              <Form onClose={handleCloseModal} />
+            </FullScreenModal>
             <Box>
               <Text
                 huge

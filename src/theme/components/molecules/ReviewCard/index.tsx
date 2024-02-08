@@ -68,18 +68,12 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
         </Flex>
 
         <Flex>
-          <Box
-            style={{ padding: 20, cursor: "pointer" }}
-            onClick={onPrevReview}
-          >
-            <ArrowLeftIcon size={40} fill={theme.color.white} />
-          </Box>
-          <Box
-            style={{ padding: 20, cursor: "pointer" }}
-            onClick={onNextReview}
-          >
-            <ArrowRightIcon size={40} fill={theme.color.white} />
-          </Box>
+          <StyledArrowBox style={{ padding: 20 }} onClick={onPrevReview}>
+            <ArrowLeftIcon size={40} />
+          </StyledArrowBox>
+          <StyledArrowBox style={{ padding: 20 }} onClick={onNextReview}>
+            <ArrowRightIcon size={40} />
+          </StyledArrowBox>
         </Flex>
       </Flex>
     </StyledCardBox>
@@ -92,6 +86,27 @@ const StyledCardBox = styled.div`
   flex-direction: column;
   gap: 60px;
   width: 550px;
+`;
+
+const StyledArrowBox = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1); /* Adjust the scale factor as needed */
+  }
+
+  & > svg {
+    fill: ${(props) => props.theme.color.white}; /* Initial color */
+    transition: fill 0.3s ease-in-out;
+  }
+
+  &:hover > svg {
+    fill: ${(props) => props.theme.color.secondary}; /* Hover color */
+  }
 `;
 
 export default ReviewCard;

@@ -95,11 +95,17 @@ const Footer = () => {
               <Text big secondaryFont>
                 Despre Noi
               </Text>
-              <Text small>
-                Lovecare A trusted name for caring for someone. Seniors live
-                their life in their own way here what they want. No one can
-                bother them here, that's why they can feel free and independent.
-              </Text>
+              <Box style={{ gap: 10 }}>
+                <Text small style={{ lineHeight: "140%" }}>
+                  Recuperare medicală la domiciliu oferă programe personalizate
+                  ce includ tehnici de terapie manuală, masaj, dry needling și
+                  kinetoterapie.
+                </Text>
+                <Text small style={{ lineHeight: "140%" }}>
+                  Zona de acoperire a serviciilor noastre se afla în perimetrul
+                  orașelor Cluj-Florești-Gilau.
+                </Text>
+              </Box>
             </Box>
             <Box>
               <Link href={"/"}>

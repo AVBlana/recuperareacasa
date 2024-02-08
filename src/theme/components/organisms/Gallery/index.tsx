@@ -46,7 +46,7 @@ const Gallery = () => {
             Povesti pentru pacienti
           </Text>
           <Text primary secondaryFont huge bolder>
-            Vezi ultimile nostre cazuri
+            Galerie Foto Video
           </Text>
           <Flex
             style={{ paddingBottom: 40, paddingTop: 24, cursor: "pointer" }}
