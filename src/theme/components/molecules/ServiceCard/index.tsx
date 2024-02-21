@@ -70,7 +70,7 @@ const StyledServiceCard = styled.div`
       align-items: start;
       justify-content: start;
       color: white;
-      text-align: center;
+      text-align: left;
       border-radius: 20px;
       padding-left: 20px;
       padding-right: 20px;

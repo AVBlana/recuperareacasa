@@ -7,23 +7,37 @@ import Flex from "../../atoms/Flex";
 import Box from "../../atoms/Box";
 import { CaretRIcon } from "../../molecules/Icons/CaretRight";
 import Link from "next/link";
+import YouTube from "react-youtube";
 
 const Slider = () => {
-  const [isVideoVisible, setVideoVisibility] = useState(false);
+  const videoOptions = {
+    playerVars: {
+      showinfo: 0,
+      autoplay: 1,
+      loop: 1,
+      controls: 0,
+      mute: 1,
+      fs: 1,
+    },
+  };
 
-  useEffect(() => {
-    setVideoVisibility(true);
-  }, []);
+  const onReady = (event: any) => {
+    const player = event.target;
+
+    player.playVideo();
+
+    player.addEventListener("onStateChange", (event: any) => {
+      if (event.data === 0) {
+        player.playVideo();
+      }
+    });
+  };
 
   return (
     <VideoBackgroundWrapper>
-      {isVideoVisible && (
-        <VideoBackground
-          // src=""
-          src="https://www.youtube.com/embed/T4NgK7SydUQ?autoplay=1&loop=1&mute=1&start=60"
-          allowFullScreen
-        ></VideoBackground>
-      )}
+      <VideoBackground>
+        <YouTube videoId="RBbyRBlLkMQ" opts={videoOptions} onReady={onReady} />
+      </VideoBackground>
       <ContentContainer>
         <GradientLayer />
         <Box
@@ -69,6 +83,8 @@ const Slider = () => {
                 lineHeight: "150%",
                 alignContent: "center",
                 justifyContent: "center",
+                display: "flex",
+                textAlign: "center",
               }}
             >
               Bine ai venit pe platforma noastră dedicată recuperării la
@@ -82,7 +98,7 @@ const Slider = () => {
             </Text>
           </Box>
           <Link
-            href="https://www.youtube.com/watch?v=T4NgK7SydUQ"
+            href="https://www.youtube.com/watch?v=RBbyRBlLkMQ"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -127,15 +143,15 @@ const VideoBackgroundWrapper = styled.div`
   overflow: hidden;
 `;
 
-const VideoBackground = styled.iframe`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 140%; /* Adjust the size as needed */
-  height: 140%; /* Adjust the size as needed */
-  border: none; /* Hide the iframe border */
-  object-fit: cover; /* Scale the content while maintaining aspect ratio and cropping the rest */
+const VideoBackground = styled.div`
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 `;
 
 const ContentContainer = styled.div`
