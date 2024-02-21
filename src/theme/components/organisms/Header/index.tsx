@@ -124,23 +124,22 @@ const Header = () => {
             />
           </Flex>
 
-          <Flex style={{ gap: theme.spacings.tiny, alignItems: "center" }}>
-            <Button
-              label="Consultație Online"
-              onClick={handleOpenModal}
-              style={{
-                color: theme.color.white,
-                background: theme.color.secondary,
-                paddingTop: theme.spacings.medium,
-                paddingBottom: theme.spacings.medium,
-                paddingLeft: theme.spacings.bigger,
-                paddingRight: theme.spacings.bigger,
-                borderRadius: 20,
-                cursor: "pointer",
-              }}
-            />
-
-            <CaretRIcon size={9} fill="white" />
+          <Flex
+            style={{
+              gap: theme.spacings.tiny,
+              alignItems: "center",
+              color: theme.color.white,
+              background: theme.color.secondary,
+              paddingTop: theme.spacings.medium,
+              paddingBottom: theme.spacings.medium,
+              paddingLeft: theme.spacings.bigger,
+              paddingRight: theme.spacings.bigger,
+              borderRadius: 20,
+              cursor: "pointer",
+            }}
+          >
+            <Button label="Consultație Online" onClick={handleOpenModal} />
+            <CaretRIcon size={16} fill="white" />
           </Flex>
           <FullScreenModal
             isVisible={isModalVisible}
