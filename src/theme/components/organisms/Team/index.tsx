@@ -9,10 +9,10 @@ import { theme } from "@/theme/constants";
 const Team = () => {
   const teamMember = {
     name: "Secașiu Alexandru Valentin",
-    title: "Fizio-Kineto-Terapeut",
+    title: "Fiziokinetoterapeut",
     imageSrc: "/assets/img3.jpg",
     skills: [
-      "Absolvent al Universitatii Transilvania Brasov",
+      "Absolvent al Universitatii Transilvania Brasov - Kinetoterapie",
       "Absolvent al Orthopedic Manual Therapy Romania (OMTRO)",
       "Tehnician Maseur (Terapeutic, Relaxare,Reflexoterapie, Recuperare medicala)",
       "Terapeut avansat ERGON sau IATSM (Instrument assisted soft tissue mobilization)",
@@ -20,7 +20,7 @@ const Team = () => {
       "Terapeut dry needling de peste 4 ani",
     ],
     experiences: [
-      "10+ ani de experienta",
+      "+7 ani de experienta",
       "Specializat in terapia manuala ortopedica de recuperare",
     ],
   };

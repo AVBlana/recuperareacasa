@@ -3,6 +3,7 @@ import { Text } from "../..";
 import Box from "../../atoms/Box";
 import Image from "../../atoms/Image";
 import { theme } from "@/theme/constants";
+import React from "react";
 
 const StepCard = ({
   label,
@@ -13,7 +14,7 @@ const StepCard = ({
   label: string;
   title: string;
   image: string;
-  desc: string;
+  desc: any;
 }) => {
   return (
     <>
@@ -21,11 +22,11 @@ const StepCard = ({
         <Box>
           <Image
             width={230}
-            height={230}
+            height={400}
             alt=""
             src={image}
             style={{
-              borderRadius: 400,
+              borderRadius: 20,
               borderStyle: "solid",
               borderWidth: 2,
               borderColor: theme.color.primary,

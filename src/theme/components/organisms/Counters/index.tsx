@@ -8,10 +8,10 @@ const Counters = () => {
     <>
       <Box style={{ alignItems: "center", justifyContent: "center" }}>
         <StyledCountersBox>
-          <Counter targetValue={12} title="Ani de experiență" />
+          <Counter targetValue={7} title="Ani de experiență" />
           <Counter targetValue={12500} title="Cazuri rezolvate" />
           <Counter targetValue={2500} title="Cazuri speciale" />
-          <Counter targetValue={11900} title="Clienți mulțumiți" />
+          <Counter targetValue={8600} title="Clienți fideli" />
         </StyledCountersBox>
       </Box>
     </>

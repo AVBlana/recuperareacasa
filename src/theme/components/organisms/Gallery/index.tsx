@@ -9,14 +9,24 @@ import { useState } from "react";
 
 const Gallery = () => {
   const initialData = [
-    { url: "/assets/img1.jpg", title: "img1", label: "Cap" },
-    { url: "/assets/img2.jpg", title: "img2", label: "Maini" },
-    { url: "/assets/img3.jpg", title: "img3", label: "Maini" },
-    { url: "/assets/img4.jpg", title: "img4", label: "Cervical" },
-    { url: "/assets/img5.jpg", title: "img5", label: "Torcal" },
-    { url: "/assets/img6.jpg", title: "img6", label: "Lombar" },
-    { url: "/assets/img7.jpg", title: "img7", label: "Bazin" },
-    { url: "/assets/img8.jpg", title: "img8", label: "Picioare" },
+    { url: "/assets/img1.jpg", title: "img1", label: "Kinetoterapie" },
+    { url: "/assets/img2.jpg", title: "img2", label: "Sportiv și Recuperare" },
+    { url: "/assets/img3.jpg", title: "img3", label: "Sportiv și Recuperare" },
+    { url: "/assets/img4.jpg", title: "img4", label: "Relaxare" },
+    { url: "/assets/img5.jpg", title: "img5", label: "Kinesio Tape" },
+    { url: "/assets/img6.jpg", title: "img6", label: "Electroterapie" },
+    {
+      url: "/assets/img7.jpg",
+      title: "img7",
+      label: "Evaluare Neuro-Musculo-Scheletală",
+    },
+    {
+      url: "/assets/img8.jpg",
+      title: "img8",
+      label: "Eliberare Fascială IATSM",
+    },
+    { url: "/assets/img8.jpg", title: "img8", label: "Cupping" },
+    { url: "/assets/img8.jpg", title: "img8", label: "Flossing" },
   ];
 
   const [selectedLabel, setSelectedLabel] = useState("Toate");
@@ -49,17 +59,29 @@ const Gallery = () => {
             Galerie Foto Video
           </Text>
           <Flex
-            style={{ paddingBottom: 40, paddingTop: 24, cursor: "pointer" }}
+            style={{
+              flexWrap: "wrap",
+              paddingLeft: 80,
+              paddingRight: 80,
+              gap: 10,
+              justifyContent: "center",
+              paddingBottom: 40,
+              paddingTop: 24,
+              cursor: "pointer",
+            }}
           >
             {[
               "Toate",
-              "Cap",
-              "Maini",
-              "Cervical",
-              "Torcal",
-              "Lombar",
-              "Bazin",
-              "Picioare",
+              "Kinetoterapie",
+              "Sportiv și Recuperare",
+              "Relaxare",
+              "Kinesio Tape",
+              "Electroterapie",
+              "Dry Needling",
+              "Evaluare Neuro-Musculo-Scheletală",
+              "Eliberare Fascială IATSM",
+              "Cupping",
+              "Flossing",
             ].map((label) => (
               <FilterItem
                 key={label}

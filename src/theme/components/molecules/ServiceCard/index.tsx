@@ -4,6 +4,7 @@ import { SvgIcon, Text } from "../..";
 import Box from "../../atoms/Box";
 import Flex from "../../atoms/Flex";
 import { theme } from "@/theme/constants";
+import { renderToStaticMarkup } from "react-dom/server";
 
 interface ServiceCardProps {
   service: {
@@ -11,15 +12,17 @@ interface ServiceCardProps {
     title: string;
     svg: string;
     image: string;
-    desc: string;
+    desc: any;
   };
 }
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
+  const descHtml = renderToStaticMarkup(service.desc);
+
   return (
     <StyledServiceCard
       style={{ backgroundImage: `url(${service.image})` }}
-      data-desc={service.desc}
+      data-desc={descHtml}
     >
       <StyledGradientBox />
 
@@ -40,6 +43,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
           <SvgIcon size={50} fill={theme.color.white} src={service.svg} />
         </Box>
       </Flex>
+      <HiddenDesc
+        dangerouslySetInnerHTML={{ __html: descHtml }}
+        className="hidden-desc"
+      />
     </StyledServiceCard>
   );
 };
@@ -48,7 +55,7 @@ const StyledServiceCard = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 310px;
+  min-width: 310px;
   padding: 20px;
   justify-content: flex-end;
   background-size: cover;
@@ -57,27 +64,35 @@ const StyledServiceCard = styled.div`
   transition: background 0.3s ease;
 
   &:hover {
-    &[data-desc]:before {
-      content: attr(data-desc);
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(42, 85, 80, 0.7);
-      z-index: 2;
-      display: flex;
-      align-items: start;
-      justify-content: start;
-      color: white;
-      text-align: left;
-      border-radius: 20px;
-      padding-left: 20px;
-      padding-right: 20px;
-      padding-bottom: 20px;
-      padding-top: 40px;
+    .hidden-desc {
+      opacity: 1;
+      visibility: visible;
     }
   }
+`;
+
+const HiddenDesc = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(42, 85, 80, 0.7);
+  z-index: 2;
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  color: white;
+  text-align: left;
+  font-size: 14px;
+  border-radius: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  padding-top: 40px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 `;
 
 const StyledGradientBox = styled.div`

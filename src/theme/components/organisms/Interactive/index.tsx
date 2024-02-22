@@ -8,38 +8,48 @@ import { useState, useEffect } from "react";
 const interacts = [
   {
     number: "01",
-    label: "Cap",
+    label: "Evaluăm amănunțit,",
     image: "/assets/img1.jpg",
   },
   {
     number: "02",
-    label: "Membre superioare",
+    label: "Personalizăm tratamentul,",
     image: "/assets/img2.jpg",
   },
   {
     number: "03",
-    label: "Zona Cervicală",
+    label: "Folosim cu precizie tehnicile,",
     image: "/assets/img3.jpg",
   },
   {
     number: "04",
-    label: "Zona Toracală",
+    label: "Reevaluăm pacientul,",
     image: "/assets/img4.jpg",
   },
   {
     number: "05",
-    label: "Zona Lombară",
+    label: "Schimbam tratamentul dacă este necesar,",
     image: "/assets/img5.jpg",
   },
   {
     number: "06",
-    label: "Zona Bazinului,",
+    label: "Adăugăm și fizioterapie dacă este necesar,",
     image: "/assets/img6.jpg",
   },
   {
     number: "07",
-    label: "Membre inferioare,",
+    label: "Reeducăm pacientul prin kinetoterapie,",
     image: "/assets/img7.jpg",
+  },
+  {
+    number: "08",
+    label: "Învățăm pacientul să practice și acasă,",
+    image: "/assets/img8.jpg",
+  },
+  {
+    number: "09",
+    label: "Îmbunătățim serviciile prin review-uri,",
+    image: "/assets/img1.jpg",
   },
 ];
 
