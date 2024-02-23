@@ -32,6 +32,7 @@ const Input: FC<InputProps> = ({
         padding: 10,
         borderRadius: 10,
         background: theme.color.white,
+        color: theme.color.black,
       }}
       {...rest}
     />

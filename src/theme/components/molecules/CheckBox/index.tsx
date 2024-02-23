@@ -1,27 +1,20 @@
 import { theme } from "@/theme/constants";
 import React from "react";
 
-type CheckboxProps = {
+interface CheckboxProps {
   label: string;
   selectedCheckboxes: string[];
-  setSelectedCheckboxes: React.Dispatch<React.SetStateAction<string[]>>;
-};
+  onChange: (label: string) => void;
+}
 
 export function Checkbox({
   label,
   selectedCheckboxes,
-  setSelectedCheckboxes,
+  onChange,
 }: CheckboxProps) {
   const checked = selectedCheckboxes.includes(label);
-
-  const handleCheckboxChange = () => {
-    if (checked) {
-      setSelectedCheckboxes((prevSelected) =>
-        prevSelected.filter((item) => item !== label)
-      );
-    } else {
-      setSelectedCheckboxes((prevSelected) => [...prevSelected, label]);
-    }
+  const handleChange = () => {
+    onChange(label);
   };
 
   return (
@@ -30,7 +23,7 @@ export function Checkbox({
         <input
           type="checkbox"
           checked={checked}
-          onChange={handleCheckboxChange}
+          onChange={handleChange}
           id={label}
           style={{
             width: 20,

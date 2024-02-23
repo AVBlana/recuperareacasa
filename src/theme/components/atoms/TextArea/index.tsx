@@ -2,14 +2,16 @@ import { theme } from "@/theme/constants";
 import React from "react";
 
 type TextAreaProps = {
+  id: string;
   placeholder?: string;
   value: string;
   onChange: (value: string) => void;
 };
 
-export function TextArea({ placeholder, value, onChange }: TextAreaProps) {
+export function TextArea({ id, placeholder, value, onChange }: TextAreaProps) {
   return (
     <textarea
+      id={id}
       placeholder={placeholder}
       value={value}
       onChange={(e) => onChange(e.target.value)}
@@ -18,6 +20,7 @@ export function TextArea({ placeholder, value, onChange }: TextAreaProps) {
         borderRadius: 10,
         background: theme.color.white,
         color: theme.color.black,
+        minHeight: 70,
       }}
     />
   );
