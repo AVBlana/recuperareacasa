@@ -10,9 +10,9 @@ import NavItem from "../../atoms/NavItem";
 import { CaretRIcon } from "../../molecules/Icons/CaretRight";
 import Box from "../../atoms/Box";
 import Flex from "../../atoms/Flex";
-import Form from "../Form";
 import Modal from "../../molecules/Modal";
 import FullScreenModal from "../../molecules/FullscreenModal";
+import StepsForm from "../StepsForm";
 
 const Header = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -145,7 +145,8 @@ const Header = () => {
             isVisible={isModalVisible}
             onClose={handleCloseModal}
           >
-            <Form onClose={handleCloseModal} />
+            {/* <Form onClose={handleCloseModal} /> */}
+            <StepsForm onClose={handleCloseModal} />
           </FullScreenModal>
         </Flex>
       </Box>

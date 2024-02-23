@@ -7,8 +7,8 @@ import { theme } from "@/theme/constants";
 import Button from "../../atoms/Button";
 import { CaretRIcon } from "../../molecules/Icons/CaretRight";
 import FullScreenModal from "../../molecules/FullscreenModal";
-import Form from "../Form";
 import { useState } from "react";
+import StepsForm from "../StepsForm";
 
 const About = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -138,7 +138,7 @@ const About = () => {
                 isVisible={isModalVisible}
                 onClose={handleCloseModal}
               >
-                <Form onClose={handleCloseModal} />
+                <StepsForm onClose={handleCloseModal} />
               </FullScreenModal>
             </Flex>
           </Box>

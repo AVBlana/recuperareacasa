@@ -3,9 +3,9 @@ import { SvgIcon, Text } from "../..";
 import Flex from "../../atoms/Flex";
 import Box from "../../atoms/Box";
 import FullScreenModal from "../../molecules/FullscreenModal";
-import Form from "../Form";
 import { useState } from "react";
 import Button from "../../atoms/Button";
+import StepsForm from "../StepsForm";
 
 const StyledSvgIcon = styled(SvgIcon)`
   transition: transform 0.3s ease-in-out;
@@ -43,7 +43,7 @@ const CTA = () => {
               isVisible={isModalVisible}
               onClose={handleCloseModal}
             >
-              <Form onClose={handleCloseModal} />
+              <StepsForm onClose={handleCloseModal} />
             </FullScreenModal>
             <Box>
               <Text
