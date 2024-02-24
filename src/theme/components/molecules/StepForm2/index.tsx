@@ -3,52 +3,31 @@ import Box from "../../atoms/Box";
 import { Text } from "../..";
 import Flex from "../../atoms/Flex";
 import useStepFormData from "@/theme/hooks/useStepFormData";
+import { UseStepFormData } from "@/theme/hooks/useStepFormData";
+
 import StyledFormSection from "../StyledFormSection";
 import { theme } from "@/theme/constants";
 import Input from "../../atoms/Input";
-import { StepFormData } from "@/types/formTypes";
+import { Dispatch, SetStateAction } from "react";
 
 interface StepForm2Props {
-  data: StepFormData["step2Data"];
-  updateData?: (data: StepFormData["step2Data"]) => void;
+  //   data: UseStepFormData;
+  //   updateData?: Dispatch<SetStateAction<UseStepFormData>>;
 }
 
-const StepForm2: React.FC<StepForm2Props> = ({ data, updateData }) => {
+const StepForm2: React.FC<StepForm2Props> = () => {
   const {
     selectedCheckboxes,
-    userFeedback1,
-    userFeedback2,
     userName,
     userPhone,
     userEmail,
     userBlock,
     userStreet,
-    userFloor,
     userNumber,
     userSc,
-    userInfo1,
-    userInfo2,
     selectedOption,
-    isModalVisible,
-    setSelectedCheckboxes,
-    setUserFeedback1,
-    setUserFeedback2,
-    setUserName,
-    setUserPhone,
-    setUserEmail,
-    setUserBlock,
-    setUserFloor,
-    setUserStreet,
-    setUserNumber,
-    setUserSc,
-    setUserInfo1,
-    setUserInfo2,
-    setSelectedOption,
-    setIsModalVisible,
     handleOptionChange,
     handleUserInfoChange,
-    handleFeedbackChange,
-    handleTextAreaChange,
     handleCheckboxChange,
   } = useStepFormData();
 

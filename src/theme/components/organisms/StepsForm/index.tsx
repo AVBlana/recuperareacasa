@@ -1,5 +1,5 @@
 // StepsForm component
-import React, { useEffect, useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import StepForm1 from "../../molecules/StepForm1";
 import StepForm2 from "../../molecules/StepForm2";
 import StepForm3 from "../../molecules/StepForm3";
@@ -7,7 +7,9 @@ import Box from "../../atoms/Box";
 import { theme } from "@/theme/constants";
 import Flex from "../../atoms/Flex";
 import Button from "../../atoms/Button";
-import { StepFormData } from "@/types/formTypes";
+import useStepFormData, {
+  UseStepFormData,
+} from "@/theme/hooks/useStepFormData";
 
 interface StepsFormProps {
   onClose: () => void;
@@ -29,45 +31,132 @@ const StepsForm: React.FC<StepsFormProps> = ({ onClose }) => {
   const [currentStep, setCurrentStep] = useState(1);
   const totalSteps = 3;
 
-  const [formData, setFormData] = useState<StepFormData>({
-    step1Data: {
-      selectedCheckboxes: [],
-      userFeedback1: "",
-      userInfo1: "",
-    },
-    step2Data: {
-      selectedCheckboxes: [],
-      userName: "",
-      userPhone: "",
-      userEmail: "",
-      userStreet: "",
-      userNumber: "",
-      userBlock: "",
-      userSc: "",
-      selectedOption: "",
-    },
-  });
+  //   const {
+  //     selectedCheckboxes,
+  //     userFeedback1,
+  //     userFeedback2,
+  //     userName,
+  //     userPhone,
+  //     userEmail,
+  //     userBlock,
+  //     userStreet,
+  //     userFloor,
+  //     userNumber,
+  //     userSc,
+  //     userInfo1,
+  //     userInfo2,
+  //     selectedOption,
+  //     isModalVisible,
+  //     setSelectedCheckboxes,
+  //     setUserFeedback1,
+  //     setUserFeedback2,
+  //     setUserName,
+  //     setUserPhone,
+  //     setUserEmail,
+  //     setUserBlock,
+  //     setUserFloor,
+  //     setUserStreet,
+  //     setUserNumber,
+  //     setUserSc,
+  //     setUserInfo1,
+  //     setUserInfo2,
+  //     setSelectedOption,
+  //     setIsModalVisible,
+  //     handleOptionChange,
+  //     handleUserInfoChange,
+  //     handleFeedbackChange,
+  //     handleTextAreaChange,
+  //     handleCheckboxChange,
+  //   } = useStepFormData();
 
-  useEffect(() => {
-    // Update the steps' data based on the current step
-    if (currentStep === 1) {
-      setFormData((prevData) => ({
-        ...prevData,
-        step1Data: formData.step1Data,
-      }));
-    } else if (currentStep === 2) {
-      setFormData((prevData) => ({
-        ...prevData,
-        step2Data: formData.step2Data,
-      }));
+  //   const [formData, setFormData] = useState({
+  //     selectedCheckboxes,
+  //     userFeedback1,
+  //     userFeedback2,
+  //     userName,
+  //     userPhone,
+  //     userEmail,
+  //     userBlock,
+  //     userStreet,
+  //     userFloor,
+  //     userNumber,
+  //     userSc,
+  //     userInfo1,
+  //     userInfo2,
+  //     selectedOption,
+  //     isModalVisible,
+  //   });
+
+  const renderStep = () => {
+    switch (currentStep) {
+      case 1:
+        return (
+          <>
+            <StepForm1
+            //   data={UseStepFormData}
+            //   updateData={updateData}
+            //   setSelectedCheckboxes={data.setSelectedCheckboxes}
+            //   setUserFeedback1={data.setUserFeedback1}
+            //   setUserFeedback2={data.setUserFeedback2}
+            //   setUserName={data.setUserName}
+            // Add all setter functions here
+            />
+          </>
+        );
+      case 2:
+        return (
+          <>
+            <StepForm2
+            //   data={data}
+            //   updateData={updateData}
+            //   setSelectedCheckboxes={data.setSelectedCheckboxes}
+            //   setUserFeedback1={data.setUserFeedback1}
+            //   setUserFeedback2={data.setUserFeedback2}
+            //   setUserName={data.setUserName}
+            // Add all setter functions here
+            />
+          </>
+        );
+      case 3:
+        return (
+          <>
+            <StepForm3
+            //   step1Data={data}
+            //   step2Data={data}
+            //   setSelectedCheckboxes={data.setSelectedCheckboxes}
+            //   setUserFeedback1={data.setUserFeedback1}
+            //   setUserFeedback2={data.setUserFeedback2}
+            //   setUserName={data.setUserName}
+            // Add all setter functions here
+            />
+          </>
+        );
+      default:
+        return null;
     }
-  }, [currentStep]);
+  };
+  //   useEffect(() => {
+  //     // Update the steps' data based on the current step
+  //     if (currentStep === 1) {
+  //       setFormData((prevData) => ({
+  //         ...prevData,
+  //         step1Data: formData.step1Data,
+  //       }));
+  //     } else if (currentStep === 2) {
+  //       setFormData((prevData) => ({
+  //         ...prevData,
+  //         step2Data: formData.step2Data,
+  //       }));
+  //     }
+  //     console.log("Component re-rendered. Current step:", currentStep);
+  //   }, [currentStep]);
 
   const handleNext = () => {
     setCurrentStep((currentStep) => currentStep + 1);
   };
 
   const handleBack = () => {
+    alert("test");
     setCurrentStep((currentStep) => currentStep - 1);
   };
 
@@ -84,28 +173,7 @@ const StepsForm: React.FC<StepsFormProps> = ({ onClose }) => {
           padding: 40,
         }}
       >
-        {currentStep === 1 && (
-          <StepForm1
-            data={formData.step1Data}
-            updateData={(data) =>
-              setFormData((prevData) => ({ ...prevData, step1Data: data }))
-            }
-          />
-        )}
-        {currentStep === 2 && (
-          <StepForm2
-            data={formData.step2Data}
-            updateData={(data) =>
-              setFormData((prevData) => ({ ...prevData, step2Data: data }))
-            }
-          />
-        )}
-        {currentStep === 3 && (
-          <StepForm3
-            step1Data={formData.step1Data}
-            step2Data={formData.step2Data}
-          />
-        )}
+        {renderStep()}
 
         <Flex style={{ gap: 10, paddingTop: 20 }}>
           {currentStep > 1 && (
