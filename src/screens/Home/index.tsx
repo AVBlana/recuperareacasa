@@ -20,7 +20,6 @@ import About from "@/theme/components/organisms/About";
 import ProcessCard from "@/theme/components/molecules/StepCard";
 import Steps from "@/theme/components/organisms/Steps";
 import Team from "@/theme/components/organisms/Team";
-import Form from "@/theme/components/organisms/Form";
 
 export const HomeScreen = () => {
   return (

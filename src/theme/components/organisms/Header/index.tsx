@@ -13,6 +13,7 @@ import Flex from "../../atoms/Flex";
 import Modal from "../../molecules/Modal";
 import FullScreenModal from "../../molecules/FullscreenModal";
 import StepsForm from "../StepsForm";
+import { StepsProvider } from "../StepsForm/context";
 
 const Header = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -146,7 +147,9 @@ const Header = () => {
             onClose={handleCloseModal}
           >
             {/* <Form onClose={handleCloseModal} /> */}
-            <StepsForm onClose={handleCloseModal} />
+            <StepsProvider>
+              <StepsForm onClose={handleCloseModal} />
+            </StepsProvider>
           </FullScreenModal>
         </Flex>
       </Box>

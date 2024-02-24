@@ -1,46 +1,56 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 import { theme } from "@/theme/constants";
 
 type CheckboxProps = {
   label: string;
+  id: string;
   selectedCheckboxes: string[];
+  style?: CSSProperties;
   onChange: (label: string) => void;
 };
 
 export function Checkbox({
   label,
+  id,
   selectedCheckboxes,
+  style,
   onChange,
 }: CheckboxProps) {
-  const checked = selectedCheckboxes.includes(label);
+  const checked = selectedCheckboxes?.includes(id);
 
   const handleChange = () => {
-    onChange(label);
+    onChange(id);
   };
 
   return (
-    <>
-      <div style={{ display: "flex", gap: 10 }}>
+    <div style={{ display: "flex", gap: 10, ...style }}>
+      <div
+        style={{
+          width: 20,
+          height: 20,
+        }}
+      >
         <input
           type="checkbox"
           checked={checked}
           onChange={handleChange}
-          id={label}
+          id={id}
           style={{
             width: 20,
             height: 20,
           }}
         />
-        <label
-          style={{
-            fontFamily: theme.text.secondary,
-            fontSize: theme.text.medium,
-          }}
-          htmlFor={label}
-        >
-          {label}
-        </label>
       </div>
-    </>
+      <label
+        style={{
+          fontFamily: theme.text.secondary,
+          fontSize: theme.text.medium,
+          flex: 1,
+        }}
+        htmlFor={id}
+      >
+        {label}
+      </label>
+    </div>
   );
 }
