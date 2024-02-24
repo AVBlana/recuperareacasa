@@ -73,7 +73,6 @@ export const Text = styled.span<IText>`
   }}
 
   ${({ uppercase, lowercase, capitalize }) => {
-    console.warn(uppercase);
     if (uppercase)
       return css`
         text-transform: uppercase;

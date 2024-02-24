@@ -1,23 +1,67 @@
-import { useState } from "react";
+import { useState, Dispatch, SetStateAction } from "react";
 
-const useStepFormData = () => {
+export interface FormData {
+  selectedCheckboxes: string[];
+  userFeedback1: string;
+  userFeedback2: string;
+  userName: string;
+  userPhone: string;
+  userEmail: string;
+  userBlock: string;
+  userStreet: string;
+  userFloor: string;
+  userNumber: string;
+  userSc: string;
+  userInfo1: string;
+  userInfo2: string;
+  selectedOption: string;
+  isModalVisible: string; // It seems like this should be a boolean, but I'm keeping it as a string based on your implementation.
+}
+
+export interface FormHandlers {
+  handleOptionChange: (value: string) => void;
+  handleUserInfoChange: (value: string, inputId: string) => void;
+  handleCheckboxChange: (label: string) => void;
+  handleFeedbackChange: (value: string, textareaId: string) => void;
+  handleTextAreaChange: (value: string, textareaId: string) => void;
+}
+
+export interface UseStepFormData extends FormData, FormHandlers {
+  setSelectedCheckboxes: Dispatch<SetStateAction<string[]>>;
+  setUserFeedback1: Dispatch<SetStateAction<string>>;
+  setUserFeedback2: Dispatch<SetStateAction<string>>;
+  setUserName: Dispatch<SetStateAction<string>>;
+  setUserPhone: Dispatch<SetStateAction<string>>;
+  setUserEmail: Dispatch<SetStateAction<string>>;
+  setUserBlock: Dispatch<SetStateAction<string>>;
+  setUserFloor: Dispatch<SetStateAction<string>>;
+  setUserStreet: Dispatch<SetStateAction<string>>;
+  setUserNumber: Dispatch<SetStateAction<string>>;
+  setUserSc: Dispatch<SetStateAction<string>>;
+  setUserInfo1: Dispatch<SetStateAction<string>>;
+  setUserInfo2: Dispatch<SetStateAction<string>>;
+  setSelectedOption: Dispatch<SetStateAction<string>>;
+  setIsModalVisible: Dispatch<SetStateAction<string>>;
+}
+
+const useStepFormData = (): UseStepFormData => {
   const [selectedCheckboxes, setSelectedCheckboxes] = useState<string[]>([]);
-  const [userFeedback1, setUserFeedback1] = useState("");
-  const [userFeedback2, setUserFeedback2] = useState("");
-  const [userInfo1, setUserInfo1] = useState("");
-  const [userInfo2, setUserInfo2] = useState("");
-  const [selectedOption, setSelectedOption] = useState("");
-  const [isModalVisible, setIsModalVisible] = useState("");
-  const [userName, setUserName] = useState("");
-  const [userPhone, setUserPhone] = useState("");
-  const [userEmail, setUserEmail] = useState("");
-  const [userStreet, setUserStreet] = useState("");
-  const [userNumber, setUserNumber] = useState("");
-  const [userBlock, setUserBlock] = useState("");
-  const [userFloor, setUserFloor] = useState("");
-  const [userSc, setUserSc] = useState("");
+  const [userFeedback1, setUserFeedback1] = useState<string>("");
+  const [userFeedback2, setUserFeedback2] = useState<string>("");
+  const [userInfo1, setUserInfo1] = useState<string>("");
+  const [userInfo2, setUserInfo2] = useState<string>("");
+  const [selectedOption, setSelectedOption] = useState<string>("");
+  const [isModalVisible, setIsModalVisible] = useState<string>("");
+  const [userName, setUserName] = useState<string>("");
+  const [userPhone, setUserPhone] = useState<string>("");
+  const [userEmail, setUserEmail] = useState<string>("");
+  const [userStreet, setUserStreet] = useState<string>("");
+  const [userNumber, setUserNumber] = useState<string>("");
+  const [userBlock, setUserBlock] = useState<string>("");
+  const [userFloor, setUserFloor] = useState<string>("");
+  const [userSc, setUserSc] = useState<string>("");
 
-  const handleOptionChange = (value: any) => {
+  const handleOptionChange = (value: string) => {
     setSelectedOption(value);
   };
 

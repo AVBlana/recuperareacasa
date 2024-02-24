@@ -1,11 +1,11 @@
-import { theme } from "@/theme/constants";
 import React from "react";
+import { theme } from "@/theme/constants";
 
-interface CheckboxProps {
+type CheckboxProps = {
   label: string;
   selectedCheckboxes: string[];
   onChange: (label: string) => void;
-}
+};
 
 export function Checkbox({
   label,
@@ -13,6 +13,7 @@ export function Checkbox({
   onChange,
 }: CheckboxProps) {
   const checked = selectedCheckboxes.includes(label);
+
   const handleChange = () => {
     onChange(label);
   };

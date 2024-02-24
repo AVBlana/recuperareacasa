@@ -3,50 +3,25 @@ import Flex from "../../atoms/Flex";
 import { Checkbox, CloseIcon, Text, TextArea } from "../..";
 import Box from "../../atoms/Box";
 import Input from "../../atoms/Input";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { theme } from "@/theme/constants";
-import useStepFormData from "@/theme/hooks/useStepFormData";
 import StyledFormSection from "../StyledFormSection";
-import { StepFormData } from "@/types/formTypes";
+import useStepFormData, {
+  UseStepFormData,
+} from "@/theme/hooks/useStepFormData";
 
 interface StepForm1Props {
-  data: StepFormData["step1Data"];
-  updateData?: (data: StepFormData["step1Data"]) => void;
+  //   data: UseStepFormData;
+  //   updateData?: Dispatch<SetStateAction<UseStepFormData>>;
 }
 
-const StepForm1: React.FC<StepForm1Props> = ({ data, updateData }) => {
+const StepForm1: React.FC<StepForm1Props> = () => {
   const {
     selectedCheckboxes,
     userFeedback1,
     userFeedback2,
-    userName,
-    userPhone,
-    userEmail,
-    userBlock,
-    userStreet,
-    userFloor,
-    userNumber,
-    userSc,
     userInfo1,
     userInfo2,
-    selectedOption,
-    isModalVisible,
-    setSelectedCheckboxes,
-    setUserFeedback1,
-    setUserFeedback2,
-    setUserName,
-    setUserPhone,
-    setUserEmail,
-    setUserBlock,
-    setUserFloor,
-    setUserStreet,
-    setUserNumber,
-    setUserSc,
-    setUserInfo1,
-    setUserInfo2,
-    setSelectedOption,
-    setIsModalVisible,
-    handleOptionChange,
     handleUserInfoChange,
     handleFeedbackChange,
     handleTextAreaChange,

@@ -6,49 +6,26 @@ import Flex from "../../atoms/Flex";
 import Input from "../../atoms/Input";
 import useStepFormData from "@/theme/hooks/useStepFormData";
 import StyledFormSection from "../StyledFormSection";
-import { StepFormData } from "@/types/formTypes";
+import { FormData } from "@/theme/hooks/useStepFormData";
 
 interface StepForm3Props {
-  step1Data: StepFormData["step1Data"];
-  step2Data: StepFormData["step2Data"];
+  //   step1Data: FormData; // Adjust according to your data structure
+  //   step2Data: FormData; // Adjust according to your data structure
 }
 
-const StepForm3: React.FC<StepForm3Props> = ({ step1Data, step2Data }) => {
+const StepForm3: React.FC<StepForm3Props> = () => {
   const {
     selectedCheckboxes,
     userFeedback1,
-    userFeedback2,
     userName,
     userPhone,
     userEmail,
     userBlock,
     userStreet,
-    userFloor,
     userNumber,
     userSc,
-    userInfo1,
-    userInfo2,
     selectedOption,
-    isModalVisible,
-    setSelectedCheckboxes,
-    setUserFeedback1,
-    setUserFeedback2,
-    setUserName,
-    setUserPhone,
-    setUserEmail,
-    setUserBlock,
-    setUserFloor,
-    setUserStreet,
-    setUserNumber,
-    setUserSc,
-    setUserInfo1,
-    setUserInfo2,
-    setSelectedOption,
-    setIsModalVisible,
-    handleOptionChange,
-    handleUserInfoChange,
-    handleFeedbackChange,
-    handleTextAreaChange,
+
     handleCheckboxChange,
   } = useStepFormData();
 
@@ -70,43 +47,43 @@ const StepForm3: React.FC<StepForm3Props> = ({ step1Data, step2Data }) => {
       <Box>
         <StyledFormSection>
           <Text white big secondaryFont>
-            Scopul tratamentului:{step1Data.selectedCheckboxes.join(", ")}
+            Scopul tratamentului:{selectedCheckboxes.join(", ")}
           </Text>
           <Text white big secondaryFont>
-            Natura problemei:{step1Data.userFeedback1}
+            Natura problemei:{userFeedback1}
           </Text>
           <Text white big secondaryFont>
-            Unde este localizată:{step1Data.selectedCheckboxes.join(", ")}
+            Unde este localizată:{selectedCheckboxes.join(", ")}
           </Text>
           <Text white big secondaryFont>
-            Prenume:{step2Data.userName}
+            Prenume:{userName}
           </Text>
           <Text white big secondaryFont>
-            Telefon:{step2Data.userPhone}
+            Telefon:{userPhone}
           </Text>
           <Text white big secondaryFont>
-            Email:{step2Data.userEmail}
+            Email:{userEmail}
           </Text>
           <Text white big secondaryFont>
-            Strada:{step2Data.userStreet}
+            Strada:{userStreet}
           </Text>
           <Text white big secondaryFont>
-            Nr:{step2Data.userNumber}
+            Nr:{userNumber}
           </Text>
           <Text white big secondaryFont>
-            Bloc:{step2Data.userBlock}
+            Bloc:{userBlock}
           </Text>
           <Text white big secondaryFont>
-            Scara:{step2Data.userSc}
+            Scara:{userSc}
           </Text>
           <Text white big secondaryFont>
             Ap:{}
           </Text>
           <Text white big secondaryFont>
-            Interval orar:{step2Data.selectedOption}
+            Interval orar:{selectedOption}
           </Text>
           <Text white big secondaryFont>
-            Ziua preferata/e:{step2Data.selectedCheckboxes.join(", ")}
+            Ziua preferata/e:{selectedCheckboxes.join(", ")}
           </Text>
         </StyledFormSection>
       </Box>
