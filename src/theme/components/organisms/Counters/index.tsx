@@ -8,10 +8,54 @@ const Counters = () => {
     <>
       <Box style={{ alignItems: "center", justifyContent: "center" }}>
         <StyledCountersBox>
-          <Counter targetValue={7} title="Ani de experiență" />
-          <Counter targetValue={12500} title="Cazuri rezolvate" />
-          <Counter targetValue={2500} title="Cazuri speciale" />
-          <Counter targetValue={8600} title="Clienți fideli" />
+          <Box
+            style={{
+              flex: 1,
+            }}
+          >
+            <Counter
+              targetValue={7}
+              title="Ani de experiență"
+              delay={1000}
+              speed={100}
+            />
+          </Box>
+          <Box
+            style={{
+              flex: 1,
+            }}
+          >
+            <Counter
+              targetValue={12500}
+              title="Cazuri rezolvate"
+              delay={1000}
+              speed={0.0001}
+            />
+          </Box>
+          <Box
+            style={{
+              flex: 1,
+            }}
+          >
+            <Counter
+              targetValue={2500}
+              title="Cazuri speciale"
+              delay={2000}
+              speed={10}
+            />
+          </Box>
+          <Box
+            style={{
+              flex: 1,
+            }}
+          >
+            <Counter
+              targetValue={8600}
+              title="Clienți fideli"
+              delay={3000}
+              speed={0.1}
+            />
+          </Box>
         </StyledCountersBox>
       </Box>
     </>

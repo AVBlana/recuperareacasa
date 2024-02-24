@@ -4,9 +4,9 @@ import { Checkbox, Text } from "../..";
 import Box from "../../atoms/Box";
 import Flex from "../../atoms/Flex";
 import Input from "../../atoms/Input";
-import useStepFormData from "@/theme/hooks/useStepFormData";
 import StyledFormSection from "../StyledFormSection";
-import { FormData } from "@/theme/hooks/useStepFormData";
+import { useContext } from "react";
+import { StepsContext } from "../../organisms/StepsForm/context";
 
 interface StepForm3Props {
   //   step1Data: FormData; // Adjust according to your data structure
@@ -25,9 +25,8 @@ const StepForm3: React.FC<StepForm3Props> = () => {
     userNumber,
     userSc,
     selectedOption,
-
     handleCheckboxChange,
-  } = useStepFormData();
+  } = useContext(StepsContext);
 
   return (
     <>
@@ -47,13 +46,13 @@ const StepForm3: React.FC<StepForm3Props> = () => {
       <Box>
         <StyledFormSection>
           <Text white big secondaryFont>
-            Scopul tratamentului:{selectedCheckboxes.join(", ")}
+            Scopul tratamentului:{selectedCheckboxes?.join(", ")}
           </Text>
           <Text white big secondaryFont>
             Natura problemei:{userFeedback1}
           </Text>
           <Text white big secondaryFont>
-            Unde este localizată:{selectedCheckboxes.join(", ")}
+            Unde este localizată:{selectedCheckboxes?.join(", ")}
           </Text>
           <Text white big secondaryFont>
             Prenume:{userName}
@@ -111,11 +110,13 @@ const StepForm3: React.FC<StepForm3Props> = () => {
             <Box style={{ gap: 10, minWidth: 140 }}>
               <Checkbox
                 label="Sunt de acord"
+                id="agree"
                 selectedCheckboxes={selectedCheckboxes}
                 onChange={handleCheckboxChange}
               />
               <Checkbox
                 label="Abonare"
+                id="abonare"
                 selectedCheckboxes={selectedCheckboxes}
                 onChange={handleCheckboxChange}
               />

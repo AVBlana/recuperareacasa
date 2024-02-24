@@ -3,19 +3,12 @@ import Flex from "../../atoms/Flex";
 import { Checkbox, CloseIcon, Text, TextArea } from "../..";
 import Box from "../../atoms/Box";
 import Input from "../../atoms/Input";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useContext, useRef, useState } from "react";
 import { theme } from "@/theme/constants";
 import StyledFormSection from "../StyledFormSection";
-import useStepFormData, {
-  UseStepFormData,
-} from "@/theme/hooks/useStepFormData";
+import { StepsContext } from "../../organisms/StepsForm/context";
 
-interface StepForm1Props {
-  //   data: UseStepFormData;
-  //   updateData?: Dispatch<SetStateAction<UseStepFormData>>;
-}
-
-const StepForm1: React.FC<StepForm1Props> = () => {
+const StepForm1 = () => {
   const {
     selectedCheckboxes,
     userFeedback1,
@@ -26,7 +19,107 @@ const StepForm1: React.FC<StepForm1Props> = () => {
     handleFeedbackChange,
     handleTextAreaChange,
     handleCheckboxChange,
-  } = useStepFormData();
+  } = useContext(StepsContext);
+
+  const othersRef = useRef<HTMLInputElement>(null);
+  const others2Ref = useRef<HTMLInputElement>(null);
+
+  const scopes = [
+    {
+      label: "Întreținere",
+      id: "intretinere",
+    },
+    {
+      label: "Stare de bine",
+      id: "stare-de-bine",
+    },
+    {
+      label: "Tratament terapeutic",
+      id: "tratament-terapeutic",
+    },
+  ];
+
+  const problems = [
+    {
+      label: "Durerea",
+      id: "durerea",
+    },
+    {
+      label: "Amorțeală",
+      id: "amorteala",
+    },
+    {
+      label: "Amețeală",
+      id: "ameteala",
+    },
+    {
+      label: "Trigger point",
+      id: "trigger-point",
+    },
+    {
+      label: "Tensiunea musculară",
+      id: "tensiunea-musculara",
+    },
+    {
+      label: "Spate blocat",
+      id: "spate-blocat",
+    },
+    {
+      label: "Migrene",
+      id: "migrene",
+    },
+    {
+      label: "Altele",
+      id: "altele",
+      onChange: (id: string) => {
+        if (!selectedCheckboxes.some((item) => item === "altele")) {
+          othersRef?.current?.focus();
+        }
+        handleCheckboxChange(id);
+      },
+    },
+  ];
+
+  const localizations = [
+    {
+      label: "Cap",
+      id: "cap",
+    },
+    {
+      label: "Zona cervicală",
+      id: "zona-cervicala",
+    },
+    {
+      label: "Zona toracală",
+      id: "zona-toracala",
+    },
+    {
+      label: "Zona lombară",
+      id: "zona-lombara",
+    },
+    {
+      label: "Zona membrelor superioare",
+      id: "zona-membrelor-superioare",
+    },
+    {
+      label: "Zona membrelor inferioare",
+      id: "zona-membrelor-inferioare",
+    },
+    {
+      label: "Zona bazinului",
+      id: "zona-bazinului",
+    },
+    {
+      label: "Altele",
+      id: "altele-2",
+      onChange: (id: string) => {
+        if (!selectedCheckboxes.some((item) => item === "altele-2")) {
+          others2Ref?.current?.focus();
+        }
+        handleCheckboxChange(id);
+      },
+    },
+  ];
 
   return (
     <>
@@ -57,23 +150,25 @@ const StepForm1: React.FC<StepForm1Props> = () => {
               <Text big white secondaryFont semiBold>
                 Scopul tratamentului:
               </Text>
-              <Box style={{ gap: 10 }}>
-                <Checkbox
-                  label="Întreținere"
-                  selectedCheckboxes={selectedCheckboxes}
-                  onChange={handleCheckboxChange}
-                />
-                <Checkbox
-                  label="Stare de bine"
-                  selectedCheckboxes={selectedCheckboxes}
-                  onChange={handleCheckboxChange}
-                />
-                <Checkbox
-                  label="Tratament terapeutic"
-                  selectedCheckboxes={selectedCheckboxes}
-                  onChange={handleCheckboxChange}
-                />
-              </Box>
+
+              <Flex
+                style={{
+                  justifyContent: "space-between",
+                  gap: theme.spacings.medium,
+                  flexWrap: "wrap",
+                }}
+              >
+                {scopes.map((scope) => (
+                  <Checkbox
+                    key={`scope-${scope.id}`}
+                    label={scope.label}
+                    id={scope.id}
+                    selectedCheckboxes={selectedCheckboxes}
+                    onChange={handleCheckboxChange}
+                    style={{ width: "calc(50% - 10px)" }}
+                  />
+                ))}
+              </Flex>
             </Box>
             <StyledFormSection style={{ paddingTop: 0 }}>
               <TextArea
@@ -90,54 +185,28 @@ const StepForm1: React.FC<StepForm1Props> = () => {
               <Text big white secondaryFont bold>
                 Natura problemei este?
               </Text>
-              <Flex style={{ gap: 20 }}>
-                <Box style={{ gap: 10 }}>
+              <Flex
+                style={{
+                  justifyContent: "space-between",
+                  gap: theme.spacings.medium,
+                  flexWrap: "wrap",
+                }}
+              >
+                {problems.map((problem) => (
                   <Checkbox
-                    label="Durerea"
+                    key={`problem-${problem.id}`}
+                    label={problem.label}
+                    id={problem.id}
                     selectedCheckboxes={selectedCheckboxes}
-                    onChange={handleCheckboxChange}
+                    onChange={problem.onChange ?? handleCheckboxChange}
+                    style={{ width: "calc(50% - 10px)" }}
                   />
-                  <Checkbox
-                    label="Amorțeală"
-                    selectedCheckboxes={selectedCheckboxes}
-                    onChange={handleCheckboxChange}
-                  />
-                  <Checkbox
-                    label="Amețeală"
-                    selectedCheckboxes={selectedCheckboxes}
-                    onChange={handleCheckboxChange}
-                  />
-                  <Checkbox
-                    label="Trigger point"
-                    selectedCheckboxes={selectedCheckboxes}
-                    onChange={handleCheckboxChange}
-                  />
-                </Box>
-                <Box style={{ gap: 10, flex: 1 }}>
-                  <Checkbox
-                    label="Tensiunea musculară"
-                    selectedCheckboxes={selectedCheckboxes}
-                    onChange={handleCheckboxChange}
-                  />
-                  <Checkbox
-                    label="Spate blocat"
-                    selectedCheckboxes={selectedCheckboxes}
-                    onChange={handleCheckboxChange}
-                  />
-                  <Checkbox
-                    label="Migrene"
-                    selectedCheckboxes={selectedCheckboxes}
-                    onChange={handleCheckboxChange}
-                  />
-                  <Checkbox
-                    label="Altele"
-                    selectedCheckboxes={selectedCheckboxes}
-                    onChange={handleCheckboxChange}
-                  />
-                </Box>
+                ))}
               </Flex>
 
               <Input
+                // @ts-ignore
+                ref={othersRef}
                 type="text"
                 placeholder="Altele"
                 value={userInfo1}
@@ -154,54 +223,28 @@ const StepForm1: React.FC<StepForm1Props> = () => {
               <Text big white secondaryFont bold>
                 Unde este localizată ?
               </Text>
-              <Flex style={{ gap: 20 }}>
-                <Box style={{ gap: 10 }}>
+              <Flex
+                style={{
+                  justifyContent: "space-between",
+                  gap: theme.spacings.medium,
+                  flexWrap: "wrap",
+                }}
+              >
+                {localizations.map((localization) => (
                   <Checkbox
-                    label="Cap"
+                    key={`localization-${localization.id}`}
+                    label={localization.label}
+                    id={localization.id}
                     selectedCheckboxes={selectedCheckboxes}
-                    onChange={handleCheckboxChange}
+                    onChange={localization.onChange ?? handleCheckboxChange}
+                    style={{ width: "calc(50% - 10px)" }}
                   />
-                  <Checkbox
-                    label="Zona cervicală"
-                    selectedCheckboxes={selectedCheckboxes}
-                    onChange={handleCheckboxChange}
-                  />
-                  <Checkbox
-                    label="Zona toracală"
-                    selectedCheckboxes={selectedCheckboxes}
-                    onChange={handleCheckboxChange}
-                  />
-                  <Checkbox
-                    label="Zona lombară"
-                    selectedCheckboxes={selectedCheckboxes}
-                    onChange={handleCheckboxChange}
-                  />
-                </Box>
-                <Box style={{ gap: 10, flex: 1 }}>
-                  <Checkbox
-                    label="Zona membrelor superioare"
-                    selectedCheckboxes={selectedCheckboxes}
-                    onChange={handleCheckboxChange}
-                  />
-                  <Checkbox
-                    label="Zona membrelor inferioare"
-                    selectedCheckboxes={selectedCheckboxes}
-                    onChange={handleCheckboxChange}
-                  />
-                  <Checkbox
-                    label="Zona bazinului"
-                    selectedCheckboxes={selectedCheckboxes}
-                    onChange={handleCheckboxChange}
-                  />
-                  <Checkbox
-                    label="Altele"
-                    selectedCheckboxes={selectedCheckboxes}
-                    onChange={handleCheckboxChange}
-                  />
-                </Box>
+                ))}
               </Flex>
 
               <Input
+                // @ts-ignore
+                ref={others2Ref}
                 type="text"
                 placeholder="Altele"
                 value={userInfo2}

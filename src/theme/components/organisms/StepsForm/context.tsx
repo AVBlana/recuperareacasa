@@ -1,6 +1,9 @@
+import { ReactNode, createContext } from "react";
+
 import { useState, Dispatch, SetStateAction } from "react";
 
-export interface FormData {
+interface FormData {
+  currentStep: number;
   selectedCheckboxes: string[];
   userFeedback1: string;
   userFeedback2: string;
@@ -18,15 +21,17 @@ export interface FormData {
   isModalVisible: string; // It seems like this should be a boolean, but I'm keeping it as a string based on your implementation.
 }
 
-export interface FormHandlers {
+interface FormHandlers {
   handleOptionChange: (value: string) => void;
   handleUserInfoChange: (value: string, inputId: string) => void;
-  handleCheckboxChange: (label: string) => void;
+  handleCheckboxChange: (id: string) => void;
   handleFeedbackChange: (value: string, textareaId: string) => void;
   handleTextAreaChange: (value: string, textareaId: string) => void;
+  handleNext: () => void;
+  handlePrevious: () => void;
 }
 
-export interface UseStepFormData extends FormData, FormHandlers {
+interface UseStepFormData extends FormData, FormHandlers {
   setSelectedCheckboxes: Dispatch<SetStateAction<string[]>>;
   setUserFeedback1: Dispatch<SetStateAction<string>>;
   setUserFeedback2: Dispatch<SetStateAction<string>>;
@@ -42,24 +47,34 @@ export interface UseStepFormData extends FormData, FormHandlers {
   setUserInfo2: Dispatch<SetStateAction<string>>;
   setSelectedOption: Dispatch<SetStateAction<string>>;
   setIsModalVisible: Dispatch<SetStateAction<string>>;
+  setCurrentStep: Dispatch<SetStateAction<number>>;
 }
 
-const useStepFormData = (): UseStepFormData => {
+const useStepFormData = () => {
+  const [currentStep, setCurrentStep] = useState(1);
   const [selectedCheckboxes, setSelectedCheckboxes] = useState<string[]>([]);
-  const [userFeedback1, setUserFeedback1] = useState<string>("");
-  const [userFeedback2, setUserFeedback2] = useState<string>("");
-  const [userInfo1, setUserInfo1] = useState<string>("");
-  const [userInfo2, setUserInfo2] = useState<string>("");
-  const [selectedOption, setSelectedOption] = useState<string>("");
-  const [isModalVisible, setIsModalVisible] = useState<string>("");
-  const [userName, setUserName] = useState<string>("");
-  const [userPhone, setUserPhone] = useState<string>("");
-  const [userEmail, setUserEmail] = useState<string>("");
-  const [userStreet, setUserStreet] = useState<string>("");
-  const [userNumber, setUserNumber] = useState<string>("");
-  const [userBlock, setUserBlock] = useState<string>("");
-  const [userFloor, setUserFloor] = useState<string>("");
-  const [userSc, setUserSc] = useState<string>("");
+  const [userFeedback1, setUserFeedback1] = useState("");
+  const [userFeedback2, setUserFeedback2] = useState("");
+  const [userInfo1, setUserInfo1] = useState("");
+  const [userInfo2, setUserInfo2] = useState("");
+  const [selectedOption, setSelectedOption] = useState("");
+  const [isModalVisible, setIsModalVisible] = useState("");
+  const [userName, setUserName] = useState("");
+  const [userPhone, setUserPhone] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [userStreet, setUserStreet] = useState("");
+  const [userNumber, setUserNumber] = useState("");
+  const [userBlock, setUserBlock] = useState("");
+  const [userFloor, setUserFloor] = useState("");
+  const [userSc, setUserSc] = useState("");
+
+  const handleNext = () => {
+    setCurrentStep((currentStep) => currentStep + 1);
+  };
+
+  const handlePrevious = () => {
+    setCurrentStep((currentStep) => currentStep - 1);
+  };
 
   const handleOptionChange = (value: string) => {
     setSelectedOption(value);
@@ -99,12 +114,12 @@ const useStepFormData = (): UseStepFormData => {
     }
   };
 
-  const handleCheckboxChange = (label: string) => {
+  const handleCheckboxChange = (id: string) => {
     setSelectedCheckboxes((prevCheckboxes) => {
-      if (prevCheckboxes.includes(label)) {
-        return prevCheckboxes.filter((checkbox) => checkbox !== label);
+      if (prevCheckboxes.includes(id)) {
+        return prevCheckboxes.filter((checkbox) => checkbox !== id);
       } else {
-        return [...prevCheckboxes, label];
+        return [...prevCheckboxes, id];
       }
     });
   };
@@ -122,6 +137,7 @@ const useStepFormData = (): UseStepFormData => {
   };
 
   return {
+    currentStep,
     selectedCheckboxes,
     userFeedback1,
     userFeedback2,
@@ -137,6 +153,9 @@ const useStepFormData = (): UseStepFormData => {
     userInfo2,
     selectedOption,
     isModalVisible,
+    handleNext,
+    handlePrevious,
+    setCurrentStep,
     setSelectedCheckboxes,
     setUserFeedback1,
     setUserFeedback2,
@@ -160,4 +179,11 @@ const useStepFormData = (): UseStepFormData => {
   };
 };
 
-export default useStepFormData;
+export const StepsContext = createContext({} as UseStepFormData);
+export const StepsProvider = ({ children }: { children: ReactNode }) => {
+  const values = useStepFormData();
+
+  return (
+    <StepsContext.Provider value={values}>{children}</StepsContext.Provider>
+  );
+};

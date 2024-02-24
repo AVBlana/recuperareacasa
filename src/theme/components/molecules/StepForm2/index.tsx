@@ -2,13 +2,12 @@ import { Checkbox, RadioButton } from "..";
 import Box from "../../atoms/Box";
 import { Text } from "../..";
 import Flex from "../../atoms/Flex";
-import useStepFormData from "@/theme/hooks/useStepFormData";
-import { UseStepFormData } from "@/theme/hooks/useStepFormData";
 
 import StyledFormSection from "../StyledFormSection";
 import { theme } from "@/theme/constants";
 import Input from "../../atoms/Input";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useContext } from "react";
+import { StepsContext } from "../../organisms/StepsForm/context";
 
 interface StepForm2Props {
   //   data: UseStepFormData;
@@ -29,7 +28,7 @@ const StepForm2: React.FC<StepForm2Props> = () => {
     handleOptionChange,
     handleUserInfoChange,
     handleCheckboxChange,
-  } = useStepFormData();
+  } = useContext(StepsContext);
 
   const inputStyle = {
     padding: 10,
@@ -165,25 +164,30 @@ const StepForm2: React.FC<StepForm2Props> = () => {
         <Flex style={{ justifyContent: "space-between" }}>
           <Checkbox
             label="Luni"
+            id="luni"
             selectedCheckboxes={selectedCheckboxes}
             onChange={handleCheckboxChange}
           />
           <Checkbox
+            id="marti"
             label="Marți"
             selectedCheckboxes={selectedCheckboxes}
             onChange={handleCheckboxChange}
           />
           <Checkbox
+            id="miercuri"
             label="Miercuri"
             selectedCheckboxes={selectedCheckboxes}
             onChange={handleCheckboxChange}
           />
           <Checkbox
             label="Joi"
+            id="joi"
             selectedCheckboxes={selectedCheckboxes}
             onChange={handleCheckboxChange}
           />
           <Checkbox
+            id="vineri"
             label="Vineri"
             selectedCheckboxes={selectedCheckboxes}
             onChange={handleCheckboxChange}

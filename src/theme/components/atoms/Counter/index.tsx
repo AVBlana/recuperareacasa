@@ -1,5 +1,5 @@
 // Counter.tsx
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { SvgIcon, Text } from "..";
 import { theme } from "@/theme/constants";
@@ -7,40 +7,47 @@ import { theme } from "@/theme/constants";
 interface CounterProps {
   targetValue: number;
   title: string;
+  delay: number;
+  speed: number;
 }
 
-const Counter: React.FC<CounterProps> = ({ targetValue, title }) => {
-  const [count, setCount] = useState(0);
-  const [displayedValue, setDisplayedValue] = useState<number | string>(0);
+const Counter: React.FC<CounterProps> = ({
+  targetValue,
+  title,
+  delay = 0,
+  speed = 0.5,
+}) => {
+  const count = useRef(0);
+  const [displayedValue, setDisplayedValue] = useState(0);
 
   useEffect(() => {
-    const countUpInterval = setInterval(() => {
-      if (count < targetValue) {
-        setCount((prevCount) => prevCount + 1);
-      }
-    }, 0.0000000000000001);
+    setTimeout(() => {
+      const interval = setInterval(() => {
+        if (count.current < targetValue) {
+          count.current += 1;
 
-    if (count >= 1000) {
-      const displayKValue = Math.floor(count / 1000);
-      setDisplayedValue(`${displayKValue}K`);
-    } else {
-      setDisplayedValue(count);
-    }
+          setDisplayedValue(count.current);
+        } else {
+          clearInterval(interval);
+        }
+      }, speed);
 
-    if (count === targetValue) {
-      clearInterval(countUpInterval);
-    }
-
-    return () => clearInterval(countUpInterval);
-  }, [count, targetValue]);
+      return () => clearInterval(interval);
+    }, delay);
+  }, [count, targetValue, delay, speed]);
 
   return (
     <StyledCounterBox>
       <Text bold secondaryFont big style={{ color: theme.color.secondary }}>
         {title}
       </Text>
-      <AnimatedNumber animate={count === targetValue}>
-        +{displayedValue}
+      <AnimatedNumber animate={displayedValue >= targetValue}>
+        +
+        {`${
+          displayedValue > 1000
+            ? `${(displayedValue / 1000).toFixed(1)}K`
+            : displayedValue
+        }`}
       </AnimatedNumber>
       <SvgIcon
         size={24}
