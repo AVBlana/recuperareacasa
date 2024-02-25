@@ -46,11 +46,9 @@ const steps = [
         <br />
         <br />
         Această fază de analiză este crucială pentru a dezvolta un plan
-        personalizat de tratament.
-        <br />
-        <br />
-        Vă vom contacta în curând pentru a discuta rezultate și pentru a stabili
-        pașii următori în îngrijirea dumneavoastră.
+        personalizat de tratament. Vă vom contacta în curând pentru a discuta
+        rezultate și pentru a stabili pașii următori în îngrijirea
+        dumneavoastră.
         <br />
         <br />
         Vă mulțumim pentru răbdare și colaborare în procesul nostru de oferire a
@@ -122,7 +120,7 @@ const Steps = () => {
           maxWidth: 1440,
         }}
       >
-        <Box style={{ gap: 20, maxWidth: 600, lineHeight: "140%" }}>
+        <Box style={{ gap: 20, lineHeight: "140%" }}>
           <Text secondaryFont primary huge>
             Care este procesul ?
           </Text>
@@ -150,13 +148,11 @@ const Steps = () => {
 
 const StyledStepsBox = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  flex: 1;
   gap: 80px;
   align-items: center;
   justify-content: center;
-  > * {
-    width: calc(50%);
-  }
 `;
 
 export default Steps;

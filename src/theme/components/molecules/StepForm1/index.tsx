@@ -11,6 +11,9 @@ import { StepsContext } from "../../organisms/StepsForm/context";
 const StepForm1 = () => {
   const {
     selectedCheckboxes,
+    selectedScopes,
+    selectedProblems,
+    selectedLocalizations,
     userFeedback1,
     userFeedback2,
     userInfo1,
@@ -23,6 +26,8 @@ const StepForm1 = () => {
 
   const othersRef = useRef<HTMLInputElement>(null);
   const others2Ref = useRef<HTMLInputElement>(null);
+  const [isAltele1Visible, setIsAltele1Visible] = useState(false);
+  const [isAltele2Visible, setIsAltele2Visible] = useState(false);
 
   const scopes = [
     {
@@ -75,6 +80,7 @@ const StepForm1 = () => {
         if (!selectedCheckboxes.some((item) => item === "altele")) {
           othersRef?.current?.focus();
         }
+        setIsAltele1Visible(!isAltele1Visible);
         handleCheckboxChange(id);
       },
     },
@@ -116,6 +122,7 @@ const StepForm1 = () => {
         if (!selectedCheckboxes.some((item) => item === "altele-2")) {
           others2Ref?.current?.focus();
         }
+        setIsAltele2Visible(!isAltele2Visible);
         handleCheckboxChange(id);
       },
     },
@@ -137,25 +144,23 @@ const StepForm1 = () => {
         </Text>
       </Flex>
       <Box style={{ paddingTop: 20, paddingBottom: 20 }}>
-        <Text bigger secondaryFont white lineHeight={"140%"}>
+        <Text big white>
           Completează chestionarul de evaluare pentru a afla mai multe detalii
           despre problema dumneavoastră și pentru a afla disponibilitatea orei
           de tratament dorită de tine.
         </Text>
       </Box>
-      <Box>
-        <Flex style={{ gap: 40 }}>
+      <Flex style={{ gap: 40 }}>
+        <Box style={{ flex: 1 }}>
           <StyledFormSection>
             <Box style={{ gap: 20, fontSize: theme.text.medium }}>
               <Text big white secondaryFont semiBold>
                 Scopul tratamentului:
               </Text>
-
-              <Flex
+              <Box
                 style={{
                   justifyContent: "space-between",
                   gap: theme.spacings.medium,
-                  flexWrap: "wrap",
                 }}
               >
                 {scopes.map((scope) => (
@@ -163,23 +168,37 @@ const StepForm1 = () => {
                     key={`scope-${scope.id}`}
                     label={scope.label}
                     id={scope.id}
-                    selectedCheckboxes={selectedCheckboxes}
+                    selectedCheckboxes={selectedScopes}
                     onChange={handleCheckboxChange}
-                    style={{ width: "calc(50% - 10px)" }}
                   />
                 ))}
-              </Flex>
+              </Box>
             </Box>
-            <StyledFormSection style={{ paddingTop: 0 }}>
-              <TextArea
-                id="Durata"
-                placeholder="De cât timp ai problema ?..."
-                value={userFeedback1}
-                onChange={(value) => handleTextAreaChange(value, "Durata")}
-              />
-            </StyledFormSection>
           </StyledFormSection>
-
+          <StyledFormSection>
+            <Text big white secondaryFont bold>
+              De cât timp ai problema ?
+            </Text>
+            <TextArea
+              id="Durata"
+              placeholder="Descrie de cât timp se manifestă..."
+              value={userFeedback1}
+              onChange={(value) => handleTextAreaChange(value, "Durata")}
+            />
+          </StyledFormSection>
+          <StyledFormSection style={{ flex: 1, paddingTop: 0 }}>
+            <Text big white secondaryFont bold>
+              Poți descriere situația amănunțit ?
+            </Text>
+            <TextArea
+              id="Despre"
+              placeholder="Descrie situația ta aici..."
+              value={userFeedback2}
+              onChange={(value) => handleTextAreaChange(value, "Despre")}
+            />
+          </StyledFormSection>
+        </Box>
+        <Box style={{ flex: 1 }}>
           <StyledFormSection>
             <Box style={{ gap: 20 }}>
               <Text big white secondaryFont bold>
@@ -197,7 +216,7 @@ const StepForm1 = () => {
                     key={`problem-${problem.id}`}
                     label={problem.label}
                     id={problem.id}
-                    selectedCheckboxes={selectedCheckboxes}
+                    selectedCheckboxes={selectedProblems}
                     onChange={problem.onChange ?? handleCheckboxChange}
                     style={{ width: "calc(50% - 10px)" }}
                   />
@@ -215,6 +234,13 @@ const StepForm1 = () => {
                 }
                 name="Altele1"
                 id="Altele1"
+                style={{
+                  display: isAltele1Visible ? "block" : "none",
+                  padding: 10,
+                  borderRadius: 10,
+                  background: theme.color.white,
+                  color: theme.color.black,
+                }}
               />
             </Box>
           </StyledFormSection>
@@ -235,7 +261,7 @@ const StepForm1 = () => {
                     key={`localization-${localization.id}`}
                     label={localization.label}
                     id={localization.id}
-                    selectedCheckboxes={selectedCheckboxes}
+                    selectedCheckboxes={selectedLocalizations}
                     onChange={localization.onChange ?? handleCheckboxChange}
                     style={{ width: "calc(50% - 10px)" }}
                   />
@@ -253,24 +279,18 @@ const StepForm1 = () => {
                 }
                 name="Altele2"
                 id="Altele2"
+                style={{
+                  display: isAltele2Visible ? "block" : "none",
+                  padding: 10,
+                  borderRadius: 10,
+                  background: theme.color.white,
+                  color: theme.color.black,
+                }}
               />
             </Box>
           </StyledFormSection>
-        </Flex>
-        <Flex style={{ gap: 40 }}>
-          <StyledFormSection style={{ flex: 1, paddingTop: 0 }}>
-            <Text big white secondaryFont bold>
-              Poți descriere situația amănunțit ?
-            </Text>
-            <TextArea
-              id="Despre"
-              placeholder="Descrie situația ta aici..."
-              value={userFeedback2}
-              onChange={(value) => handleTextAreaChange(value, "Despre")}
-            />
-          </StyledFormSection>
-        </Flex>
-      </Box>
+        </Box>
+      </Flex>
     </>
   );
 };

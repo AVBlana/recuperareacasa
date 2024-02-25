@@ -21,12 +21,12 @@ const StepCard = ({
       <StyledStepCard>
         <Box>
           <Image
-            width={230}
-            height={400}
+            width={250}
+            height={250}
             alt=""
             src={image}
             style={{
-              borderRadius: 20,
+              borderRadius: 150,
               borderStyle: "solid",
               borderWidth: 2,
               borderColor: theme.color.primary,
@@ -58,7 +58,6 @@ const StyledStepCard = styled.div`
   flex-direction: row;
   gap: 40px;
   align-items: center;
-  max-width: 600px;
 `;
 
 export default StepCard;

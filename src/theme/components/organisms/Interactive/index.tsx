@@ -18,37 +18,37 @@ const interacts = [
   },
   {
     number: "03",
-    label: "Folosim cu precizie tehnicile,",
+    label: "Aplicăm planul,",
     image: "/assets/img3.jpg",
   },
   {
     number: "04",
-    label: "Reevaluăm pacientul,",
+    label: "Reevaluăm,",
     image: "/assets/img4.jpg",
   },
   {
     number: "05",
-    label: "Schimbam tratamentul dacă este necesar,",
+    label: "Schimbam tratamentul,",
     image: "/assets/img5.jpg",
   },
   {
     number: "06",
-    label: "Adăugăm și fizioterapie dacă este necesar,",
+    label: "Adăugăm fizioterapie,",
     image: "/assets/img6.jpg",
   },
   {
     number: "07",
-    label: "Reeducăm pacientul prin kinetoterapie,",
+    label: "Reeducăm prin kinetoterapie,",
     image: "/assets/img7.jpg",
   },
   {
     number: "08",
-    label: "Învățăm pacientul să practice și acasă,",
+    label: "Învățăm pacientul profilaxie,",
     image: "/assets/img8.jpg",
   },
   {
     number: "09",
-    label: "Îmbunătățim serviciile prin review-uri,",
+    label: "Așteptăm review,",
     image: "/assets/img1.jpg",
   },
 ];

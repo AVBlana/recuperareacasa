@@ -46,8 +46,8 @@ const FullScreenModal = ({
         ></Box>
         <Box
           style={{
-            maxWidth: 1280,
-            maxHeight: "90vh",
+            maxWidth: 700,
+            maxHeight: "100vh",
             position: "relative",
             zIndex: 1,
           }}
