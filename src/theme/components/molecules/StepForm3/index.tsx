@@ -16,7 +16,14 @@ interface StepForm3Props {
 const StepForm3: React.FC<StepForm3Props> = () => {
   const {
     selectedCheckboxes,
+    selectedScopes,
+    selectedLocalizations,
+    selectedProblems,
+    selectedDay,
+    selectedAgreementTerms,
+    selectedNewsletter,
     userFeedback1,
+    userFeedback2,
     userName,
     userPhone,
     userEmail,
@@ -24,6 +31,7 @@ const StepForm3: React.FC<StepForm3Props> = () => {
     userStreet,
     userNumber,
     userSc,
+    userAp,
     selectedOption,
     handleCheckboxChange,
   } = useContext(StepsContext);
@@ -45,45 +53,60 @@ const StepForm3: React.FC<StepForm3Props> = () => {
       </Flex>
       <Box>
         <StyledFormSection>
-          <Text white big secondaryFont>
-            Scopul tratamentului:{selectedCheckboxes?.join(", ")}
-          </Text>
-          <Text white big secondaryFont>
-            Natura problemei:{userFeedback1}
-          </Text>
-          <Text white big secondaryFont>
-            Unde este localizată:{selectedCheckboxes?.join(", ")}
-          </Text>
-          <Text white big secondaryFont>
-            Prenume:{userName}
-          </Text>
-          <Text white big secondaryFont>
-            Telefon:{userPhone}
-          </Text>
-          <Text white big secondaryFont>
-            Email:{userEmail}
-          </Text>
-          <Text white big secondaryFont>
-            Strada:{userStreet}
-          </Text>
-          <Text white big secondaryFont>
-            Nr:{userNumber}
-          </Text>
-          <Text white big secondaryFont>
-            Bloc:{userBlock}
-          </Text>
-          <Text white big secondaryFont>
-            Scara:{userSc}
-          </Text>
-          <Text white big secondaryFont>
-            Ap:{}
-          </Text>
-          <Text white big secondaryFont>
-            Interval orar:{selectedOption}
-          </Text>
-          <Text white big secondaryFont>
-            Ziua preferata/e:{selectedCheckboxes.join(", ")}
-          </Text>
+          <Flex style={{ gap: 40 }}>
+            <Box style={{ gap: 10 }}>
+              <Text white big secondaryFont>
+                Scopul tratamentului: {selectedScopes?.join(", ")}
+              </Text>
+              <Text white big secondaryFont>
+                Natura problemei: {selectedProblems?.join(", ")}
+              </Text>
+
+              <Text white big secondaryFont>
+                Unde este localizată: {selectedLocalizations?.join(", ")}
+              </Text>
+              <Text white big secondaryFont>
+                Durata problemei: {userFeedback1}
+              </Text>
+              <Text white big secondaryFont>
+                Descriere amanunțită: {userFeedback2}
+              </Text>
+            </Box>
+            <Box style={{ gap: 10 }}>
+              <Text white big secondaryFont>
+                Prenume: {userName}
+              </Text>
+              <Text white big secondaryFont>
+                Telefon: {userPhone}
+              </Text>
+              <Text white big secondaryFont>
+                Email: {userEmail}
+              </Text>
+              <Text white big secondaryFont>
+                Strada: {userStreet}
+              </Text>
+              <Flex style={{ justifyContent: "space-between" }}>
+                <Text white big secondaryFont>
+                  Nr: {userNumber}
+                </Text>
+                <Text white big secondaryFont>
+                  Bloc: {userBlock}
+                </Text>
+                <Text white big secondaryFont>
+                  Scara: {userSc}
+                </Text>
+                <Text white big secondaryFont>
+                  Ap: {userAp}
+                </Text>
+              </Flex>
+              <Text white big secondaryFont>
+                Interval orar: {selectedOption}
+              </Text>
+              <Text white big secondaryFont>
+                Ziua preferata/e: {selectedDay.join(", ")}
+              </Text>
+            </Box>
+          </Flex>
         </StyledFormSection>
       </Box>
 
@@ -106,33 +129,35 @@ const StepForm3: React.FC<StepForm3Props> = () => {
             paddingBottom: 20,
           }}
         >
-          <Flex style={{ alignItems: "center" }}>
-            <Box style={{ gap: 10, minWidth: 140 }}>
-              <Checkbox
-                label="Sunt de acord"
-                id="agree"
-                selectedCheckboxes={selectedCheckboxes}
-                onChange={handleCheckboxChange}
-              />
-              <Checkbox
-                label="Abonare"
-                id="abonare"
-                selectedCheckboxes={selectedCheckboxes}
-                onChange={handleCheckboxChange}
-              />
-            </Box>
-            <Box style={{ gap: 10 }}>
+          <Box style={{ alignItems: "center", gap: 20 }}>
+            <Flex style={{ gap: 20 }}>
               <Text white small>
                 Făcând clic pe „Sunt de acord”, confirmați că ați citit, înțeles
                 și sunteți de acord să respectați acești termeni și condiții.
               </Text>
+              <Checkbox
+                label="Sunt de acord"
+                id="agree"
+                selectedCheckboxes={selectedAgreementTerms}
+                onChange={handleCheckboxChange}
+                style={{ minWidth: 140 }}
+              />
+            </Flex>
+            <Flex style={{ gap: 20 }}>
               <Text white small>
                 Făcând clic pe „Abonare”, sunteți de acord să primiți buletine
                 informative de la noi cu posibilitatea de dezabonare în orice
                 moment.
               </Text>
-            </Box>
-          </Flex>
+              <Checkbox
+                label="Abonare"
+                id="abonare"
+                selectedCheckboxes={selectedNewsletter}
+                onChange={handleCheckboxChange}
+                style={{ minWidth: 140 }}
+              />
+            </Flex>
+          </Box>
         </Flex>
       </StyledFormSection>
     </>

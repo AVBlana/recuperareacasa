@@ -17,6 +17,7 @@ interface StepForm2Props {
 const StepForm2: React.FC<StepForm2Props> = () => {
   const {
     selectedCheckboxes,
+    selectedDay,
     userName,
     userPhone,
     userEmail,
@@ -24,6 +25,7 @@ const StepForm2: React.FC<StepForm2Props> = () => {
     userStreet,
     userNumber,
     userSc,
+    userAp,
     selectedOption,
     handleOptionChange,
     handleUserInfoChange,
@@ -125,6 +127,15 @@ const StepForm2: React.FC<StepForm2Props> = () => {
               id="Sc"
               style={inputStyle}
             />
+            <Input
+              type="text"
+              placeholder="Ap"
+              value={userAp}
+              onChange={(e) => handleUserInfoChange(e.target.value, "Ap")}
+              name="Ap"
+              id="Ap"
+              style={inputStyle}
+            />
           </Flex>
         </Box>
       </StyledFormSection>
@@ -165,31 +176,31 @@ const StepForm2: React.FC<StepForm2Props> = () => {
           <Checkbox
             label="Luni"
             id="luni"
-            selectedCheckboxes={selectedCheckboxes}
+            selectedCheckboxes={selectedDay}
             onChange={handleCheckboxChange}
           />
           <Checkbox
             id="marti"
             label="Marți"
-            selectedCheckboxes={selectedCheckboxes}
+            selectedCheckboxes={selectedDay}
             onChange={handleCheckboxChange}
           />
           <Checkbox
             id="miercuri"
             label="Miercuri"
-            selectedCheckboxes={selectedCheckboxes}
+            selectedCheckboxes={selectedDay}
             onChange={handleCheckboxChange}
           />
           <Checkbox
             label="Joi"
             id="joi"
-            selectedCheckboxes={selectedCheckboxes}
+            selectedCheckboxes={selectedDay}
             onChange={handleCheckboxChange}
           />
           <Checkbox
             id="vineri"
             label="Vineri"
-            selectedCheckboxes={selectedCheckboxes}
+            selectedCheckboxes={selectedDay}
             onChange={handleCheckboxChange}
           />
         </Flex>

@@ -5,6 +5,12 @@ import { useState, Dispatch, SetStateAction } from "react";
 interface FormData {
   currentStep: number;
   selectedCheckboxes: string[];
+  selectedScopes: string[];
+  selectedProblems: string[];
+  selectedLocalizations: string[];
+  selectedAgreementTerms: string[];
+  selectedDay: string[];
+  selectedNewsletter: string[];
   userFeedback1: string;
   userFeedback2: string;
   userName: string;
@@ -15,10 +21,11 @@ interface FormData {
   userFloor: string;
   userNumber: string;
   userSc: string;
+  userAp: string;
   userInfo1: string;
   userInfo2: string;
   selectedOption: string;
-  isModalVisible: string; // It seems like this should be a boolean, but I'm keeping it as a string based on your implementation.
+  isModalVisible: string;
 }
 
 interface FormHandlers {
@@ -33,6 +40,12 @@ interface FormHandlers {
 
 interface UseStepFormData extends FormData, FormHandlers {
   setSelectedCheckboxes: Dispatch<SetStateAction<string[]>>;
+  setSelectedScopes: Dispatch<SetStateAction<string[]>>;
+  setSelectedProblems: Dispatch<SetStateAction<string[]>>;
+  setSelectedLocalizations: Dispatch<SetStateAction<string[]>>;
+  setSelectedAgreementTerms: Dispatch<SetStateAction<string[]>>;
+  setSelectedDay: Dispatch<SetStateAction<string[]>>;
+  setSelectedNewsletter: Dispatch<SetStateAction<string[]>>;
   setUserFeedback1: Dispatch<SetStateAction<string>>;
   setUserFeedback2: Dispatch<SetStateAction<string>>;
   setUserName: Dispatch<SetStateAction<string>>;
@@ -43,6 +56,7 @@ interface UseStepFormData extends FormData, FormHandlers {
   setUserStreet: Dispatch<SetStateAction<string>>;
   setUserNumber: Dispatch<SetStateAction<string>>;
   setUserSc: Dispatch<SetStateAction<string>>;
+  setUserAp: Dispatch<SetStateAction<string>>;
   setUserInfo1: Dispatch<SetStateAction<string>>;
   setUserInfo2: Dispatch<SetStateAction<string>>;
   setSelectedOption: Dispatch<SetStateAction<string>>;
@@ -53,6 +67,16 @@ interface UseStepFormData extends FormData, FormHandlers {
 const useStepFormData = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedCheckboxes, setSelectedCheckboxes] = useState<string[]>([]);
+  const [selectedScopes, setSelectedScopes] = useState<string[]>([]);
+  const [selectedProblems, setSelectedProblems] = useState<string[]>([]);
+  const [selectedLocalizations, setSelectedLocalizations] = useState<string[]>(
+    []
+  );
+  const [selectedAgreementTerms, setSelectedAgreementTerms] = useState<
+    string[]
+  >([]);
+  const [selectedNewsletter, setSelectedNewsletter] = useState<string[]>([]);
+  const [selectedDay, setSelectedDay] = useState<string[]>([]);
   const [userFeedback1, setUserFeedback1] = useState("");
   const [userFeedback2, setUserFeedback2] = useState("");
   const [userInfo1, setUserInfo1] = useState("");
@@ -67,6 +91,7 @@ const useStepFormData = () => {
   const [userBlock, setUserBlock] = useState("");
   const [userFloor, setUserFloor] = useState("");
   const [userSc, setUserSc] = useState("");
+  const [userAp, setUserAp] = useState("");
 
   const handleNext = () => {
     setCurrentStep((currentStep) => currentStep + 1);
@@ -103,6 +128,9 @@ const useStepFormData = () => {
       case "Scara":
         setUserSc(value);
         break;
+      case "Ap":
+        setUserAp(value);
+        break;
       case "Altele1":
         setUserInfo1(value);
         break;
@@ -115,13 +143,73 @@ const useStepFormData = () => {
   };
 
   const handleCheckboxChange = (id: string) => {
-    setSelectedCheckboxes((prevCheckboxes) => {
-      if (prevCheckboxes.includes(id)) {
-        return prevCheckboxes.filter((checkbox) => checkbox !== id);
+    // setSelectedCheckboxes((prevCheckboxes) => {
+    //   if (prevCheckboxes.includes(id)) {
+    //     return prevCheckboxes.filter((checkbox) => checkbox !== id);
+    //   } else {
+    //     return [...prevCheckboxes, id];
+    //   }
+    // });
+
+    setSelectedScopes((prevScopes) => {
+      if (prevScopes.includes(id)) {
+        return prevScopes.filter((scope) => scope !== id);
       } else {
-        return [...prevCheckboxes, id];
+        return [...prevScopes, id];
       }
     });
+    setSelectedProblems((prevProblems) => {
+      if (prevProblems.includes(id)) {
+        return prevProblems.filter((problem) => problem !== id);
+      } else {
+        return [...prevProblems, id];
+      }
+    });
+    setSelectedLocalizations((prevLocalizations) => {
+      if (prevLocalizations.includes(id)) {
+        return prevLocalizations.filter((localization) => localization !== id);
+      } else {
+        return [...prevLocalizations, id];
+      }
+    });
+
+    // switch (true) {
+    //   case selectedScopes.some((scope) => scope.id === id):
+    //     setSelectedScopes((prevScopes) => {
+    //       if (prevScopes.some((scope) => scope.id === id)) {
+    //         return prevScopes.filter((scope) => scope.id !== id);
+    //       } else {
+    //         return [...prevScopes, { id }];
+    //       }
+    //     });
+    //     break;
+    //   case selectedProblems.some((problem) => problem.id === id):
+    //     setSelectedProblems((prevProblems) => {
+    //       if (prevProblems.some((problem) => problem.id === id)) {
+    //         return prevProblems.filter((problem) => problem.id !== id);
+    //       } else {
+    //         return [...prevProblems, { id }];
+    //       }
+    //     });
+    //     break;
+    //   case selectedLocalizations.some((localization) => localization.id === id):
+    //     setSelectedLocalizations((prevLocalizations) => {
+    //       if (
+    //         prevLocalizations.some((localization) => localization.id === id)
+    //       ) {
+    //         return prevLocalizations.filter(
+    //           (localization) => localization.id !== id
+    //         );
+    //       } else {
+    //         return [...prevLocalizations, { id }];
+    //       }
+    //     });
+    //     break;
+    //   // Add similar cases for other checkbox sets
+    //   default:
+    //     // Handle the default case if necessary
+    //     break;
+    // }
   };
 
   const handleFeedbackChange = (value: string, textareaId: string) => {
@@ -139,6 +227,12 @@ const useStepFormData = () => {
   return {
     currentStep,
     selectedCheckboxes,
+    selectedScopes,
+    selectedProblems,
+    selectedLocalizations,
+    selectedAgreementTerms,
+    selectedDay,
+    selectedNewsletter,
     userFeedback1,
     userFeedback2,
     userName,
@@ -149,6 +243,7 @@ const useStepFormData = () => {
     userFloor,
     userNumber,
     userSc,
+    userAp,
     userInfo1,
     userInfo2,
     selectedOption,
@@ -157,6 +252,12 @@ const useStepFormData = () => {
     handlePrevious,
     setCurrentStep,
     setSelectedCheckboxes,
+    setSelectedScopes,
+    setSelectedProblems,
+    setSelectedLocalizations,
+    setSelectedAgreementTerms,
+    setSelectedDay,
+    setSelectedNewsletter,
     setUserFeedback1,
     setUserFeedback2,
     setUserName,
@@ -167,6 +268,7 @@ const useStepFormData = () => {
     setUserStreet,
     setUserNumber,
     setUserSc,
+    setUserAp,
     setUserInfo1,
     setUserInfo2,
     setSelectedOption,

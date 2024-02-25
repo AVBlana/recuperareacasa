@@ -23,7 +23,7 @@ export function Checkbox({
   };
 
   return (
-    <div style={{ display: "flex", gap: 10, ...style }}>
+    <div style={{ display: "flex", alignItems: "center", gap: 10, ...style }}>
       <div
         style={{
           width: 20,
