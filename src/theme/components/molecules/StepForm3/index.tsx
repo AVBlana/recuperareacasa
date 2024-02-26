@@ -151,7 +151,7 @@ const StepForm3: React.FC<StepForm3Props> = () => {
               </Text>
               <Checkbox
                 label="Abonare"
-                id="abonare"
+                id="subscribe"
                 selectedCheckboxes={selectedNewsletter}
                 onChange={handleCheckboxChange}
                 style={{ minWidth: 140 }}

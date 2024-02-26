@@ -143,73 +143,86 @@ const useStepFormData = () => {
   };
 
   const handleCheckboxChange = (id: string) => {
-    // setSelectedCheckboxes((prevCheckboxes) => {
-    //   if (prevCheckboxes.includes(id)) {
-    //     return prevCheckboxes.filter((checkbox) => checkbox !== id);
-    //   } else {
-    //     return [...prevCheckboxes, id];
-    //   }
-    // });
+    // Assuming your checkbox IDs are unique and well-structured
+    // If you have unique IDs, you don't need to split or extract a section ID
 
-    setSelectedScopes((prevScopes) => {
-      if (prevScopes.includes(id)) {
-        return prevScopes.filter((scope) => scope !== id);
-      } else {
-        return [...prevScopes, id];
-      }
-    });
-    setSelectedProblems((prevProblems) => {
-      if (prevProblems.includes(id)) {
-        return prevProblems.filter((problem) => problem !== id);
-      } else {
-        return [...prevProblems, id];
-      }
-    });
-    setSelectedLocalizations((prevLocalizations) => {
-      if (prevLocalizations.includes(id)) {
-        return prevLocalizations.filter((localization) => localization !== id);
-      } else {
-        return [...prevLocalizations, id];
-      }
-    });
+    switch (id) {
+      case "intretinere":
+      case "stare-de-bine":
+      case "tratament-terapeutic":
+        setSelectedScopes((prevScopes) =>
+          prevScopes.includes(id)
+            ? prevScopes.filter((scope) => scope !== id)
+            : [...prevScopes, id]
+        );
+        break;
 
-    // switch (true) {
-    //   case selectedScopes.some((scope) => scope.id === id):
-    //     setSelectedScopes((prevScopes) => {
-    //       if (prevScopes.some((scope) => scope.id === id)) {
-    //         return prevScopes.filter((scope) => scope.id !== id);
-    //       } else {
-    //         return [...prevScopes, { id }];
-    //       }
-    //     });
-    //     break;
-    //   case selectedProblems.some((problem) => problem.id === id):
-    //     setSelectedProblems((prevProblems) => {
-    //       if (prevProblems.some((problem) => problem.id === id)) {
-    //         return prevProblems.filter((problem) => problem.id !== id);
-    //       } else {
-    //         return [...prevProblems, { id }];
-    //       }
-    //     });
-    //     break;
-    //   case selectedLocalizations.some((localization) => localization.id === id):
-    //     setSelectedLocalizations((prevLocalizations) => {
-    //       if (
-    //         prevLocalizations.some((localization) => localization.id === id)
-    //       ) {
-    //         return prevLocalizations.filter(
-    //           (localization) => localization.id !== id
-    //         );
-    //       } else {
-    //         return [...prevLocalizations, { id }];
-    //       }
-    //     });
-    //     break;
-    //   // Add similar cases for other checkbox sets
-    //   default:
-    //     // Handle the default case if necessary
-    //     break;
-    // }
+      case "durerea":
+      case "amorteala":
+      case "ameteala":
+      case "trigger-point":
+      case "tensiunea-musculara":
+      case "spate-blocat":
+      case "migrene":
+      case "altele":
+        setSelectedProblems((prevProblems) =>
+          prevProblems.includes(id)
+            ? prevProblems.filter((problem) => problem !== id)
+            : [...prevProblems, id]
+        );
+        break;
+
+      case "cap":
+      case "zona-toracala":
+      case "zona-cervicala":
+      case "zona-lombara":
+      case "zona-bazinului":
+      case "zona-membrelor-inferioare":
+      case "zona-membrelor-superioare":
+      case "altele":
+        setSelectedLocalizations((prevLocalizations) =>
+          prevLocalizations.includes(id)
+            ? prevLocalizations.filter((localization) => localization !== id)
+            : [...prevLocalizations, id]
+        );
+        break;
+
+      case "Luni":
+      case "Marti":
+      case "Miercuri":
+      case "Joi":
+      case "Vineri":
+        setSelectedDay((prevDays) =>
+          prevDays.includes(id)
+            ? prevDays.filter((day) => day !== id)
+            : [...prevDays, id]
+        );
+        break;
+
+      case "agree":
+        setSelectedAgreementTerms((prevAgreementTerms) =>
+          prevAgreementTerms.includes(id)
+            ? prevAgreementTerms.filter(
+                (agreementTerms) => agreementTerms !== id
+              )
+            : [...prevAgreementTerms, id]
+        );
+        break;
+
+      case "subscribe":
+        setSelectedNewsletter((prevNewsletters) =>
+          prevNewsletters.includes(id)
+            ? prevNewsletters.filter((newsletter) => newsletter !== id)
+            : [...prevNewsletters, id]
+        );
+        break;
+
+      // Add other cases for your localizations checkboxes
+
+      default:
+        // Handle the default case if necessary
+        break;
+    }
   };
 
   const handleFeedbackChange = (value: string, textareaId: string) => {
