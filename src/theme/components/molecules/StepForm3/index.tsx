@@ -7,6 +7,7 @@ import Input from "../../atoms/Input";
 import StyledFormSection from "../StyledFormSection";
 import { useContext } from "react";
 import { StepsContext } from "../../organisms/StepsForm/context";
+import styled from "styled-components";
 
 interface StepForm3Props {
   //   step1Data: FormData; // Adjust according to your data structure
@@ -56,55 +57,84 @@ const StepForm3: React.FC<StepForm3Props> = () => {
           <Flex style={{ gap: 40 }}>
             <Box style={{ gap: 10 }}>
               <Text white big secondaryFont>
-                Scopul tratamentului: {selectedScopes?.join(", ")}
-              </Text>
-              <Text white big secondaryFont>
-                Natura problemei: {selectedProblems?.join(", ")}
+                Scopul tratamentului:
               </Text>
 
+              <StyledInfoBox>{selectedScopes?.join(", ")}</StyledInfoBox>
               <Text white big secondaryFont>
-                Unde este localizată: {selectedLocalizations?.join(", ")}
+                Natura problemei:
               </Text>
+              <StyledInfoBox> {selectedProblems?.join(", ")}</StyledInfoBox>
+
               <Text white big secondaryFont>
-                Durata problemei: {userFeedback1}
+                Unde este localizată:
               </Text>
+              <StyledInfoBox>{selectedLocalizations?.join(", ")}</StyledInfoBox>
               <Text white big secondaryFont>
-                Descriere amanunțită: {userFeedback2}
+                Durata problemei:
               </Text>
+              <StyledInfoBox> {userFeedback1}</StyledInfoBox>
+              <Text white big secondaryFont>
+                Descriere amanunțită:
+              </Text>
+              <StyledInfoBox>{userFeedback2}</StyledInfoBox>
             </Box>
             <Box style={{ gap: 10 }}>
               <Text white big secondaryFont>
-                Prenume: {userName}
+                Prenume:
               </Text>
+              <StyledInfoBox>{userName}</StyledInfoBox>
               <Text white big secondaryFont>
-                Telefon: {userPhone}
+                Telefon:
               </Text>
+              <StyledInfoBox>{userPhone}</StyledInfoBox>
+
               <Text white big secondaryFont>
-                Email: {userEmail}
+                Email:
               </Text>
+              <StyledInfoBox>{userEmail}</StyledInfoBox>
+
               <Text white big secondaryFont>
-                Strada: {userStreet}
+                Strada:
               </Text>
-              <Flex style={{ justifyContent: "space-between" }}>
+              <StyledInfoBox>{userStreet}</StyledInfoBox>
+
+              <Flex
+                style={{
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  gap: 10,
+                }}
+              >
                 <Text white big secondaryFont>
-                  Nr: {userNumber}
+                  Nr:
                 </Text>
+                <StyledInfoBox>{userNumber}</StyledInfoBox>
+
                 <Text white big secondaryFont>
-                  Bloc: {userBlock}
+                  Bloc:
                 </Text>
+                <StyledInfoBox>{userBlock}</StyledInfoBox>
+
                 <Text white big secondaryFont>
-                  Scara: {userSc}
+                  Scara:
                 </Text>
+                <StyledInfoBox>{userSc}</StyledInfoBox>
+
                 <Text white big secondaryFont>
-                  Ap: {userAp}
+                  Ap:
                 </Text>
+                <StyledInfoBox>{userAp}</StyledInfoBox>
               </Flex>
               <Text white big secondaryFont>
-                Interval orar: {selectedOption}
+                Interval orar:
               </Text>
+              <StyledInfoBox>{selectedOption}</StyledInfoBox>
+
               <Text white big secondaryFont>
-                Ziua preferata/e: {selectedDay.join(", ")}
+                Ziua preferata/e:
               </Text>
+              <StyledInfoBox>{selectedDay.join(", ")}</StyledInfoBox>
             </Box>
           </Flex>
         </StyledFormSection>
@@ -163,5 +193,12 @@ const StepForm3: React.FC<StepForm3Props> = () => {
     </>
   );
 };
+
+const StyledInfoBox = styled.div`
+  padding: 10px;
+  background: ${theme.color.white};
+  color: ${theme.color.primary};
+  border-radius: 10px;
+`;
 
 export default StepForm3;

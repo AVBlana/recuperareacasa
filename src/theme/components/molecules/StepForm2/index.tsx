@@ -147,22 +147,22 @@ const StepForm2: React.FC<StepForm2Props> = () => {
         <Flex style={{ justifyContent: "space-between" }}>
           <RadioButton
             label="8 - 12"
-            value="option1"
-            isSelected={selectedOption === "option1"}
+            value="8 - 12"
+            isSelected={selectedOption === "8 - 12"}
             onChange={handleOptionChange}
             groupName="options"
           />
           <RadioButton
             label="12 - 17"
-            value="option2"
-            isSelected={selectedOption === "option2"}
+            value="12 - 17"
+            isSelected={selectedOption === "12 - 17"}
             onChange={handleOptionChange}
             groupName="options"
           />
           <RadioButton
             label="17 - 20"
-            value="option3"
-            isSelected={selectedOption === "option3"}
+            value="17 - 20"
+            isSelected={selectedOption === "17 - 20"}
             onChange={handleOptionChange}
             groupName="options"
           />

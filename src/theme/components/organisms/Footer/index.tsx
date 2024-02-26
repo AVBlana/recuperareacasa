@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { theme } from "@/theme/constants";
 import NavItem from "../../atoms/NavItem";
 import Image from "../../atoms/Image";
+import WhatsAppButton from "../../molecules/WhatsAppButton";
 
 const Footer = () => {
   const scrollToSection = (id: string) => {
@@ -48,14 +49,15 @@ const Footer = () => {
             <Flex style={{ gap: 10 }}>
               <Link href="">
                 <StyledSocialBox>
-                  <FbIcon size={16} fill={theme.color.primary}></FbIcon>
+                  <FbIcon size={20} fill={theme.color.primary}></FbIcon>
                 </StyledSocialBox>
               </Link>
               <Link href="">
                 <StyledSocialBox>
-                  <YtIcon size={16} fill={theme.color.primary}></YtIcon>
+                  <YtIcon size={20} fill={theme.color.primary}></YtIcon>
                 </StyledSocialBox>
               </Link>
+              <WhatsAppButton />
             </Flex>
           </Box>
           <Box style={{ gap: 30 }}>

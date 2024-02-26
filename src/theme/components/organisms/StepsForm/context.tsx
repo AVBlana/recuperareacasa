@@ -187,11 +187,11 @@ const useStepFormData = () => {
         );
         break;
 
-      case "Luni":
-      case "Marti":
-      case "Miercuri":
-      case "Joi":
-      case "Vineri":
+      case "luni":
+      case "marti":
+      case "miercuri":
+      case "joi":
+      case "vineri":
         setSelectedDay((prevDays) =>
           prevDays.includes(id)
             ? prevDays.filter((day) => day !== id)

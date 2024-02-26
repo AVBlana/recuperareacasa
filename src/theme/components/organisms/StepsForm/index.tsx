@@ -26,6 +26,14 @@ const buttonStyle = {
 };
 
 const StepsForm: React.FC<StepsFormProps> = ({ onClose }) => {
+  const {
+    selectedScopes,
+    selectedProblems,
+    selectedLocalizations,
+    userFeedback1,
+    userFeedback2,
+  } = useContext(StepsContext);
+
   const { currentStep, handleNext, handlePrevious } = useContext(StepsContext);
   const totalSteps = 3;
 
@@ -44,6 +52,34 @@ const StepsForm: React.FC<StepsFormProps> = ({ onClose }) => {
 
   const handleCloseModal = () => {
     onClose();
+  };
+
+  const handleSendMail = async () => {
+    try {
+      const apiUrl = "localhost:3000/api/sendEmail"; // Relative path to your serverless function
+
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          selectedScopes,
+          selectedProblems,
+          selectedLocalizations,
+          userFeedback1,
+          userFeedback2,
+          // ...other form fields
+        }),
+      });
+      if (response.ok) {
+        console.log("Email sent successfully!");
+      } else {
+        console.error("Failed to send email.");
+      }
+    } catch (error: any) {
+      console.error("Error sending email:", error.message);
+    }
   };
 
   return (
@@ -75,7 +111,7 @@ const StepsForm: React.FC<StepsFormProps> = ({ onClose }) => {
           {currentStep === totalSteps && (
             <Button
               label="Trimite"
-              onClick={handleCloseModal}
+              onClick={handleSendMail}
               style={buttonStyle}
             />
           )}
