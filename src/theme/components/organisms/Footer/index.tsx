@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FbIcon, Text, YtIcon } from "../..";
+import { FbIcon, SvgIcon, Text, YtIcon } from "../..";
 import Box from "../../atoms/Box";
 import Flex from "../../atoms/Flex";
 import styled from "styled-components";
@@ -7,6 +7,7 @@ import { theme } from "@/theme/constants";
 import NavItem from "../../atoms/NavItem";
 import Image from "../../atoms/Image";
 import WhatsAppButton from "../../molecules/WhatsAppButton";
+import { WhatsappIcon } from "../../molecules/Icons/WhatsappIcon";
 
 const Footer = () => {
   const scrollToSection = (id: string) => {
@@ -25,14 +26,14 @@ const Footer = () => {
               Contact
             </Text>
             <Box>
-              <Link href={"phone:+40 123 456 789"}>
+              <Link href={"phone:+40 727 860 759"}>
                 <Text
                   biggest
                   secondaryFont
                   bold
                   style={{ color: theme.color.secondary }}
                 >
-                  +40 123 456 789
+                  +40 727 860 759
                 </Text>
               </Link>
               <Link href={"mailto:info@recuperareacasa.ro"}>
@@ -57,7 +58,15 @@ const Footer = () => {
                   <YtIcon size={20} fill={theme.color.primary}></YtIcon>
                 </StyledSocialBox>
               </Link>
-              <WhatsAppButton />
+              <Link href="https://wa.me/+40767825269" target="_blank">
+                <StyledSocialBox style={{ padding: 10 }}>
+                  <WhatsappIcon
+                    size={20}
+                    fill={theme.color.primary}
+                    overrideFillColor={theme.color.white}
+                  />
+                </StyledSocialBox>
+              </Link>
             </Flex>
           </Box>
           <Box style={{ gap: 30 }}>
@@ -92,23 +101,40 @@ const Footer = () => {
               />
             </Box>
           </Box>
-          <Flex style={{ justifyContent: "space-between", width: "100%" }}>
-            <Box style={{ width: 360, gap: 30 }}>
-              <Text big secondaryFont>
-                Despre Noi
-              </Text>
+          <Box style={{ minWidth: 130, gap: 30 }}>
+            <Text big secondaryFont>
+              Program de lucru
+            </Text>
+            <Box style={{ gap: 20 }}>
               <Box style={{ gap: 10 }}>
-                <Text small style={{ lineHeight: "140%" }}>
-                  Recuperare medicală la domiciliu oferă programe personalizate
-                  ce includ tehnici de terapie manuală, masaj, dry needling și
-                  kinetoterapie.
-                </Text>
-                <Text small style={{ lineHeight: "140%" }}>
-                  Zona de acoperire a serviciilor noastre se afla în perimetrul
-                  orașelor Cluj-Florești-Gilau.
-                </Text>
+                <Text small>Luni-Vineri:</Text>
+                <Text small> 08:00-19:00</Text>
+              </Box>
+              <Box style={{ gap: 10 }}>
+                <Text small>Sâmbătă-Duminică:</Text>
+                <Text small>INCHIS</Text>
               </Box>
             </Box>
+          </Box>
+          <Flex style={{ justifyContent: "space-between", width: "100%" }}>
+            <Flex style={{ gap: 60 }}>
+              <Box style={{ maxWidth: 360, gap: 30 }}>
+                <Text big secondaryFont>
+                  Despre Noi
+                </Text>
+                <Box style={{ gap: 10 }}>
+                  <Text small style={{ lineHeight: "140%" }}>
+                    Recuperare medicală la domiciliu oferă programe
+                    personalizate ce includ tehnici de terapie manuală, masaj,
+                    dry needling și kinetoterapie.
+                  </Text>
+                  <Text small style={{ lineHeight: "140%" }}>
+                    Zona de acoperire a serviciilor noastre se afla în
+                    perimetrul orașelor Cluj-Florești-Gilau.
+                  </Text>
+                </Box>
+              </Box>
+            </Flex>
             <Box>
               <Link href={"/"}>
                 <Image
@@ -148,6 +174,15 @@ const StyledSocialBox = styled.div`
   border-style: solid;
   border-color: ${theme.color.primary};
   padding: 10px;
+  transition: transform 0.3s ease; /* Add transition for smooth effect */
+
+  &:hover {
+    transform: scale(1.3); /* Increase the scale on hover */
+    border-color: ${theme.color.secondary};
+    svg {
+      fill: ${theme.color.secondary};
+    }
+  }
 `;
 
 const StyledBackgroundBox = styled.div`

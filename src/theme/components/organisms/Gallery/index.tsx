@@ -6,31 +6,82 @@ import GalleryItem from "../../molecules/GalleryItem";
 import { theme } from "@/theme/constants";
 import FilterItem from "../../atoms/FilterItem";
 import { useState } from "react";
+import Button from "../../atoms/Button";
 
 const Gallery = () => {
   const initialData = [
-    { url: "/assets/img1.jpg", title: "img1", label: "Kinetoterapie" },
-    { url: "/assets/img2.jpg", title: "img2", label: "Sportiv și Recuperare" },
-    { url: "/assets/img3.jpg", title: "img3", label: "Sportiv și Recuperare" },
-    { url: "/assets/img4.jpg", title: "img4", label: "Relaxare" },
-    { url: "/assets/img5.jpg", title: "img5", label: "Kinesio Tape" },
-    { url: "/assets/img6.jpg", title: "img6", label: "Electroterapie" },
     {
+      type: "image",
+      url: "/assets/img1.jpg",
+      title: "img1",
+      label: "Kinetoterapie",
+    },
+    {
+      type: "image",
+      url: "/assets/img2.jpg",
+      title: "img2",
+      label: "Sportiv și Recuperare",
+    },
+    {
+      type: "image",
+      url: "/assets/img3.jpg",
+      title: "img3",
+      label: "Sportiv și Recuperare",
+    },
+    {
+      type: "image",
+      url: "/assets/img4.jpg",
+      title: "img4",
+      label: "Relaxare",
+    },
+    {
+      type: "image",
+      url: "/assets/img5.jpg",
+      title: "img5",
+      label: "Kinesio Tape",
+    },
+    {
+      type: "image",
+      url: "/assets/img6.jpg",
+      title: "img6",
+      label: "Electroterapie",
+    },
+    {
+      type: "image",
       url: "/assets/img7.jpg",
       title: "img7",
       label: "Evaluare Neuro-Musculo-Scheletală",
     },
     {
+      type: "image",
       url: "/assets/img8.jpg",
       title: "img8",
       label: "Eliberare Fascială IATSM",
     },
-    { url: "/assets/img8.jpg", title: "img8", label: "Cupping" },
-    { url: "/assets/img8.jpg", title: "img8", label: "Flossing" },
+    { type: "image", url: "/assets/img8.jpg", title: "img8", label: "Cupping" },
+    {
+      type: "image",
+      url: "/assets/img8.jpg",
+      title: "img8",
+      label: "Flossing",
+    },
+    {
+      type: "video",
+      url: "J6NIZY1uHLLjgsc2",
+      title: "img8",
+      label: "Flossing",
+    },
   ];
 
   const [selectedLabel, setSelectedLabel] = useState("Toate");
   const [data, setData] = useState(initialData);
+  const itemsPerPage = 8; // Number of items to show initially
+  const [visibleItems, setVisibleItems] = useState(itemsPerPage);
+
+  const loadMore = () => {
+    // Increase the number of visible items
+    setVisibleItems((prevVisibleItems) => prevVisibleItems + itemsPerPage);
+  };
 
   const filter = ({ label }: { label: string }) => {
     setSelectedLabel(label);
@@ -92,7 +143,7 @@ const Gallery = () => {
             ))}
           </Flex>
           <Flex style={{ flexWrap: "wrap", width: "100%" }}>
-            {data.map((item) => (
+            {data.slice(0, visibleItems).map((item) => (
               <GalleryItem
                 key={item.url}
                 item={item}
@@ -102,6 +153,31 @@ const Gallery = () => {
               />
             ))}
           </Flex>
+          {data.length > visibleItems && (
+            <Flex
+              style={{
+                justifyContent: "center",
+                paddingTop: 20,
+                paddingBottom: 20,
+              }}
+            >
+              <Button
+                label="Afișează mai multe"
+                onClick={loadMore}
+                style={{
+                  alignItems: "center",
+                  color: theme.color.white,
+                  background: theme.color.secondary,
+                  paddingTop: theme.spacings.medium,
+                  paddingBottom: theme.spacings.medium,
+                  paddingLeft: theme.spacings.bigger,
+                  paddingRight: theme.spacings.bigger,
+                  borderRadius: 20,
+                  cursor: "pointer",
+                }}
+              />
+            </Flex>
+          )}
         </Box>
       </SectionBox>
     </>

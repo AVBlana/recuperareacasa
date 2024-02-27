@@ -65,7 +65,7 @@ const StyledCounterBox = styled.div`
   justify-content: center;
   gap: 16;
   padding: 0 40px;
-  width: 360px;
+  min-width: 270px;
 `;
 
 const AnimatedNumber = styled.span<{ animate: boolean }>`

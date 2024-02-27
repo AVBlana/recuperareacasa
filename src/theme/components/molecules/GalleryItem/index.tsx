@@ -1,24 +1,31 @@
-import styled, { useTheme } from "styled-components";
-import Image from "../../atoms/Image";
+import styled from "styled-components";
 import Box from "../../atoms/Box";
 import { Text } from "../..";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Modal from "../Modal";
+import YouTube from "react-youtube";
 import { theme } from "@/theme/constants";
 
 const GalleryItem = ({
   itemsWithSelectedLabelCount,
   item,
 }: {
-  item: { url: string; title: string; label: string };
+  item: { type: string; url: string; title: string; label: string };
   itemsWithSelectedLabelCount: number;
 }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const calculateWidth = () => {
     const itemCount = itemsWithSelectedLabelCount;
-    const baseWidth = itemCount ? 100 / 4 : 100 / itemCount; // Use 100% / 4 as default width
-    return `calc(${baseWidth}%`; // Adjust with spacing
+    const baseWidth = itemCount ? 100 / 4 : 100 / itemCount;
+    return `calc(${baseWidth}%`;
+  };
+
+  const youtubeOpts = {
+    playerVars: {
+      // https://developers.google.com/youtube/player_parameters
+      autoplay: 1,
+    },
   };
 
   return (
@@ -27,8 +34,9 @@ const GalleryItem = ({
         style={{
           width: calculateWidth(),
         }}
+        onClick={() => setIsModalVisible(true)}
       >
-        <StyledOverlay onClick={() => setIsModalVisible(true)}>
+        <StyledOverlay>
           <Box
             style={{
               height: 100,
@@ -62,17 +70,21 @@ const GalleryItem = ({
               background: theme.color.white,
             }}
           >
-            <Image
-              width={600}
-              height={600}
-              alt=""
-              src={item.url}
-              style={{
-                objectFit: "cover",
-                width: "100%",
-                height: "100%",
-              }}
-            />
+            {item.type === "image" ? (
+              <img
+                width={600}
+                height={600}
+                alt=""
+                src={item.url}
+                style={{
+                  objectFit: "cover",
+                  width: "100%",
+                  height: "100%",
+                }}
+              />
+            ) : (
+              <YouTube videoId={item.url} opts={youtubeOpts} />
+            )}
 
             <Box style={{ flex: 1, padding: 20 }}>
               <Text medium bold style={{ color: theme.color.secondary }}>
@@ -91,13 +103,20 @@ const GalleryItem = ({
             height: "calc(100vw / 4)",
           }}
         >
-          <Image
-            style={{ objectFit: "cover", width: "100%", height: "100%" }}
-            width={300}
-            height={300}
-            alt=""
-            src={item.url}
-          />
+          {item.type === "image" ? (
+            <img
+              style={{ objectFit: "cover", width: "100%", height: "100%" }}
+              width={300}
+              height={300}
+              alt=""
+              src={item.url}
+            />
+          ) : (
+            <video controls width="100%" height="100%">
+              <source src={item.url} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          )}
         </Box>
       </StyledGalleryItem>
     </>

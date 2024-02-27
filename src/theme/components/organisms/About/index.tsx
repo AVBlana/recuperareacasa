@@ -4,22 +4,15 @@ import Flex from "../../atoms/Flex";
 import Image from "../../atoms/Image";
 import { SvgIcon, Text } from "../..";
 import { theme } from "@/theme/constants";
-import Button from "../../atoms/Button";
 import { CaretRIcon } from "../../molecules/Icons/CaretRight";
 import FullScreenModal from "../../molecules/FullscreenModal";
 import { useState } from "react";
 import StepsForm from "../StepsForm";
+import { StepsProvider } from "../StepsForm/context";
+import { useModal } from "../ModalProvider";
 
 const About = () => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
-
-  const handleOpenModal = () => {
-    setIsModalVisible(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalVisible(false);
-  };
+  const { isModalVisible, handleOpenModal, handleCloseModal } = useModal();
 
   return (
     <>
@@ -131,16 +124,20 @@ const About = () => {
                 alignItems: "center",
                 maxWidth: 200,
               }}
+              onClick={handleOpenModal}
             >
-              <Button label="Programeaza-te" onClick={handleOpenModal}></Button>
+              Programeaza-te
               <CaretRIcon size={9} fill="white" />
-              <FullScreenModal
-                isVisible={isModalVisible}
-                onClose={handleCloseModal}
-              >
-                <StepsForm onClose={handleCloseModal} />
-              </FullScreenModal>
             </Flex>
+
+            <FullScreenModal
+              isVisible={isModalVisible}
+              onClose={handleCloseModal}
+            >
+              <StepsProvider>
+                <StepsForm onClose={handleCloseModal} />
+              </StepsProvider>
+            </FullScreenModal>
           </Box>
         </Flex>
       </StyledAboutBox>

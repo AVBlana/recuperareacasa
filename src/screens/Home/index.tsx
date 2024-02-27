@@ -20,11 +20,15 @@ import About from "@/theme/components/organisms/About";
 import ProcessCard from "@/theme/components/molecules/StepCard";
 import Steps from "@/theme/components/organisms/Steps";
 import Team from "@/theme/components/organisms/Team";
+import { ModalProvider } from "@/theme/components/organisms/ModalProvider";
 
 export const HomeScreen = () => {
   return (
     <Box style={{ paddingTop: 120, background: theme.color.white }}>
-      <Header />
+      <ModalProvider>
+        <Header />
+      </ModalProvider>
+
       <Slider />
 
       <SectionBox id="servicii">
@@ -34,12 +38,16 @@ export const HomeScreen = () => {
       <MovingText />
 
       <SectionBox id="despre">
-        <About />
+        <ModalProvider>
+          <About />
+        </ModalProvider>
         <Counters />
       </SectionBox>
 
       <InteractiveBox />
-      <CTA />
+      <ModalProvider>
+        <CTA />
+      </ModalProvider>
 
       <SectionBox id="echipa" style={{ alignItems: "center" }}>
         <Team />

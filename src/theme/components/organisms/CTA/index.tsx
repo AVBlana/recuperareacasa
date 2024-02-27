@@ -6,21 +6,16 @@ import FullScreenModal from "../../molecules/FullscreenModal";
 import { useState } from "react";
 import Button from "../../atoms/Button";
 import StepsForm from "../StepsForm";
+import { StepsProvider } from "../StepsForm/context";
+import { useModal } from "../ModalProvider";
 
 const StyledSvgIcon = styled(SvgIcon)`
   transition: transform 0.3s ease-in-out;
 `;
 
 const CTA = () => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const { isModalVisible, handleOpenModal, handleCloseModal } = useModal();
 
-  const handleOpenModal = () => {
-    setIsModalVisible(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalVisible(false);
-  };
   return (
     <>
       <StyledCtaContainer>
@@ -43,7 +38,9 @@ const CTA = () => {
               isVisible={isModalVisible}
               onClose={handleCloseModal}
             >
-              <StepsForm onClose={handleCloseModal} />
+              <StepsProvider>
+                <StepsForm onClose={handleCloseModal} />
+              </StepsProvider>
             </FullScreenModal>
             <Box>
               <Text
