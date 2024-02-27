@@ -43,12 +43,12 @@ const interacts = [
   },
   {
     number: "08",
-    label: "Învățăm pacientul profilaxie,",
+    label: "Învătăm pacientul profilaxie,",
     image: "/assets/img8.jpg",
   },
   {
     number: "09",
-    label: "Așteptăm review,",
+    label: "Asteptăm review,",
     image: "/assets/img1.jpg",
   },
 ];

@@ -14,17 +14,11 @@ import Modal from "../../molecules/Modal";
 import FullScreenModal from "../../molecules/FullscreenModal";
 import StepsForm from "../StepsForm";
 import { StepsProvider } from "../StepsForm/context";
+import { WhatsappIcon } from "../../molecules/Icons/WhatsappIcon";
+import { useModal } from "../ModalProvider";
 
 const Header = () => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
-
-  const handleOpenModal = () => {
-    setIsModalVisible(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalVisible(false);
-  };
+  const { isModalVisible, handleOpenModal, handleCloseModal } = useModal();
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -42,8 +36,8 @@ const Header = () => {
         <Flex
           style={{
             background: theme.color.primary,
-            paddingLeft: theme.spacings.bigger,
-            paddingRight: theme.spacings.bigger,
+            paddingLeft: 80,
+            paddingRight: 80,
             marginLeft: -theme.spacings.smaller,
             marginRight: -theme.spacings.smaller,
             justifyContent: "space-between",
@@ -76,6 +70,15 @@ const Header = () => {
             <Flex>
               <Link href={""}>
                 <IconBox>
+                  <WhatsappIcon
+                    size={16}
+                    fill={theme.color.white}
+                    overrideFillColor={theme.color.primary}
+                  />
+                </IconBox>
+              </Link>
+              <Link href={""}>
+                <IconBox>
                   <FbIcon size={16} fill={theme.color.white} />
                 </IconBox>
               </Link>
@@ -89,8 +92,8 @@ const Header = () => {
         </Flex>
         <Flex
           style={{
-            paddingLeft: theme.spacings.bigger,
-            paddingRight: theme.spacings.bigger,
+            paddingLeft: 80,
+            paddingRight: 80,
             height: 80,
             background: theme.color.white,
             borderBottom: "solid",
@@ -138,15 +141,15 @@ const Header = () => {
               borderRadius: 20,
               cursor: "pointer",
             }}
+            onClick={handleOpenModal}
           >
-            <Button label="Consultație Online" onClick={handleOpenModal} />
+            Consultație Online
             <CaretRIcon size={16} fill="white" />
           </Flex>
           <FullScreenModal
             isVisible={isModalVisible}
             onClose={handleCloseModal}
           >
-            {/* <Form onClose={handleCloseModal} /> */}
             <StepsProvider>
               <StepsForm onClose={handleCloseModal} />
             </StepsProvider>
@@ -160,6 +163,14 @@ const Header = () => {
 const IconBox = styled.div`
   display: flex;
   padding: ${({ theme }) => theme.spacings.smaller}px;
+
+  &:hover {
+    transform: scale(1.3); /* Increase the scale on hover */
+    border-color: ${({ theme }) => theme.color.secondary};
+    svg {
+      fill: ${({ theme }) => theme.color.secondary};
+    }
+  }
 `;
 
 export default Header;
