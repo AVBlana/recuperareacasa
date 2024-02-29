@@ -240,12 +240,10 @@ const useStepFormData = () => {
   };
 
   const handleOpenModal = () => {
-    console.log("Opening modal");
     setIsModalVisible(true);
   };
 
   const handleCloseModal = () => {
-    console.log("Closing modal");
     setIsModalVisible(false);
   };
 

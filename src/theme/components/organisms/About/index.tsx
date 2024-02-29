@@ -9,7 +9,6 @@ import FullScreenModal from "../../molecules/FullscreenModal";
 import { useContext, useState } from "react";
 import StepsForm from "../StepsForm";
 import { StepsContext, StepsProvider } from "../StepsForm/context";
-import { useModal } from "../ModalProvider";
 
 const About = () => {
   const { handleOpenModal, handleCloseModal, isModalVisible } =

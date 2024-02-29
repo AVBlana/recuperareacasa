@@ -7,7 +7,6 @@ import { useContext, useState } from "react";
 import Button from "../../atoms/Button";
 import StepsForm from "../StepsForm";
 import { StepsContext, StepsProvider } from "../StepsForm/context";
-import { useModal } from "../ModalProvider";
 
 const StyledSvgIcon = styled(SvgIcon)`
   transition: transform 0.3s ease-in-out;

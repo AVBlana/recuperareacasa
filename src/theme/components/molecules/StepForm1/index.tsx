@@ -22,6 +22,7 @@ const StepForm1 = () => {
     handleFeedbackChange,
     handleTextAreaChange,
     handleCheckboxChange,
+    handleCloseModal,
   } = useContext(StepsContext);
 
   const othersRef = useRef<HTMLInputElement>(null);
@@ -142,6 +143,12 @@ const StepForm1 = () => {
         <Text bigger white secondaryFont bold>
           Pasul 1: Scopul tratamentului
         </Text>
+        {/* <Box
+          onClick={handleCloseModal}
+          style={{ cursor: "pointer", padding: 5 }}
+        >
+          <CloseIcon size={16} fill={theme.color.white} />
+        </Box> */}
       </Flex>
       <Box style={{ paddingTop: 20, paddingBottom: 20 }}>
         <Text big white>
