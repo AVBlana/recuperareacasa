@@ -231,8 +231,8 @@ const Services = () => {
           Se integrează după necesitate în serviciul de terapie manuală.
           <br />
           <br />
-          Integrăm în procesul nostru de recuperare tehnica avansată a 'blood
-          flow restriction' pentru a maximiza eficacitatea terapiei.
+          Integrăm în procesul nostru de recuperare tehnica avansată a blood
+          flow restriction pentru a maximiza eficacitatea terapiei.
           <br />
           <br />
           Această metodă inovatoare, folosind restricția controlată a fluxului

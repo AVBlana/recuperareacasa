@@ -40,7 +40,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
         ))}
       </Flex>
       <Text white biggest style={{ fontStyle: "italic" }}>
-        "{review.text}"
+        {review.text}
       </Text>
       <Flex style={{ justifyContent: "space-between" }}>
         <Flex style={{ alignItems: "center", gap: theme.spacings.medium }}>

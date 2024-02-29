@@ -1,5 +1,5 @@
-import { ContactScreen } from "@/screens/Contact";
+// import { ContactScreen } from "@/screens/Contact";
 
-export default () => {
-  return <ContactScreen />;
-};
+// export default () => {
+//   return <ContactScreen />;
+// };

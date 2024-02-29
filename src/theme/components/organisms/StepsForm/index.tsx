@@ -30,8 +30,20 @@ const StepsForm: React.FC<StepsFormProps> = ({ onClose }) => {
     selectedScopes,
     selectedProblems,
     selectedLocalizations,
+    selectedAgreementTerms,
+    selectedNewsletter,
+    selectedOption,
+    selectedDay,
     userFeedback1,
     userFeedback2,
+    userName,
+    userEmail,
+    userPhone,
+    userSc,
+    userBlock,
+    userAp,
+    userNumber,
+    userStreet,
     currentStep,
     handleNext,
     handlePrevious,
@@ -58,7 +70,7 @@ const StepsForm: React.FC<StepsFormProps> = ({ onClose }) => {
 
   const handleSendMail = async () => {
     try {
-      const apiUrl = "localhost:3000/api/sendEmail"; // Relative path to your serverless function
+      const apiUrl = "/api/sendEmail"; // Relative path to your server action
 
       const response = await fetch(apiUrl, {
         method: "POST",
@@ -69,11 +81,24 @@ const StepsForm: React.FC<StepsFormProps> = ({ onClose }) => {
           selectedScopes,
           selectedProblems,
           selectedLocalizations,
+          selectedAgreementTerms,
+          selectedNewsletter,
+          selectedOption,
+          selectedDay,
           userFeedback1,
           userFeedback2,
-          // ...other form fields
+          userName,
+          userEmail,
+          userPhone,
+          userSc,
+          userBlock,
+          userAp,
+          userNumber,
+          userStreet,
+          // ... other form fields
         }),
       });
+
       if (response.ok) {
         console.log("Email sent successfully!");
       } else {
