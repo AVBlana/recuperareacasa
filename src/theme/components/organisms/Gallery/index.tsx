@@ -67,9 +67,10 @@ const Gallery = () => {
     },
     {
       type: "video",
-      url: "J6NIZY1uHLLjgsc2",
-      title: "img8",
-      label: "Flossing",
+      posterUrl: "/assets/posterExRoller.png",
+      url: "/assets/ExRoller.mp4",
+      title: "Exerciții Foam Roller",
+      label: "Exerciții",
     },
   ];
 
@@ -133,6 +134,7 @@ const Gallery = () => {
               "Eliberare Fascială IATSM",
               "Cupping",
               "Flossing",
+              "Exerciții",
             ].map((label) => (
               <FilterItem
                 key={label}

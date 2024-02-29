@@ -32,9 +32,11 @@ const StepsForm: React.FC<StepsFormProps> = ({ onClose }) => {
     selectedLocalizations,
     userFeedback1,
     userFeedback2,
+    currentStep,
+    handleNext,
+    handlePrevious,
   } = useContext(StepsContext);
 
-  const { currentStep, handleNext, handlePrevious } = useContext(StepsContext);
   const totalSteps = 3;
 
   const renderStep = useMemo(() => {

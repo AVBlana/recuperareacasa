@@ -1,15 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import styled from "styled-components";
 
-const VideoBackground: React.FC<{ src: string }> = ({ src }) => {
+const VideoBackground: React.FC = () => {
+  const videoSRC = "/assets/RAbgV1.mov";
+
   return (
     <video
       id="background-video"
-      src={src}
+      src={videoSRC}
       autoPlay
       loop
       muted
       playsInline
-      style={{ width: "100%", height: "auto" }}
+      style={{ width: "100%", height: "100%", objectFit: "cover" }}
     />
   );
 };

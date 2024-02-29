@@ -8,18 +8,19 @@ import Box from "../../atoms/Box";
 import { CaretRIcon } from "../../molecules/Icons/CaretRight";
 import Link from "next/link";
 import YouTube from "react-youtube";
+import VideoBackground from "../../molecules/VideoBackground/indext";
 
 const Slider = () => {
-  const videoOptions = {
-    playerVars: {
-      showinfo: 0,
-      autoplay: 1,
-      loop: 1,
-      controls: 0,
-      mute: 1,
-      fs: 1,
-    },
-  };
+  // const videoOptions = {
+  //   playerVars: {
+  //     showinfo: 0,
+  //     autoplay: 1,
+  //     loop: 1,
+  //     controls: 0,
+  //     mute: 1,
+  //     fs: 1,
+  //   },
+  // };
 
   const onReady = (event: any) => {
     const player = event.target;
@@ -35,9 +36,10 @@ const Slider = () => {
 
   return (
     <VideoBackgroundWrapper>
-      <VideoBackground>
-        <YouTube videoId="RBbyRBlLkMQ" opts={videoOptions} onReady={onReady} />
-      </VideoBackground>
+      <StyledVideoBG>
+        <VideoBackground />
+      </StyledVideoBG>
+
       <ContentContainer>
         <GradientLayer />
         <Box
@@ -143,17 +145,14 @@ const VideoBackgroundWrapper = styled.div`
   overflow: hidden;
 `;
 
-const VideoBackground = styled.div`
-  iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+const StyledVideoBG = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 `;
-
 const ContentContainer = styled.div`
   position: absolute;
   top: 0;

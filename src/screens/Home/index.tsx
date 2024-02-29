@@ -21,13 +21,14 @@ import ProcessCard from "@/theme/components/molecules/StepCard";
 import Steps from "@/theme/components/organisms/Steps";
 import Team from "@/theme/components/organisms/Team";
 import { ModalProvider } from "@/theme/components/organisms/ModalProvider";
+import { StepsProvider } from "@/theme/components/organisms/StepsForm/context";
 
 export const HomeScreen = () => {
   return (
     <Box style={{ paddingTop: 120, background: theme.color.white }}>
-      <ModalProvider>
+      <StepsProvider>
         <Header />
-      </ModalProvider>
+      </StepsProvider>
 
       <Slider />
 
@@ -38,16 +39,16 @@ export const HomeScreen = () => {
       <MovingText />
 
       <SectionBox id="despre">
-        <ModalProvider>
+        <StepsProvider>
           <About />
-        </ModalProvider>
+        </StepsProvider>
         <Counters />
       </SectionBox>
 
       <InteractiveBox />
-      <ModalProvider>
+      <StepsProvider>
         <CTA />
-      </ModalProvider>
+      </StepsProvider>
 
       <SectionBox id="echipa" style={{ alignItems: "center" }}>
         <Team />

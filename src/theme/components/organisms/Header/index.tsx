@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { FbIcon, Text, YtIcon } from "../..";
 import Image from "../../atoms/Image";
 import styled, { useTheme } from "styled-components";
@@ -13,12 +13,12 @@ import Flex from "../../atoms/Flex";
 import Modal from "../../molecules/Modal";
 import FullScreenModal from "../../molecules/FullscreenModal";
 import StepsForm from "../StepsForm";
-import { StepsProvider } from "../StepsForm/context";
+import { StepsContext, StepsProvider } from "../StepsForm/context";
 import { WhatsappIcon } from "../../molecules/Icons/WhatsappIcon";
-import { useModal } from "../ModalProvider";
 
 const Header = () => {
-  const { isModalVisible, handleOpenModal, handleCloseModal } = useModal();
+  const { handleOpenModal, handleCloseModal, isModalVisible } =
+    useContext(StepsContext);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -28,6 +28,7 @@ const Header = () => {
   };
 
   const theme = useTheme();
+
   return (
     <>
       <Box
@@ -147,12 +148,15 @@ const Header = () => {
             <CaretRIcon size={16} fill="white" />
           </Flex>
           <FullScreenModal
+            key={isModalVisible ? "header-modal-key" : "header-no-modal-key"}
             isVisible={isModalVisible}
             onClose={handleCloseModal}
           >
-            <StepsProvider>
-              <StepsForm onClose={handleCloseModal} />
-            </StepsProvider>
+            {isModalVisible && (
+              <StepsProvider>
+                <StepsForm onClose={handleCloseModal} />
+              </StepsProvider>
+            )}
           </FullScreenModal>
         </Flex>
       </Box>

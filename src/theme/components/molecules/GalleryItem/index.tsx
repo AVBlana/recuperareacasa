@@ -1,42 +1,58 @@
-import styled from "styled-components";
+import React, { useState } from "react";
+import styled, { css } from "styled-components";
 import Box from "../../atoms/Box";
 import { Text } from "../..";
-import { useState, useEffect } from "react";
 import Modal from "../Modal";
-import YouTube from "react-youtube";
 import { theme } from "@/theme/constants";
 
 const GalleryItem = ({
   itemsWithSelectedLabelCount,
   item,
 }: {
-  item: { type: string; url: string; title: string; label: string };
+  item: {
+    type: string;
+    url: string;
+    title: string;
+    label: string;
+    posterUrl?: string;
+  };
   itemsWithSelectedLabelCount: number;
 }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   const calculateWidth = () => {
     const itemCount = itemsWithSelectedLabelCount;
     const baseWidth = itemCount ? 100 / 4 : 100 / itemCount;
-    return `calc(${baseWidth}%`;
+    return `calc(${baseWidth}%)`;
   };
 
-  const youtubeOpts = {
-    playerVars: {
-      // https://developers.google.com/youtube/player_parameters
-      autoplay: 1,
-    },
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
+  const handleModalToggle = () => {
+    setIsModalVisible(!isModalVisible);
   };
 
   return (
-    <>
-      <StyledGalleryItem
-        style={{
-          width: calculateWidth(),
-        }}
-        onClick={() => setIsModalVisible(true)}
-      >
-        <StyledOverlay>
+    <StyledGalleryItem
+      style={{
+        alignItems: "center",
+        justifyContent: "center",
+        height: "calc(100vw / 4)",
+        width: calculateWidth(),
+      }}
+      onClick={handleModalToggle}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      {isHovered && (
+        <StyledOverlay visible>
           <Box
             style={{
               height: 100,
@@ -59,90 +75,115 @@ const GalleryItem = ({
             </Text>
           </Box>
         </StyledOverlay>
-        <Modal
-          onClose={() => setIsModalVisible(false)}
-          isVisible={isModalVisible}
-        >
-          <Box
+      )}
+
+      {/* Render posterUrl if modal is closed, otherwise render video */}
+      {!isModalVisible ? (
+        item.type === "image" ? (
+          <img
+            width={600}
+            height={600}
+            alt=""
+            src={item.url || item.posterUrl}
             style={{
-              width: 600,
-              overflowX: "hidden",
-              background: theme.color.white,
+              objectFit: "cover",
+              width: "100%",
+              height: "100%",
             }}
-          >
-            {item.type === "image" ? (
+          />
+        ) : (
+          <img
+            width={600}
+            height={600}
+            alt=""
+            src={item.posterUrl}
+            style={{
+              objectFit: "cover",
+              width: "100%",
+              height: "100%",
+            }}
+          />
+        )
+      ) : null}
+
+      <Modal onClose={handleModalToggle} isVisible={isModalVisible}>
+        <Box
+          style={{
+            width: 600,
+            overflowX: "hidden",
+            background: theme.color.white,
+          }}
+        >
+          {isModalVisible ? (
+            item.type === "video" ? (
+              <video
+                controls
+                width="100%"
+                height="100%"
+                style={{ objectFit: "cover" }}
+              >
+                <source src={item.url} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            ) : (
               <img
                 width={600}
                 height={600}
                 alt=""
-                src={item.url}
+                src={item.url || item.posterUrl}
                 style={{
                   objectFit: "cover",
                   width: "100%",
                   height: "100%",
                 }}
               />
-            ) : (
-              <YouTube videoId={item.url} opts={youtubeOpts} />
-            )}
-
-            <Box style={{ flex: 1, padding: 20 }}>
-              <Text medium bold style={{ color: theme.color.secondary }}>
-                {item.label}
-              </Text>
-              <Text big semiBold style={{ height: 70 }} textOverflow="ellipsis">
-                {item.title}
-              </Text>
-            </Box>
-          </Box>
-        </Modal>
-        <Box
-          style={{
-            alignItems: "center",
-            justifyContent: "center",
-            height: "calc(100vw / 4)",
-          }}
-        >
-          {item.type === "image" ? (
-            <img
-              style={{ objectFit: "cover", width: "100%", height: "100%" }}
-              width={300}
-              height={300}
-              alt=""
-              src={item.url}
-            />
+            )
           ) : (
-            <video controls width="100%" height="100%">
-              <source src={item.url} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+            // Show a loading state, placeholder, or handle differently when the modal is not open
+            <div>Loading...</div>
           )}
+
+          <Box style={{ flex: 1, padding: 20 }}>
+            <Text medium bold style={{ color: theme.color.secondary }}>
+              {item.label}
+            </Text>
+            <Text big semiBold style={{ height: 70 }} textOverflow="ellipsis">
+              {item.title}
+            </Text>
+          </Box>
         </Box>
-      </StyledGalleryItem>
-    </>
+      </Modal>
+    </StyledGalleryItem>
   );
 };
 
-const StyledOverlay = styled.div`
+const overlayVisibleStyle = css`
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.5);
+`;
+
+const StyledOverlay = styled.div<{ visible: boolean }>`
   position: absolute;
   z-index: 0;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
   opacity: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   padding: ${({ theme }) => theme.spacings.big}px;
+  transition: opacity 0.3s, background 0.3s;
+
+  ${({ visible }) => visible && overlayVisibleStyle}
 `;
 
 const StyledGalleryItem = styled.div`
   cursor: pointer;
   position: relative;
   &:hover ${StyledOverlay} {
-    opacity: 1;
+    ${overlayVisibleStyle}
   }
 `;
 

@@ -3,10 +3,10 @@ import { SvgIcon, Text } from "../..";
 import Flex from "../../atoms/Flex";
 import Box from "../../atoms/Box";
 import FullScreenModal from "../../molecules/FullscreenModal";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Button from "../../atoms/Button";
 import StepsForm from "../StepsForm";
-import { StepsProvider } from "../StepsForm/context";
+import { StepsContext, StepsProvider } from "../StepsForm/context";
 import { useModal } from "../ModalProvider";
 
 const StyledSvgIcon = styled(SvgIcon)`
@@ -14,7 +14,8 @@ const StyledSvgIcon = styled(SvgIcon)`
 `;
 
 const CTA = () => {
-  const { isModalVisible, handleOpenModal, handleCloseModal } = useModal();
+  const { handleOpenModal, handleCloseModal, isModalVisible } =
+    useContext(StepsContext);
 
   return (
     <>
@@ -35,12 +36,15 @@ const CTA = () => {
             ></Button>
             <StyledSvgIcon size={250} src="/assets/CTAtext.svg" />
             <FullScreenModal
+              key={isModalVisible ? "cta-modal-key" : "cta-no-modal-key"}
               isVisible={isModalVisible}
               onClose={handleCloseModal}
             >
-              <StepsProvider>
-                <StepsForm onClose={handleCloseModal} />
-              </StepsProvider>
+              {isModalVisible && (
+                <StepsProvider>
+                  <StepsForm onClose={handleCloseModal} />
+                </StepsProvider>
+              )}
             </FullScreenModal>
             <Box>
               <Text

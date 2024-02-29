@@ -25,7 +25,7 @@ interface FormData {
   userInfo1: string;
   userInfo2: string;
   selectedOption: string;
-  isModalVisible: string;
+  isModalVisible: boolean; // Updated to boolean
 }
 
 interface FormHandlers {
@@ -36,6 +36,8 @@ interface FormHandlers {
   handleTextAreaChange: (value: string, textareaId: string) => void;
   handleNext: () => void;
   handlePrevious: () => void;
+  handleOpenModal: () => void; // Added function
+  handleCloseModal: () => void; // Added function
 }
 
 interface UseStepFormData extends FormData, FormHandlers {
@@ -60,7 +62,7 @@ interface UseStepFormData extends FormData, FormHandlers {
   setUserInfo1: Dispatch<SetStateAction<string>>;
   setUserInfo2: Dispatch<SetStateAction<string>>;
   setSelectedOption: Dispatch<SetStateAction<string>>;
-  setIsModalVisible: Dispatch<SetStateAction<string>>;
+  setIsModalVisible: Dispatch<SetStateAction<boolean>>; // Updated to boolean
   setCurrentStep: Dispatch<SetStateAction<number>>;
 }
 
@@ -82,7 +84,7 @@ const useStepFormData = () => {
   const [userInfo1, setUserInfo1] = useState("");
   const [userInfo2, setUserInfo2] = useState("");
   const [selectedOption, setSelectedOption] = useState("");
-  const [isModalVisible, setIsModalVisible] = useState("");
+  const [isModalVisible, setIsModalVisible] = useState(false); // Updated to boolean
   const [userName, setUserName] = useState("");
   const [userPhone, setUserPhone] = useState("");
   const [userEmail, setUserEmail] = useState("");
@@ -237,6 +239,16 @@ const useStepFormData = () => {
     handleFeedbackChange(value, textareaId);
   };
 
+  const handleOpenModal = () => {
+    console.log("Opening modal");
+    setIsModalVisible(true);
+  };
+
+  const handleCloseModal = () => {
+    console.log("Closing modal");
+    setIsModalVisible(false);
+  };
+
   return {
     currentStep,
     selectedCheckboxes,
@@ -263,6 +275,8 @@ const useStepFormData = () => {
     isModalVisible,
     handleNext,
     handlePrevious,
+    handleOpenModal,
+    handleCloseModal,
     setCurrentStep,
     setSelectedCheckboxes,
     setSelectedScopes,

@@ -6,13 +6,14 @@ import { SvgIcon, Text } from "../..";
 import { theme } from "@/theme/constants";
 import { CaretRIcon } from "../../molecules/Icons/CaretRight";
 import FullScreenModal from "../../molecules/FullscreenModal";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import StepsForm from "../StepsForm";
-import { StepsProvider } from "../StepsForm/context";
+import { StepsContext, StepsProvider } from "../StepsForm/context";
 import { useModal } from "../ModalProvider";
 
 const About = () => {
-  const { isModalVisible, handleOpenModal, handleCloseModal } = useModal();
+  const { handleOpenModal, handleCloseModal, isModalVisible } =
+    useContext(StepsContext);
 
   return (
     <>
@@ -131,12 +132,15 @@ const About = () => {
             </Flex>
 
             <FullScreenModal
+              key={isModalVisible ? "about-modal-key" : "about-no-modal-key"}
               isVisible={isModalVisible}
               onClose={handleCloseModal}
             >
-              <StepsProvider>
-                <StepsForm onClose={handleCloseModal} />
-              </StepsProvider>
+              {isModalVisible && (
+                <StepsProvider>
+                  <StepsForm onClose={handleCloseModal} />
+                </StepsProvider>
+              )}
             </FullScreenModal>
           </Box>
         </Flex>

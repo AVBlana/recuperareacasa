@@ -1,6 +1,6 @@
-// ModalContext.js
+// ModalProvider.js
 
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useMemo } from "react";
 
 interface ModalData {
   isModalVisible: boolean;
@@ -32,12 +32,15 @@ export const ModalProvider: React.FC<ModalProviderProps> = ({ children }) => {
     setIsModalVisible(false);
   };
 
-  const contextValue = {
-    isModalVisible,
-    setIsModalVisible,
-    handleOpenModal,
-    handleCloseModal,
-  };
+  const contextValue = useMemo(
+    () => ({
+      isModalVisible,
+      setIsModalVisible,
+      handleOpenModal,
+      handleCloseModal,
+    }),
+    [isModalVisible, setIsModalVisible, handleOpenModal, handleCloseModal]
+  );
 
   return (
     <ModalContext.Provider value={contextValue}>
