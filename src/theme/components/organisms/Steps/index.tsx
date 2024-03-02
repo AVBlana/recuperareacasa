@@ -107,7 +107,6 @@ const steps = [
     ),
   },
 ];
-
 const Steps = () => {
   return (
     <Box style={{ alignItems: "center", justifyContent: "center" }}>
