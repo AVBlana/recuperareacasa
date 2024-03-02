@@ -11,29 +11,6 @@ import YouTube from "react-youtube";
 import VideoBackground from "../../molecules/VideoBackground/indext";
 
 const Slider = () => {
-  // const videoOptions = {
-  //   playerVars: {
-  //     showinfo: 0,
-  //     autoplay: 1,
-  //     loop: 1,
-  //     controls: 0,
-  //     mute: 1,
-  //     fs: 1,
-  //   },
-  // };
-
-  const onReady = (event: any) => {
-    const player = event.target;
-
-    player.playVideo();
-
-    player.addEventListener("onStateChange", (event: any) => {
-      if (event.data === 0) {
-        player.playVideo();
-      }
-    });
-  };
-
   return (
     <VideoBackgroundWrapper>
       <StyledVideoBG>
@@ -147,10 +124,8 @@ const VideoBackgroundWrapper = styled.div`
 
 const StyledVideoBG = styled.div`
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  width: 110%;
+  height: 110%;
   overflow: hidden;
 `;
 const ContentContainer = styled.div`
