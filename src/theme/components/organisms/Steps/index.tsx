@@ -121,7 +121,7 @@ const Steps = () => {
       >
         <Box style={{ gap: 20, lineHeight: "140%" }}>
           <Text secondaryFont primary huge>
-            Care este procesul ?
+            Care este procesul ???
           </Text>
           <Text>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi
