@@ -68,7 +68,7 @@ const Gallery = () => {
     {
       type: "video",
       posterUrl: "/assets/posterExRoller.png",
-      url: "/assets/ExRoller.mp4",
+      url: "",
       title: "Exerciții Foam Roller",
       label: "Exerciții",
     },

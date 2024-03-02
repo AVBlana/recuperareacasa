@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const VideoBackground: React.FC = () => {
-  const videoSRC = "/assets/RAbgV1.mov";
+  const videoSRC = "";
 
   return (
     <video
