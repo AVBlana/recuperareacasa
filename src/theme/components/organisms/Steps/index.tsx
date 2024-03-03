@@ -8,7 +8,7 @@ const steps = [
   {
     label: "Pasul 1",
     title: "Completarea Chestionarului de Evaluare",
-    image: "/assets/img1.jpg",
+    image: "/assets/pasul1.png",
     desc: (
       <>
         Începeți experiența noastră personalizată prin a completa chestionarul
@@ -33,7 +33,7 @@ const steps = [
   {
     label: "Pasul 2",
     title: "Perioada de Așteptare și Analiză a Informațiilor",
-    image: "/assets/img2.jpg",
+    image: "/assets/pasul2.jpg",
     desc: (
       <>
         După ce ați completat cu atenție chestionarul de evaluare, vă rugăm să
@@ -59,7 +59,7 @@ const steps = [
   {
     label: "Pasul 3",
     title: "Programarea Telefonică și Detalierea Costurilor",
-    image: "/assets/img3.jpg",
+    image: "/assets/pasul3.jpg",
     desc: (
       <>
         În această etapă, un membru al echipei noastre va lua legătura cu
@@ -84,7 +84,7 @@ const steps = [
   {
     label: "Pasul 4",
     title: "Efectuarea Tratamentului la Domiciliu",
-    image: "/assets/img4.jpg",
+    image: "/assets/pasul4.jpg",
     desc: (
       <>
         Odată ce programul de Kinetoterapie este stabilit, vă îndrumăm să vă
@@ -121,13 +121,13 @@ const Steps = () => {
       >
         <Box style={{ gap: 20, lineHeight: "140%" }}>
           <Text secondaryFont primary huge>
-            Care este procesul ???
+            Care este procesul ?
           </Text>
-          <Text>
+          {/* <Text>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi
             fuga, vero aliquam aspernatur iusto ullam consectetur veritatis
             assumenda impedit quasi.
-          </Text>
+          </Text> */}
         </Box>
         <StyledStepsBox>
           {steps.map((step, index) => (

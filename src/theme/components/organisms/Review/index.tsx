@@ -98,7 +98,7 @@ const StyledImageBox = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url(./assets/review-bg.jpg);
+  background-image: url(./assets/planRecuperare1.jpg);
   background-size: cover;
   background-position: center;
   z-index: 0;

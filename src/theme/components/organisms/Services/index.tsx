@@ -14,7 +14,7 @@ const Services = () => {
       label: "200 Ron",
       title: "Kinetoterapie de Recuperare",
       svg: "/assets/headPain.svg",
-      image: "/assets/img1.jpg",
+      image: "/assets/serviciiKinetoterapie.jpg",
       desc: (
         <>
           Echipa noastră de terapeuți experimentați integrează o gamă diversă de
@@ -40,7 +40,7 @@ const Services = () => {
       label: "150 Ron",
       title: "Masaj Sportiv și de Recuperare",
       svg: "/assets/legPain.svg",
-      image: "/assets/img2.jpg",
+      image: "/assets/serviciiMasajSportiv.jpg",
       desc: (
         <>
           Experimentați beneficiile revitalizante ale masajului sportiv și de
@@ -62,7 +62,7 @@ const Services = () => {
       label: "150 Ron",
       title: "Masaj de Relaxare",
       svg: "/assets/torsoPain.svg",
-      image: "/assets/img3.jpg",
+      image: "/assets/serviciiMasajDeRelaxare.jpg",
       desc: (
         <>
           Bucurați-vă de o evadare totală din stresul zilnic cu serviciile
@@ -84,7 +84,7 @@ const Services = () => {
       label: "30 Ron",
       title: "Aplicare Kinesio Tape",
       svg: "/assets/headPain.svg",
-      image: "/assets/img4.jpg",
+      image: "/assets/serviciiKinesioTape.jpg",
       desc: (
         <>
           Descoperiți beneficiile terapiei cu bandă kinesiologică în cadrul
@@ -106,7 +106,7 @@ const Services = () => {
       label: "30 Ron",
       title: "Electroterapie",
       svg: "/assets/headPain.svg",
-      image: "/assets/img5.jpg",
+      image: "/assets/serviciiElectroTerapie.jpg",
       desc: (
         <>
           Experimentați inovația în recuperare și terapie cu serviciile noastre
@@ -128,7 +128,7 @@ const Services = () => {
       label: "100 Ron",
       title: "Dry Needling",
       svg: "/assets/headPain.svg",
-      image: "/assets/img6.jpg",
+      image: "/assets/serviciiDryNeedling.jpg",
       desc: (
         <>
           Descoperiți beneficiile terapiei cu ac uscat (dry needling) în cadrul
@@ -154,7 +154,7 @@ const Services = () => {
       label: "100 Ron",
       title: "Evaluare Neuro-Musculo-Scheletală",
       svg: "/assets/headPain.svg",
-      image: "/assets/img6.jpg",
+      image: "/assets/planRecuperare1.jpg",
       desc: (
         <>
           Beneficiați de o evaluare neuro-musculo-scheletală detaliată și
@@ -177,7 +177,7 @@ const Services = () => {
       label: "100 Ron",
       title: "Eliberare Fascială IATSM",
       svg: "/assets/headPain.svg",
-      image: "/assets/img6.jpg",
+      image: "/assets/serviciiEliberareFasciala.jpg",
       desc: (
         <>
           Se integrează după necesitate în serviciul de terapie manuală.
@@ -201,7 +201,7 @@ const Services = () => {
       label: "100 Ron",
       title: "Cupping",
       svg: "/assets/headPain.svg",
-      image: "/assets/img6.jpg",
+      image: "/assets/serviciiCupping.jpg",
       desc: (
         <>
           Se integrează după necesitate în serviciul de terapie manuală.
@@ -225,7 +225,7 @@ const Services = () => {
       label: "100 Ron",
       title: "Flossing",
       svg: "/assets/headPain.svg",
-      image: "/assets/img6.jpg",
+      image: "/assets/serviciiFlossing.jpg",
       desc: (
         <>
           Se integrează după necesitate în serviciul de terapie manuală.
@@ -243,6 +243,32 @@ const Services = () => {
           Experimentați synergia dintre flossing și blade flow restriction
           pentru rezultate remarcabile în îmbunătățirea flexibilității și
           optimizarea performanțelor tale.
+        </>
+      ),
+    },
+    {
+      label: "100 Ron",
+      title: "Terapie Manuală",
+      svg: "/assets/headPain.svg",
+      image: "/assets/serviciiTerapieManuala.jpg",
+      desc: (
+        <>
+          Echipa noastră de terapeuți experimentați integrează o gamă diversă de
+          tehnici manuale pentru a vă oferi o terapie holistică.
+          <br />
+          <br />
+          De la tehnici de chiropractică și streching, până la masaj terapeutic
+          și alte metode manuale avansate, abordăm individual nevoile
+          dumneavoastră.
+          <br />
+          <br />
+          Această combinație expertă de practici manuale contribuie la
+          ameliorarea durerilor, îmbunătățirea flexibilității și promovarea
+          stării generale de bine.
+          <br />
+          <br />
+          Descoperiți beneficiile unei terapii manuale comprehensive pentru
+          sănătatea și mobilitatea dumneavoastră.
         </>
       ),
     },

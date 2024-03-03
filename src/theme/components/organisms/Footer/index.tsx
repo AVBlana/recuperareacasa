@@ -53,12 +53,12 @@ const Footer = () => {
                   <FbIcon size={20} fill={theme.color.primary}></FbIcon>
                 </StyledSocialBox>
               </Link>
-              <Link href="">
+              <Link href="https://www.youtube.com/@RecuperareAcasa">
                 <StyledSocialBox>
                   <YtIcon size={20} fill={theme.color.primary}></YtIcon>
                 </StyledSocialBox>
               </Link>
-              <Link href="https://wa.me/+40767825269" target="_blank">
+              <Link href="https://wa.me/+40727860759" target="_blank">
                 <StyledSocialBox style={{ padding: 10 }}>
                   <WhatsappIcon
                     size={20}

@@ -9,47 +9,47 @@ const interacts = [
   {
     number: "01",
     label: "Evaluăm amănunțit,",
-    image: "/assets/img1.jpg",
+    image: "/assets/planRecuperare1.jpg",
   },
   {
     number: "02",
     label: "Personalizăm tratamentul,",
-    image: "/assets/img2.jpg",
+    image: "/assets/planRecuperare2.jpg",
   },
   {
     number: "03",
     label: "Aplicăm planul,",
-    image: "/assets/img3.jpg",
+    image: "/assets/planRecuperare3.jpg",
   },
   {
     number: "04",
     label: "Reevaluăm,",
-    image: "/assets/img4.jpg",
+    image: "/assets/planRecuperare4.jpg",
   },
   {
     number: "05",
     label: "Schimbam tratamentul,",
-    image: "/assets/img5.jpg",
+    image: "/assets/planRecuperare5.jpg",
   },
   {
     number: "06",
     label: "Adăugăm fizioterapie,",
-    image: "/assets/img6.jpg",
+    image: "/assets/planRecuperare6.jpg",
   },
   {
     number: "07",
     label: "Reeducăm prin kinetoterapie,",
-    image: "/assets/img7.jpg",
+    image: "/assets/planRecuperare7.jpg",
   },
+  // {
+  //   number: "08",
+  //   label: "Învătăm pacientul profilaxie,",
+  //   image: "/assets/img8.jpg",
+  // },
   {
     number: "08",
-    label: "Învătăm pacientul profilaxie,",
-    image: "/assets/img8.jpg",
-  },
-  {
-    number: "09",
     label: "Asteptăm review,",
-    image: "/assets/img1.jpg",
+    image: "/assets/planRecuperare8.jpg",
   },
 ];
 

@@ -96,7 +96,7 @@ const StyledCtaContainer = styled.div`
 const StyledImageBox = styled.div`
   display: flex;
   align-items: center;
-  background-image: url(./assets/img7.jpg);
+  background-image: url(./assets/planRecuperare3.jpg);
   background-size: cover;
   background-position: 50% 75%;
   position: absolute;

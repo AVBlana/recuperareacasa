@@ -69,7 +69,7 @@ const Header = () => {
               </Flex>
             </Link>
             <Flex>
-              <Link href={""}>
+              <Link href={"https://wa.me/+40727860759"}>
                 <IconBox>
                   <WhatsappIcon
                     size={16}
@@ -83,7 +83,7 @@ const Header = () => {
                   <FbIcon size={16} fill={theme.color.white} />
                 </IconBox>
               </Link>
-              <Link href={""}>
+              <Link href={"https://www.youtube.com/@RecuperareAcasa"}>
                 <IconBox>
                   <YtIcon size={16} fill={theme.color.white} />
                 </IconBox>
