@@ -51,6 +51,8 @@ const Modal = ({
             maxHeight: "90vh",
             position: "relative",
             zIndex: 1,
+            borderRadius: 20,
+            overflow: "hidden",
           }}
         >
           {children}

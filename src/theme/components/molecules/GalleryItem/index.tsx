@@ -4,6 +4,7 @@ import Box from "../../atoms/Box";
 import { Text } from "../..";
 import Modal from "../Modal";
 import { theme } from "@/theme/constants";
+import YouTube from "react-youtube";
 
 const GalleryItem = ({
   itemsWithSelectedLabelCount,
@@ -116,15 +117,16 @@ const GalleryItem = ({
         >
           {isModalVisible ? (
             item.type === "video" ? (
-              <video
-                controls
-                width="100%"
-                height="100%"
-                style={{ objectFit: "cover" }}
-              >
-                <source src={item.url} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+              <YouTube
+                videoId={item.url}
+                opts={{
+                  width: "600",
+                  height: "400",
+                  playerVars: {
+                    controls: 1,
+                  },
+                }}
+              />
             ) : (
               <img
                 width={600}
