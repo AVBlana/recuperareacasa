@@ -124,9 +124,10 @@ const VideoBackgroundWrapper = styled.div`
 
 const StyledVideoBG = styled.div`
   position: absolute;
+  top: -30%;
+  left: -10%;
   width: 110%;
   height: 110%;
-  overflow: hidden;
 `;
 const ContentContainer = styled.div`
   position: absolute;
