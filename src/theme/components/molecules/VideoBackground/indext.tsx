@@ -22,11 +22,18 @@ const VideoBackground: React.FC = () => {
     event.target.playVideo();
   };
 
+  const onEnd = (event: any) => {
+    // Restart the video when it ends
+    event.target.seekTo(0);
+    event.target.playVideo();
+  };
+
   return (
     <YouTube
       videoId={videoSRC}
       opts={opts}
       onReady={onReady}
+      onEnd={onEnd}
       style={{ height: "150vh" }}
     />
   );
