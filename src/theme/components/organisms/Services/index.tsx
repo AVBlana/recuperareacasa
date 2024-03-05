@@ -1,12 +1,16 @@
 import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import { Text } from "../..";
-import ServiceCard from "../../molecules/ServiceCard";
+import ServiceCard, { ServiceCardProps } from "../../molecules/ServiceCard";
 import { theme } from "@/theme/constants";
 import Box from "../../atoms/Box";
 import Flex from "../../atoms/Flex";
 import { ArrowLeftIcon } from "../../molecules/Icons/ArrowLeftIcon";
 import { ArrowRightIcon } from "../../molecules/Icons/ArrowRightIcon";
+
+interface StyledServiceCardsContainerProps {
+  currentIndex: number;
+}
 
 const Services = () => {
   const services = [
@@ -275,30 +279,29 @@ const Services = () => {
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [nextArrowClicked, setNextArrowClicked] = useState(false);
+  const [visibleCards, setVisibleCards] = useState(0);
+
+  useEffect(() => {
+    const containerElement = document.getElementById("service-cards-container");
+    if (containerElement) {
+      const containerWidth = containerElement.offsetWidth;
+      const cardWidth = 325; // Width of your service card, adjust as needed
+      const visibleCardsCount = Math.floor(containerWidth / cardWidth);
+      setVisibleCards(visibleCardsCount);
+    }
+  }, []);
 
   const handleNextCard = () => {
-    if (currentIndex < services.length - 1) {
+    if (currentIndex < services.length - visibleCards) {
       setCurrentIndex((prevIndex) => prevIndex + 1);
-      setNextArrowClicked(true);
     }
   };
 
   const handlePrevCard = () => {
-    if (nextArrowClicked || currentIndex > 0) {
-      setCurrentIndex((prevIndex) =>
-        prevIndex === 0 ? services.length - 1 : prevIndex - 1
-      );
-      setNextArrowClicked(false);
+    if (currentIndex > 0) {
+      setCurrentIndex((prevIndex) => prevIndex - 1);
     }
   };
-
-  useEffect(() => {
-    // You may want to add additional logic here when currentIndex changes.
-    // For example, you could trigger some side effects or update other parts of your UI.
-    console.log("Current index changed:", currentIndex);
-  }, [currentIndex]);
-
   return (
     <StyledServicesBox>
       <StyledControlBox>
@@ -326,22 +329,23 @@ const Services = () => {
           </Box>
 
           <Flex style={{ marginLeft: -20 }}>
-            <StyledArrowBox onClick={handlePrevCard} hidden={!nextArrowClicked}>
+            <StyledArrowBox
+              onClick={handlePrevCard}
+              hidden={currentIndex === 0}
+            >
               <ArrowLeftIcon size={40} fill={theme.color.secondary} />
             </StyledArrowBox>
-            {currentIndex < services.length - 1 && (
-              <StyledArrowBox onClick={handleNextCard}>
+
+            {currentIndex < services.length - visibleCards && (
+              <StyledArrowBox onClick={handleNextCard} hidden={!currentIndex}>
                 <ArrowRightIcon size={40} fill={theme.color.secondary} />
               </StyledArrowBox>
             )}
           </Flex>
         </Box>
       </StyledControlBox>
-      <StyledServiceCardsContainerWrapper>
-        <StyledServiceCardsContainer
-          currentIndex={currentIndex}
-          services={services}
-        >
+      <StyledServiceCardsContainerWrapper id="service-cards-container">
+        <StyledServiceCardsContainer currentIndex={currentIndex}>
           {services.map((service, index) => (
             <ServiceCard key={index} service={service} />
           ))}
@@ -394,19 +398,12 @@ const StyledControlBox = styled.div`
   width: 310px;
 `;
 
-interface StyledServiceCardsContainerProps {
-  currentIndex: number;
-  services: any[];
-}
-
 const StyledServiceCardsContainer = styled.div<StyledServiceCardsContainerProps>`
   display: flex;
   gap: 15px;
   height: 100%;
   box-sizing: content-box;
-  transform: translateX(
-    ${(props) => -props.currentIndex * (210 / props.services.length)}%
-  );
+  transform: translateX(${(props) => -props.currentIndex * (310 + 15)}px);
   transition: transform 0.3s ease-in-out;
 `;
 

@@ -6,7 +6,7 @@ import Flex from "../../atoms/Flex";
 import { theme } from "@/theme/constants";
 import { renderToStaticMarkup } from "react-dom/server";
 
-interface ServiceCardProps {
+export interface ServiceCardProps {
   service: {
     label: string;
     title: string;
