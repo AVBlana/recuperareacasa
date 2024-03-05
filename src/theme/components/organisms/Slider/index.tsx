@@ -26,13 +26,16 @@ const Slider = () => {
             alignItems: "center",
             gap: 30,
             paddingLeft: 80,
+            paddingRight: 80,
+            paddingTop: 100,
+            maxWidth: "75%",
           }}
         >
           <Box
             style={{
-              width: "75%",
               justifyContent: "center",
               alignItems: "center",
+              gap: 30,
             }}
           >
             <Text secondaryFont white style={{ fontSize: 100 }}>
