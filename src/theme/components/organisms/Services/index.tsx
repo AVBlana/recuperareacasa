@@ -16,6 +16,32 @@ const Services = () => {
   const services = [
     {
       label: "200 Ron",
+      title: "Terapie Manuală",
+      svg: "/assets/headPain.svg",
+      image: "/assets/serviciiTerapieManuala.jpg",
+      desc: (
+        <>
+          Echipa noastră de terapeuți experimentați integrează o gamă diversă de
+          tehnici manuale pentru a vă oferi o terapie holistică.
+          <br />
+          <br />
+          De la tehnici de chiropractică și streching, până la masaj terapeutic
+          și alte metode manuale avansate, abordăm individual nevoile
+          dumneavoastră.
+          <br />
+          <br />
+          Această combinație expertă de practici manuale contribuie la
+          ameliorarea durerilor, îmbunătățirea flexibilității și promovarea
+          stării generale de bine.
+          <br />
+          <br />
+          Descoperiți beneficiile unei terapii manuale comprehensive pentru
+          sănătatea și mobilitatea dumneavoastră.
+        </>
+      ),
+    },
+    {
+      label: "120 Ron",
       title: "Kinetoterapie de Recuperare",
       svg: "/assets/headPain.svg",
       image: "/assets/serviciiKinetoterapie.jpg",
@@ -41,7 +67,7 @@ const Services = () => {
       ),
     },
     {
-      label: "150 Ron",
+      label: "170 Ron",
       title: "Masaj Sportiv și de Recuperare",
       svg: "/assets/legPain.svg",
       image: "/assets/serviciiMasajSportiv.jpg",
@@ -155,7 +181,7 @@ const Services = () => {
       ),
     },
     {
-      label: "100 Ron",
+      label: "Inclus",
       title: "Evaluare Neuro-Musculo-Scheletală",
       svg: "/assets/headPain.svg",
       image: "/assets/planRecuperare1.jpg",
@@ -178,7 +204,7 @@ const Services = () => {
       ),
     },
     {
-      label: "100 Ron",
+      label: "Inclus",
       title: "Eliberare Fascială IATSM",
       svg: "/assets/headPain.svg",
       image: "/assets/serviciiEliberareFasciala.jpg",
@@ -202,7 +228,7 @@ const Services = () => {
       ),
     },
     {
-      label: "100 Ron",
+      label: "Inclus",
       title: "Cupping",
       svg: "/assets/headPain.svg",
       image: "/assets/serviciiCupping.jpg",
@@ -226,7 +252,7 @@ const Services = () => {
       ),
     },
     {
-      label: "100 Ron",
+      label: "Inclus",
       title: "Flossing",
       svg: "/assets/headPain.svg",
       image: "/assets/serviciiFlossing.jpg",
@@ -247,32 +273,6 @@ const Services = () => {
           Experimentați synergia dintre flossing și blade flow restriction
           pentru rezultate remarcabile în îmbunătățirea flexibilității și
           optimizarea performanțelor tale.
-        </>
-      ),
-    },
-    {
-      label: "100 Ron",
-      title: "Terapie Manuală",
-      svg: "/assets/headPain.svg",
-      image: "/assets/serviciiTerapieManuala.jpg",
-      desc: (
-        <>
-          Echipa noastră de terapeuți experimentați integrează o gamă diversă de
-          tehnici manuale pentru a vă oferi o terapie holistică.
-          <br />
-          <br />
-          De la tehnici de chiropractică și streching, până la masaj terapeutic
-          și alte metode manuale avansate, abordăm individual nevoile
-          dumneavoastră.
-          <br />
-          <br />
-          Această combinație expertă de practici manuale contribuie la
-          ameliorarea durerilor, îmbunătățirea flexibilității și promovarea
-          stării generale de bine.
-          <br />
-          <br />
-          Descoperiți beneficiile unei terapii manuale comprehensive pentru
-          sănătatea și mobilitatea dumneavoastră.
         </>
       ),
     },

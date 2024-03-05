@@ -7,7 +7,6 @@ import Flex from "../../atoms/Flex";
 import Box from "../../atoms/Box";
 import { CaretRIcon } from "../../molecules/Icons/CaretRight";
 import Link from "next/link";
-import YouTube from "react-youtube";
 import VideoBackground from "../../molecules/VideoBackground/indext";
 
 const Slider = () => {
@@ -26,25 +25,9 @@ const Slider = () => {
             justifyContent: "center",
             alignItems: "center",
             gap: 30,
+            paddingLeft: 80,
           }}
         >
-          <Flex
-            style={{
-              paddingLeft: 16,
-              paddingRight: 16,
-              paddingTop: 4,
-              paddingBottom: 4,
-              background: theme.color.primary,
-              borderRadius: 20,
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <Text white big secondaryFont>
-              Esti pe maini bune!
-            </Text>
-          </Flex>
-
           <Box
             style={{
               width: "75%",
@@ -76,29 +59,52 @@ const Slider = () => {
               asupra simptomelor tale!
             </Text>
           </Box>
-          <Link
-            href="https://www.youtube.com/watch?v=RBbyRBlLkMQ"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <Flex>
             <Flex
               style={{
-                background: theme.color.secondary,
                 paddingLeft: 16,
                 paddingRight: 16,
                 paddingTop: 8,
                 paddingBottom: 8,
-                borderRadius: 20,
-                gap: 10,
+                background: theme.color.primary,
+                borderBottomLeftRadius: 16,
+                borderTopLeftRadius: 16,
+
+                justifyContent: "center",
                 alignItems: "center",
+                maxWidth: "fit-content",
               }}
             >
-              <Text white big>
-                Vezi video de prezentare
+              <Text white big secondaryFont>
+                Esti pe maini bune!
               </Text>
-              <CaretRIcon size={16} fill={theme.color.white} />
             </Flex>
-          </Link>
+            <Link
+              href="https://www.youtube.com/watch?v=RBbyRBlLkMQ"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ maxWidth: "fit-content" }}
+            >
+              <Flex
+                style={{
+                  background: theme.color.secondary,
+                  paddingLeft: 16,
+                  paddingRight: 16,
+                  paddingTop: 8,
+                  paddingBottom: 8,
+                  borderBottomRightRadius: 16,
+                  borderTopRightRadius: 16,
+                  gap: 10,
+                  alignItems: "center",
+                }}
+              >
+                <Text white big secondaryFont>
+                  Vezi video de prezentare
+                </Text>
+                <CaretRIcon size={16} fill={theme.color.white} />
+              </Flex>
+            </Link>
+          </Flex>
         </Box>
       </ContentContainer>
     </VideoBackgroundWrapper>
