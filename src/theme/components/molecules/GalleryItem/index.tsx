@@ -5,6 +5,7 @@ import { Text } from "../..";
 import Modal from "../Modal";
 import { theme } from "@/theme/constants";
 import YouTube from "react-youtube";
+import Image from "../../atoms/Image";
 
 const GalleryItem = ({
   itemsWithSelectedLabelCount,
@@ -81,11 +82,11 @@ const GalleryItem = ({
       {/* Render posterUrl if modal is closed, otherwise render video */}
       {!isModalVisible ? (
         item.type === "image" ? (
-          <img
+          <Image
             width={600}
             height={600}
             alt=""
-            src={item.url || item.posterUrl}
+            src={item.url || item.posterUrl || ""}
             style={{
               objectFit: "cover",
               width: "100%",
@@ -93,11 +94,11 @@ const GalleryItem = ({
             }}
           />
         ) : (
-          <img
+          <Image
             width={600}
             height={600}
             alt=""
-            src={item.posterUrl}
+            src={item.posterUrl || ""}
             style={{
               objectFit: "cover",
               width: "100%",
@@ -110,7 +111,7 @@ const GalleryItem = ({
       <Modal onClose={handleModalToggle} isVisible={isModalVisible}>
         <Box
           style={{
-            width: 600,
+            // width: 600,
             overflowX: "hidden",
             background: theme.color.white,
           }}
@@ -120,19 +121,19 @@ const GalleryItem = ({
               <YouTube
                 videoId={item.url}
                 opts={{
-                  width: "600",
-                  height: "400",
+                  width: "1080",
+                  height: "720",
                   playerVars: {
                     controls: 1,
                   },
                 }}
               />
             ) : (
-              <img
+              <Image
                 width={600}
                 height={600}
                 alt=""
-                src={item.url || item.posterUrl}
+                src={item.url || item.posterUrl || ""}
                 style={{
                   objectFit: "cover",
                   width: "100%",
@@ -142,10 +143,12 @@ const GalleryItem = ({
             )
           ) : (
             // Show a loading state, placeholder, or handle differently when the modal is not open
-            <div>Loading...</div>
+            <Text primary big>
+              Loading...
+            </Text>
           )}
 
-          <Box style={{ flex: 1, padding: 20 }}>
+          <Box style={{ flex: 1, padding: 20, gap: 20 }}>
             <Text medium bold style={{ color: theme.color.secondary }}>
               {item.label}
             </Text>

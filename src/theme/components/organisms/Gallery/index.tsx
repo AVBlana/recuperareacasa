@@ -143,7 +143,7 @@ const Gallery = () => {
     {
       type: "video",
       posterUrl: "/assets/exCervical.png",
-      url: "2wUhPPRv9_k&t",
+      url: "2wUhPPRv9_k",
       title: "Exerciții pentru Durerea Cervicală",
       label: "Exerciții",
     },
