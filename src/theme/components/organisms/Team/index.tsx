@@ -10,7 +10,7 @@ const Team = () => {
   const teamMember = {
     name: "Secașiu Alexandru Valentin",
     title: "Fiziokinetoterapeut",
-    imageSrc: "/assets/pozaAvatar.jpg",
+    imageSrc: "/assets/avatar.png",
     skills: [
       "Absolvent al Universitatii Transilvania Brasov - Kinetoterapie",
       "Absolvent al Orthopedic Manual Therapy Romania (OMTRO)",

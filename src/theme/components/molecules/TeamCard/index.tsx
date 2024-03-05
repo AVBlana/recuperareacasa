@@ -71,7 +71,7 @@ const TeamCard: React.FC<TeamHeroProps> = ({
             alt={""}
             width={400}
             height={500}
-            style={{ objectFit: "cover", borderRadius: 20 }}
+            style={{ objectFit: "contain", borderRadius: 20 }}
           />
         </Box>
         <Box style={{ alignItems: "center" }}>
