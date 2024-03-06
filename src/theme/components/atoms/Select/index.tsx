@@ -28,7 +28,7 @@ export const DynamicSelect = <DataType,>({
       onValueChange(selectedValue, item!);
       setIsOpen(false);
     },
-    [items]
+    [items, onValueChange, valueExtractor]
   );
 
   const [isOpen, setIsOpen] = useState(false);
