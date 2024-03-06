@@ -29,9 +29,11 @@ const StyledNavItem = styled.div<StyledNavItemProps>`
   height: 100%;
   display: flex;
   align-items: ${({ alignLeft }) => (alignLeft ? "flex-start" : "center")};
+  transition: transform 0.1s ease;
 
   &:hover ${Text} {
     color: ${({ theme }) => theme.color.secondary};
+    transform: scale(1.5);
   }
 `;
 

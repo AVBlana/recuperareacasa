@@ -8,7 +8,7 @@ import { theme } from "@/theme/constants";
 
 const Team = () => {
   const teamMember = {
-    name: "Secașiu Alexandru Valentin",
+    name: "Secasiu Alexandru Valentin",
     title: "Fiziokinetoterapeut",
     imageSrc: "/assets/avatar.png",
     skills: [

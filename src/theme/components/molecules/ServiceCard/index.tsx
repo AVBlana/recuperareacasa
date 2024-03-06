@@ -33,7 +33,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
           zIndex: 2,
         }}
       >
-        <Box style={{ maxWidth: 120 }}>
+        <Box style={{ maxWidth: 150 }}>
           <Text semiBold style={{ color: theme.color.secondary }}>
             {service.label}
           </Text>

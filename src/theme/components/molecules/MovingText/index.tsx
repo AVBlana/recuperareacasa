@@ -31,12 +31,13 @@ const MovingText: React.FC = () => {
 
 const Container = styled.div`
   overflow: hidden;
-  width: 100%; /* Adjust as needed */
+  width: 100%;
+  padding-bottom: 100px;
 `;
 
 const TextComponent = styled.div`
   white-space: nowrap;
-  display: inline-block; /* Make the text and logos inline */
+  display: inline-block;
   animation: ${({ theme }) =>
     theme &&
     css`
@@ -48,7 +49,7 @@ const TextComponent = styled.div`
 `;
 
 const TextSpan = styled.span`
-  position: relative; /* Ensure relative positioning for child elements */
+  position: relative;
   margin-right: 160px; /* Adjust the spacing between text and logos */
 `;
 

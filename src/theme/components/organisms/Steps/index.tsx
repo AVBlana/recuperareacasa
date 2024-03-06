@@ -116,6 +116,7 @@ const Steps = () => {
           paddingBottom: 100,
           paddingLeft: 80,
           paddingRight: 80,
+          marginTop: -55,
           maxWidth: 1440,
         }}
       >

@@ -129,24 +129,10 @@ const Header = () => {
             />
           </Flex>
 
-          <Flex
-            style={{
-              gap: theme.spacings.tiny,
-              alignItems: "center",
-              color: theme.color.white,
-              background: theme.color.secondary,
-              paddingTop: theme.spacings.medium,
-              paddingBottom: theme.spacings.medium,
-              paddingLeft: theme.spacings.bigger,
-              paddingRight: theme.spacings.bigger,
-              borderRadius: 20,
-              cursor: "pointer",
-            }}
-            onClick={handleOpenModal}
-          >
+          <HeaderButton onClick={handleOpenModal}>
             Consultație Online
             <CaretRIcon size={16} fill="white" />
-          </Flex>
+          </HeaderButton>
           <FullScreenModal
             key={isModalVisible ? "header-modal-key" : "header-no-modal-key"}
             isVisible={isModalVisible}
@@ -163,6 +149,34 @@ const Header = () => {
     </>
   );
 };
+
+const HeaderButton = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: ${({ theme }) => theme.spacings.tiny}px;
+  align-items: center;
+  color: ${({ theme }) => theme.color.white};
+  background: ${({ theme }) => theme.color.secondary};
+  padding-top: ${({ theme }) => theme.spacings.medium}px;
+  padding-bottom: ${({ theme }) => theme.spacings.medium}px;
+  padding-left: ${({ theme }) => theme.spacings.bigger}px;
+  padding-right: ${({ theme }) => theme.spacings.bigger}px;
+  border-radius: 20px;
+  cursor: pointer;
+  border-style: solid;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    background: ${({ theme }) => theme.color.white};
+    color: ${({ theme }) => theme.color.secondary};
+    border-color: ${({ theme }) => theme.color.secondary};
+    transform: scale(1.1);
+    svg {
+      fill: ${({ theme }) => theme.color.secondary};
+    }
+  }
+`;
 
 const IconBox = styled.div`
   display: flex;

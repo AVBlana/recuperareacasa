@@ -17,7 +17,7 @@ const Services = () => {
     {
       label: "200 Ron",
       title: "Terapie Manuală",
-      svg: "/assets/headPain.svg",
+      svg: "/assets/manualTherapy2.svg",
       image: "/assets/serviciiTerapieManuala.jpg",
       desc: (
         <>
@@ -43,7 +43,7 @@ const Services = () => {
     {
       label: "120 Ron",
       title: "Kinetoterapie de Recuperare",
-      svg: "/assets/headPain.svg",
+      svg: "/assets/kineto.svg",
       image: "/assets/serviciiKinetoterapie.jpg",
       desc: (
         <>
@@ -91,7 +91,7 @@ const Services = () => {
     {
       label: "150 Ron",
       title: "Masaj de Relaxare",
-      svg: "/assets/torsoPain.svg",
+      svg: "/assets/massage.svg",
       image: "/assets/serviciiMasajDeRelaxare.jpg",
       desc: (
         <>
@@ -113,7 +113,7 @@ const Services = () => {
     {
       label: "30 Ron",
       title: "Aplicare Kinesio Tape",
-      svg: "/assets/headPain.svg",
+      svg: "/assets/tape.svg",
       image: "/assets/serviciiKinesioTape.jpg",
       desc: (
         <>
@@ -135,7 +135,7 @@ const Services = () => {
     {
       label: "30 Ron",
       title: "Electroterapie",
-      svg: "/assets/headPain.svg",
+      svg: "/assets/electrotherapy.svg",
       image: "/assets/serviciiElectroTerapie.jpg",
       desc: (
         <>
@@ -157,7 +157,7 @@ const Services = () => {
     {
       label: "100 Ron",
       title: "Dry Needling",
-      svg: "/assets/headPain.svg",
+      svg: "/assets/accupuncture.svg",
       image: "/assets/serviciiDryNeedling.jpg",
       desc: (
         <>
@@ -183,7 +183,7 @@ const Services = () => {
     {
       label: "Inclus",
       title: "Evaluare Neuro-Musculo-Scheletală",
-      svg: "/assets/headPain.svg",
+      svg: "/assets/bodyScan2.svg",
       image: "/assets/planRecuperare1.jpg",
       desc: (
         <>
@@ -206,7 +206,7 @@ const Services = () => {
     {
       label: "Inclus",
       title: "Eliberare Fascială IATSM",
-      svg: "/assets/headPain.svg",
+      svg: "/assets/fascial.svg",
       image: "/assets/serviciiEliberareFasciala.jpg",
       desc: (
         <>
@@ -230,7 +230,7 @@ const Services = () => {
     {
       label: "Inclus",
       title: "Cupping",
-      svg: "/assets/headPain.svg",
+      svg: "/assets/cupping2.svg",
       image: "/assets/serviciiCupping.jpg",
       desc: (
         <>
@@ -254,7 +254,7 @@ const Services = () => {
     {
       label: "Inclus",
       title: "Flossing",
-      svg: "/assets/headPain.svg",
+      svg: "/assets/flossing.svg",
       image: "/assets/serviciiFlossing.jpg",
       desc: (
         <>

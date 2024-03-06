@@ -65,10 +65,10 @@ const Slider = () => {
           <Flex>
             <Flex
               style={{
-                paddingLeft: 16,
-                paddingRight: 16,
-                paddingTop: 8,
-                paddingBottom: 8,
+                paddingLeft: theme.spacings.bigger,
+                paddingRight: theme.spacings.bigger,
+                paddingTop: theme.spacings.medium,
+                paddingBottom: theme.spacings.medium,
                 background: theme.color.primary,
                 borderBottomLeftRadius: 16,
                 borderTopLeftRadius: 16,
@@ -88,24 +88,10 @@ const Slider = () => {
               rel="noopener noreferrer"
               style={{ maxWidth: "fit-content" }}
             >
-              <Flex
-                style={{
-                  background: theme.color.secondary,
-                  paddingLeft: 16,
-                  paddingRight: 16,
-                  paddingTop: 8,
-                  paddingBottom: 8,
-                  borderBottomRightRadius: 16,
-                  borderTopRightRadius: 16,
-                  gap: 10,
-                  alignItems: "center",
-                }}
-              >
-                <Text white big secondaryFont>
-                  Vezi video de prezentare
-                </Text>
+              <SliderButton>
+                Vezi video de prezentare
                 <CaretRIcon size={16} fill={theme.color.white} />
-              </Flex>
+              </SliderButton>
             </Link>
           </Flex>
         </Box>
@@ -113,6 +99,34 @@ const Slider = () => {
     </VideoBackgroundWrapper>
   );
 };
+
+const SliderButton = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: ${({ theme }) => theme.spacings.tiny}px;
+  align-items: center;
+  background: ${({ theme }) => theme.color.secondary};
+  padding-top: ${({ theme }) => theme.spacings.medium}px;
+  padding-bottom: ${({ theme }) => theme.spacings.medium}px;
+  padding-left: ${({ theme }) => theme.spacings.bigger}px;
+  padding-right: ${({ theme }) => theme.spacings.bigger}px;
+  cursor: pointer;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-style: solid;
+  border-color: ${({ theme }) => theme.color.primary};
+
+  &:hover {
+    background: ${({ theme }) => theme.color.white};
+    color: ${({ theme }) => theme.color.primary};
+    border-color: ${({ theme }) => theme.color.primary};
+
+    svg {
+      fill: ${({ theme }) => theme.color.primary};
+    }
+  }
+`;
 
 const GradientLayer = styled.div`
   position: absolute;
