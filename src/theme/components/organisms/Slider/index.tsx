@@ -1,26 +1,16 @@
-import React, { useState, useEffect, useContext } from "react";
-import styled, {
-  DefaultTheme,
-  ThemeContext,
-  ThemeProvider,
-  useTheme,
-} from "styled-components";
+import styled, { useTheme } from "styled-components";
 import { Text } from "../..";
 // import { theme } from "@/theme/constants";
-import { rgba } from "polished";
-import Flex from "../../atoms/Flex";
-import Box from "../../atoms/Box";
-import { CaretRIcon } from "../../molecules/Icons/CaretRight";
-import Link from "next/link";
-import VideoBackground from "../../molecules/VideoBackground/indext";
 import { useMedia } from "@/theme/hooks/useMedia";
+import Link from "next/link";
+import Box from "../../atoms/Box";
+import Flex from "../../atoms/Flex";
+import { CaretRIcon } from "../../molecules/Icons/CaretRight";
+import VideoBackground from "../../molecules/VideoBackground/indext";
 
 const Slider = () => {
   const theme = useTheme();
   const media = useMedia();
-
-  // const { theme } = useContext<DefaultTheme>(ThemeContext);
-  // console.warn(theme);
 
   return (
     <VideoBackgroundWrapper>

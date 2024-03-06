@@ -1,12 +1,11 @@
 "use client";
 
-import { ThemeProvider } from "../types/styled-components";
-import { theme } from "../theme/constants";
+import { AppProvider } from "./app";
 
 export const Store = ({
   children,
 }: {
   children: JSX.Element | JSX.Element[];
 }) => {
-  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+  return <AppProvider>{children}</AppProvider>;
 };

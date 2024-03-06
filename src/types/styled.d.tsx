@@ -41,9 +41,6 @@ declare module "styled-components" {
       small: string;
     };
     media: {
-      mobile: string;
-      tablet: string;
-      desktop: string;
       isDesktopOrLaptop: boolean;
       isBigScreen: boolean;
       isMobile: boolean;
@@ -54,7 +51,6 @@ declare module "styled-components" {
       isTabletOrMobileDevice: boolean;
       isPortrait: boolean;
       isRetina: boolean;
-      isMobileWeb: boolean;
     };
   }
 }

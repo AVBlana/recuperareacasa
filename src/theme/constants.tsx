@@ -40,10 +40,7 @@ export const theme: DefaultTheme = {
     small: "0px 2px 4px rgba(0, 0, 0, 0.1)",
   },
   media: {
-    mobile: "320px",
-    tablet: "1024px",
-    desktop: "1440px",
-    isDesktopOrLaptop: true,
+    isDesktopOrLaptop: false,
     isBigScreen: false,
     isMobile: false,
     isMobileTiny: false,
@@ -53,6 +50,5 @@ export const theme: DefaultTheme = {
     isTabletOrMobileDevice: false,
     isPortrait: false,
     isRetina: false,
-    isMobileWeb: false,
   },
 };
