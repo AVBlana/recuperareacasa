@@ -153,11 +153,10 @@ const Header = () => {
 };
 
 const StyledLogo = styled.div`
-transition: transform 0.3s ease;
-&:hover {
-  
-  transform: translateY(20px) scale(1.5);
- 
+  transition: transform 0.3s ease;
+  &:hover {
+    transform: translateY(20px) scale(1.5);
+  }
 `;
 
 const HeaderButton = styled.div`

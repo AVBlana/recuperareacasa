@@ -25,6 +25,7 @@
     "react-email": "^2.1.0",
     "react-player": "^2.14.1",
     "react-portal": "^4.2.2",
+    "react-responsive": "^9.0.2",
     "react-youtube": "^10.1.0",
     "react-youtube-background": "^1.0.0",
     "resend": "^0.16.0",

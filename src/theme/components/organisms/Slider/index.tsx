@@ -1,15 +1,27 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import React, { useState, useEffect, useContext } from "react";
+import styled, {
+  DefaultTheme,
+  ThemeContext,
+  ThemeProvider,
+  useTheme,
+} from "styled-components";
 import { Text } from "../..";
-import { theme } from "@/theme/constants";
+// import { theme } from "@/theme/constants";
 import { rgba } from "polished";
 import Flex from "../../atoms/Flex";
 import Box from "../../atoms/Box";
 import { CaretRIcon } from "../../molecules/Icons/CaretRight";
 import Link from "next/link";
 import VideoBackground from "../../molecules/VideoBackground/indext";
+import { useMedia } from "@/theme/hooks/useMedia";
 
 const Slider = () => {
+  const theme = useTheme();
+  const media = useMedia();
+
+  // const { theme } = useContext<DefaultTheme>(ThemeContext);
+  // console.warn(theme);
+
   return (
     <VideoBackgroundWrapper>
       <StyledVideoBG>
@@ -24,21 +36,25 @@ const Slider = () => {
             zIndex: 2,
             justifyContent: "center",
             alignItems: "center",
-            gap: 30,
-            paddingLeft: 80,
-            paddingRight: 80,
-            paddingTop: 100,
-            maxWidth: "75%",
+            gap: media.isMobile ? 10 : 30,
+            paddingLeft: media.isMobile ? 20 : 80,
+            paddingRight: media.isMobile ? 20 : 80,
+            paddingTop: media.isMobile ? 20 : 100,
+            maxWidth: media.isMobile ? "100%" : "75%",
           }}
         >
           <Box
             style={{
               justifyContent: "center",
               alignItems: "center",
-              gap: 30,
+              gap: media.isMobile ? 10 : 30,
             }}
           >
-            <Text secondaryFont white style={{ fontSize: 100 }}>
+            <Text
+              secondaryFont
+              white
+              style={{ fontSize: media.isMobile ? "24px" : "100px" }}
+            >
               Fizioterapie la tine acasa!
             </Text>
             <Text
@@ -50,6 +66,7 @@ const Slider = () => {
                 justifyContent: "center",
                 display: "flex",
                 textAlign: "center",
+                fontSize: media.isMobile ? theme.text.smaller : theme.text.big,
               }}
             >
               Bine ai venit pe platforma noastră dedicată recuperării la
@@ -65,6 +82,7 @@ const Slider = () => {
           <Flex>
             <Flex
               style={{
+                display: theme.media.isMobile ? "none" : "flex",
                 paddingLeft: theme.spacings.bigger,
                 paddingRight: theme.spacings.bigger,
                 paddingTop: theme.spacings.medium,

@@ -1,6 +1,6 @@
 import { DefaultTheme } from "styled-components";
 
-const theme: DefaultTheme = {
+export const theme: DefaultTheme = {
   color: {
     primary: "#2A5550",
     secondary: "#5BB286",
@@ -40,8 +40,9 @@ const theme: DefaultTheme = {
     small: "0px 2px 4px rgba(0, 0, 0, 0.1)",
   },
   media: {
-    tablet: "768px",
-    desktop: "1024px",
+    mobile: "320px",
+    tablet: "1024px",
+    desktop: "1440px",
     isDesktopOrLaptop: true,
     isBigScreen: false,
     isMobile: false,
@@ -55,5 +56,3 @@ const theme: DefaultTheme = {
     isMobileWeb: false,
   },
 };
-
-export { theme };

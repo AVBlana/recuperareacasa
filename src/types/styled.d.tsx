@@ -41,6 +41,7 @@ declare module "styled-components" {
       small: string;
     };
     media: {
+      mobile: string;
       tablet: string;
       desktop: string;
       isDesktopOrLaptop: boolean;
