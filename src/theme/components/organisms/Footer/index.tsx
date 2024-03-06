@@ -137,12 +137,14 @@ const Footer = () => {
             </Flex>
             <Box>
               <Link href={"/"}>
-                <Image
-                  width={200}
-                  height={200}
-                  src="/assets/logoRecuperareAcasa.png"
-                  alt=""
-                />
+                <StyledLogo>
+                  <Image
+                    width={200}
+                    height={200}
+                    src="/assets/logoRecuperareAcasa.png"
+                    alt=""
+                  />
+                </StyledLogo>
               </Link>
             </Box>
           </Flex>
@@ -166,6 +168,12 @@ const Footer = () => {
     </>
   );
 };
+
+const StyledLogo = styled.div`
+transition: transform 0.3s ease;
+&:hover {
+  transform: translateX(-20px) scale(1.3);
+`;
 
 const StyledSocialBox = styled.div`
   display: flex;

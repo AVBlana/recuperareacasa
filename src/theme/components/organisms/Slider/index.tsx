@@ -78,9 +78,7 @@ const Slider = () => {
                 maxWidth: "fit-content",
               }}
             >
-              <Text white big secondaryFont>
-                Esti pe maini bune!
-              </Text>
+              Esti pe maini bune!
             </Flex>
             <Link
               href="https://www.youtube.com/watch?v=RBbyRBlLkMQ"

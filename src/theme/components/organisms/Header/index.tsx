@@ -104,12 +104,14 @@ const Header = () => {
           }}
         >
           <Link href={"/"}>
-            <Image
-              width={70}
-              height={70}
-              src="/assets/logoRecuperareAcasa.png"
-              alt=""
-            />
+            <StyledLogo>
+              <Image
+                width={70}
+                height={70}
+                src="/assets/logoRecuperareAcasa.png"
+                alt=""
+              />
+            </StyledLogo>
           </Link>
 
           <Flex style={{ height: "100%" }}>
@@ -149,6 +151,14 @@ const Header = () => {
     </>
   );
 };
+
+const StyledLogo = styled.div`
+transition: transform 0.3s ease;
+&:hover {
+  
+  transform: translateY(20px) scale(1.5);
+ 
+`;
 
 const HeaderButton = styled.div`
   display: flex;

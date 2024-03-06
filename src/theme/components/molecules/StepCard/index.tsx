@@ -21,8 +21,8 @@ const StepCard = ({
       <StyledStepCard>
         <Box>
           <Image
-            width={250}
-            height={250}
+            width={300}
+            height={300}
             alt=""
             src={image}
             style={{

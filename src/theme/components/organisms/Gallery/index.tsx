@@ -180,7 +180,7 @@ const Gallery = () => {
             semiBold
             style={{ color: theme.color.secondary }}
           >
-            Povesti pentru pacienti
+            Recuperare Acasă
           </Text>
           <Text primary secondaryFont huge bolder>
             Galerie Foto Video
