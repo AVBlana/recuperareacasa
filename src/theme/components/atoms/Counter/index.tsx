@@ -60,12 +60,13 @@ const Counter: React.FC<CounterProps> = ({
 
 const StyledCounterBox = styled.div`
   display: flex;
+
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  gap: 16;
-  padding: 0 40px;
-  min-width: 270px;
+  gap: 16px;
+  padding: ${({ theme }) => (theme.media.isMobile ? "0 20px" : "0 40px")};
+  min-width: ${({ theme }) => (theme.media.isMobile ? "auto" : "270px")};
 `;
 
 const AnimatedNumber = styled.span<{ animate: boolean }>`
@@ -74,7 +75,7 @@ const AnimatedNumber = styled.span<{ animate: boolean }>`
     props.animate
       ? ({ theme }) => theme.color.primary
       : ({ theme }) => theme.color.secondary};
-  font-size: 100px;
+  font-size: ${({ theme }) => (theme.media.isMobile ? "50" : "100")}px;
   font-family: ${({ theme }) => theme.text.secondary};
 `;
 

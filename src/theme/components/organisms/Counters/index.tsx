@@ -51,7 +51,7 @@ const Counters = () => {
           >
             <Counter
               targetValue={8600}
-              title="Clienți fideli"
+              title="Clienti fideli"
               delay={3000}
               speed={0.1}
             />
@@ -64,11 +64,11 @@ const Counters = () => {
 
 const StyledCountersBox = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-wrap: ${({ theme }) => (theme.media.isMobile ? "wrap" : "nowrap")};
   justify-content: center;
-  padding: 100px 80px;
-  gap: 40;
+  padding: ${({ theme }) => (theme.media.isMobile ? "40px 0px" : "100px 80px")};
   max-width: 1440px;
+  gap: ${({ theme }) => (theme.media.isMobile ? "20px" : 0)};
 `;
 
 export default Counters;
