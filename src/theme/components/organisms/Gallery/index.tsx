@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
 import { Text } from "../..";
 import Box from "../../atoms/Box";
 import Flex from "../../atoms/Flex";
@@ -170,6 +170,8 @@ const Gallery = () => {
     }
   };
 
+  const theme = useTheme();
+
   return (
     <>
       <SectionBox id="galerie">
@@ -188,12 +190,12 @@ const Gallery = () => {
           <Flex
             style={{
               flexWrap: "wrap",
-              paddingLeft: 80,
-              paddingRight: 80,
+              paddingLeft: theme.media.isMobile ? 20 : 80,
+              paddingRight: theme.media.isMobile ? 20 : 80,
               gap: 10,
               justifyContent: "center",
-              paddingBottom: 40,
-              paddingTop: 24,
+              paddingBottom: theme.media.isMobile ? 20 : 40,
+              paddingTop: theme.media.isMobile ? 12 : 24,
               cursor: "pointer",
             }}
           >

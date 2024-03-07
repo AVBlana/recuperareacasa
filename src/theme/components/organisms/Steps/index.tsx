@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
 import { Text } from "../..";
 import Box from "../../atoms/Box";
 import StepCard from "../../molecules/StepCard";
@@ -108,19 +108,27 @@ const steps = [
   },
 ];
 const Steps = () => {
+  const theme = useTheme();
+
   return (
     <Box style={{ alignItems: "center", justifyContent: "center" }}>
       <Box
         style={{
-          gap: 80,
-          paddingBottom: 100,
-          paddingLeft: 80,
-          paddingRight: 80,
-          marginTop: -55,
+          gap: theme.media.isMobile ? 40 : 80,
+          paddingBottom: theme.media.isMobile ? 40 : 100,
+          paddingLeft: theme.media.isMobile ? 20 : 80,
+          paddingRight: theme.media.isMobile ? 20 : 80,
+          marginTop: theme.media.isMobile ? 0 : -55,
           maxWidth: 1440,
         }}
       >
-        <Box style={{ gap: 20, lineHeight: "140%" }}>
+        <Box
+          style={{
+            gap: 20,
+            lineHeight: "140%",
+            alignItems: theme.media.isMobile ? "center" : "start",
+          }}
+        >
           <Text secondaryFont primary huge>
             Care este procesul ?
           </Text>

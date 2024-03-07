@@ -50,7 +50,7 @@ const Counter: React.FC<CounterProps> = ({
         }`}
       </AnimatedNumber>
       <SvgIcon
-        size={24}
+        size={theme.media.isMobile ? 16 : 24}
         fill={theme.color.secondary}
         src="/assets/checkedSVG.svg"
       />
@@ -75,7 +75,7 @@ const AnimatedNumber = styled.span<{ animate: boolean }>`
     props.animate
       ? ({ theme }) => theme.color.primary
       : ({ theme }) => theme.color.secondary};
-  font-size: ${({ theme }) => (theme.media.isMobile ? "50" : "100")}px;
+  font-size: ${({ theme }) => (theme.media.isMobile ? "40" : "100")}px;
   font-family: ${({ theme }) => theme.text.secondary};
 `;
 

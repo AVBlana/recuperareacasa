@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
 import { theme } from "@/theme/constants";
 import { Text } from "..";
 
@@ -11,10 +11,19 @@ const FilterItem = ({
   onClick: () => void;
   selected: boolean;
 }) => {
+  const theme = useTheme();
   return (
     <>
       <StyledFilterItem onClick={onClick} selected={selected}>
-        <Text bigger primary semiBold>
+        <Text
+          primary
+          semiBold
+          style={{
+            fontSize: theme.media.isMobile
+              ? theme.text.smaller
+              : theme.text.bigger,
+          }}
+        >
           {label}
         </Text>
       </StyledFilterItem>
