@@ -3,7 +3,6 @@ import Gallery from "@/theme/components/organisms/Gallery";
 import Footer from "@/theme/components/organisms/Footer";
 import Header from "@/theme/components/organisms/Header";
 import Review from "@/theme/components/organisms/Review";
-import { theme } from "@/theme/constants";
 import styled, { useTheme } from "styled-components";
 import Slider from "@/theme/components/organisms/Slider";
 import Services from "@/theme/components/organisms/Services";
@@ -17,8 +16,15 @@ import Team from "@/theme/components/organisms/Team";
 import { StepsProvider } from "@/theme/components/organisms/StepsForm/context";
 
 export const HomeScreen = () => {
+  const theme = useTheme();
+
   return (
-    <Box style={{ paddingTop: 120, background: theme.color.white }}>
+    <Box
+      style={{
+        paddingTop: theme.media.isMobile ? 0 : 120,
+        background: theme.color.white,
+      }}
+    >
       <StepsProvider>
         <Header />
       </StepsProvider>

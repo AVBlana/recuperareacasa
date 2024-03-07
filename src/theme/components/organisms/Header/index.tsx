@@ -1,5 +1,5 @@
 import React, { useContext, useRef, useState } from "react";
-import { FbIcon, Text, YtIcon } from "../..";
+import { FbIcon, MenuIcon, SvgIcon, Text, YtIcon } from "../..";
 import Image from "../../atoms/Image";
 import styled, { useTheme } from "styled-components";
 import Button from "../../atoms/Button";
@@ -15,10 +15,15 @@ import FullScreenModal from "../../molecules/FullscreenModal";
 import StepsForm from "../StepsForm";
 import { StepsContext, StepsProvider } from "../StepsForm/context";
 import { WhatsappIcon } from "../../molecules/Icons/WhatsappIcon";
+import BurgerModal from "../../molecules/BurgerModal";
 
 const Header = () => {
   const { handleOpenModal, handleCloseModal, isModalVisible } =
     useContext(StepsContext);
+
+  const [isBurgerModalVisible, setBurgerModalVisible] = useState(false);
+
+  const [isBurgerMenuOpen, setBurgerMenuOpen] = useState(false);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -29,6 +34,16 @@ const Header = () => {
 
   const theme = useTheme();
 
+  const BurgerMenu = ({ onClick }: { onClick: () => void }) => (
+    <Box onClick={onClick}>
+      <MenuIcon size={20} stroke={theme.color.primary} />
+    </Box>
+  );
+
+  const handleBurgerMenu = () => {
+    setBurgerMenuOpen((prev) => !prev);
+  };
+
   return (
     <>
       <Box
@@ -36,6 +51,7 @@ const Header = () => {
       >
         <Flex
           style={{
+            display: theme.media.isMobile ? "none" : "flex",
             background: theme.color.primary,
             paddingLeft: 80,
             paddingRight: 80,
@@ -93,9 +109,9 @@ const Header = () => {
         </Flex>
         <Flex
           style={{
-            paddingLeft: 80,
-            paddingRight: 80,
-            height: 80,
+            paddingLeft: theme.media.isMobile ? 20 : 80,
+            paddingRight: theme.media.isMobile ? 20 : 80,
+            height: theme.media.isMobile ? "auto" : 80,
             background: theme.color.white,
             borderBottom: "solid",
             borderColor: theme.color.primary,
@@ -106,15 +122,20 @@ const Header = () => {
           <Link href={"/"}>
             <StyledLogo>
               <Image
-                width={70}
-                height={70}
+                width={theme.media.isMobile ? 50 : 70}
+                height={theme.media.isMobile ? 50 : 70}
                 src="/assets/logoRecuperareAcasa.png"
                 alt=""
               />
             </StyledLogo>
           </Link>
 
-          <Flex style={{ height: "100%" }}>
+          <Flex
+            style={{
+              height: "100%",
+              display: theme.media.isMobile ? "none" : "flex",
+            }}
+          >
             <NavItem label="Despre" onClick={() => scrollToSection("despre")} />
             <NavItem
               label="Servicii"
@@ -131,26 +152,160 @@ const Header = () => {
             />
           </Flex>
 
-          <HeaderButton onClick={handleOpenModal}>
-            Consultație Online
-            <CaretRIcon size={16} fill="white" />
-          </HeaderButton>
-          <FullScreenModal
-            key={isModalVisible ? "header-modal-key" : "header-no-modal-key"}
-            isVisible={isModalVisible}
-            onClose={handleCloseModal}
+          <Flex>
+            <HeaderButton onClick={handleOpenModal}>
+              Consultație Online
+              <CaretRIcon size={16} fill="white" />
+            </HeaderButton>
+            <FullScreenModal
+              key={isModalVisible ? "header-modal-key" : "header-no-modal-key"}
+              isVisible={isModalVisible}
+              onClose={handleCloseModal}
+            >
+              {isModalVisible && (
+                <StepsProvider>
+                  <StepsForm onClose={handleCloseModal} />
+                </StepsProvider>
+              )}
+            </FullScreenModal>
+
+            <MiniHeaderButton onClick={handleOpenModal}>
+              <Text small white>
+                Consultație
+              </Text>
+            </MiniHeaderButton>
+
+            <Flex
+              style={{
+                display: theme.media.isMobile ? "flex" : "none",
+                justifyContent: "space-between",
+                alignItems: "center",
+                padding: 10,
+                border: "solid",
+                borderWidth: 2,
+                borderTopRightRadius: 10,
+                borderBottomRightRadius: 10,
+                borderColor: theme.color.secondary,
+                zIndex: 1000,
+              }}
+            >
+              <BurgerMenu onClick={handleBurgerMenu} />
+            </Flex>
+          </Flex>
+
+          <BurgerModal
+            key={
+              isBurgerModalVisible ? "header-modal-key" : "header-no-modal-key"
+            }
+            isVisible={isBurgerMenuOpen}
+            onClose={() => setBurgerMenuOpen(false)}
           >
-            {isModalVisible && (
-              <StepsProvider>
-                <StepsForm onClose={handleCloseModal} />
-              </StepsProvider>
-            )}
-          </FullScreenModal>
+            <Flex
+              style={{
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                height: "100%",
+                gap: theme.spacings.medium,
+              }}
+            >
+              <NavItem
+                label="Despre"
+                onClick={() => scrollToSection("despre")}
+              />
+              <NavItem
+                label="Servicii"
+                onClick={() => scrollToSection("servicii")}
+              />
+              <NavItem
+                label="Echipa"
+                onClick={() => scrollToSection("echipa")}
+              />
+              <NavItem
+                label="Galerie"
+                onClick={() => scrollToSection("galerie")}
+              />
+              <NavItem
+                label="Contact"
+                onClick={() => scrollToSection("contact")}
+              />
+
+              <Box
+                style={{
+                  justifyContent: "center",
+                  alignItems: "center",
+                  paddingTop: 16,
+                }}
+              >
+                <Flex>
+                  <Link href={"https://wa.me/+40727860759"}>
+                    <IconBox>
+                      <WhatsappIcon
+                        size={16}
+                        fill={theme.color.primary}
+                        overrideFillColor={theme.color.white}
+                      />
+                    </IconBox>
+                  </Link>
+                  <Link href={""}>
+                    <IconBox>
+                      <FbIcon size={16} fill={theme.color.primary} />
+                    </IconBox>
+                  </Link>
+                  <Link href={"https://www.youtube.com/@RecuperareAcasa"}>
+                    <IconBox>
+                      <YtIcon size={16} fill={theme.color.primary} />
+                    </IconBox>
+                  </Link>
+                </Flex>
+                <Link href="phone:+40 727 860 759">
+                  <Flex style={{ alignItems: "center" }}>
+                    <IconBox>
+                      <PhoneIcon size={16} fill={theme.color.primary} />
+                    </IconBox>
+                    <Text small semiBold primary>
+                      +40 727 860 759
+                    </Text>
+                  </Flex>
+                </Link>
+                <Link href="mailto:info@recuperareacasa.ro">
+                  <Flex style={{ alignItems: "center" }}>
+                    <IconBox>
+                      <MailIcon size={16} fill={theme.color.primary} />
+                    </IconBox>
+                    <Flex>
+                      <Text small semiBold primary>
+                        info@recuperareacasa.ro
+                      </Text>
+                    </Flex>
+                  </Flex>
+                </Link>
+              </Box>
+            </Flex>
+          </BurgerModal>
         </Flex>
       </Box>
     </>
   );
 };
+
+const MiniHeaderButton = styled.div`
+  display: ${({ theme }) => (theme.media.isMobile ? "flex" : "none")};
+  flex-direction: row;
+  justify-content: center;
+  font-size: ${({ theme }) => theme.text.small}px;
+  gap: ${({ theme }) => theme.spacings.tiny}px;
+  align-items: center;
+  color: ${({ theme }) => theme.color.white};
+  background: ${({ theme }) => theme.color.secondary};
+  padding-top: ${({ theme }) => theme.spacings.tiny}px;
+  padding-bottom: ${({ theme }) => theme.spacings.tiny}px;
+  padding-left: ${({ theme }) => theme.spacings.medium}px;
+  padding-right: ${({ theme }) => theme.spacings.medium}px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  cursor: pointer;
+`;
 
 const StyledLogo = styled.div`
   transition: transform 0.3s ease;
@@ -160,7 +315,7 @@ const StyledLogo = styled.div`
 `;
 
 const HeaderButton = styled.div`
-  display: flex;
+  display: ${({ theme }) => (theme.media.isMobile ? "none" : "flex")};
   flex-direction: row;
   justify-content: center;
   gap: ${({ theme }) => theme.spacings.tiny}px;

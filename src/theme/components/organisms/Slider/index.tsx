@@ -1,4 +1,4 @@
-import styled, { useTheme } from "styled-components";
+import styled, { css, useTheme } from "styled-components";
 import { Text } from "../..";
 // import { theme } from "@/theme/constants";
 import { useMedia } from "@/theme/hooks/useMedia";
@@ -7,10 +7,10 @@ import Box from "../../atoms/Box";
 import Flex from "../../atoms/Flex";
 import { CaretRIcon } from "../../molecules/Icons/CaretRight";
 import VideoBackground from "../../molecules/VideoBackground/indext";
+import { rgba } from "polished";
 
 const Slider = () => {
   const theme = useTheme();
-  const media = useMedia();
 
   return (
     <VideoBackgroundWrapper>
@@ -26,24 +26,24 @@ const Slider = () => {
             zIndex: 2,
             justifyContent: "center",
             alignItems: "center",
-            gap: media.isMobile ? 10 : 30,
-            paddingLeft: media.isMobile ? 20 : 80,
-            paddingRight: media.isMobile ? 20 : 80,
-            paddingTop: media.isMobile ? 20 : 100,
-            maxWidth: media.isMobile ? "100%" : "75%",
+            gap: theme.media.isMobile ? 10 : 30,
+            paddingLeft: theme.media.isMobile ? 20 : 80,
+            paddingRight: theme.media.isMobile ? 20 : 80,
+            paddingTop: theme.media.isMobile ? 20 : 100,
+            maxWidth: theme.media.isMobile ? "100%" : "75%",
           }}
         >
           <Box
             style={{
               justifyContent: "center",
               alignItems: "center",
-              gap: media.isMobile ? 10 : 30,
+              gap: theme.media.isMobile ? 10 : 30,
             }}
           >
             <Text
               secondaryFont
               white
-              style={{ fontSize: media.isMobile ? "24px" : "100px" }}
+              style={{ fontSize: theme.media.isMobile ? "24px" : "100px" }}
             >
               Fizioterapie la tine acasa!
             </Text>
@@ -56,7 +56,9 @@ const Slider = () => {
                 justifyContent: "center",
                 display: "flex",
                 textAlign: "center",
-                fontSize: media.isMobile ? theme.text.smaller : theme.text.big,
+                fontSize: theme.media.isMobile
+                  ? theme.text.smallest
+                  : theme.text.big,
               }}
             >
               Bine ai venit pe platforma noastră dedicată recuperării la
@@ -78,8 +80,8 @@ const Slider = () => {
                 paddingTop: theme.spacings.medium,
                 paddingBottom: theme.spacings.medium,
                 background: theme.color.primary,
-                borderBottomLeftRadius: 16,
-                borderTopLeftRadius: 16,
+                borderBottomLeftRadius: theme.spacings.big,
+                borderTopLeftRadius: theme.spacings.big,
 
                 justifyContent: "center",
                 alignItems: "center",
@@ -96,7 +98,14 @@ const Slider = () => {
             >
               <SliderButton>
                 Vezi video de prezentare
-                <CaretRIcon size={16} fill={theme.color.white} />
+                <CaretRIcon
+                  size={
+                    theme.media.isMobile
+                      ? theme.spacings.smaller
+                      : theme.spacings.medium
+                  }
+                  fill={theme.color.white}
+                />
               </SliderButton>
             </Link>
           </Flex>
@@ -113,15 +122,33 @@ const SliderButton = styled.div`
   gap: ${({ theme }) => theme.spacings.tiny}px;
   align-items: center;
   background: ${({ theme }) => theme.color.secondary};
-  padding-top: ${({ theme }) => theme.spacings.medium}px;
-  padding-bottom: ${({ theme }) => theme.spacings.medium}px;
-  padding-left: ${({ theme }) => theme.spacings.bigger}px;
-  padding-right: ${({ theme }) => theme.spacings.bigger}px;
   cursor: pointer;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
+  border-top-right-radius: ${({ theme }) => theme.spacings.big}px;
+  border-bottom-right-radius: ${({ theme }) => theme.spacings.big}px;
   border-style: solid;
   border-color: ${({ theme }) => theme.color.primary};
+
+  ${({ theme }) => {
+    if (theme.media.isMobile) {
+      return css`
+        font-size: ${theme.text.smaller}px;
+        border-top-left-radius: ${theme.spacings.big}px;
+        border-bottom-left-radius: ${theme.spacings.big}px;
+        padding-top: ${theme.spacings.tiny}px;
+        padding-bottom: ${theme.spacings.tiny}px;
+        padding-left: ${theme.spacings.medium}px;
+        padding-right: ${theme.spacings.medium}px;
+      `;
+    } else {
+      return css`
+        font-size: ${theme.text.bigger}px;
+        padding-top: ${theme.spacings.medium}px;
+        padding-bottom: ${theme.spacings.medium}px;
+        padding-left: ${theme.spacings.big}px;
+        padding-right: ${theme.spacings.big}px;
+      `;
+    }
+  }}
 
   &:hover {
     background: ${({ theme }) => theme.color.white};
@@ -140,13 +167,14 @@ const GradientLayer = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: ${({ theme }) =>
+    theme.media.isMobile ? rgba(0, 0, 0, 0.6) : rgba(0, 0, 0, 0.4)};
   z-index: 1;
 `;
 
 const VideoBackgroundWrapper = styled.div`
   position: relative;
-  height: 100vh;
+  height: ${({ theme }) => (theme.media.isMobile ? "82vh" : "100vh")};
   width: 100%;
   overflow: hidden;
 `;

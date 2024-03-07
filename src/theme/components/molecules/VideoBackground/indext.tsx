@@ -1,9 +1,12 @@
+import { useMedia } from "@/theme/hooks/useMedia";
 import React, { useEffect, useRef } from "react";
 import YouTube from "react-youtube";
 import styled from "styled-components";
 
 const VideoBackground: React.FC = () => {
-  const videoSRC = "RBbyRBlLkMQ"; // Only include the video ID
+  const media = useMedia();
+
+  const videoSRC = "RBbyRBlLkMQ";
 
   const opts = {
     width: "110%",
@@ -18,12 +21,10 @@ const VideoBackground: React.FC = () => {
   };
 
   const onReady = (event: any) => {
-    // access to player in all event handlers via event.target
     event.target.playVideo();
   };
 
   const onEnd = (event: any) => {
-    // Restart the video when it ends
     event.target.seekTo(0);
     event.target.playVideo();
   };
@@ -34,7 +35,7 @@ const VideoBackground: React.FC = () => {
       opts={opts}
       onReady={onReady}
       onEnd={onEnd}
-      style={{ height: "150vh" }}
+      style={{ height: media.isMobile ? 500 : "150vh" }}
     />
   );
 };

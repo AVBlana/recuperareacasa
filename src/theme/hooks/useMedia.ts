@@ -1,4 +1,5 @@
 import { useMediaQuery } from "react-responsive";
+import { useTheme } from "styled-components";
 
 export const useMedia = () => {
   const isDesktopOrLaptop = useMediaQuery({

@@ -7,7 +7,7 @@ const AppContext = createContext({} as {});
 
 function useApp() {
   const Media = useMedia();
-  const Theme = { ...theme, Media };
+  const Theme = { ...theme, media: Media };
 
   return {
     Media,
@@ -20,7 +20,7 @@ const AppProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <AppContext.Provider value={value}>
-      <ThemeProvider theme={value.Theme}>{children}</ThemeProvider>;
+      <ThemeProvider theme={value.Theme}>{children}</ThemeProvider>
     </AppContext.Provider>
   );
 };
