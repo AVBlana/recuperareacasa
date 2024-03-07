@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
 import { SvgIcon, Text } from "../..";
 import Flex from "../../atoms/Flex";
 import Box from "../../atoms/Box";
@@ -13,6 +13,8 @@ const StyledSvgIcon = styled(SvgIcon)`
 `;
 
 const CTA = () => {
+  const theme = useTheme();
+
   const { handleOpenModal, handleCloseModal, isModalVisible } =
     useContext(StepsContext);
 
@@ -33,7 +35,10 @@ const CTA = () => {
                 zIndex: 2,
               }}
             ></Button>
-            <StyledSvgIcon size={250} src="/assets/CTAtext.svg" />
+            <StyledSvgIcon
+              size={theme.media.isMobile ? 100 : 250}
+              src="/assets/CTAtext.svg"
+            />
             <FullScreenModal
               key={isModalVisible ? "cta-modal-key" : "cta-no-modal-key"}
               isVisible={isModalVisible}
@@ -47,18 +52,28 @@ const CTA = () => {
             </FullScreenModal>
             <Box>
               <Text
-                huge
                 white
                 secondaryFont
-                style={{ textAlign: "right", lineHeight: "140%" }}
+                style={{
+                  textAlign: "right",
+                  lineHeight: "140%",
+                  fontSize: theme.media.isMobile
+                    ? theme.text.medium
+                    : theme.text.huge,
+                }}
               >
                 Ne pasă de starea ta de bine !
               </Text>
               <Text
-                huge
                 white
                 secondaryFont
-                style={{ textAlign: "right", lineHeight: "140%" }}
+                style={{
+                  textAlign: "right",
+                  lineHeight: "140%",
+                  fontSize: theme.media.isMobile
+                    ? theme.text.medium
+                    : theme.text.huge,
+                }}
               >
                 Poți face o evaluare online gratuită !
               </Text>
@@ -77,19 +92,19 @@ const StyledCtaBox = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 0 80px;
+  padding: ${({ theme }) => (theme.media.isMobile ? "0 20px" : "0 80px")};
   z-index: 3;
 
   &:hover {
     ${StyledSvgIcon} {
-      transform: scale(1.5) rotate(20deg); /* Increase the scale and add a 20-degree rotation on hover */
+      transform: scale(1.5) rotate(20deg);
     }
   }
 `;
 
 const StyledCtaContainer = styled.div`
   position: relative;
-  height: 300px;
+  height: ${({ theme }) => (theme.media.isMobile ? "150" : "300")}px;
   cursor: pointer;
 `;
 
