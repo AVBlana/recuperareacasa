@@ -14,6 +14,7 @@
     "lint:typescript"
   ],
   "dependencies": {
+    "@emotion/is-prop-valid": "^1.2.2",
     "@types/react-portal": "^4.0.7",
     "dotenv": "^16.4.5",
     "git-filter-repo": "^0.0.30",
