@@ -103,7 +103,7 @@ const StyledImageBox = styled.div`
   right: 0;
   bottom: 0;
   background-image: url(./assets/planRecuperare1.jpg);
-  background-size: giut;
+  background-size: cover;
   background-position: center;
   z-index: 0;
 `;

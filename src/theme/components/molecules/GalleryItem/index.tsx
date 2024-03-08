@@ -67,13 +67,7 @@ const GalleryItem = ({
             <Text medium bold style={{ color: theme.color.secondary }}>
               {item.label}
             </Text>
-            <Text
-              white
-              big
-              semiBold
-              style={{ height: 70 }}
-              textOverflow="ellipsis"
-            >
+            <Text white big semiBold style={{ height: 70 }}>
               {item.title}
             </Text>
           </Box>
@@ -153,7 +147,7 @@ const GalleryItem = ({
             <Text medium bold style={{ color: theme.color.secondary }}>
               {item.label}
             </Text>
-            <Text big semiBold style={{ height: 70 }} textOverflow="ellipsis">
+            <Text big semiBold style={{ height: 70 }}>
               {item.title}
             </Text>
           </Box>
