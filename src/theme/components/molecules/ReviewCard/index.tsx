@@ -1,7 +1,6 @@
 // ReviewCard.tsx
 import React from "react";
-import styled from "styled-components";
-import { theme } from "@/theme/constants";
+import styled, { useTheme } from "styled-components";
 import { Text } from "../..";
 import Box from "../../atoms/Box";
 import Flex from "../../atoms/Flex";
@@ -26,6 +25,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
   onPrevReview,
   onNextReview,
 }) => {
+  const theme = useTheme();
   return (
     <StyledCardBox>
       <Flex style={{ gap: 8 }}>
@@ -39,15 +39,29 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
           />
         ))}
       </Flex>
-      <Text white biggest style={{ fontStyle: "italic" }}>
+      <Text
+        white
+        style={{
+          fontStyle: "italic",
+          fontSize: theme.media.isMobile
+            ? theme.text.medium
+            : theme.text.biggest,
+        }}
+      >
         {review.text}
       </Text>
-      <Flex style={{ justifyContent: "space-between" }}>
+      <Flex
+        style={{
+          justifyContent: "space-between",
+          flexDirection: theme.media.isMobile ? "column" : "row",
+          gap: theme.media.isMobile ? 60 : 0,
+        }}
+      >
         <Flex style={{ alignItems: "center", gap: theme.spacings.medium }}>
           <Box>
             <Image
-              width={80}
-              height={80}
+              width={theme.media.isMobile ? 50 : 80}
+              height={theme.media.isMobile ? 50 : 80}
               src="/assets/review-bg.jpg"
               alt=""
               style={{
@@ -84,8 +98,8 @@ const StyledCardBox = styled.div`
   background: rgba(255, 255, 0, 0);
   display: flex;
   flex-direction: column;
-  gap: 60px;
-  width: 550px;
+  gap: ${({ theme }) => (theme.media.isMobile ? 30 : 60)}px;
+  max-width: 550px;
 `;
 
 const StyledArrowBox = styled.div`

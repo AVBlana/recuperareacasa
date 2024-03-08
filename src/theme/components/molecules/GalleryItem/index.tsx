@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled, { css } from "styled-components";
+import styled, { css, useTheme } from "styled-components";
 import Box from "../../atoms/Box";
 import { Text } from "../..";
 import Modal from "../Modal";
@@ -20,6 +20,7 @@ const GalleryItem = ({
   };
   itemsWithSelectedLabelCount: number;
 }) => {
+  const theme = useTheme();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -46,8 +47,8 @@ const GalleryItem = ({
       style={{
         alignItems: "center",
         justifyContent: "center",
-        height: "calc(100vw / 4)",
-        width: calculateWidth(),
+        height: theme.media.isMobile ? `calc(100vw / 2)` : `calc(100vw / 4)`,
+        width: theme.media.isMobile ? `calc(100vw / 2)` : calculateWidth(),
       }}
       onClick={handleModalToggle}
       onMouseEnter={handleMouseEnter}

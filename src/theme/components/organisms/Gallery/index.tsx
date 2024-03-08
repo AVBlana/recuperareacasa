@@ -3,12 +3,13 @@ import { Text } from "../..";
 import Box from "../../atoms/Box";
 import Flex from "../../atoms/Flex";
 import GalleryItem from "../../molecules/GalleryItem";
-import { theme } from "@/theme/constants";
 import FilterItem from "../../atoms/FilterItem";
 import { useState } from "react";
 import Button from "../../atoms/Button";
 
 const Gallery = () => {
+  const theme = useTheme();
+
   const initialData = [
     {
       type: "image",
@@ -153,6 +154,7 @@ const Gallery = () => {
   const [data, setData] = useState(initialData);
   const itemsPerPage = 8; // Number of items to show initially
   const [visibleItems, setVisibleItems] = useState(itemsPerPage);
+  const [isFilterMenuOpen, setFilterMenuOpen] = useState(false);
 
   const loadMore = () => {
     // Increase the number of visible items
@@ -170,7 +172,9 @@ const Gallery = () => {
     }
   };
 
-  const theme = useTheme();
+  const toggleFilterMenu = () => {
+    setFilterMenuOpen((prevOpen) => !prevOpen);
+  };
 
   return (
     <>
@@ -199,28 +203,38 @@ const Gallery = () => {
               cursor: "pointer",
             }}
           >
-            {[
-              "Toate",
-              "Kinetoterapie",
-              "Sportiv și Recuperare",
-              "Relaxare",
-              "Kinesio Tape",
-              "Electroterapie",
-              "Dry Needling",
-              "Evaluare Neuro-Musculo-Scheletală",
-              "Eliberare Fascială IATSM",
-              "Cupping",
-              "Flossing",
-              "Terapie Manuală",
-              "Exerciții",
-            ].map((label) => (
-              <FilterItem
-                key={label}
-                label={label}
-                onClick={() => filter({ label })}
-                selected={label === selectedLabel}
-              />
-            ))}
+            <FilterButton onClick={toggleFilterMenu}>
+              {selectedLabel}
+            </FilterButton>
+            {isFilterMenuOpen && (
+              <FilterMenu>
+                {[
+                  "Toate",
+                  "Kinetoterapie",
+                  "Sportiv și Recuperare",
+                  "Relaxare",
+                  "Kinesio Tape",
+                  "Electroterapie",
+                  "Dry Needling",
+                  "Evaluare Neuro-Musculo-Scheletală",
+                  "Eliberare Fascială IATSM",
+                  "Cupping",
+                  "Flossing",
+                  "Terapie Manuală",
+                  "Exerciții",
+                ].map((label) => (
+                  <FilterItem
+                    key={label}
+                    label={label}
+                    onClick={() => {
+                      filter({ label });
+                      toggleFilterMenu();
+                    }}
+                    selected={label === selectedLabel}
+                  />
+                ))}
+              </FilterMenu>
+            )}
           </Flex>
           <Flex style={{ flexWrap: "wrap", width: "100%" }}>
             {data.slice(0, visibleItems).map((item) => (
@@ -252,6 +266,24 @@ const Gallery = () => {
   );
 };
 
+const FilterButton = styled.div`
+  /* Your styling for the filter button */
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  padding: 8px 24px;
+  background: ${({ theme }) => theme.color.primary};
+  ${Text} {
+    font-size: ${({ theme }) => theme.text.medium};
+    color: ${({ theme }) => theme.color.white};
+  }
+`;
+
+const FilterMenu = styled.div`
+  /* Your styling for the filter menu */
+  padding: 20px;
+`;
+
 const GalleryButton = styled.div`
   display: flex;
   flex-direction: row;
@@ -260,10 +292,14 @@ const GalleryButton = styled.div`
   align-items: center;
   color: ${({ theme }) => theme.color.white};
   background: ${({ theme }) => theme.color.secondary};
-  padding-top: ${({ theme }) => theme.spacings.medium}px;
-  padding-bottom: ${({ theme }) => theme.spacings.medium}px;
-  padding-left: ${({ theme }) => theme.spacings.bigger}px;
-  padding-right: ${({ theme }) => theme.spacings.bigger}px;
+  padding-top: ${({ theme }) =>
+    theme.media.isMobile ? theme.spacings.tiny : theme.spacings.medium}px;
+  padding-bottom: ${({ theme }) =>
+    theme.media.isMobile ? theme.spacings.tiny : theme.spacings.medium}px;
+  padding-left: ${({ theme }) =>
+    theme.media.isMobile ? theme.spacings.medium : theme.spacings.bigger}px;
+  padding-right: ${({ theme }) =>
+    theme.media.isMobile ? theme.spacings.medium : theme.spacings.bigger}px;
   border-radius: 20px;
   cursor: pointer;
   border-style: solid;

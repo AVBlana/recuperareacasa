@@ -1,8 +1,10 @@
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
 import ReviewCard from "../../molecules/ReviewCard";
 import { useState } from "react";
 
 const Review = () => {
+  const theme = useTheme();
+
   const reviews = [
     {
       rating: 5,
@@ -70,7 +72,7 @@ const Review = () => {
 
 const StyledReviewContainer = styled.div`
   position: relative;
-  height: 550px;
+  min-height: ${({ theme }) => (theme.media.isMobile ? "450px" : "550px")};
 `;
 
 const StyledGradientBox = styled.div`
@@ -85,10 +87,12 @@ const StyledGradientBox = styled.div`
 
 const StyledReviewBox = styled.div`
   position: absolute;
-  top: 100px;
-  left: 80px;
-  right: 30px;
-  bottom: 100px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: ${({ theme }) =>
+    theme.media.isMobile ? "40px 20px" : "100px 80px"};
   z-index: 2;
 `;
 
@@ -99,7 +103,7 @@ const StyledImageBox = styled.div`
   right: 0;
   bottom: 0;
   background-image: url(./assets/planRecuperare1.jpg);
-  background-size: cover;
+  background-size: giut;
   background-position: center;
   z-index: 0;
 `;
