@@ -8,6 +8,7 @@ import { theme } from "@/theme/constants";
 import Input from "../../atoms/Input";
 import { Dispatch, SetStateAction, useContext } from "react";
 import { StepsContext } from "../../organisms/StepsForm/context";
+import { useTheme } from "styled-components";
 
 interface StepForm2Props {
   //   data: UseStepFormData;
@@ -15,6 +16,8 @@ interface StepForm2Props {
 }
 
 const StepForm2: React.FC<StepForm2Props> = () => {
+  const theme = useTheme();
+
   const {
     selectedCheckboxes,
     selectedDay,
@@ -51,12 +54,28 @@ const StepForm2: React.FC<StepForm2Props> = () => {
           borderColor: theme.color.secondary,
         }}
       >
-        <Text bigger white secondaryFont bold>
+        <Text
+          white
+          secondaryFont
+          bold
+          style={{
+            fontSize: theme.media.isMobile ? theme.text.big : theme.text.bigger,
+          }}
+        >
           Pasul 2: Disponibilitatea
         </Text>
       </Flex>
-      <StyledFormSection style={{ maxWidth: 400 }}>
-        <Text big white secondaryFont bold>
+      <StyledFormSection
+        style={{ maxWidth: 400, paddingTop: theme.media.isMobile ? 20 : 0 }}
+      >
+        <Text
+          white
+          secondaryFont
+          bold
+          style={{
+            fontSize: theme.media.isMobile ? theme.text.medium : theme.text.big,
+          }}
+        >
           Să știm cui ne adresăm
         </Text>
         <Box style={{ gap: 10 }}>
@@ -140,11 +159,24 @@ const StepForm2: React.FC<StepForm2Props> = () => {
         </Box>
       </StyledFormSection>
       <StyledFormSection>
-        <Text big white secondaryFont bold>
+        <Text
+          white
+          secondaryFont
+          bold
+          style={{
+            fontSize: theme.media.isMobile ? theme.text.medium : theme.text.big,
+          }}
+        >
           În ce interval de ore sunteți disponibil/ă ?
         </Text>
 
-        <Flex style={{ justifyContent: "space-between" }}>
+        <Flex
+          style={{
+            justifyContent: "space-between",
+            flexDirection: theme.media.isMobile ? "column" : "row",
+            gap: theme.media.isMobile ? 10 : 0,
+          }}
+        >
           <RadioButton
             label="8 - 12"
             value="8 - 12"
@@ -169,10 +201,24 @@ const StepForm2: React.FC<StepForm2Props> = () => {
         </Flex>
       </StyledFormSection>
       <StyledFormSection>
-        <Text big white secondaryFont bold>
+        <Text
+          white
+          secondaryFont
+          bold
+          style={{
+            lineHeight: "150%",
+            fontSize: theme.media.isMobile ? theme.text.medium : theme.text.big,
+          }}
+        >
           Aveți o zi preferată ?
         </Text>
-        <Flex style={{ justifyContent: "space-between" }}>
+        <Flex
+          style={{
+            justifyContent: "space-between",
+            flexDirection: theme.media.isMobile ? "column" : "row",
+            gap: theme.media.isMobile ? 10 : 0,
+          }}
+        >
           <Checkbox
             label="Luni"
             id="luni"

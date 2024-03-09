@@ -49,6 +49,7 @@ const FullScreenModal = ({
             maxWidth: 700,
             maxHeight: "100vh",
             position: "relative",
+            overflowY: "auto",
             zIndex: 1,
           }}
         >

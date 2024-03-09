@@ -7,7 +7,7 @@ const StyledFormSection = styled.div`
   flex-direction: column;
   flex: 1;
   padding-bottom: 20px;
-  padding-top: 20px;
+  padding-top: ${({ theme }) => (theme.media.isMobile ? "0" : "20")}px;
   gap: 20px;
 `;
 

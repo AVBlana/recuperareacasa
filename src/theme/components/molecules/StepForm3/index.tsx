@@ -7,7 +7,7 @@ import Input from "../../atoms/Input";
 import StyledFormSection from "../StyledFormSection";
 import { useContext } from "react";
 import { StepsContext } from "../../organisms/StepsForm/context";
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
 
 interface StepForm3Props {
   //   step1Data: FormData; // Adjust according to your data structure
@@ -15,6 +15,8 @@ interface StepForm3Props {
 }
 
 const StepForm3: React.FC<StepForm3Props> = () => {
+  const theme = useTheme();
+
   const {
     selectedCheckboxes,
     selectedScopes,
@@ -48,55 +50,48 @@ const StepForm3: React.FC<StepForm3Props> = () => {
           borderColor: theme.color.secondary,
         }}
       >
-        <Text bigger white secondaryFont bold>
+        <Text
+          white
+          secondaryFont
+          bold
+          style={{
+            lineHeight: "150%",
+            fontSize: theme.media.isMobile ? theme.text.big : theme.text.bigger,
+          }}
+        >
           Pasul 3: Revizuiește informațiile și trimite
         </Text>
       </Flex>
       <Box>
-        <StyledFormSection>
-          <Flex style={{ gap: 40 }}>
-            <Box style={{ gap: 10 }}>
-              <Text white big secondaryFont>
-                Scopul tratamentului:
-              </Text>
-
+        <StyledFormSection
+          style={{ flexDirection: theme.media.isMobile ? "column" : "row" }}
+        >
+          <Flex
+            style={{
+              gap: 40,
+              flexDirection: theme.media.isMobile ? "column" : "row",
+            }}
+          >
+            <Box style={{ gap: 10, paddingTop: theme.media.isMobile ? 20 : 0 }}>
+              <StyledFormText>Scopul tratamentului:</StyledFormText>
               <StyledInfoBox>{selectedScopes?.join(", ")}</StyledInfoBox>
-              <Text white big secondaryFont>
-                Natura problemei:
-              </Text>
+              <StyledFormText>Natura problemei:</StyledFormText>
               <StyledInfoBox> {selectedProblems?.join(", ")}</StyledInfoBox>
-
-              <Text white big secondaryFont>
-                Unde este localizată:
-              </Text>
+              <StyledFormText>Unde este localizată:</StyledFormText>
               <StyledInfoBox>{selectedLocalizations?.join(", ")}</StyledInfoBox>
-              <Text white big secondaryFont>
-                Durata problemei:
-              </Text>
+              <StyledFormText>Durata problemei:</StyledFormText>
               <StyledInfoBox> {userFeedback1}</StyledInfoBox>
-              <Text white big secondaryFont>
-                Descriere amanunțită:
-              </Text>
+              <StyledFormText>Descriere amanunțită:</StyledFormText>
               <StyledInfoBox>{userFeedback2}</StyledInfoBox>
             </Box>
             <Box style={{ gap: 10 }}>
-              <Text white big secondaryFont>
-                Prenume:
-              </Text>
+              <StyledFormText>Prenume:</StyledFormText>
               <StyledInfoBox>{userName}</StyledInfoBox>
-              <Text white big secondaryFont>
-                Telefon:
-              </Text>
+              <StyledFormText>Telefon:</StyledFormText>
               <StyledInfoBox>{userPhone}</StyledInfoBox>
-
-              <Text white big secondaryFont>
-                Email:
-              </Text>
+              <StyledFormText>Email:</StyledFormText>
               <StyledInfoBox>{userEmail}</StyledInfoBox>
-
-              <Text white big secondaryFont>
-                Strada:
-              </Text>
+              <StyledFormText>Strada:</StyledFormText>
               <StyledInfoBox>{userStreet}</StyledInfoBox>
 
               <Flex
@@ -106,34 +101,22 @@ const StepForm3: React.FC<StepForm3Props> = () => {
                   gap: 10,
                 }}
               >
-                <Text white big secondaryFont>
-                  Nr:
-                </Text>
+                <StyledFormText>Nr:</StyledFormText>
                 <StyledInfoBox>{userNumber}</StyledInfoBox>
 
-                <Text white big secondaryFont>
-                  Bloc:
-                </Text>
+                <StyledFormText>Bloc:</StyledFormText>
                 <StyledInfoBox>{userBlock}</StyledInfoBox>
 
-                <Text white big secondaryFont>
-                  Scara:
-                </Text>
+                <StyledFormText>Scara:</StyledFormText>
                 <StyledInfoBox>{userSc}</StyledInfoBox>
 
-                <Text white big secondaryFont>
-                  Ap:
-                </Text>
+                <StyledFormText>Ap:</StyledFormText>
                 <StyledInfoBox>{userAp}</StyledInfoBox>
               </Flex>
-              <Text white big secondaryFont>
-                Interval orar:
-              </Text>
+              <StyledFormText>Interval orar:</StyledFormText>
               <StyledInfoBox>{selectedOption}</StyledInfoBox>
 
-              <Text white big secondaryFont>
-                Ziua preferata/e:
-              </Text>
+              <StyledFormText>Ziua preferata/e:</StyledFormText>
               <StyledInfoBox>{selectedDay.join(", ")}</StyledInfoBox>
             </Box>
           </Flex>
@@ -146,6 +129,7 @@ const StepForm3: React.FC<StepForm3Props> = () => {
           borderTopStyle: "solid",
           borderTopColor: theme.color.secondary,
           paddingBottom: 0,
+          paddingTop: theme.media.isMobile ? 20 : 0,
         }}
       >
         <Text big white secondaryFont bold>
@@ -157,10 +141,16 @@ const StepForm3: React.FC<StepForm3Props> = () => {
             justifyContent: "space-between",
             alignItems: "center",
             paddingBottom: 20,
+            flexDirection: theme.media.isMobile ? "column" : "row",
           }}
         >
           <Box style={{ alignItems: "center", gap: 20 }}>
-            <Flex style={{ gap: 20 }}>
+            <Flex
+              style={{
+                gap: 20,
+                flexDirection: theme.media.isMobile ? "column" : "row",
+              }}
+            >
               <Text white small>
                 Făcând clic pe „Sunt de acord”, confirmați că ați citit, înțeles
                 și sunteți de acord să respectați acești termeni și condiții.
@@ -173,7 +163,12 @@ const StepForm3: React.FC<StepForm3Props> = () => {
                 style={{ minWidth: 140 }}
               />
             </Flex>
-            <Flex style={{ gap: 20 }}>
+            <Flex
+              style={{
+                gap: 20,
+                flexDirection: theme.media.isMobile ? "column" : "row",
+              }}
+            >
               <Text white small>
                 Făcând clic pe „Abonare”, sunteți de acord să primiți buletine
                 informative de la noi cu posibilitatea de dezabonare în orice
@@ -194,6 +189,11 @@ const StepForm3: React.FC<StepForm3Props> = () => {
   );
 };
 
+const StyledFormText = styled.div`
+  color: ${({ theme }) => theme.color.white};
+  font-size: ${({ theme }) => (theme.media.isMobile ? "" : theme.text.big)};
+  font-family: ${({ theme }) => theme.text.secondary};
+`;
 const StyledInfoBox = styled.div`
   padding: 10px;
   background: ${theme.color.white};

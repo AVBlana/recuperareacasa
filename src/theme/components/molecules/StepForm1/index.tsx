@@ -30,6 +30,8 @@ const StepForm1 = () => {
   const [isAltele1Visible, setIsAltele1Visible] = useState(false);
   const [isAltele2Visible, setIsAltele2Visible] = useState(false);
 
+  const theme = useTheme();
+
   const scopes = [
     {
       label: "Întreținere",
@@ -140,7 +142,14 @@ const StepForm1 = () => {
           borderColor: theme.color.secondary,
         }}
       >
-        <Text bigger white secondaryFont bold>
+        <Text
+          white
+          secondaryFont
+          bold
+          style={{
+            fontSize: theme.media.isMobile ? theme.text.big : theme.text.bigger,
+          }}
+        >
           Pasul 1: Scopul tratamentului
         </Text>
         {/* <Box
@@ -151,17 +160,38 @@ const StepForm1 = () => {
         </Box> */}
       </Flex>
       <Box style={{ paddingTop: 20, paddingBottom: 20 }}>
-        <Text big white>
+        <Text
+          white
+          style={{
+            lineHeight: "150%",
+            fontSize: theme.media.isMobile
+              ? theme.text.smaller
+              : theme.text.big,
+          }}
+        >
           Completează chestionarul de evaluare pentru a afla mai multe detalii
-          despre problema dumneavoastră și pentru a afla disponibilitatea orei
-          de tratament dorită de tine.
+          despre problema dumneavoastră.
         </Text>
       </Box>
-      <Flex style={{ gap: 40 }}>
+      <Flex
+        style={{
+          gap: theme.media.isMobile ? 0 : 40,
+          flexDirection: theme.media.isMobile ? "column" : "row",
+        }}
+      >
         <Box style={{ flex: 1 }}>
           <StyledFormSection>
             <Box style={{ gap: 20, fontSize: theme.text.medium }}>
-              <Text big white secondaryFont semiBold>
+              <Text
+                white
+                secondaryFont
+                semiBold
+                style={{
+                  fontSize: theme.media.isMobile
+                    ? theme.text.small
+                    : theme.text.big,
+                }}
+              >
                 Scopul tratamentului:
               </Text>
               <Box
@@ -183,7 +213,16 @@ const StepForm1 = () => {
             </Box>
           </StyledFormSection>
           <StyledFormSection>
-            <Text big white secondaryFont bold>
+            <Text
+              white
+              secondaryFont
+              bold
+              style={{
+                fontSize: theme.media.isMobile
+                  ? theme.text.small
+                  : theme.text.big,
+              }}
+            >
               De cât timp ai problema ?
             </Text>
             <TextArea
@@ -194,7 +233,16 @@ const StepForm1 = () => {
             />
           </StyledFormSection>
           <StyledFormSection style={{ flex: 1, paddingTop: 0 }}>
-            <Text big white secondaryFont bold>
+            <Text
+              white
+              secondaryFont
+              bold
+              style={{
+                fontSize: theme.media.isMobile
+                  ? theme.text.small
+                  : theme.text.big,
+              }}
+            >
               Poți descriere situația amănunțit ?
             </Text>
             <TextArea
@@ -208,7 +256,16 @@ const StepForm1 = () => {
         <Box style={{ flex: 1 }}>
           <StyledFormSection>
             <Box style={{ gap: 20 }}>
-              <Text big white secondaryFont bold>
+              <Text
+                white
+                secondaryFont
+                bold
+                style={{
+                  fontSize: theme.media.isMobile
+                    ? theme.text.small
+                    : theme.text.big,
+                }}
+              >
                 Natura problemei este?
               </Text>
               <Flex
@@ -253,7 +310,16 @@ const StepForm1 = () => {
           </StyledFormSection>
           <StyledFormSection>
             <Box style={{ gap: 20 }}>
-              <Text big white secondaryFont bold>
+              <Text
+                white
+                secondaryFont
+                bold
+                style={{
+                  fontSize: theme.media.isMobile
+                    ? theme.text.small
+                    : theme.text.big,
+                }}
+              >
                 Unde este localizată ?
               </Text>
               <Flex

@@ -1,5 +1,6 @@
 import React, { CSSProperties } from "react";
 import { theme } from "@/theme/constants";
+import { useTheme } from "styled-components";
 
 type CheckboxProps = {
   label: string;
@@ -16,6 +17,7 @@ export function Checkbox({
   style,
   onChange,
 }: CheckboxProps) {
+  const theme = useTheme();
   const checked = selectedCheckboxes?.includes(id);
 
   const handleChange = () => {
@@ -44,7 +46,7 @@ export function Checkbox({
       <label
         style={{
           fontFamily: theme.text.secondary,
-          fontSize: theme.text.medium,
+          fontSize: theme.media.isMobile ? theme.text.small : theme.text.medium,
           flex: 1,
         }}
         htmlFor={id}
