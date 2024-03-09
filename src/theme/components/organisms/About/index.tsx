@@ -1,9 +1,8 @@
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
 import Box from "../../atoms/Box";
 import Flex from "../../atoms/Flex";
 import Image from "../../atoms/Image";
 import { SvgIcon, Text } from "../..";
-import { theme } from "@/theme/constants";
 import { CaretRIcon } from "../../molecules/Icons/CaretRight";
 import FullScreenModal from "../../molecules/FullscreenModal";
 import { useContext, useState } from "react";
@@ -11,6 +10,8 @@ import StepsForm from "../StepsForm";
 import { StepsContext, StepsProvider } from "../StepsForm/context";
 
 const About = () => {
+  const theme = useTheme();
+
   const { handleOpenModal, handleCloseModal, isModalVisible } =
     useContext(StepsContext);
 
@@ -20,7 +21,7 @@ const About = () => {
         <Flex
           style={{
             justifyContent: "center",
-            alignItems: "center",
+            flexDirection: theme.media.isMobile ? "column-reverse" : "row",
           }}
         >
           <Box
@@ -28,20 +29,36 @@ const About = () => {
               position: "relative",
               top: 0,
               bottom: 0,
-              left: -100,
+              left: 0,
               right: 0,
+              marginLeft: -40,
+              overflow: "hidden",
             }}
           >
-            <Image width={900} height={600} src={"/assets/about.png"} alt="" />
+            <Image
+              width={theme.media.isMobile ? 320 : 900}
+              height={theme.media.isMobile ? 250 : 600}
+              src={"/assets/about.png"}
+              alt=""
+            />
           </Box>
-          <Box style={{ maxWidth: 600 }}>
+          <Box
+            style={{
+              maxWidth: theme.media.isMobile ? "100%" : 600,
+              alignItems: theme.media.isMobile ? "center" : "flex-start",
+            }}
+          >
             <Text
               big
               semiBold
               secondaryFont
-              style={{ color: theme.color.secondary, paddingBottom: 8 }}
+              style={{
+                color: theme.color.secondary,
+                paddingBottom: 8,
+                width: "100%",
+              }}
             >
-              Drespre Recuperare Acasă
+              Despre Noi
             </Text>
             <Box style={{ gap: 10 }}>
               <Text
@@ -52,21 +69,48 @@ const About = () => {
               >
                 Tratăm Persoana, Nu Doar Problema.
               </Text>
-              <Text small style={{ lineHeight: "140%" }}>
-                Serviciile nostre de recuperare medicală la domiciliu oferă
-                programe personalizate ce includ tehnici de terapie manuală,
-                masaj, dry needling și kinetoterapie.
-              </Text>
-              <Text small style={{ lineHeight: "140%" }}>
-                Echipa noastră de specialiști asigură ghidare online, oferind
-                exerciții și intervenții terapeutice adaptate nevoilor tale
-                individuale.
-              </Text>
-              <Text small style={{ lineHeight: "140%" }}>
-                Cu accent pe monitorizare și evaluare constantă, vei experimenta
-                o abordare completă pentru recuperarea ta în confortul propriei
-                case.
-              </Text>
+              <Box>
+                <Text
+                  style={{
+                    lineHeight: "140%",
+                    fontSize: theme.media.isMobile
+                      ? theme.text.smaller
+                      : theme.text.small,
+                  }}
+                >
+                  Serviciile nostre de recuperare medicală la domiciliu oferă
+                  programe personalizate ce includ tehnici de terapie manuală,
+                  masaj, dry needling și kinetoterapie.
+                </Text>
+              </Box>
+              <Box>
+                <Text
+                  style={{
+                    lineHeight: "140%",
+                    fontSize: theme.media.isMobile
+                      ? theme.text.smaller
+                      : theme.text.small,
+                  }}
+                >
+                  Echipa noastră de specialiști asigură ghidare online, oferind
+                  exerciții și intervenții terapeutice adaptate nevoilor tale
+                  individuale.
+                </Text>
+              </Box>
+              <Box>
+                <Text
+                  style={{
+                    lineHeight: "140%",
+                    fontSize: theme.media.isMobile
+                      ? theme.text.smaller
+                      : theme.text.small,
+                  }}
+                >
+                  Cu accent pe monitorizare și evaluare constantă, vei
+                  experimenta o abordare completă pentru recuperarea ta în
+                  confortul propriei case.
+                </Text>
+              </Box>
             </Box>
 
             <Box
@@ -85,7 +129,14 @@ const About = () => {
                   <Box>
                     <SvgIcon size={20} src="/assets/checkedSVG.svg" />
                   </Box>
-                  <Text small style={{ lineHeight: "140%" }}>
+                  <Text
+                    style={{
+                      lineHeight: "140%",
+                      fontSize: theme.media.isMobile
+                        ? theme.text.smaller
+                        : theme.text.small,
+                    }}
+                  >
                     Abordarea inovatoare și gândirea creativă în furnizarea
                     serviciilor de recuperare
                   </Text>
@@ -94,7 +145,14 @@ const About = () => {
                   <Box>
                     <SvgIcon size={20} src="/assets/checkedSVG.svg" />
                   </Box>
-                  <Text small style={{ lineHeight: "140%" }}>
+                  <Text
+                    style={{
+                      lineHeight: "140%",
+                      fontSize: theme.media.isMobile
+                        ? theme.text.smaller
+                        : theme.text.small,
+                    }}
+                  >
                     Punctăm nu doar prin calitatea intervențiilor, ci și prin
                     evaluarea continuă și monitorizarea atentă a progresului.
                   </Text>
@@ -103,7 +161,14 @@ const About = () => {
                   <Box>
                     <SvgIcon size={20} src="/assets/checkedSVG.svg" />
                   </Box>
-                  <Text small style={{ lineHeight: "140%" }}>
+                  <Text
+                    style={{
+                      lineHeight: "140%",
+                      fontSize: theme.media.isMobile
+                        ? theme.text.smaller
+                        : theme.text.small,
+                    }}
+                  >
                     Întelegem unicitatea ficărui caz și adaptăm soluțiile pentru
                     a asigura cele mai bune rezultate
                   </Text>
@@ -141,15 +206,21 @@ const AboutButton = styled.div`
   align-items: center;
   color: ${({ theme }) => theme.color.white};
   background: ${({ theme }) => theme.color.secondary};
-  padding-top: ${({ theme }) => theme.spacings.medium}px;
-  padding-bottom: ${({ theme }) => theme.spacings.medium}px;
-  padding-left: ${({ theme }) => theme.spacings.bigger}px;
-  padding-right: ${({ theme }) => theme.spacings.bigger}px;
+  padding-top: ${({ theme }) =>
+    theme.media.isMobile ? theme.spacings.tiny : theme.spacings.medium}px;
+  padding-bottom: ${({ theme }) =>
+    theme.media.isMobile ? theme.spacings.tiny : theme.spacings.medium}px;
+  padding-left: ${({ theme }) =>
+    theme.media.isMobile ? theme.spacings.medium : theme.spacings.bigger}px;
+  padding-right: ${({ theme }) =>
+    theme.media.isMobile ? theme.spacings.medium : theme.spacings.bigger}px;
   border-radius: 20px;
   cursor: pointer;
   border-style: solid;
   transition: transform 0.3s ease;
   max-width: fit-content;
+  font-size: ${({ theme }) =>
+    theme.media.isMobile ? theme.text.small : theme.text.medium}px;
 
   &:hover {
     background: ${({ theme }) => theme.color.white};
@@ -166,7 +237,9 @@ const StyledAboutBox = styled.div`
   display: flex;
   flex-direction: row;
   flex: 1;
-  padding-right: 80px;
+  padding-right: ${({ theme }) => (theme.media.isMobile ? "20" : "80")}px;
+  padding-left: ${({ theme }) => (theme.media.isMobile ? "20" : "0")}px;
+  padding-bottom ${({ theme }) => (theme.media.isMobile ? "100" : "0")}px;
 `;
 
 export default About;

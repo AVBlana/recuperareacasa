@@ -1,10 +1,6 @@
-import styled from "styled-components";
-import { Text } from "../..";
-import Box from "../../atoms/Box";
-import Flex from "../../atoms/Flex";
-import TeamHero from "../../molecules/TeamCard";
+import styled, { useTheme } from "styled-components";
+
 import TeamCard from "../../molecules/TeamCard";
-import { theme } from "@/theme/constants";
 
 const Team = () => {
   const teamMember = {
@@ -35,11 +31,12 @@ const Team = () => {
 
 const StyleTeamBox = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: ${({ theme }) => (theme.media.isMobile ? "column" : "row")};
   max-width: 1440px;
-  padding-left: 80px;
-  padding-right: 80px;
+  padding-left: ${({ theme }) => (theme.media.isMobile ? "20" : "80")}px;
+  padding-right: ${({ theme }) => (theme.media.isMobile ? "20" : "80")}px;
   padding-top: 100px;
+  padding-bottom: ${({ theme }) => (theme.media.isMobile ? "60" : "0")}px;
   align-items: center;
   justify-content: center;
 `;

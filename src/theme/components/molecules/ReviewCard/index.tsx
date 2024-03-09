@@ -42,10 +42,9 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
       <Text
         white
         style={{
+          lineHeight: "150%",
           fontStyle: "italic",
-          fontSize: theme.media.isMobile
-            ? theme.text.medium
-            : theme.text.biggest,
+          fontSize: theme.media.isMobile ? theme.text.big : theme.text.biggest,
         }}
       >
         {review.text}
@@ -72,21 +71,44 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
             />
           </Box>
           <Box>
-            <Text white secondaryFont biggest>
+            <Text
+              white
+              secondaryFont
+              style={{
+                fontSize: theme.media.isMobile
+                  ? theme.text.medium
+                  : theme.text.bigger,
+              }}
+            >
               {review.reviewer}
             </Text>
-            <Text small semiBold style={{ color: theme.color.secondary }}>
+            <Text
+              small
+              semiBold
+              style={{
+                color: theme.color.secondary,
+                fontSize: theme.media.isMobile
+                  ? theme.text.smaller
+                  : theme.text.small,
+              }}
+            >
               {review.title}
             </Text>
           </Box>
         </Flex>
 
         <Flex>
-          <StyledArrowBox style={{ padding: 20 }} onClick={onPrevReview}>
-            <ArrowLeftIcon size={40} />
+          <StyledArrowBox
+            style={{ padding: theme.media.isMobile ? 10 : 20 }}
+            onClick={onPrevReview}
+          >
+            <ArrowLeftIcon size={theme.media.isMobile ? 30 : 40} />
           </StyledArrowBox>
-          <StyledArrowBox style={{ padding: 20 }} onClick={onNextReview}>
-            <ArrowRightIcon size={40} />
+          <StyledArrowBox
+            style={{ padding: theme.media.isMobile ? 10 : 20 }}
+            onClick={onNextReview}
+          >
+            <ArrowRightIcon size={theme.media.isMobile ? 30 : 40} />
           </StyledArrowBox>
         </Flex>
       </Flex>

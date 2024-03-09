@@ -36,8 +36,12 @@ const CTA = () => {
               }}
             ></Button>
             <StyledSvgIcon
-              size={theme.media.isMobile ? 100 : 250}
+              size={theme.media.isMobile ? 200 : 250}
               src="/assets/CTAtext.svg"
+              style={{
+                position: theme.media.isMobile ? "absolute" : "unset",
+                top: 110,
+              }}
             />
             <FullScreenModal
               key={isModalVisible ? "cta-modal-key" : "cta-no-modal-key"}
@@ -55,10 +59,10 @@ const CTA = () => {
                 white
                 secondaryFont
                 style={{
-                  textAlign: "right",
+                  textAlign: theme.media.isMobile ? "center" : "right",
                   lineHeight: "140%",
                   fontSize: theme.media.isMobile
-                    ? theme.text.medium
+                    ? theme.text.bigger
                     : theme.text.huge,
                 }}
               >
@@ -68,14 +72,14 @@ const CTA = () => {
                 white
                 secondaryFont
                 style={{
-                  textAlign: "right",
+                  textAlign: theme.media.isMobile ? "center" : "right",
                   lineHeight: "140%",
                   fontSize: theme.media.isMobile
-                    ? theme.text.medium
+                    ? theme.text.biggest
                     : theme.text.huge,
                 }}
               >
-                Poți face o evaluare online gratuită !
+                Hai la o evaluare online !
               </Text>
             </Box>
           </StyledCtaBox>
@@ -89,10 +93,10 @@ const CTA = () => {
 const StyledCtaBox = styled.div`
   display: flex;
   flex: 1;
-  flex-direction: row;
+  flex-direction: ${({ theme }) => (theme.media.isMobile ? "column" : "row")};
   align-items: center;
   justify-content: space-between;
-  padding: ${({ theme }) => (theme.media.isMobile ? "0 20px" : "0 80px")};
+  padding: ${({ theme }) => (theme.media.isMobile ? "0px 20px" : "40px 80px")};
   z-index: 3;
 
   &:hover {
@@ -104,13 +108,15 @@ const StyledCtaBox = styled.div`
 
 const StyledCtaContainer = styled.div`
   position: relative;
-  height: ${({ theme }) => (theme.media.isMobile ? "150" : "300")}px;
+  min-height: ${({ theme }) => (theme.media.isMobile ? "220" : "300")}px;
   cursor: pointer;
 `;
 
 const StyledImageBox = styled.div`
   display: flex;
-  align-items: center;
+  align-items: ${({ theme }) =>
+    theme.media.isMobile ? "flex-start" : "center"};
+  padding-top: ${({ theme }) => (theme.media.isMobile ? "40" : "0")}px;
   background-image: url(./assets/planRecuperare3.jpg);
   background-size: cover;
   background-position: 50% 75%;
@@ -128,7 +134,10 @@ const StyledGradientBox = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(to left, #2a5550, rgba(255, 69, 0, 0));
+  background: linear-gradient(${({ theme }) =>
+    theme.media.isMobile
+      ? "to right, #2a5550, rgba(255, 69, 0, 0) 150%)"
+      : "to left, #2a5550, rgba(255, 69, 0, 0))"};
   z-index: 1;
 `;
 

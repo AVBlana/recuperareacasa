@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
 import { Text } from "../..";
 import ServiceCard, { ServiceCardProps } from "../../molecules/ServiceCard";
 import { theme } from "@/theme/constants";
@@ -13,6 +13,8 @@ interface StyledServiceCardsContainerProps {
 }
 
 const Services = () => {
+  const theme = useTheme();
+
   const services = [
     {
       label: "200 Ron",
@@ -305,8 +307,8 @@ const Services = () => {
   return (
     <StyledServicesBox>
       <StyledControlBox>
-        <Box style={{ gap: 60 }}>
-          <Box style={{ gap: 15 }}>
+        <Box style={{ gap: theme.media.isMobile ? 20 : 60 }}>
+          <Box style={{ gap: 10 }}>
             <Text
               semiBold
               big
@@ -315,10 +317,23 @@ const Services = () => {
             >
               Servicii
             </Text>
-            <Text primary secondaryFont style={{ fontSize: 48 }}>
+            <Text
+              primary
+              secondaryFont
+              style={{
+                fontSize: theme.media.isMobile ? theme.text.huge : 48,
+              }}
+            >
               Gandim diferit
             </Text>
-            <Text style={{ width: 200 }}>
+            <Text
+              style={{
+                width: 280,
+                fontSize: theme.media.isMobile
+                  ? theme.text.smaller
+                  : theme.text.medium,
+              }}
+            >
               Specializăm tratamentul kineto pentru a acoperi atât aspectele
               fizice, cât și cele psihice.
               <br />
@@ -328,17 +343,28 @@ const Services = () => {
             </Text>
           </Box>
 
-          <Flex style={{ marginLeft: -20 }}>
+          <Flex
+            style={{
+              marginLeft: theme.media.isMobile ? 0 : -20,
+              paddingBottom: theme.media.isMobile ? 20 : 0,
+            }}
+          >
             <StyledArrowBox
               onClick={handlePrevCard}
               hidden={currentIndex === 0}
             >
-              <ArrowLeftIcon size={40} fill={theme.color.secondary} />
+              <ArrowLeftIcon
+                size={theme.media.isMobile ? 30 : 40}
+                fill={theme.color.secondary}
+              />
             </StyledArrowBox>
 
             {currentIndex < services.length - visibleCards && (
               <StyledArrowBox onClick={handleNextCard} hidden={!currentIndex}>
-                <ArrowRightIcon size={40} fill={theme.color.secondary} />
+                <ArrowRightIcon
+                  size={theme.media.isMobile ? 30 : 40}
+                  fill={theme.color.secondary}
+                />
               </StyledArrowBox>
             )}
           </Flex>
@@ -362,7 +388,7 @@ const StyledServiceCardsContainerWrapper = styled.div`
 const StyledArrowBox = styled.div<{ hidden?: boolean }>`
   display: flex;
   align-items: center;
-  padding: 20px;
+  padding: ${({ theme }) => (theme.media.isMobile ? "10" : "20")}px;
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
 
@@ -382,28 +408,33 @@ const StyledArrowBox = styled.div<{ hidden?: boolean }>`
 
 const StyledServicesBox = styled.div`
   display: flex;
-  flex-direction: row;
-  padding-top: 100px;
-  padding-bottom: 100px;
-  padding-left: 60px;
-  padding-right: 0px;
+  flex-direction: ${({ theme }) => (theme.media.isMobile ? "column" : "row")};
+  padding-top: ${({ theme }) => (theme.media.isMobile ? "40" : "100")}px;
+  padding-bottom: ${({ theme }) => (theme.media.isMobile ? "40" : "100")}px;
+  padding-left: ${({ theme }) => (theme.media.isMobile ? "20" : "80")}px;
+  padding-right: ${({ theme }) => (theme.media.isMobile ? "20" : "0")}px;
 `;
 
 const StyledControlBox = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: ${({ theme }) => (theme.media.isMobile ? "0" : "20")}px;
   height: 100%;
   min-width: 310px;
-  width: 310px;
 `;
 
 const StyledServiceCardsContainer = styled.div<StyledServiceCardsContainerProps>`
   display: flex;
   gap: 15px;
   height: 100%;
+
   box-sizing: content-box;
-  transform: translateX(${(props) => -props.currentIndex * (310 + 15)}px);
+  transform: translateX(
+    ${({ theme, currentIndex }) =>
+      theme.media.isMobile
+        ? -currentIndex * (280 + 15) + "px"
+        : -currentIndex * (310 + 15) + "px"}
+  );
   transition: transform 0.3s ease-in-out;
 `;
 

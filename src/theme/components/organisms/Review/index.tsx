@@ -81,7 +81,10 @@ const StyledGradientBox = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(to right, #2a5550, rgba(255, 69, 0, 0));
+  background: ${({ theme }) =>
+    theme.media.isMobile
+      ? "linear-gradient(to right, #2a5550, rgba(255, 100 , 69, 0) 150%)"
+      : "linear-gradient(to right, #2a5550, rgba(255, 69, 0, 0))"};
   z-index: 1;
 `;
 
@@ -104,7 +107,8 @@ const StyledImageBox = styled.div`
   bottom: 0;
   background-image: url(./assets/planRecuperare1.jpg);
   background-size: cover;
-  background-position: center;
+  background-position: ${({ theme }) =>
+    theme.media.isMobile ? "right" : "center"};
   z-index: 0;
 `;
 

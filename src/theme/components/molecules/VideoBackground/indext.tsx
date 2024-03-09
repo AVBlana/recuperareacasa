@@ -1,10 +1,10 @@
 import { useMedia } from "@/theme/hooks/useMedia";
 import React, { useEffect, useRef } from "react";
 import YouTube from "react-youtube";
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
 
 const VideoBackground: React.FC = () => {
-  const media = useMedia();
+  const theme = useTheme();
 
   const videoSRC = "RBbyRBlLkMQ";
 
@@ -35,7 +35,7 @@ const VideoBackground: React.FC = () => {
       opts={opts}
       onReady={onReady}
       onEnd={onEnd}
-      style={{ height: media.isMobile ? 500 : "150vh" }}
+      style={{ height: theme.media.isMobile ? "100vh" : "150vh" }}
     />
   );
 };

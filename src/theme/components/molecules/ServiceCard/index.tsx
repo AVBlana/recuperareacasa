@@ -1,9 +1,8 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
 import { SvgIcon, Text } from "../..";
 import Box from "../../atoms/Box";
 import Flex from "../../atoms/Flex";
-import { theme } from "@/theme/constants";
 import { renderToStaticMarkup } from "react-dom/server";
 
 export interface ServiceCardProps {
@@ -17,6 +16,7 @@ export interface ServiceCardProps {
 }
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
+  const theme = useTheme();
   const descHtml = renderToStaticMarkup(service.desc);
 
   return (
@@ -55,7 +55,8 @@ const StyledServiceCard = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  min-width: 310px;
+  min-width: ${({ theme }) => (theme.media.isMobile ? "280" : "310")}px;
+  min-height: ${({ theme }) => (theme.media.isMobile ? "330px" : "100%")};
   padding: 20px;
   justify-content: flex-end;
   background-size: cover;
@@ -84,7 +85,8 @@ const HiddenDesc = styled.div`
   justify-content: start;
   color: white;
   text-align: left;
-  font-size: 14px;
+  font-size: ${({ theme }) =>
+    theme.media.isMobile ? theme.text.smaller : theme.text.medium}px;
   border-radius: 20px;
   padding-left: 20px;
   padding-right: 20px;

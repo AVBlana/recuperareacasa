@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
 import Box from "../../atoms/Box";
 import { Text } from "../..";
 import { theme } from "@/theme/constants";
@@ -8,37 +8,37 @@ import { useState, useEffect } from "react";
 const interacts = [
   {
     number: "01",
-    label: "Evaluăm amănunțit,",
+    label: "Evaluăm amănunțit",
     image: "/assets/planRecuperare1.jpg",
   },
   {
     number: "02",
-    label: "Personalizăm tratamentul,",
+    label: "Personalizăm tratamentul",
     image: "/assets/planRecuperare2.jpg",
   },
   {
     number: "03",
-    label: "Aplicăm planul,",
+    label: "Aplicăm planul",
     image: "/assets/planRecuperare3.jpg",
   },
   {
     number: "04",
-    label: "Reevaluăm,",
+    label: "Reevaluăm",
     image: "/assets/planRecuperare4.jpg",
   },
   {
     number: "05",
-    label: "Schimbam tratamentul,",
+    label: "Schimbam tratamentul",
     image: "/assets/planRecuperare5.jpg",
   },
   {
     number: "06",
-    label: "Adăugăm fizioterapie,",
+    label: "Adăugăm fizioterapie",
     image: "/assets/planRecuperare6.jpg",
   },
   {
     number: "07",
-    label: "Reeducăm prin kinetoterapie,",
+    label: "Reeducăm prin kinetoterapie",
     image: "/assets/planRecuperare7.jpg",
   },
   // {
@@ -48,7 +48,7 @@ const interacts = [
   // },
   {
     number: "08",
-    label: "Asteptăm review,",
+    label: "Asteptăm review",
     image: "/assets/planRecuperare8.jpg",
   },
 ];
@@ -60,6 +60,7 @@ interface IPropsInteractive {
 }
 
 const InteractiveBox: React.FC = () => {
+  const theme = useTheme();
   const [hoveredLabel, setHoveredLabel] = useState<string | null>(
     interacts[0].label
   );
@@ -76,7 +77,7 @@ const InteractiveBox: React.FC = () => {
   return (
     <Box style={{ alignItems: "center" }}>
       <StyledInteractiveBox>
-        <LeftBox>
+        <LeftBox style={{ justifyContent: "center" }}>
           {interacts.map((interact, index) => (
             <StyledLabelBox
               key={interact.number}
@@ -109,6 +110,9 @@ const InteractiveBox: React.FC = () => {
                     interact.label === interacts[0].label
                       ? theme.color.secondary
                       : theme.color.primary,
+                  fontSize: theme.media.isMobile
+                    ? theme.text.bigger
+                    : theme.text.huge,
                 }}
               >
                 {interact.label}
@@ -119,8 +123,8 @@ const InteractiveBox: React.FC = () => {
         <RightBox>
           <ImageBox>
             <Image
-              width={600}
-              height={600}
+              width={theme.media.isMobile ? 260 : 600}
+              height={theme.media.isMobile ? 260 : 600}
               src={
                 interacts.find((i) => i.label === hoveredLabel)?.image ||
                 interacts[0].image
@@ -143,13 +147,14 @@ const InteractiveBox: React.FC = () => {
 
 const StyledInteractiveBox = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: ${({ theme }) => (theme.media.isMobile ? "column" : "row")};
   align-items: center;
   justify-content: center;
-  padding-left: 80px;
-  padding-right: 80px;
+  padding-left: ${({ theme }) => (theme.media.isMobile ? "20" : "80")}px;
+  padding-right: ${({ theme }) => (theme.media.isMobile ? "20" : "80")}px;
   padding-bottom: 100px;
   max-width: 1440px;
+  gap: ${({ theme }) => (theme.media.isMobile ? "20" : "0")}px;
 `;
 
 const LeftBox = styled.div`
@@ -162,7 +167,8 @@ const StyledLabelBox = styled.div<{ hovered: boolean; isFirst: boolean }>`
   flex-direction: row;
   gap: 8px;
   cursor: ${({ hovered }) => (hovered ? "pointer" : "default")};
-  padding: ${({ theme }) => theme.spacings.small}px;
+  padding: ${({ theme }) =>
+    theme.media.isMobile ? theme.spacings.tiny : theme.spacings.small}px;
   transition: color 0.3s, transform 0.3s;
 
   &:hover {

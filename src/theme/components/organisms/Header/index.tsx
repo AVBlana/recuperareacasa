@@ -36,7 +36,7 @@ const Header = () => {
 
   const BurgerMenu = ({ onClick }: { onClick: () => void }) => (
     <Box onClick={onClick}>
-      <MenuIcon size={20} stroke={theme.color.primary} />
+      <MenuIcon size={14} stroke={theme.color.primary} />
     </Box>
   );
 

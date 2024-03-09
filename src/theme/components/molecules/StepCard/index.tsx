@@ -61,7 +61,15 @@ const StepCard = ({
           >
             {title}
           </Text>
-          <Text small>{desc}</Text>
+          <Text
+            style={{
+              fontSize: theme.media.isMobile
+                ? theme.text.smaller
+                : theme.text.small,
+            }}
+          >
+            {desc}
+          </Text>
         </Box>
       </StyledStepCard>
     </>

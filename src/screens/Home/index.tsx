@@ -49,7 +49,10 @@ export const HomeScreen = () => {
         <CTA />
       </StepsProvider>
 
-      <SectionBox id="echipa" style={{ alignItems: "center" }}>
+      <SectionBox
+        id="echipa"
+        style={{ alignItems: theme.media.isMobile ? "flex-start" : "center" }}
+      >
         <Team />
         <Steps />
       </SectionBox>

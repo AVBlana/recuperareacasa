@@ -26,7 +26,7 @@ const Slider = () => {
             zIndex: 2,
             justifyContent: "center",
             alignItems: "center",
-            gap: theme.media.isMobile ? 10 : 30,
+            gap: theme.media.isMobile ? 40 : 30,
             paddingLeft: theme.media.isMobile ? 20 : 80,
             paddingRight: theme.media.isMobile ? 20 : 80,
             paddingTop: theme.media.isMobile ? 20 : 100,
@@ -37,13 +37,16 @@ const Slider = () => {
             style={{
               justifyContent: "center",
               alignItems: "center",
-              gap: theme.media.isMobile ? 10 : 30,
+              gap: theme.media.isMobile ? 40 : 30,
             }}
           >
             <Text
               secondaryFont
               white
-              style={{ fontSize: theme.media.isMobile ? "24px" : "100px" }}
+              style={{
+                fontSize: theme.media.isMobile ? "34px" : "100px",
+                textAlign: "center",
+              }}
             >
               Fizioterapie la tine acasa!
             </Text>
@@ -57,18 +60,23 @@ const Slider = () => {
                 display: "flex",
                 textAlign: "center",
                 fontSize: theme.media.isMobile
-                  ? theme.text.smallest
+                  ? theme.text.small
                   : theme.text.big,
               }}
             >
               Bine ai venit pe platforma noastră dedicată recuperării la
-              domiciliu! Suntem aici pentru tine, punând accentul pe tratarea
-              întregii tale persoane, nu doar a problemei de sănătate. Echipa
-              noastră de specialiști aduce în casele tale idei inovatoare și
-              programe personalizate pentru a-ți îmbunătăți starea de sănătate
-              și a te sprijini în călătoria ta către recuperare. Descoperă o
-              abordare holistă, unde ne concentrăm asupra ta ca individ, nu doar
-              asupra simptomelor tale!
+              domiciliu!
+              <br />
+              Suntem aici pentru tine, punând accentul pe tratarea întregii tale
+              persoane, nu doar a problemei de sănătate.
+              <br />
+              <br /> Echipa noastră de specialiști aduce în casele tale idei
+              inovatoare și programe personalizate pentru a-ți îmbunătăți starea
+              de sănătate și a te sprijini în călătoria ta către recuperare.
+              <br />
+              <br />
+              Descoperă o abordare holistă, unde ne concentrăm asupra ta ca
+              individ, nu doar asupra simptomelor tale!
             </Text>
           </Box>
           <Flex>
@@ -101,7 +109,7 @@ const Slider = () => {
                 <CaretRIcon
                   size={
                     theme.media.isMobile
-                      ? theme.spacings.smaller
+                      ? theme.spacings.small
                       : theme.spacings.medium
                   }
                   fill={theme.color.white}
@@ -123,8 +131,8 @@ const SliderButton = styled.div`
   align-items: center;
   background: ${({ theme }) => theme.color.secondary};
   cursor: pointer;
-  border-top-right-radius: ${({ theme }) => theme.spacings.big}px;
-  border-bottom-right-radius: ${({ theme }) => theme.spacings.big}px;
+  border-top-right-radius: ${({ theme }) => theme.spacings.medium}px;
+  border-bottom-right-radius: ${({ theme }) => theme.spacings.medium}px;
   border-style: solid;
   border-color: ${({ theme }) => theme.color.primary};
 
@@ -132,8 +140,8 @@ const SliderButton = styled.div`
     if (theme.media.isMobile) {
       return css`
         font-size: ${theme.text.smaller}px;
-        border-top-left-radius: ${theme.spacings.big}px;
-        border-bottom-left-radius: ${theme.spacings.big}px;
+        border-top-left-radius: ${theme.spacings.medium}px;
+        border-bottom-left-radius: ${theme.spacings.medium}px;
         padding-top: ${theme.spacings.tiny}px;
         padding-bottom: ${theme.spacings.tiny}px;
         padding-left: ${theme.spacings.medium}px;
@@ -174,17 +182,17 @@ const GradientLayer = styled.div`
 
 const VideoBackgroundWrapper = styled.div`
   position: relative;
-  height: ${({ theme }) => (theme.media.isMobile ? "82vh" : "100vh")};
+  height: ${({ theme }) => (theme.media.isMobile ? "100vh" : "100vh")};
   width: 100%;
   overflow: hidden;
 `;
 
 const StyledVideoBG = styled.div`
   position: absolute;
-  top: -30%;
-  left: -10%;
-  width: 110%;
-  height: 110%;
+  top: ${({ theme }) => (theme.media.isMobile ? "-10px" : "-30%")};
+  left: ${({ theme }) => (theme.media.isMobile ? "-100%" : "-10%")};
+  width: ${({ theme }) => (theme.media.isMobile ? "310%" : "110%")};
+  height: ${({ theme }) => (theme.media.isMobile ? "100%" : "110%")};
 `;
 const ContentContainer = styled.div`
   position: absolute;
