@@ -62,12 +62,6 @@ const StepForm3: React.FC<StepForm3Props> = () => {
         >
           Pasul 3: Revizuiește informațiile și trimite
         </Text>
-        <Box
-          onClick={handleCloseModal}
-          style={{ cursor: "pointer", padding: 5 }}
-        >
-          <CloseIcon size={16} fill={theme.color.white} />
-        </Box>
       </Flex>
       <Box>
         <StyledFormSection

@@ -152,12 +152,6 @@ const StepForm1 = () => {
         >
           Pasul 1: Scopul tratamentului
         </Text>
-        <Box
-          onClick={handleCloseModal}
-          style={{ cursor: "pointer", padding: 5, zIndex: 100 }}
-        >
-          <CloseIcon size={16} fill={theme.color.white} />
-        </Box>
       </Flex>
       <Box style={{ paddingTop: 20, paddingBottom: 20 }}>
         <Text

@@ -8,6 +8,7 @@ import StepForm1 from "../../molecules/StepForm1";
 import StepForm2 from "../../molecules/StepForm2";
 import StepForm3 from "../../molecules/StepForm3";
 import { StepsContext } from "./context";
+import { CloseIcon } from "../..";
 
 interface StepsFormProps {
   onClose: () => void;
@@ -118,6 +119,15 @@ const StepsForm: React.FC<StepsFormProps> = ({ onClose }) => {
           padding: 40,
         }}
       >
+        <Flex style={{ flex: 1, justifyContent: "end", paddingBottom: 20 }}>
+          <Box
+            onClick={handleCloseModal}
+            style={{ cursor: "pointer", padding: 5 }}
+          >
+            <CloseIcon size={16} fill={theme.color.white} />
+          </Box>
+        </Flex>
+
         {renderStep}
 
         <Flex style={{ gap: 10, paddingTop: 20 }}>
