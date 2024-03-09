@@ -244,7 +244,9 @@ const useStepFormData = () => {
   };
 
   const handleCloseModal = () => {
+    console.warn("@@@", handleCloseModal);
     setIsModalVisible(false);
+    // onClose();
   };
 
   return {

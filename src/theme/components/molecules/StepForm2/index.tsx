@@ -1,4 +1,4 @@
-import { Checkbox, RadioButton } from "..";
+import { Checkbox, CloseIcon, RadioButton } from "..";
 import Box from "../../atoms/Box";
 import { Text } from "../..";
 import Flex from "../../atoms/Flex";
@@ -33,6 +33,7 @@ const StepForm2: React.FC<StepForm2Props> = () => {
     handleOptionChange,
     handleUserInfoChange,
     handleCheckboxChange,
+    handleCloseModal,
   } = useContext(StepsContext);
 
   const inputStyle = {
@@ -64,6 +65,12 @@ const StepForm2: React.FC<StepForm2Props> = () => {
         >
           Pasul 2: Disponibilitatea
         </Text>
+        <Box
+          onClick={handleCloseModal}
+          style={{ cursor: "pointer", padding: 5 }}
+        >
+          <CloseIcon size={16} fill={theme.color.white} />
+        </Box>
       </Flex>
       <StyledFormSection
         style={{ maxWidth: 400, paddingTop: theme.media.isMobile ? 20 : 0 }}

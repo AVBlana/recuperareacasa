@@ -176,6 +176,22 @@ const Gallery = () => {
     setFilterMenuOpen((prevOpen) => !prevOpen);
   };
 
+  const filterItemsArray = [
+    "Toate",
+    "Kinetoterapie",
+    "Sportiv și Recuperare",
+    "Relaxare",
+    "Kinesio Tape",
+    "Electroterapie",
+    "Dry Needling",
+    "Evaluare Neuro-Musculo-Scheletală",
+    "Eliberare Fascială IATSM",
+    "Cupping",
+    "Flossing",
+    "Terapie Manuală",
+    "Exerciții",
+  ];
+
   return (
     <>
       <SectionBox id="galerie">
@@ -203,39 +219,40 @@ const Gallery = () => {
               cursor: "pointer",
             }}
           >
-            <FilterButton onClick={toggleFilterMenu}>
-              {selectedLabel}
-            </FilterButton>
-            {isFilterMenuOpen && (
-              <FilterMenu>
-                {[
-                  "Toate",
-                  "Kinetoterapie",
-                  "Sportiv și Recuperare",
-                  "Relaxare",
-                  "Kinesio Tape",
-                  "Electroterapie",
-                  "Dry Needling",
-                  "Evaluare Neuro-Musculo-Scheletală",
-                  "Eliberare Fascială IATSM",
-                  "Cupping",
-                  "Flossing",
-                  "Terapie Manuală",
-                  "Exerciții",
-                ].map((label) => (
-                  <FilterItem
-                    key={label}
-                    label={label}
-                    onClick={() => {
-                      filter({ label });
-                      toggleFilterMenu();
-                    }}
-                    selected={label === selectedLabel}
-                  />
-                ))}
-              </FilterMenu>
+            {theme.media.isMobile ? (
+              <>
+                <FilterButton onClick={toggleFilterMenu}>
+                  {selectedLabel}
+                </FilterButton>
+                {isFilterMenuOpen && (
+                  <FilterMenu>
+                    {filterItemsArray.map((label) => (
+                      <FilterItem
+                        key={label}
+                        label={label}
+                        onClick={() => {
+                          filter({ label });
+                          toggleFilterMenu();
+                        }}
+                        selected={label === selectedLabel}
+                      />
+                    ))}
+                  </FilterMenu>
+                )}
+              </>
+            ) : (
+              // Display desktop filter items
+              filterItemsArray.map((label) => (
+                <FilterItem
+                  key={label}
+                  label={label}
+                  onClick={() => filter({ label })}
+                  selected={label === selectedLabel}
+                />
+              ))
             )}
           </Flex>
+
           <Flex style={{ flexWrap: "wrap", width: "100%" }}>
             {data.slice(0, visibleItems).map((item) => (
               <GalleryItem

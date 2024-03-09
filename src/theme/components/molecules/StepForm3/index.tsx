@@ -1,6 +1,6 @@
 import { theme } from "@/theme/constants";
 import Button from "../../atoms/Button";
-import { Checkbox, Text } from "../..";
+import { Checkbox, CloseIcon, Text } from "../..";
 import Box from "../../atoms/Box";
 import Flex from "../../atoms/Flex";
 import Input from "../../atoms/Input";
@@ -37,6 +37,7 @@ const StepForm3: React.FC<StepForm3Props> = () => {
     userAp,
     selectedOption,
     handleCheckboxChange,
+    handleCloseModal,
   } = useContext(StepsContext);
 
   return (
@@ -61,6 +62,12 @@ const StepForm3: React.FC<StepForm3Props> = () => {
         >
           Pasul 3: Revizuiește informațiile și trimite
         </Text>
+        <Box
+          onClick={handleCloseModal}
+          style={{ cursor: "pointer", padding: 5 }}
+        >
+          <CloseIcon size={16} fill={theme.color.white} />
+        </Box>
       </Flex>
       <Box>
         <StyledFormSection
