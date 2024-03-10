@@ -14,6 +14,7 @@ import About from "@/theme/components/organisms/About";
 import Steps from "@/theme/components/organisms/Steps";
 import Team from "@/theme/components/organisms/Team";
 import { StepsProvider } from "@/theme/components/organisms/StepsForm/context";
+import { ReviewProvider } from "@/theme/components/organisms/Review/ReviewContext";
 
 export const HomeScreen = () => {
   const theme = useTheme();
@@ -60,8 +61,9 @@ export const HomeScreen = () => {
       <SectionBox id="galerie">
         <Gallery />
       </SectionBox>
-
-      <Review />
+      <ReviewProvider>
+        <Review />
+      </ReviewProvider>
 
       <SectionBox id="contact">
         <Footer />

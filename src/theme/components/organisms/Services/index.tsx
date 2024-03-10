@@ -287,15 +287,16 @@ const Services = () => {
     const containerElement = document.getElementById("service-cards-container");
     if (containerElement) {
       const containerWidth = containerElement.offsetWidth;
-      const cardWidth = 325; // Width of your service card, adjust as needed
+      const cardWidth = 325;
       const visibleCardsCount = Math.floor(containerWidth / cardWidth);
       setVisibleCards(visibleCardsCount);
     }
   }, []);
 
   const handleNextCard = () => {
+    const lastVisibleIndex = services.length - visibleCards;
     if (currentIndex < services.length - visibleCards) {
-      setCurrentIndex((prevIndex) => prevIndex + 1);
+      setCurrentIndex((prevIndex) => Math.min(prevIndex + 1, lastVisibleIndex));
     }
   };
 
@@ -328,7 +329,7 @@ const Services = () => {
             </Text>
             <Text
               style={{
-                width: 280,
+                width: theme.media.isMobile ? 280 : 240,
                 fontSize: theme.media.isMobile
                   ? theme.text.smaller
                   : theme.text.medium,
@@ -393,16 +394,16 @@ const StyledArrowBox = styled.div<{ hidden?: boolean }>`
   transition: transform 0.3s ease-in-out;
 
   &:hover {
-    transform: scale(1.1); /* Adjust the scale factor as needed */
+    transform: scale(1.1);
   }
 
   & > svg {
-    fill: ${(props) => props.theme.color.secondary}; /* Initial color */
+    fill: ${(props) => props.theme.color.secondary};
     transition: fill 0.3s ease-in-out;
   }
 
   &:hover > svg {
-    fill: ${(props) => props.theme.color.primary}; /* Hover color */
+    fill: ${(props) => props.theme.color.primary};
   }
 `;
 
@@ -432,8 +433,8 @@ const StyledServiceCardsContainer = styled.div<StyledServiceCardsContainerProps>
   transform: translateX(
     ${({ theme, currentIndex }) =>
       theme.media.isMobile
-        ? -currentIndex * (280 + 15) + "px"
-        : -currentIndex * (310 + 15) + "px"}
+        ? -Math.min(currentIndex) * (280 + 15) + "px"
+        : -Math.min(currentIndex) * (310 + 15) + "px"}
   );
   transition: transform 0.3s ease-in-out;
 `;

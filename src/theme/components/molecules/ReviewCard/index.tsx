@@ -10,7 +10,7 @@ import { ArrowRightIcon } from "../Icons/ArrowRightIcon";
 import { StarIcon } from "../Icons/StarIcon";
 
 interface ReviewCardProps {
-  review: {
+  review?: {
     rating: number;
     text: string;
     reviewer: string;
@@ -26,6 +26,10 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
   onNextReview,
 }) => {
   const theme = useTheme();
+
+  if (!review) {
+    return null;
+  }
   return (
     <StyledCardBox>
       <Flex style={{ gap: 8 }}>
@@ -52,21 +56,21 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
       <Flex
         style={{
           justifyContent: "space-between",
-          flexDirection: theme.media.isMobile ? "column" : "row",
+          flexDirection: "column",
           gap: theme.media.isMobile ? 60 : 0,
         }}
       >
         <Flex style={{ alignItems: "center", gap: theme.spacings.medium }}>
           <Box>
             <Image
-              width={theme.media.isMobile ? 50 : 80}
-              height={theme.media.isMobile ? 50 : 80}
-              src="/assets/review-bg.jpg"
+              width={theme.media.isMobile ? 50 : 50}
+              height={theme.media.isMobile ? 50 : 50}
+              src="/assets/user.svg"
               alt=""
               style={{
                 borderRadius: 50,
                 borderStyle: "solid",
-                borderColor: theme.color.secondary,
+                borderColor: theme.color.primary,
               }}
             />
           </Box>
@@ -132,16 +136,16 @@ const StyledArrowBox = styled.div`
   transition: transform 0.3s ease-in-out;
 
   &:hover {
-    transform: scale(1.1); /* Adjust the scale factor as needed */
+    transform: scale(1.1);
   }
 
   & > svg {
-    fill: ${(props) => props.theme.color.white}; /* Initial color */
+    fill: ${(props) => props.theme.color.white};
     transition: fill 0.3s ease-in-out;
   }
 
   &:hover > svg {
-    fill: ${(props) => props.theme.color.secondary}; /* Hover color */
+    fill: ${(props) => props.theme.color.secondary};
   }
 `;
 
