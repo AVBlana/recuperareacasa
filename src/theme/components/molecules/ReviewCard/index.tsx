@@ -56,7 +56,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
       <Flex
         style={{
           justifyContent: "space-between",
-          flexDirection: "column",
+          flexDirection: theme.media.isMobile ? "column" : "row",
           gap: theme.media.isMobile ? 60 : 0,
         }}
       >

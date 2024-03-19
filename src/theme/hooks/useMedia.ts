@@ -1,6 +1,8 @@
 import { useMediaQuery } from "react-responsive";
 import { useTheme } from "styled-components";
 
+process.env.NODE_ENV;
+
 export const useMedia = () => {
   const isDesktopOrLaptop = useMediaQuery({
     maxWidth: 1224,

@@ -70,14 +70,15 @@ const InteractiveBox: React.FC = () => {
   };
 
   useEffect(() => {
-    // Set the default label when the component mounts
     setHoveredLabel(interacts[0].label);
-  }, []); // Empty dependency array ensures this effect runs only once on mount
+  }, []);
 
   return (
     <Box style={{ alignItems: "center" }}>
       <StyledInteractiveBox>
-        <LeftBox style={{ justifyContent: "center" }}>
+        <LeftBox
+          style={{ justifyContent: theme.media.isMobile ? "center" : "left" }}
+        >
           {interacts.map((interact, index) => (
             <StyledLabelBox
               key={interact.number}
@@ -154,12 +155,12 @@ const StyledInteractiveBox = styled.div`
   padding-right: ${({ theme }) => (theme.media.isMobile ? "20" : "80")}px;
   padding-bottom: 100px;
   max-width: 1440px;
-  gap: ${({ theme }) => (theme.media.isMobile ? "20" : "0")}px;
+  gap: ${({ theme }) => (theme.media.isMobile ? "20" : "160")}px;
 `;
 
 const LeftBox = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
 `;
 
 const StyledLabelBox = styled.div<{ hovered: boolean; isFirst: boolean }>`

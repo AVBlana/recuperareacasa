@@ -9,16 +9,31 @@ interface ReviewContextProps {
 const ReviewContext = createContext<ReviewContextProps | undefined>(undefined);
 
 export const ReviewProvider = ({ children }: { children: React.ReactNode }) => {
-  const [reviews, setReviews] = useState<any[]>([]);
+  // Function to initialize the state
+  const initializeState = () => {
+    // Check if localStorage is available
+    if (typeof window !== "undefined") {
+      // Initialize reviews state with data from localStorage or an empty array
+      const storedReviews = localStorage.getItem("reviews");
+      return storedReviews ? JSON.parse(storedReviews) : [];
+    } else {
+      // If localStorage is not available (e.g., during SSR), return an empty array
+      return [];
+    }
+  };
+
+  const [reviews, setReviews] = useState<any[]>(initializeState);
 
   const addReview = (review: any) => {
     setReviews([...reviews, review]);
   };
 
-  useEffect(() => {
-    // Save reviews to localStorage
-    localStorage.setItem("reviews", JSON.stringify(reviews));
-  }, [reviews]);
+  // useEffect(() => {
+  //   // Save reviews to localStorage whenever the reviews state changes
+  //   if (typeof window !== "undefined") {
+  //     localStorage.setItem("reviews", JSON.stringify(reviews));
+  //   }
+  // }, [reviews]);
 
   return (
     <ReviewContext.Provider value={{ reviews, addReview }}>

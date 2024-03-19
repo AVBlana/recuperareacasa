@@ -1,31 +1,56 @@
 import React, { useState } from "react";
+import { Text } from "../..";
+import Box from "../../atoms/Box";
 
-// Define the type for AccordionProps
 interface AccordionProps {
-  title: string;
-  children?: React.ReactNode;
+  data: { title: string; content: string | JSX.Element }[];
 }
 
-// Accordion component
-const Accordion: React.FC<AccordionProps> = ({ title, children }) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+interface AccordionItemProps {
+  title: string;
+  content: string | JSX.Element;
+  isOpen: boolean;
+  onClick: () => void;
+}
 
-  const handleToggle = () => {
-    setIsOpen((prevIsOpen) => !prevIsOpen);
-  };
-
-  console.log(`Rendering ${title}`);
-
+const Accordion = ({ data }: AccordionProps) => {
+  const [currentIndex, setCurrentIndex] = useState<number | null>(null);
   return (
-    <div className="accordion">
-      <div className="accordion-header" onClick={handleToggle}>
-        <h2>{title}</h2>
-        {/* Add an icon or text to indicate the accordion state (open/closed) */}
-        {isOpen ? "[-]" : "[+]"}
-      </div>
-      {/* Conditionally render the content based on the accordion state */}
-      {isOpen && <div className="accordion-content">{children}</div>}
-    </div>
+    <Box>
+      <Text>{currentIndex}</Text>
+      {data.map((item, index) => {
+        return (
+          <AccordionItem
+            title={item.title}
+            content={item.content}
+            isOpen={currentIndex === index}
+            onClick={() => setCurrentIndex(index)}
+          />
+        );
+      })}
+    </Box>
+  );
+};
+
+const AccordionItem: React.FC<AccordionItemProps> = ({
+  title,
+  content,
+  isOpen,
+  onClick,
+}) => {
+  return (
+    <Box>
+      <Box onClick={onClick}>
+        <Text>{title}</Text>
+      </Box>
+      {isOpen ? (
+        typeof content === "string" ? (
+          <Text>{content}</Text>
+        ) : (
+          content
+        )
+      ) : null}
+    </Box>
   );
 };
 

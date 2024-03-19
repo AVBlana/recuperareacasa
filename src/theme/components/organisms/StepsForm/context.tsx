@@ -25,7 +25,7 @@ interface FormData {
   userInfo1: string;
   userInfo2: string;
   selectedOption: string;
-  isModalVisible: boolean; // Updated to boolean
+  isModalVisible: boolean;
 }
 
 interface FormHandlers {
@@ -36,8 +36,8 @@ interface FormHandlers {
   handleTextAreaChange: (value: string, textareaId: string) => void;
   handleNext: () => void;
   handlePrevious: () => void;
-  handleOpenModal: () => void; // Added function
-  handleCloseModal: () => void; // Added function
+  handleOpenModal: () => void;
+  handleCloseModal: () => void;
 }
 
 interface UseStepFormData extends FormData, FormHandlers {
@@ -62,7 +62,7 @@ interface UseStepFormData extends FormData, FormHandlers {
   setUserInfo1: Dispatch<SetStateAction<string>>;
   setUserInfo2: Dispatch<SetStateAction<string>>;
   setSelectedOption: Dispatch<SetStateAction<string>>;
-  setIsModalVisible: Dispatch<SetStateAction<boolean>>; // Updated to boolean
+  setIsModalVisible: Dispatch<SetStateAction<boolean>>;
   setCurrentStep: Dispatch<SetStateAction<number>>;
 }
 
@@ -84,7 +84,7 @@ const useStepFormData = () => {
   const [userInfo1, setUserInfo1] = useState("");
   const [userInfo2, setUserInfo2] = useState("");
   const [selectedOption, setSelectedOption] = useState("");
-  const [isModalVisible, setIsModalVisible] = useState(false); // Updated to boolean
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const [userName, setUserName] = useState("");
   const [userPhone, setUserPhone] = useState("");
   const [userEmail, setUserEmail] = useState("");
@@ -145,9 +145,6 @@ const useStepFormData = () => {
   };
 
   const handleCheckboxChange = (id: string) => {
-    // Assuming your checkbox IDs are unique and well-structured
-    // If you have unique IDs, you don't need to split or extract a section ID
-
     switch (id) {
       case "intretinere":
       case "stare-de-bine":

@@ -5,12 +5,14 @@ import Box from "../../atoms/Box";
 import Input from "../../atoms/Input";
 import Button from "../../atoms/Button";
 import { Text, TextArea } from "../..";
+import { useReviewContext } from "../../organisms/Review/ReviewContext";
 
 interface ReviewFormProps {
   onSubmit: (review: any) => void;
 }
 
 const ReviewForm: React.FC<ReviewFormProps> = ({ onSubmit }) => {
+  const { reviews, addReview } = useReviewContext();
   const [formData, setFormData] = useState({
     rating: "",
     text: "",
@@ -25,9 +27,26 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ onSubmit }) => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleReviewSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    onSubmit(formData);
+  const handleReviewSubmit = async () => {
+    try {
+      const apiUrl = "/api/sendReviewMail";
+
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        console.log("Email sent successfully!");
+      } else {
+        console.error("Failed to send email.");
+      }
+    } catch (error: any) {
+      console.error("Error sending email:", error.message);
+    }
   };
 
   return (
@@ -43,51 +62,43 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ onSubmit }) => {
             gap: 20,
           }}
         >
-          <StyledFormText>
-            Rating:
-            <Input
-              id="reviewFormRating"
-              placeholder="Rating de la 1 la 5"
-              type="text"
-              name="rating"
-              value={formData.rating}
-              onChange={handleChange}
-            />
-          </StyledFormText>
-          <StyledFormText>
-            Message:
-            <Input
-              id="reviewFormMessage"
-              placeholder="Mesaj:"
-              type="text"
-              name="text"
-              value={formData.text}
-              onChange={handleChange}
-            />
-          </StyledFormText>
-          <StyledFormText>
-            Name:
-            <Input
-              id="reviewFormReviewer"
-              placeholder="Nume:"
-              type="text"
-              name="reviewer"
-              value={formData.reviewer}
-              onChange={handleChange}
-            />
-          </StyledFormText>
+          <Input
+            id="reviewFormRating"
+            placeholder="Rating de la 1 la 5"
+            type="text"
+            name="rating"
+            value={formData.rating}
+            onChange={handleChange}
+          />
 
-          <StyledFormText>
-            Title:
-            <Input
-              id="reviewFormTitle"
-              placeholder="Ocupație:"
-              type="text"
-              name="title"
-              value={formData.title}
-              onChange={handleChange}
-            />
-          </StyledFormText>
+          <TextArea
+            id="reviewFormMessage"
+            placeholder="Mesajul tau aici ..."
+            value={formData.text}
+            onChange={(value) =>
+              handleChange({
+                target: { name: "text", value },
+              } as React.ChangeEvent<HTMLTextAreaElement>)
+            }
+          ></TextArea>
+
+          <Input
+            id="reviewFormReviewer"
+            placeholder="Nume:"
+            type="text"
+            name="reviewer"
+            value={formData.reviewer}
+            onChange={handleChange}
+          />
+
+          <Input
+            id="reviewFormTitle"
+            placeholder="Ocupație:"
+            type="text"
+            name="title"
+            value={formData.title}
+            onChange={handleChange}
+          />
         </Box>
         <FormButton onClick={handleReviewSubmit}>Postează</FormButton>
       </form>

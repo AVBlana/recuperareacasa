@@ -132,7 +132,7 @@ const Footer = () => {
           </Box>
           <Box
             style={{
-              minWidth: 130,
+              minWidth: 140,
               gap: theme.media.isMobile ? 20 : 30,
               alignItems: theme.media.isMobile ? "center" : "start",
             }}

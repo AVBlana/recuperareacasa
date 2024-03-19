@@ -3,7 +3,6 @@ import styled, { useTheme } from "styled-components";
 import { SvgIcon, Text } from "../..";
 import Box from "../../atoms/Box";
 import Flex from "../../atoms/Flex";
-import { renderToStaticMarkup } from "react-dom/server";
 
 export interface ServiceCardProps {
   service: {
@@ -17,61 +16,62 @@ export interface ServiceCardProps {
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
   const theme = useTheme();
-  const descHtml = renderToStaticMarkup(service.desc);
 
   return (
-    <StyledServiceCard
-      style={{ backgroundImage: `url(${service.image})` }}
-      data-desc={descHtml}
-    >
+    <StyledServiceCard style={{ backgroundImage: `url(${service.image})` }}>
       <StyledGradientBox />
 
       <Flex
         style={{
           alignItems: "center",
           justifyContent: "space-between",
-          zIndex: 2,
+          zIndex: 20,
         }}
       >
-        <Box style={{ maxWidth: 150 }}>
-          <Text semiBold style={{ color: theme.color.secondary }}>
+        <Box>
+          <Text
+            biggest
+            semiBold
+            style={{
+              color: theme.color.secondary,
+              fontSize: theme.media.isMobile
+                ? theme.text.big
+                : theme.text.biggest,
+            }}
+          >
             {service.label}
           </Text>
-          <Text white>{service.title}</Text>
+          <Text
+            white
+            style={{
+              fontSize: theme.media.isMobile
+                ? theme.text.small
+                : theme.text.big,
+            }}
+          >
+            {service.title}
+          </Text>
         </Box>
         <Box>
           <SvgIcon size={50} fill={theme.color.white} src={service.svg} />
         </Box>
       </Flex>
-      <HiddenDesc
-        dangerouslySetInnerHTML={{ __html: descHtml }}
-        className="hidden-desc"
-      />
+      <HiddenDesc>
+        <Text
+          white
+          style={{
+            fontSize: theme.media.isMobile
+              ? theme.text.smaller
+              : theme.text.medium,
+            textAlign: "left",
+          }}
+        >
+          {service.desc}
+        </Text>
+      </HiddenDesc>
     </StyledServiceCard>
   );
 };
-
-const StyledServiceCard = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-width: ${({ theme }) => (theme.media.isMobile ? "280" : "310")}px;
-  min-height: ${({ theme }) => (theme.media.isMobile ? "330px" : "100%")};
-  padding: 20px;
-  justify-content: flex-end;
-  background-size: cover;
-  background-position: center;
-  border-radius: 20px;
-  transition: background 0.3s ease;
-
-  &:hover {
-    .hidden-desc {
-      opacity: 1;
-      visibility: visible;
-    }
-  }
-`;
-
 const HiddenDesc = styled.div`
   position: absolute;
   top: 0;
@@ -83,10 +83,6 @@ const HiddenDesc = styled.div`
   display: flex;
   align-items: start;
   justify-content: start;
-  color: white;
-  text-align: left;
-  font-size: ${({ theme }) =>
-    theme.media.isMobile ? theme.text.smaller : theme.text.medium}px;
   border-radius: 20px;
   padding-left: 20px;
   padding-right: 20px;
@@ -95,6 +91,27 @@ const HiddenDesc = styled.div`
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
+`;
+
+const StyledServiceCard = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: ${({ theme }) => (theme.media.isMobile ? "280" : "390")}px;
+  min-height: ${({ theme }) => (theme.media.isMobile ? "500px" : "100%")};
+  padding: 20px;
+  justify-content: flex-end;
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  transition: background 0.3s ease;
+
+  &:hover {
+    ${HiddenDesc} {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
 `;
 
 const StyledGradientBox = styled.div`

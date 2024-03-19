@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from "react";
 import styled, { useTheme } from "styled-components";
 import { Text } from "../..";
 import ServiceCard, { ServiceCardProps } from "../../molecules/ServiceCard";
-import { theme } from "@/theme/constants";
 import Box from "../../atoms/Box";
 import Flex from "../../atoms/Flex";
 import { ArrowLeftIcon } from "../../molecules/Icons/ArrowLeftIcon";
@@ -14,6 +13,7 @@ interface StyledServiceCardsContainerProps {
 
 const Services = () => {
   const theme = useTheme();
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const services = [
     {
@@ -43,34 +43,38 @@ const Services = () => {
       ),
     },
     {
-      label: "120 Ron",
-      title: "Kinetoterapie de Recuperare",
+      label: "140 Ron",
+      title: "Kinetoterapie",
       svg: "/assets/kineto.svg",
       image: "/assets/serviciiKinetoterapie.jpg",
       desc: (
         <>
-          Echipa noastră de terapeuți experimentați integrează o gamă diversă de
-          tehnici manuale pentru a vă oferi o terapie holistică.
+          Serviciul nostru de kinetoterapie se adresează cu precădere
+          persoanelor care suferă de AVC, probleme neurologice sau traumatisme,
+          oferindu-le un suport specializat în recuperarea funcțională.
           <br />
           <br />
-          De la tehnici de chiropractică și stretching, până la masaj terapeutic
-          și alte metode manuale avansate, abordăm individual nevoile
-          dumneavoastră.
+          Prin intermediul terapiei prin mișcare, ne concentrăm pe restabilirea
+          și consolidarea funcțiilor motorii afectate, îmbunătățirea
+          flexibilității și a forței musculare, precum și pe redobândirea
+          independenței și a calității vieții.
           <br />
           <br />
-          Acestă combinație expertă de practici manuale contribuie la
-          ameliorarea durerilor, îmbunătățirea flexibilității și promovarea
-          stării generale de bine.
+          Terapeuții noștri specializați lucrează îndeaproape cu fiecare pacient
+          pentru a dezvolta un program de exerciții adaptat nevoilor lor
+          individuale, astfel încât să obțină progrese semnificative în procesul
+          de recuperare.
           <br />
           <br />
-          Descoperiți beneficiile unei terapii manuale comprehensive pentru
-          sănătatea și mobilitatea dumneavoastră.
+          Serviciul nostru de kinetoterapie se concentrează exclusiv pe terapia
+          prin mișcare, oferind un sprijin specializat pentru recuperare
+          medicală.
         </>
       ),
     },
     {
       label: "170 Ron",
-      title: "Masaj Sportiv și de Recuperare",
+      title: "Masaj Terapeutic",
       svg: "/assets/legPain.svg",
       image: "/assets/serviciiMasajSportiv.jpg",
       desc: (
@@ -113,7 +117,7 @@ const Services = () => {
       ),
     },
     {
-      label: "30 Ron",
+      label: "20 Ron",
       title: "Aplicare Kinesio Tape",
       svg: "/assets/tape.svg",
       image: "/assets/serviciiKinesioTape.jpg",
@@ -131,6 +135,12 @@ const Services = () => {
           Indiferent dacă aveți nevoie de susținere în recuperarea după o
           leziune sau de optimizare a performanței sportive, utilizarea
           bandajului kinesiologic poate fi o soluție eficientă și non-invazivă.
+          <br />
+          <br />
+          Pentru a începe, te rugăm să achiziționezi o rolă personală de 5 metri
+          de bandă kinesiotape la prețul de 50 de lei, care va fi utilizată
+          pentru aplicările necesare.Ulterior, fiecare aplicare de kinesiotape
+          va fi tarifată separat, la prețul de 20 de lei per aplicare.
         </>
       ),
     },
@@ -179,12 +189,16 @@ const Services = () => {
           <br />
           Redescoperiți mobilitatea și confortul într-o manieră eficientă și
           personalizată.
+          <br />
+          <br />
+          Dry needling este o procedură inclusă în cadrul serviciului de terapie
+          manuală, astfel încât nu este necesar să fie achitat separate.
         </>
       ),
     },
     {
-      label: "Inclus",
-      title: "Evaluare Neuro-Musculo-Scheletală",
+      label: "50 Ron",
+      title: "Evaluare Neur-M-S",
       svg: "/assets/bodyScan2.svg",
       image: "/assets/planRecuperare1.jpg",
       desc: (
@@ -202,11 +216,15 @@ const Services = () => {
           și dezvolta un plan de tratament adaptat nevoilor dumneavoastră
           individuale, asigurând recuperare și îmbunătățirea stării de sănătate
           generală.
+          <br />
+          <br />
+          Evaluarea este gratuită numai în cazul serviciului de Terapie Manuală
+          sau Kinetoterapie
         </>
       ),
     },
     {
-      label: "Inclus",
+      label: "50 Ron",
       title: "Eliberare Fascială IATSM",
       svg: "/assets/fascial.svg",
       image: "/assets/serviciiEliberareFasciala.jpg",
@@ -230,7 +248,7 @@ const Services = () => {
       ),
     },
     {
-      label: "Inclus",
+      label: "30 Ron",
       title: "Cupping",
       svg: "/assets/cupping2.svg",
       image: "/assets/serviciiCupping.jpg",
@@ -254,7 +272,7 @@ const Services = () => {
       ),
     },
     {
-      label: "Inclus",
+      label: "30 Ron",
       title: "Flossing",
       svg: "/assets/flossing.svg",
       image: "/assets/serviciiFlossing.jpg",
@@ -278,22 +296,129 @@ const Services = () => {
         </>
       ),
     },
+    {
+      label: "510 Ron / 3 Sedinte",
+      title: "Abonament Terapie Manuala",
+      svg: "/assets/manualTherapy2.svg",
+      image: "/assets/serviciiTerapieManuala.jpg",
+      desc: (
+        <>
+          Abonamentul nostru de terapie manuală îți permite să experimentezi
+          vindecarea și relaxarea într-un mod convenabil și accesibil în trei
+          ședințe.
+          <br />
+          <br />
+          Oferind o varietate de tehnici terapeutice, de la masaj terapeutic la
+          manipulare osteopatică, Dryneedling, Flossing, Cupping, IATSM,
+          Kinesiotape,
+          <br />
+          <br />
+          Cu abonamentul nostru, beneficiezi de o evaluare inițială gratuită.
+          <br />
+          <br />
+          Valabilitatea abonamentului este pe o perioadă de 2 luni iar plata se
+          face integral pentru a-ți oferi o experiență fără griji și pentru a te
+          bucura de beneficiile terapiei manuale fără nicio grijă financiară.
+        </>
+      ),
+    },
+
+    {
+      label: "1500 Ron / 10 Sedinte",
+      title: "Abonament Masaj",
+      svg: "/assets/massage.svg",
+      image: "/assets/serviciiMasajDeRelaxare.jpg",
+      desc: (
+        <>
+          Cu acest abonament, te poți bucura de o serie de sesiuni de masaj
+          terapeutic de înaltă calitate.
+          <br />
+          <br />
+          Este important să ții cont că evaluarea inițială este tarifată separat
+          de abonament și nu este inclusă în prețul acestuia.
+          <br />
+          <br />
+          Abonamentul nostru se concentrează exclusiv pe masajul terapeutic, iar
+          alte servicii sau tratamente vor fi suplimentare și tarifate separat.
+          <br />
+          <br />
+          Valabilitatea abonamentului este pe o perioadă de 6 luni iar plata se
+          face în două tranșe pentru a-ți oferi o experiență fără griji pe tot
+          parcursul acestei perioade.
+        </>
+      ),
+    },
+    {
+      label: "1200 Ron / 10 Sedinte",
+      title: "Abonament Kinetoterapie",
+      svg: "/assets/kineto.svg",
+      image: "/assets/serviciiKinetoterapie.jpg",
+      desc: (
+        <>
+          Conceput exclusiv pentru terapia prin exerciții, acest abonament îți
+          oferă oportunitatea de a-ți îmbunătăți sănătatea și mobilitatea
+          într-un mod sigur și eficient.
+          <br />
+          <br />
+          Vei lucra îndeaproape cu terapeuții noștri specializați pentru a
+          dezvolta un plan de tratament personalizat, adaptat nevoilor tale
+          sspecifice.
+          <br />
+          <br />
+          Evaluare inițială se tarifează separat.
+          <br />
+          <br />
+          Valabilitatea abonamentului este pe o perioadă de 3 luni iar plata
+          abonamentului se face în două tranșe pentru a-ți oferi mai multă
+          flexibilitate financiară.
+        </>
+      ),
+    },
+    {
+      label: "1400 Ron / 10 Sedinte",
+      title: "Abonament Mixt",
+      svg: "/assets/manualTherapy2.svg",
+      image: "/assets/serviciiTerapieManuala.jpg",
+      desc: (
+        <>
+          Abonamentul mixt oferă soluții complete pentru îmbunătățirea sănătății
+          la domiciliu, adresând diverse probleme medicale precum cele
+          neurologice, post-AVC și spasticitate.
+          <br />
+          <br />
+          Combinația de kinetoterapie și terapie manuală asigură pacienților
+          îngrijire specializată și eficientă în confortul propriului cămin.
+          <br />
+          <br />
+          Sesiunea poate include 20 de minute de terapie manuală și 30 de minute
+          de kinetoterapie, sau terapia manuală poate fi integrată în
+          exercițiile de kinetoterapie pe parcursul întregii sesiuni.
+          <br />
+          <br />
+          Pentru terapia manuală extinsă de 50 de minute, se poate achiziționa o
+          ședință suplimentară cu un cost adițional de 60 de lei. Plata
+          abonamentului se face în două tranșe.
+        </>
+      ),
+    },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visibleCards, setVisibleCards] = useState(0);
 
   useEffect(() => {
-    const containerElement = document.getElementById("service-cards-container");
+    const containerElement = containerRef.current;
     if (containerElement) {
       const containerWidth = containerElement.offsetWidth;
-      const cardWidth = 325;
+      const cardWidth = 400;
       const visibleCardsCount = Math.floor(containerWidth / cardWidth);
       setVisibleCards(visibleCardsCount);
     }
   }, []);
 
   const handleNextCard = () => {
+    console.log(visibleCards);
+
     const lastVisibleIndex = services.length - visibleCards;
     if (currentIndex < services.length - visibleCards) {
       setCurrentIndex((prevIndex) => Math.min(prevIndex + 1, lastVisibleIndex));
@@ -309,7 +434,7 @@ const Services = () => {
     <StyledServicesBox>
       <StyledControlBox>
         <Box style={{ gap: theme.media.isMobile ? 20 : 60 }}>
-          <Box style={{ gap: 10 }}>
+          <Box style={{ gap: 20 }}>
             <Text
               semiBold
               big
@@ -323,13 +448,14 @@ const Services = () => {
               secondaryFont
               style={{
                 fontSize: theme.media.isMobile ? theme.text.huge : 48,
+                maxWidth: 200,
               }}
             >
               Gandim diferit
             </Text>
             <Text
               style={{
-                width: theme.media.isMobile ? 280 : 240,
+                width: theme.media.isMobile ? 280 : "100%",
                 fontSize: theme.media.isMobile
                   ? theme.text.smaller
                   : theme.text.medium,
@@ -341,6 +467,18 @@ const Services = () => {
               <br />
               Echipa noastră de kinetoterapeuți oferă servicii personalizate
               pentru o recuperare completă.
+              <br />
+              <br />
+              Răsplătim loialitatea: obțineți 10% reducere pentru următoarele 3
+              luni după ce parcurgeți 10 ședințe în doar 3 luni.
+              <br />
+              <br />
+              Reducerea se aplică exclusiv serviciilor de masaj și kinetoterapie
+              sau abonamentelor acestora.
+              <br />
+              <br />
+              Și mai bine, puteți menține sau prelungi această reducere
+              continuând să respectați termenii noștri.
             </Text>
           </Box>
 
@@ -348,6 +486,7 @@ const Services = () => {
             style={{
               marginLeft: theme.media.isMobile ? 0 : -20,
               paddingBottom: theme.media.isMobile ? 20 : 0,
+              justifyContent: theme.media.isMobile ? "center" : "none",
             }}
           >
             <StyledArrowBox
@@ -371,7 +510,7 @@ const Services = () => {
           </Flex>
         </Box>
       </StyledControlBox>
-      <StyledServiceCardsContainerWrapper id="service-cards-container">
+      <StyledServiceCardsContainerWrapper ref={containerRef}>
         <StyledServiceCardsContainer currentIndex={currentIndex}>
           {services.map((service, index) => (
             <ServiceCard key={index} service={service} />
@@ -419,9 +558,9 @@ const StyledServicesBox = styled.div`
 const StyledControlBox = styled.div`
   display: flex;
   flex-direction: column;
-  padding: ${({ theme }) => (theme.media.isMobile ? "0" : "20")}px;
+  padding-right: ${({ theme }) => (theme.media.isMobile ? "0" : "20")}px;
   height: 100%;
-  min-width: 310px;
+  min-width: ${({ theme }) => (theme.media.isMobile ? "280" : "350")}px;
 `;
 
 const StyledServiceCardsContainer = styled.div<StyledServiceCardsContainerProps>`
@@ -434,7 +573,7 @@ const StyledServiceCardsContainer = styled.div<StyledServiceCardsContainerProps>
     ${({ theme, currentIndex }) =>
       theme.media.isMobile
         ? -Math.min(currentIndex) * (280 + 15) + "px"
-        : -Math.min(currentIndex) * (310 + 15) + "px"}
+        : -Math.min(currentIndex) * (390 + 15) + "px"}
   );
   transition: transform 0.3s ease-in-out;
 `;
