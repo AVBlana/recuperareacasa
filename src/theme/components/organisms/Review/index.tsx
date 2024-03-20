@@ -18,7 +18,7 @@ const Review = () => {
       title: "Fitness Enthusiast",
     },
     {
-      rating: 4,
+      rating: 2,
       text: "I had a positive experience with this physiotherapy clinic. The staff was professional, and the facilities were well-maintained. They provided effective treatment that significantly improved my mobility.",
       reviewer: "Michael Rodriguez",
       image: "/assets/michael-rodriguez.jpg",
@@ -45,29 +45,16 @@ const Review = () => {
       image: "/assets/olivia-miller.jpg",
       title: "Patient Care Advocate",
     },
+    {
+      rating: 2,
+      text: "test",
+      reviewer: "test",
+      image: "/assets/olivia-miller.jpg",
+      title: "Patient Care Advocate",
+    },
   ];
 
-  // const { reviews, addReview } = useReviewContext();
   const { addReview } = useReviewContext();
-
-  // useEffect(() => {
-  //   // Load reviews from localStorage on component mount
-  //   const storedReviews = localStorage.getItem("reviews");
-  //   if (storedReviews) {
-  //     try {
-  //       const parsedReviews = JSON.parse(storedReviews);
-
-  //       if (Array.isArray(parsedReviews)) {
-  //         // Use spread syntax to add each review individually
-  //         parsedReviews.forEach((review) => addReview(review));
-  //       } else {
-  //         console.error("Parsed reviews is not an array.");
-  //       }
-  //     } catch (error) {
-  //       console.error("Error parsing stored reviews:", error);
-  //     }
-  //   }
-  // }, []); // Run this effect only once on component mount
 
   const handleReviewSubmit = (review: any) => {
     addReview(review);
@@ -89,9 +76,20 @@ const Review = () => {
     <StyledReviewContainer>
       <StyledGradientBox />
       <StyledReviewBox>
-        <Flex>
+        <Flex
+          style={{
+            maxWidth: 1500,
+            justifyContent: "space-between",
+          }}
+        >
           <ReviewCard
-            review={reviews[currentReviewIndex]}
+            review={{
+              rating: reviews[currentReviewIndex].rating,
+              text: reviews[currentReviewIndex].text,
+              reviewer: reviews[currentReviewIndex].reviewer,
+              title: reviews[currentReviewIndex].title,
+              filled: true,
+            }}
             onPrevReview={handlePrevReview}
             onNextReview={handleNextReview}
           />

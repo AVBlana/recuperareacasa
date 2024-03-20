@@ -17,26 +17,7 @@ import { StepsProvider } from "@/theme/components/organisms/StepsForm/context";
 import { ReviewProvider } from "@/theme/components/organisms/Review/ReviewContext";
 import Accordion from "@/theme/components/molecules/Accordion";
 import { Text } from "@/theme/components";
-
-const ACCORDION_DATA = [
-  {
-    title: "item1",
-    content: (
-      <Box>
-        <Text>eoginsoeignosie</Text>
-        <Text>eoginse</Text>
-      </Box>
-    ),
-  },
-  {
-    title: "item2",
-    content: "descriere",
-  },
-  {
-    title: "item3",
-    content: "descriere",
-  },
-];
+import FAQ from "@/theme/components/organisms/FAQ";
 
 export const HomeScreen = () => {
   const theme = useTheme();
@@ -83,10 +64,10 @@ export const HomeScreen = () => {
       <SectionBox id="galerie">
         <Gallery />
       </SectionBox>
+      <FAQ />
       <ReviewProvider>
         <Review />
       </ReviewProvider>
-      <Accordion data={ACCORDION_DATA} />
 
       <SectionBox id="contact">
         <Footer />

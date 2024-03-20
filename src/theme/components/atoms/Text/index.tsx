@@ -54,6 +54,9 @@ export const Text = styled.span<IText>`
         white-space: ${whiteSpace};
       `;
     }
+    return css`
+      white-space: pre-wrap;
+    `;
   }}
   
   ${({ textOverflow }) => {

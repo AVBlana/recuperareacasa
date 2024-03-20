@@ -15,6 +15,7 @@ interface ReviewCardProps {
     text: string;
     reviewer: string;
     title: string;
+    filled: boolean;
   };
   onPrevReview: () => void;
   onNextReview: () => void;
@@ -34,13 +35,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
     <StyledCardBox>
       <Flex style={{ gap: 8 }}>
         {[...Array(5)].map((_, index) => (
-          <StarIcon
-            key={index}
-            size={20}
-            fill={
-              index < review.rating ? theme.color.secondary : theme.color.gray
-            }
-          />
+          <StarIcon key={index} size={20} filled={index < review.rating} />
         ))}
       </Flex>
       <Text

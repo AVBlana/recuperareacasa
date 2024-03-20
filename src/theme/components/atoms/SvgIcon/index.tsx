@@ -27,6 +27,7 @@ export const SvgIcon = ({
 export interface SVGIconProps extends React.SVGProps<SVGSVGElement> {
   size?: number;
   src?: string;
+  filled?: boolean;
 }
 
 export default SvgIcon;

@@ -28,13 +28,6 @@ export const ReviewProvider = ({ children }: { children: React.ReactNode }) => {
     setReviews([...reviews, review]);
   };
 
-  // useEffect(() => {
-  //   // Save reviews to localStorage whenever the reviews state changes
-  //   if (typeof window !== "undefined") {
-  //     localStorage.setItem("reviews", JSON.stringify(reviews));
-  //   }
-  // }, [reviews]);
-
   return (
     <ReviewContext.Provider value={{ reviews, addReview }}>
       {children}
