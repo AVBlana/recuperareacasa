@@ -64,10 +64,27 @@ const GalleryItem = ({
               gap: 10,
             }}
           >
-            <Text medium bold style={{ color: theme.color.secondary }}>
+            <Text
+              bold
+              style={{
+                color: theme.color.secondary,
+                fontSize: theme.media.isMobile
+                  ? theme.text.small
+                  : theme.text.medium,
+              }}
+            >
               {item.label}
             </Text>
-            <Text white big semiBold style={{ height: 70 }}>
+            <Text
+              white
+              semiBold
+              style={{
+                height: 70,
+                fontSize: theme.media.isMobile
+                  ? theme.text.small
+                  : theme.text.big,
+              }}
+            >
               {item.title}
             </Text>
           </Box>
@@ -116,8 +133,8 @@ const GalleryItem = ({
               <YouTube
                 videoId={item.url}
                 opts={{
-                  width: "1080",
-                  height: "720",
+                  width: theme.media.isMobile ? "320" : "1080",
+                  height: theme.media.isMobile ? "700" : "720",
                   playerVars: {
                     controls: 1,
                   },
@@ -143,11 +160,33 @@ const GalleryItem = ({
             </Text>
           )}
 
-          <Box style={{ flex: 1, padding: 20, gap: 20 }}>
-            <Text medium bold style={{ color: theme.color.secondary }}>
+          <Box
+            style={{
+              flex: 1,
+              padding: theme.media.isMobile ? 10 : 20,
+              gap: 20,
+            }}
+          >
+            <Text
+              bold
+              style={{
+                color: theme.color.secondary,
+                fontSize: theme.media.isMobile
+                  ? theme.text.small
+                  : theme.text.medium,
+              }}
+            >
               {item.label}
             </Text>
-            <Text big semiBold style={{ height: 70 }}>
+            <Text
+              semiBold
+              style={{
+                height: 70,
+                fontSize: theme.media.isMobile
+                  ? theme.text.small
+                  : theme.text.big,
+              }}
+            >
               {item.title}
             </Text>
           </Box>
@@ -173,7 +212,8 @@ const StyledOverlay = styled.div<{ visible: boolean }>`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: ${({ theme }) => theme.spacings.big}px;
+  padding: ${({ theme }) =>
+    theme.media.isMobile ? theme.spacings.smallest : theme.spacings.big}px;
   transition: opacity 0.3s, background 0.3s;
 
   ${({ visible }) => visible && overlayVisibleStyle}

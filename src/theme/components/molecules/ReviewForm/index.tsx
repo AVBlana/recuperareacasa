@@ -63,8 +63,9 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ onSubmit }) => {
         style={{
           display: "flex",
           flexDirection: "column",
-          gap: 60,
-          alignItems: "center",
+          gap: theme.media.isMobile ? 20 : 60,
+          alignItems: theme.media.isMobile ? "normal" : "center",
+          flex: 1,
         }}
       >
         <Box
@@ -158,7 +159,8 @@ const FormButton = styled.div`
 const StyledRatingInput = styled.div`
   display: flex;
   gap: 5px;
-  justify-content: center;
+  justify-content: ${({ theme }) =>
+    theme.media.isMobile ? "normal" : "center"};
   // padding: 10px;
   // border-style: solid;
   // border-width: 2px;

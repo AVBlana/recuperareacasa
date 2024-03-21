@@ -52,7 +52,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
         style={{
           justifyContent: "space-between",
           flexDirection: theme.media.isMobile ? "column" : "row",
-          gap: theme.media.isMobile ? 60 : 0,
+          gap: theme.media.isMobile ? 20 : 0,
         }}
       >
         <Flex style={{ alignItems: "center", gap: theme.spacings.medium }}>

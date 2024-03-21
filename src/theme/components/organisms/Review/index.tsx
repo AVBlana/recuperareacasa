@@ -80,6 +80,8 @@ const Review = () => {
           style={{
             maxWidth: 1500,
             justifyContent: "space-between",
+            flexDirection: theme.media.isMobile ? "column" : "row",
+            gap: theme.media.isMobile ? 40 : 0,
           }}
         >
           <ReviewCard
@@ -104,7 +106,7 @@ const Review = () => {
 
 const StyledReviewContainer = styled.div`
   position: relative;
-  min-height: ${({ theme }) => (theme.media.isMobile ? "450px" : "550px")};
+  min-height: ${({ theme }) => (theme.media.isMobile ? "800px" : "550px")};
 `;
 
 const StyledGradientBox = styled.div`
