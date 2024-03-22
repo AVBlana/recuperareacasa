@@ -50,7 +50,7 @@ const ACCORDION_DATA = [
   },
   {
     title:
-      "10. Sunt necesare  paturi de masaj sau accesorii pentru a primi tratamentul de recuperare medicală la domiciliu?",
+      "10. Este necesar un pat de masaj sau accesorii pentru a primi tratamentul de recuperare medicală la domiciliu?",
     content: `Nu este necesar să dețineți un pat de masaj sau alte accesorii. Echipa noastră de terapeuți va veni echipată complet cu toate echipamentele și accesorii necesare pentru a livra tratamentul de recuperare medicală la domiciliu.`,
   },
 ];

@@ -138,9 +138,11 @@ const Services = () => {
           <br />
           <br />
           Pentru a începe, te rugăm să achiziționezi o rolă personală de 5 metri
-          de bandă kinesiotape la prețul de 50 de lei, care va fi utilizată
-          pentru aplicările necesare.Ulterior, fiecare aplicare de kinesiotape
-          va fi tarifată separat, la prețul de 20 de lei per aplicare.
+          de bandă kinesiotape, care va fi utilizată pentru aplicările
+          necesare.Ulterior, fiecare aplicare de kinesiotape va fi tarifată
+          separat, la prețul de 20 de lei per aplicare. Rola se poate
+          achiziționa la începerea tratamentului de la noi fiind tarifată cu 50
+          ron.
         </>
       ),
     },
@@ -310,13 +312,13 @@ const Services = () => {
           <br />
           Oferind o varietate de tehnici terapeutice, de la masaj terapeutic la
           manipulare osteopatică, Dryneedling, Flossing, Cupping, IATSM,
-          Kinesiotape,
+          Kinesiotape.
           <br />
           <br />
           Cu abonamentul nostru, beneficiezi de o evaluare inițială gratuită.
           <br />
           <br />
-          Valabilitatea abonamentului este pe o perioadă de 2 luni iar plata se
+          Valabilitatea abonamentului este pe o perioadă de o lună, iar plata se
           face integral pentru a-ți oferi o experiență fără griji și pentru a te
           bucura de beneficiile terapiei manuale fără nicio grijă financiară.
         </>
@@ -362,7 +364,7 @@ const Services = () => {
           <br />
           Vei lucra îndeaproape cu terapeuții noștri specializați pentru a
           dezvolta un plan de tratament personalizat, adaptat nevoilor tale
-          sspecifice.
+          specifice.
           <br />
           <br />
           Evaluare inițială se tarifează separat.
@@ -383,7 +385,8 @@ const Services = () => {
         <>
           Abonamentul mixt oferă soluții complete pentru îmbunătățirea sănătății
           la domiciliu, adresând diverse probleme medicale precum cele
-          neurologice, post-AVC și spasticitate.
+          neurologice, post-AVC, spasticitate, post-traumatic, post operator în
+          cazul protezei totale de șold sau genunchi și altele.
           <br />
           <br />
           Combinația de kinetoterapie și terapie manuală asigură pacienților
@@ -451,7 +454,7 @@ const Services = () => {
                 maxWidth: 200,
               }}
             >
-              Gandim diferit
+              Gândim diferit
             </Text>
             <Text
               style={{
@@ -469,8 +472,20 @@ const Services = () => {
               pentru o recuperare completă.
               <br />
               <br />
-              Răsplătim loialitatea: obțineți 10% reducere pentru următoarele 3
-              luni după ce parcurgeți 10 ședințe în doar 3 luni.
+              Răsplătim loialitatea: obțineți{" "}
+              <Text
+                semiBold
+                style={{
+                  color: "red",
+                  fontSize: theme.media.isMobile
+                    ? theme.text.big
+                    : theme.text.biggest,
+                }}
+              >
+                10%
+              </Text>{" "}
+              reducere pentru următoarele 3 luni după ce parcurgeți 10 ședințe
+              în doar 3 luni.
               <br />
               <br />
               Reducerea se aplică exclusiv serviciilor de masaj și kinetoterapie

@@ -70,7 +70,7 @@ const Slider = () => {
               Suntem aici pentru tine, punând accentul pe tratarea întregii tale
               persoane, nu doar a problemei de sănătate.
               <br />
-              <br /> Echipa noastră de specialiști aduce în casele tale idei
+              <br /> Echipa noastră de specialiști aduce în casa ta idei
               inovatoare și programe personalizate pentru a-ți îmbunătăți starea
               de sănătate și a te sprijini în călătoria ta către recuperare.
               <br />

@@ -25,7 +25,7 @@ const steps = [
         personalizată îngrijire.
         <br />
         <br />
-        Pasul acesta esențial reprezintă prima etapă către o îmbunătățire
+        Pasul acesta esențial, reprezintă prima etapă către o îmbunătățire
         durabilă a stării dumneavoastră de sănătate.
       </>
     ),
@@ -42,7 +42,8 @@ const steps = [
         <br />
         Echipa noastră de specialiști va analiza cu atenție informațiile
         furnizate, evaluând detaliile cu privire la starea
-        neruo-musculo-scheletală și necesitățiile dumneavoastră individuale.
+        neruo-musculo-scheletală și necesitățiile dumneavoastră individuale, o
+        să fiți contactat în maxim 24h.
         <br />
         <br />
         Această fază de analiză este crucială pentru a dezvolta un plan
@@ -118,7 +119,7 @@ const Steps = () => {
           paddingBottom: theme.media.isMobile ? 40 : 100,
           paddingLeft: theme.media.isMobile ? 20 : 80,
           paddingRight: theme.media.isMobile ? 20 : 80,
-          marginTop: theme.media.isMobile ? 0 : -55,
+          marginTop: theme.media.isMobile ? 0 : 80,
           maxWidth: 1440,
         }}
       >
