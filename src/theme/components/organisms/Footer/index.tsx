@@ -72,7 +72,7 @@ const Footer = () => {
               </Link>
             </Box>
             <Flex style={{ gap: 10 }}>
-              <Link href="">
+              <Link href="https://facebook.com/profile.php/?id=100094398126446">
                 <StyledSocialBox>
                   <FbIcon size={20} fill={theme.color.primary}></FbIcon>
                 </StyledSocialBox>

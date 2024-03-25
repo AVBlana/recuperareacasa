@@ -247,7 +247,11 @@ const Header = () => {
                       />
                     </IconBox>
                   </Link>
-                  <Link href={""}>
+                  <Link
+                    href={
+                      "https://facebook.com/profile.php/?id=100094398126446"
+                    }
+                  >
                     <IconBox>
                       <FbIcon size={16} fill={theme.color.primary} />
                     </IconBox>
