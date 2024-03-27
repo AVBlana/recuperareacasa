@@ -452,7 +452,7 @@ const Services = () => {
     setStartX(0);
     if (containerRef.current) {
       const containerWidth = containerRef.current.offsetWidth;
-      const cardWidth = 400;
+      const cardWidth = 280;
       const visibleCardsCount = Math.floor(containerWidth / cardWidth);
       const newIndex = currentIndex - Math.round(offset / cardWidth);
       setCurrentIndex(
@@ -487,7 +487,6 @@ const Services = () => {
             </Text>
             <Text
               style={{
-                // width: theme.media.isMobile ? 280 : "100%",
                 fontSize: theme.media.isMobile
                   ? theme.text.smaller
                   : theme.text.medium,
