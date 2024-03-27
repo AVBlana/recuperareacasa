@@ -25,6 +25,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
         alt=""
         fill
         loading="eager"
+        priority
         style={{
           position: "absolute",
           top: 0,
