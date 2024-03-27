@@ -86,11 +86,17 @@ const Review = () => {
 
   const { addReview } = useReviewContext();
 
+  const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
+  const [isReviewSent, setReviewSent] = useState(false);
+
   const handleReviewSubmit = (review: any) => {
     addReview(review);
+    setReviewSent(true); // Set review sent to true after submission
+    // Reset review sent notification after 3 seconds
+    setTimeout(() => {
+      setReviewSent(false);
+    }, 3000);
   };
-
-  const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
 
   const handleNextReview = () => {
     setCurrentReviewIndex((prevIndex) => (prevIndex + 1) % reviews.length);
@@ -126,6 +132,11 @@ const Review = () => {
             onNextReview={handleNextReview}
           />
           <ReviewForm onSubmit={handleReviewSubmit} />
+          {isReviewSent ? (
+            <NotificationMessage>
+              Multumim pentru recenzia ta!
+            </NotificationMessage>
+          ) : null}
         </Flex>
       </StyledReviewBox>
 
@@ -133,6 +144,17 @@ const Review = () => {
     </StyledReviewContainer>
   );
 };
+
+const NotificationMessage = styled.div`
+  background-color: ${({ theme }) => theme.color.secondary};
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100000;
+`;
 
 const StyledReviewContainer = styled.div`
   position: relative;

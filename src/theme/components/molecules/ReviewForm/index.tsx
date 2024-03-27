@@ -47,6 +47,7 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ onSubmit }) => {
       });
 
       if (response.ok) {
+        onSubmit(response.formData);
         console.log("Email sent successfully!");
       } else {
         console.error("Failed to send email.");
