@@ -93,7 +93,7 @@ const TeamCard: React.FC<TeamHeroProps> = ({
             src={imageSrc}
             alt={""}
             width={theme.media.isMobile ? 280 : 400}
-            height={theme.media.isMobile ? 280 : 500}
+            height={theme.media.isMobile ? 280 : 510}
             style={{ objectFit: "contain", borderRadius: 20 }}
           />
         </Box>

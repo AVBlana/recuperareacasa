@@ -17,12 +17,12 @@ const Team = () => {
     ],
     experiences: [
       "+7 ani de experienta",
-      "Specializat in terapia manuala ortopedica de recuperare",
-      "Maseur la Spa dOr",
-      "Kinetoterapeur la KineticPlus Brasov",
-      "Fondator RecuperareAcasa",
-      "Fizioterapeut al echipei de baschet feminin Corona Brașov LIGA 1",
-      "Kinetoterapeut al Novoegrama Cluj Napoca",
+      "- Specializat in terapia manuala ortopedica de recuperare",
+      "- Maseur la Spa dOr",
+      "- Kinetoterapeur la KineticPlus Brasov",
+      "- Fondator RecuperareAcasa",
+      "- Fizioterapeut al echipei de baschet feminin Corona Brașov LIGA 1",
+      "- Kinetoterapeut al Novoegrama Cluj Napoca",
     ],
   };
   return (

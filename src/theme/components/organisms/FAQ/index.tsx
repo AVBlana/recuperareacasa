@@ -17,7 +17,7 @@ const ACCORDION_DATA = [
   {
     title:
       "3. Ce tipuri de probleme medicale acoperă serviciile de recuperare medicală oferite de site-ul dumneavoastră?",
-    content: `Serviciile noastre de recuperare medicală acoperă o gamă largă de probleme, cum ar fi cele neurologice, post-AVC, spasticitate și altele.\n\nDe asemenea, oferim terapie manuală, masaj și recuperare post-traumatică, inclusiv post-operator în cazul protezelor totale sau intervențiilor pe ligamente. Problemele precum hernii de disc, amețeală, amorțeală pe membre sau picior și problemele de sciatică pot fi, de asemenea, abordate prin terapie manuală și alte tehnici specializate.`,
+    content: `Serviciile noastre de recuperare medicală sunt concepute pentru a aborda o varietate largă de probleme, inclusiv cele neurologice, post-AVC, spasticitate și altele. De asemenea, oferim terapie manuală, masaj și recuperare post-traumatică, inclusiv post-operator în cazul protezelor totale sau intervențiilor pe ligamente.\n\nProblemele precum herniile de disc, amețeala, amorțeala pe membre sau picior și problemele de sciatică pot fi, de asemenea, abordate prin terapie manuală și alte tehnici specializate.\n\nÎn plus, înțelegem că mulți oameni suferă de dureri asociate sedentarismului și statului la birou. Aceste probleme pot include dureri de spate, tensiuni musculare, disconfort la nivelul gâtului și umerilor, precum și alte afecțiuni legate de postura și mișcare. Echipa noastră este pregătită să abordeze și să gestioneze aceste probleme, oferind soluții personalizate care vizează îmbunătățirea mobilității, reducerea durerii și restabilirea funcției optime.`,
   },
   {
     title:
