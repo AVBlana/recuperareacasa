@@ -24,6 +24,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
         src={service.image}
         alt=""
         fill
+        loading="eager"
         style={{
           position: "absolute",
           top: 0,
