@@ -43,7 +43,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
         style={{
           lineHeight: "150%",
           fontStyle: "italic",
-          fontSize: theme.media.isMobile ? theme.text.big : theme.text.biggest,
+          fontSize: theme.media.isMobile ? theme.text.big : 20,
         }}
       >
         {review.text}
@@ -120,7 +120,6 @@ const StyledCardBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => (theme.media.isMobile ? 30 : 60)}px;
-  max-width: 550px;
 `;
 
 const StyledArrowBox = styled.div`

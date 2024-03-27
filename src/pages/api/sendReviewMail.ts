@@ -21,7 +21,7 @@ export default async function handler(
       // Use Resend to send an email
       await resend.emails.send({
         from: "onboarding@resend.dev",
-        to: "tink.blana@gmail.com", // Replace with the actual recipient email address
+        to: "recenzii@recuperareacasa.ro", // Replace with the actual recipient email address
         subject: "New Review for Recuperare Acasa",
         text: `
           Star Rating: ${rating}

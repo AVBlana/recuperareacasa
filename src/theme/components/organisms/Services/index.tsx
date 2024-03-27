@@ -204,7 +204,7 @@ const Services = () => {
     },
     {
       label: "50 Ron",
-      title: "Evaluare Neur-M-S",
+      title: "Evaluare Neuro-Musculo-Scheletală",
       svg: "/assets/bodyScan2.svg",
       image: "/assets/planRecuperare1.jpg",
       desc: (
