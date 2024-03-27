@@ -410,9 +410,8 @@ const Services = () => {
   const [visibleCards, setVisibleCards] = useState(0);
 
   useEffect(() => {
-    const containerElement = containerRef.current;
-    if (containerElement) {
-      const containerWidth = containerElement.offsetWidth;
+    if (containerRef.current) {
+      const containerWidth = containerRef.current.offsetWidth;
       const cardWidth = 400;
       const visibleCardsCount = Math.floor(containerWidth / cardWidth);
       setVisibleCards(visibleCardsCount);
@@ -420,8 +419,6 @@ const Services = () => {
   }, []);
 
   const handleNextCard = () => {
-    console.log(visibleCards);
-
     const lastVisibleIndex = services.length - visibleCards;
     if (currentIndex < services.length - visibleCards) {
       setCurrentIndex((prevIndex) => Math.min(prevIndex + 1, lastVisibleIndex));
@@ -433,6 +430,7 @@ const Services = () => {
       setCurrentIndex((prevIndex) => prevIndex - 1);
     }
   };
+
   return (
     <StyledServicesBox>
       <StyledControlBox>
@@ -526,7 +524,17 @@ const Services = () => {
         </Box>
       </StyledControlBox>
       <StyledServiceCardsContainerWrapper ref={containerRef}>
-        <StyledServiceCardsContainer currentIndex={currentIndex}>
+        <StyledServiceCardsContainer
+          style={{
+            transform: `translateX(
+              ${
+                theme.media.isMobile
+                  ? -Math.min(currentIndex) * (280 + 15) + "px"
+                  : -Math.min(currentIndex) * (390 + 15) + "px"
+              }
+            )`,
+          }}
+        >
           {services.map((service, index) => (
             <ServiceCard key={index} service={service} />
           ))}
@@ -578,18 +586,13 @@ const StyledControlBox = styled.div`
   min-width: ${({ theme }) => (theme.media.isMobile ? "280" : "350")}px;
 `;
 
-const StyledServiceCardsContainer = styled.div<StyledServiceCardsContainerProps>`
+const StyledServiceCardsContainer = styled.div`
   display: flex;
   gap: 15px;
   height: 100%;
 
   box-sizing: content-box;
-  transform: translateX(
-    ${({ theme, currentIndex }) =>
-      theme.media.isMobile
-        ? -Math.min(currentIndex) * (280 + 15) + "px"
-        : -Math.min(currentIndex) * (390 + 15) + "px"}
-  );
+
   transition: transform 0.3s ease-in-out;
 `;
 

@@ -3,6 +3,7 @@ import styled, { useTheme } from "styled-components";
 import { SvgIcon, Text } from "../..";
 import Box from "../../atoms/Box";
 import Flex from "../../atoms/Flex";
+import Image from "../../atoms/Image";
 
 export interface ServiceCardProps {
   service: {
@@ -18,7 +19,21 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
   const theme = useTheme();
 
   return (
-    <StyledServiceCard style={{ backgroundImage: `url(${service.image})` }}>
+    <StyledServiceCard>
+      <Image
+        src={service.image}
+        alt=""
+        fill
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          objectFit: "cover",
+          borderRadius: 20,
+        }}
+      />
       <StyledGradientBox />
 
       <Flex
