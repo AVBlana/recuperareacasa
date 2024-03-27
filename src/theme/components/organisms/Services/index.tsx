@@ -15,6 +15,10 @@ const Services = () => {
   const theme = useTheme();
   const containerRef = useRef<HTMLDivElement>(null);
 
+  const [startX, setStartX] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [offset, setOffset] = useState(0);
+
   const services = [
     {
       label: "200 Ron",
@@ -431,6 +435,33 @@ const Services = () => {
     }
   };
 
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    setStartX(e.touches[0].clientX);
+    setIsDragging(true);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!isDragging) return;
+    const currentPosition = e.touches[0].clientX;
+    const dx = currentPosition - startX;
+    setOffset(dx);
+  };
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+    setStartX(0);
+    if (containerRef.current) {
+      const containerWidth = containerRef.current.offsetWidth;
+      const cardWidth = 400;
+      const visibleCardsCount = Math.floor(containerWidth / cardWidth);
+      const newIndex = currentIndex - Math.round(offset / cardWidth);
+      setCurrentIndex(
+        Math.max(0, Math.min(services.length - visibleCardsCount, newIndex))
+      );
+      setOffset(0);
+    }
+  };
+
   return (
     <StyledServicesBox>
       <StyledControlBox>
@@ -456,7 +487,7 @@ const Services = () => {
             </Text>
             <Text
               style={{
-                width: theme.media.isMobile ? 280 : "100%",
+                // width: theme.media.isMobile ? 280 : "100%",
                 fontSize: theme.media.isMobile
                   ? theme.text.smaller
                   : theme.text.medium,
@@ -482,7 +513,7 @@ const Services = () => {
               >
                 10%
               </Text>{" "}
-              reducere pentru următoarele 3 luni după ce parcurgeți 10 ședințe
+              reducere pentru următoarele 5 luni după ce parcurgeți 10 ședințe
               în doar 3 luni.
               <br />
               <br />
@@ -497,9 +528,9 @@ const Services = () => {
 
           <Flex
             style={{
+              display: theme.media.isMobile ? "none" : "flex",
               marginLeft: theme.media.isMobile ? 0 : -20,
               paddingBottom: theme.media.isMobile ? 20 : 0,
-              justifyContent: theme.media.isMobile ? "center" : "none",
             }}
           >
             <StyledArrowBox
@@ -523,7 +554,12 @@ const Services = () => {
           </Flex>
         </Box>
       </StyledControlBox>
-      <StyledServiceCardsContainerWrapper ref={containerRef}>
+      <StyledServiceCardsContainerWrapper
+        ref={containerRef}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         <StyledServiceCardsContainer
           style={{
             transform: `translateX(
@@ -545,7 +581,7 @@ const Services = () => {
 };
 
 const StyledServiceCardsContainerWrapper = styled.div`
-  overflow: hidden;
+  overflow: ${({ theme }) => (theme.media.isMobile ? "normal" : "hidden")};
 `;
 
 const StyledArrowBox = styled.div<{ hidden?: boolean }>`
@@ -590,9 +626,8 @@ const StyledServiceCardsContainer = styled.div`
   display: flex;
   gap: 15px;
   height: 100%;
-
+  padding-top: ${({ theme }) => (theme.media.isMobile ? 20 : 0)}px;
   box-sizing: content-box;
-
   transition: transform 0.3s ease-in-out;
 `;
 
