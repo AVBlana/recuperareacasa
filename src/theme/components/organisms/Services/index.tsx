@@ -504,7 +504,7 @@ const Services = () => {
               <Text
                 semiBold
                 style={{
-                  color: "red",
+                  color: theme.color.secondary,
                   fontSize: theme.media.isMobile
                     ? theme.text.big
                     : theme.text.biggest,

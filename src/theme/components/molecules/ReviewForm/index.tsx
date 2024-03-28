@@ -116,7 +116,7 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ onSubmit }) => {
             onChange={handleChange}
           />
         </Box>
-        <FormButton onClick={handleReviewSubmit}>Postează</FormButton>
+        <FormButton onClick={handleReviewSubmit}>Trimite</FormButton>
       </form>
     </StyledReviewForm>
   );
