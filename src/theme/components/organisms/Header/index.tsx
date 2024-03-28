@@ -311,12 +311,7 @@ const MiniHeaderButton = styled.div`
   cursor: pointer;
 `;
 
-const StyledLogo = styled.div`
-  transition: transform 0.3s ease;
-  &:hover {
-    transform: translateY(20px) scale(1.5);
-  }
-`;
+const StyledLogo = styled.div``;
 
 const HeaderButton = styled.div`
   display: ${({ theme }) => (theme.media.isMobile ? "none" : "flex")};

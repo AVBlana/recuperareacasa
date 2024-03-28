@@ -132,21 +132,21 @@ const Gallery = () => {
       posterUrl: "/assets/exFoamRoller.png",
       url: "6MONburOfb8",
       title: "Exerciții Foam Roller",
-      label: "Exerciții",
+      label: "Exerciții Video",
     },
     {
       type: "video",
       posterUrl: "/assets/exToracal.png",
       url: "LYxnQdJAsCk",
       title: "Exerciții pentru Durerea Toracală",
-      label: "Exerciții",
+      label: "Exerciții Video",
     },
     {
       type: "video",
       posterUrl: "/assets/exCervical.png",
       url: "2wUhPPRv9_k",
       title: "Exerciții pentru Durerea Cervicală",
-      label: "Exerciții",
+      label: "Exerciții Video",
     },
   ];
 
@@ -189,7 +189,7 @@ const Gallery = () => {
     "Cupping",
     "Flossing",
     "Terapie Manuală",
-    "Exerciții",
+    "Exerciții Video",
   ];
 
   return (
