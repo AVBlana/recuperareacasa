@@ -28,7 +28,6 @@ export default async function handler(
           Message: ${text}
           Name: ${reviewer}
           Ocupation: ${title}
-          
         `,
       });
 
