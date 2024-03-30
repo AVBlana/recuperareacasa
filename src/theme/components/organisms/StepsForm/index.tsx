@@ -9,6 +9,7 @@ import StepForm2 from "../../molecules/StepForm2";
 import StepForm3 from "../../molecules/StepForm3";
 import { StepsContext } from "./context";
 import { CloseIcon } from "../..";
+import styled from "styled-components";
 
 interface StepsFormProps {
   onClose: () => void;
@@ -51,6 +52,7 @@ const StepsForm: React.FC<StepsFormProps> = ({ onClose }) => {
   } = useContext(StepsContext);
 
   const totalSteps = 3;
+  const [isStepsFormSent, setStepsFormSent] = useState(false);
 
   const renderStep = useMemo(() => {
     switch (currentStep) {
@@ -102,6 +104,11 @@ const StepsForm: React.FC<StepsFormProps> = ({ onClose }) => {
 
       if (response.ok) {
         console.log("Email sent successfully!");
+        setStepsFormSent(true);
+        setTimeout(() => {
+          setStepsFormSent(false);
+          onClose();
+        }, 3000);
       } else {
         console.error("Failed to send email.");
       }
@@ -152,10 +159,30 @@ const StepsForm: React.FC<StepsFormProps> = ({ onClose }) => {
               style={buttonStyle}
             />
           )}
+          {isStepsFormSent ? (
+            <NotificationMessage>
+              Vă mulțumim pentru trimiterea informațiilor. Mesajul dumneavoastră
+              a fost recepționat cu succes. Veți fi contactați în maxim 48 de
+              ore, fie telefonic, fie pe adresa de email specificată în cazul în
+              care nu se răspunde la telefon.
+            </NotificationMessage>
+          ) : null}
         </Flex>
       </Box>
     </>
   );
 };
+
+const NotificationMessage = styled.div`
+  background-color: ${({ theme }) => theme.color.secondary};
+  color: white;
+  max-width: 280px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100000;
+`;
 
 export default StepsForm;

@@ -91,8 +91,8 @@ const Review = () => {
 
   const handleReviewSubmit = (review: any) => {
     addReview(review);
-    setReviewSent(true); // Set review sent to true after submission
-    // Reset review sent notification after 3 seconds
+    setReviewSent(true);
+
     setTimeout(() => {
       setReviewSent(false);
     }, 3000);
