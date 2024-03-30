@@ -272,7 +272,7 @@ const Header = () => {
                     </Text>
                   </Flex>
                 </Link>
-                <Link href="mailto:info@recuperareacasa.ro">
+                <Link href="mailto:recuperareacasa@gmail.com">
                   <Flex style={{ alignItems: "center" }}>
                     <IconBox>
                       <MailIcon size={16} fill={theme.color.primary} />

@@ -36,7 +36,7 @@ export default async function handler(
       // Use Resend to send an email
       await resend.emails.send({
         from: "onboarding@resend.dev",
-        to: "programari@recuperareacasa.ro", // Replace with the actual recipient email address
+        to: "recuperareacasa@gmail.com", // Replace with the actual recipient email address
         subject: "Message from contact form",
         text: `
           Selected Scopes: ${selectedScopes.join(", ")}

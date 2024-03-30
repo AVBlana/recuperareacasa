@@ -56,7 +56,7 @@ const Footer = () => {
                   +40 727 860 759
                 </Text>
               </Link>
-              <Link href={"mailto:info@recuperareacasa.ro"}>
+              <Link href={"mailto:recuperareacasa@gmail.com"}>
                 <Text
                   secondaryFont
                   bold
