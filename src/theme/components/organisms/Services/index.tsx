@@ -21,10 +21,116 @@ const Services = () => {
 
   const services = [
     {
+      label: "510 Ron / 3 Sedinte",
+      title: "Abonament Terapie Manuala",
+      svg: "/assets/manualTherapy2.svg",
+      image: "/assets/serviciiTerapieManuala.jpg",
+      desc: (
+        <>
+          Abonamentul nostru de terapie manuală îți permite să experimentezi
+          vindecarea și relaxarea într-un mod convenabil și accesibil în trei
+          ședințe.
+          <br />
+          <br />
+          Oferind o varietate de tehnici terapeutice, de la masaj terapeutic la
+          manipulare osteopatică, Dryneedling, Flossing, Cupping, IATSM,
+          Kinesiotape.
+          <br />
+          <br />
+          Cu abonamentul nostru, beneficiezi de o evaluare inițială gratuită.
+          <br />
+          <br />
+          Valabilitatea abonamentului este pe o perioadă de o lună, iar plata se
+          face integral pentru a-ți oferi o experiență fără griji și pentru a te
+          bucura de beneficiile terapiei manuale fără nicio grijă financiară.
+        </>
+      ),
+    },
+
+    {
+      label: "1500 Ron / 10 Sedinte",
+      title: "Abonament Masaj",
+      svg: "/assets/massage.svg",
+      image: "/assets/serviciiMasajDeRelaxare.jpg",
+      desc: (
+        <>
+          Cu acest abonament, te poți bucura de o serie de sesiuni de masaj
+          terapeutic de înaltă calitate.
+          <br />
+          <br />
+          Este important să ții cont că evaluarea inițială este tarifată separat
+          de abonament și nu este inclusă în prețul acestuia.
+          <br />
+          <br />
+          Abonamentul nostru se concentrează exclusiv pe masajul terapeutic, iar
+          alte servicii sau tratamente vor fi suplimentare și tarifate separat.
+          <br />
+          <br />
+          Valabilitatea abonamentului este pe o perioadă de 6 luni iar plata se
+          face în două tranșe pentru a-ți oferi o experiență fără griji pe tot
+          parcursul acestei perioade.
+        </>
+      ),
+    },
+    {
+      label: "1200 Ron / 10 Sedinte",
+      title: "Abonament Kinetoterapie",
+      svg: "/assets/kineto.svg",
+      image: "/assets/serviciiKinetoterapie.jpg",
+      desc: (
+        <>
+          Conceput exclusiv pentru terapia prin exerciții, acest abonament îți
+          oferă oportunitatea de a-ți îmbunătăți sănătatea și mobilitatea
+          într-un mod sigur și eficient.
+          <br />
+          <br />
+          Vei lucra îndeaproape cu terapeuții noștri specializați pentru a
+          dezvolta un plan de tratament personalizat, adaptat nevoilor tale
+          specifice.
+          <br />
+          <br />
+          Evaluare inițială se tarifează separat.
+          <br />
+          <br />
+          Valabilitatea abonamentului este pe o perioadă de 3 luni iar plata
+          abonamentului se face în două tranșe pentru a-ți oferi mai multă
+          flexibilitate financiară.
+        </>
+      ),
+    },
+    {
+      label: "1400 Ron / 10 Sedinte",
+      title: "Abonament Mixt",
+      svg: "/assets/manualTherapy2.svg",
+      image: "/assets/serviciiTerapieManuala.jpg",
+      desc: (
+        <>
+          Abonamentul mixt oferă soluții complete pentru îmbunătățirea sănătății
+          la domiciliu, adresând diverse probleme medicale precum cele
+          neurologice, post-AVC, spasticitate, post-traumatic, post operator în
+          cazul protezei totale de șold sau genunchi și altele.
+          <br />
+          <br />
+          Combinația de kinetoterapie și terapie manuală asigură pacienților
+          îngrijire specializată și eficientă în confortul propriului cămin.
+          <br />
+          <br />
+          Sesiunea poate include 20 de minute de terapie manuală și 30 de minute
+          de kinetoterapie, sau terapia manuală poate fi integrată în
+          exercițiile de kinetoterapie pe parcursul întregii sesiuni.
+          <br />
+          <br />
+          Pentru terapia manuală extinsă de 50 de minute, se poate achiziționa o
+          ședință suplimentară cu un cost adițional de 60 de lei. Plata
+          abonamentului se face în două tranșe.
+        </>
+      ),
+    },
+    {
       label: "200 Ron",
       title: "Terapie Manuală",
       svg: "/assets/manualTherapy2.svg",
-      image: "/assets/serviciiTerapieManuala.jpg",
+      image: "/assets/galerieTerapieManuala2.jpg",
       desc: (
         <>
           Echipa noastră de terapeuți experimentați integrează o gamă diversă de
@@ -299,112 +405,6 @@ const Services = () => {
           Experimentați synergia dintre flossing și blade flow restriction
           pentru rezultate remarcabile în îmbunătățirea flexibilității și
           optimizarea performanțelor tale.
-        </>
-      ),
-    },
-    {
-      label: "510 Ron / 3 Sedinte",
-      title: "Abonament Terapie Manuala",
-      svg: "/assets/manualTherapy2.svg",
-      image: "/assets/serviciiTerapieManuala.jpg",
-      desc: (
-        <>
-          Abonamentul nostru de terapie manuală îți permite să experimentezi
-          vindecarea și relaxarea într-un mod convenabil și accesibil în trei
-          ședințe.
-          <br />
-          <br />
-          Oferind o varietate de tehnici terapeutice, de la masaj terapeutic la
-          manipulare osteopatică, Dryneedling, Flossing, Cupping, IATSM,
-          Kinesiotape.
-          <br />
-          <br />
-          Cu abonamentul nostru, beneficiezi de o evaluare inițială gratuită.
-          <br />
-          <br />
-          Valabilitatea abonamentului este pe o perioadă de o lună, iar plata se
-          face integral pentru a-ți oferi o experiență fără griji și pentru a te
-          bucura de beneficiile terapiei manuale fără nicio grijă financiară.
-        </>
-      ),
-    },
-
-    {
-      label: "1500 Ron / 10 Sedinte",
-      title: "Abonament Masaj",
-      svg: "/assets/massage.svg",
-      image: "/assets/serviciiMasajDeRelaxare.jpg",
-      desc: (
-        <>
-          Cu acest abonament, te poți bucura de o serie de sesiuni de masaj
-          terapeutic de înaltă calitate.
-          <br />
-          <br />
-          Este important să ții cont că evaluarea inițială este tarifată separat
-          de abonament și nu este inclusă în prețul acestuia.
-          <br />
-          <br />
-          Abonamentul nostru se concentrează exclusiv pe masajul terapeutic, iar
-          alte servicii sau tratamente vor fi suplimentare și tarifate separat.
-          <br />
-          <br />
-          Valabilitatea abonamentului este pe o perioadă de 6 luni iar plata se
-          face în două tranșe pentru a-ți oferi o experiență fără griji pe tot
-          parcursul acestei perioade.
-        </>
-      ),
-    },
-    {
-      label: "1200 Ron / 10 Sedinte",
-      title: "Abonament Kinetoterapie",
-      svg: "/assets/kineto.svg",
-      image: "/assets/serviciiKinetoterapie.jpg",
-      desc: (
-        <>
-          Conceput exclusiv pentru terapia prin exerciții, acest abonament îți
-          oferă oportunitatea de a-ți îmbunătăți sănătatea și mobilitatea
-          într-un mod sigur și eficient.
-          <br />
-          <br />
-          Vei lucra îndeaproape cu terapeuții noștri specializați pentru a
-          dezvolta un plan de tratament personalizat, adaptat nevoilor tale
-          specifice.
-          <br />
-          <br />
-          Evaluare inițială se tarifează separat.
-          <br />
-          <br />
-          Valabilitatea abonamentului este pe o perioadă de 3 luni iar plata
-          abonamentului se face în două tranșe pentru a-ți oferi mai multă
-          flexibilitate financiară.
-        </>
-      ),
-    },
-    {
-      label: "1400 Ron / 10 Sedinte",
-      title: "Abonament Mixt",
-      svg: "/assets/manualTherapy2.svg",
-      image: "/assets/serviciiTerapieManuala.jpg",
-      desc: (
-        <>
-          Abonamentul mixt oferă soluții complete pentru îmbunătățirea sănătății
-          la domiciliu, adresând diverse probleme medicale precum cele
-          neurologice, post-AVC, spasticitate, post-traumatic, post operator în
-          cazul protezei totale de șold sau genunchi și altele.
-          <br />
-          <br />
-          Combinația de kinetoterapie și terapie manuală asigură pacienților
-          îngrijire specializată și eficientă în confortul propriului cămin.
-          <br />
-          <br />
-          Sesiunea poate include 20 de minute de terapie manuală și 30 de minute
-          de kinetoterapie, sau terapia manuală poate fi integrată în
-          exercițiile de kinetoterapie pe parcursul întregii sesiuni.
-          <br />
-          <br />
-          Pentru terapia manuală extinsă de 50 de minute, se poate achiziționa o
-          ședință suplimentară cu un cost adițional de 60 de lei. Plata
-          abonamentului se face în două tranșe.
         </>
       ),
     },
