@@ -95,21 +95,14 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
             </Text>
           </Box>
         </Flex>
-
-        <Flex>
-          <StyledArrowBox
-            style={{ padding: theme.media.isMobile ? 10 : 20 }}
-            onClick={onPrevReview}
-          >
-            <ArrowLeftIcon size={theme.media.isMobile ? 30 : 40} />
-          </StyledArrowBox>
-          <StyledArrowBox
-            style={{ padding: theme.media.isMobile ? 10 : 20 }}
-            onClick={onNextReview}
-          >
-            <ArrowRightIcon size={theme.media.isMobile ? 30 : 40} />
-          </StyledArrowBox>
-        </Flex>
+      </Flex>
+      <Flex>
+        <StyledArrowBox onClick={onPrevReview}>
+          <ArrowLeftIcon size={theme.media.isMobile ? 30 : 40} />
+        </StyledArrowBox>
+        <StyledArrowBox onClick={onNextReview}>
+          <ArrowRightIcon size={theme.media.isMobile ? 30 : 40} />
+        </StyledArrowBox>
       </Flex>
     </StyledCardBox>
   );
@@ -119,14 +112,14 @@ const StyledCardBox = styled.div`
   background: rgba(255, 255, 0, 0);
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => (theme.media.isMobile ? 30 : 60)}px;
+  gap: ${({ theme }) => (theme.media.isMobile ? 20 : 40)}px;
 `;
 
 const StyledArrowBox = styled.div`
   display: flex;
   align-items: center;
-  padding: 20px;
   cursor: pointer;
+  padding: ${({ theme }) => (theme.media.isMobile ? 10 : 20)}px;
   transition: transform 0.3s ease-in-out;
 
   &:hover {

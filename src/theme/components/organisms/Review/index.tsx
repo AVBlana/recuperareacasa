@@ -5,6 +5,8 @@ import ReviewForm from "../../molecules/ReviewForm";
 import { useReviewContext } from "./ReviewContext";
 import Box from "../../atoms/Box";
 import Flex from "../../atoms/Flex";
+import { Text } from "../../atoms";
+import { StarIcon } from "../../molecules/Icons/StarIcon";
 
 const Review = () => {
   const theme = useTheme();
@@ -108,10 +110,45 @@ const Review = () => {
     );
   };
 
+  const totalReviews = reviews.length;
+  const totalRatings = reviews.reduce((sum, review) => sum + review.rating, 0);
+  const averageRating = totalRatings / totalReviews;
+
   return (
     <StyledReviewContainer>
       <StyledGradientBox />
       <StyledReviewBox>
+        <Flex
+          style={{
+            gap: 20,
+            paddingBottom: 40,
+            alignItems: "center",
+          }}
+        >
+          <Text
+            white
+            secondaryFont
+            style={{
+              fontSize: theme.media.isMobile
+                ? theme.text.big
+                : theme.text.biggest,
+            }}
+          >
+            Total Recomandări: {totalReviews}
+          </Text>
+          <Text
+            white
+            secondaryFont
+            style={{
+              fontSize: theme.media.isMobile
+                ? theme.text.big
+                : theme.text.biggest,
+            }}
+          >
+            Notă: {averageRating.toFixed(1)} / 5{" "}
+            <StarIcon size={theme.media.isMobile ? 14 : 20} filled />
+          </Text>
+        </Flex>
         <Flex
           style={{
             maxWidth: 1500,
@@ -120,17 +157,20 @@ const Review = () => {
             gap: theme.media.isMobile ? 40 : 80,
           }}
         >
-          <ReviewCard
-            review={{
-              rating: reviews[currentReviewIndex].rating,
-              text: reviews[currentReviewIndex].text,
-              reviewer: reviews[currentReviewIndex].reviewer,
-              title: reviews[currentReviewIndex].title,
-              filled: true,
-            }}
-            onPrevReview={handlePrevReview}
-            onNextReview={handleNextReview}
-          />
+          <Box style={{ gap: 40 }}>
+            <ReviewCard
+              review={{
+                rating: reviews[currentReviewIndex].rating,
+                text: reviews[currentReviewIndex].text,
+                reviewer: reviews[currentReviewIndex].reviewer,
+                title: reviews[currentReviewIndex].title,
+                filled: true,
+              }}
+              onPrevReview={handlePrevReview}
+              onNextReview={handleNextReview}
+            />
+          </Box>
+
           <ReviewForm onSubmit={handleReviewSubmit} />
           {isReviewSent ? (
             <NotificationMessage>
@@ -158,7 +198,7 @@ const NotificationMessage = styled.div`
 
 const StyledReviewContainer = styled.div`
   position: relative;
-  min-height: ${({ theme }) => (theme.media.isMobile ? "800px" : "550px")};
+  min-height: ${({ theme }) => (theme.media.isMobile ? "850px" : "650px")};
 `;
 
 const StyledGradientBox = styled.div`
