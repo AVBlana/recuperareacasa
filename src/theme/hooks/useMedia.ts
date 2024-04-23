@@ -27,7 +27,7 @@ export const useMedia = () => {
   });
   const isTablet = useMediaQuery({
     minWidth: 768,
-    maxWidth: 991,
+    maxWidth: 1024,
   });
   const isTabletOrMobile = useMediaQuery({
     maxWidth: 991,
