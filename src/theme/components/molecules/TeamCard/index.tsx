@@ -121,8 +121,11 @@ const TeamCard: React.FC<TeamHeroProps> = ({
 
 const StyledTeamCard = styled.div`
   display: flex;
-  flex-direction: ${({ theme }) => (theme.media.isMobile ? "column" : "row")};
-  gap: ${({ theme }) => (theme.media.isMobile ? "60" : "230")}px;
+  align-items: center;
+  flex-direction: ${({ theme }) =>
+    theme.media.isMobile ? "column" : theme.media.isTablet ? "column" : "row"};
+  gap: ${({ theme }) =>
+    theme.media.isMobile ? "60" : theme.media.isTablet ? "60" : "230"}px;
 `;
 
 export default TeamCard;

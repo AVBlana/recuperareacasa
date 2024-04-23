@@ -31,13 +31,17 @@ const About = () => {
               bottom: 0,
               left: 0,
               right: 0,
-              marginLeft: -40,
-              overflow: "hidden",
+              marginLeft: theme.media.isTablet ? -180 : -40,
+              overflow: theme.media.isTablet ? "" : "hidden",
             }}
           >
             <Image
-              width={theme.media.isMobile ? 320 : 900}
-              height={theme.media.isMobile ? 250 : 600}
+              width={
+                theme.media.isMobile ? 320 : theme.media.isTablet ? 500 : 900
+              }
+              height={
+                theme.media.isMobile ? 250 : theme.media.isTablet ? 400 : 600
+              }
               src={"/assets/about.png"}
               alt=""
             />
@@ -237,7 +241,8 @@ const StyledAboutBox = styled.div`
   display: flex;
   flex-direction: row;
   flex: 1;
-  padding-right: ${({ theme }) => (theme.media.isMobile ? "20" : "80")}px;
+  padding-right: ${({ theme }) =>
+    theme.media.isMobile ? "20" : theme.media.isTablet ? "40" : "80"}px;
   padding-left: ${({ theme }) => (theme.media.isMobile ? "20" : "0")}px;
   padding-bottom ${({ theme }) => (theme.media.isMobile ? "100" : "0")}px;
 `;

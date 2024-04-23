@@ -38,7 +38,11 @@ const StepCard = ({
         <Box
           style={{
             gap: 24,
-            alignItems: theme.media.isMobile ? "center" : "start",
+            alignItems: theme.media.isMobile
+              ? "center"
+              : theme.media.isTablet
+              ? "center"
+              : "start",
           }}
         >
           <Text
@@ -47,7 +51,11 @@ const StepCard = ({
             semiBold
             style={{
               color: theme.color.secondary,
-              textAlign: theme.media.isMobile ? "center" : "left",
+              textAlign: theme.media.isMobile
+                ? "center"
+                : theme.media.isTablet
+                ? "center"
+                : "left",
             }}
           >
             {label}
@@ -78,7 +86,8 @@ const StepCard = ({
 
 const StyledStepCard = styled.div`
   display: flex;
-  flex-direction: ${({ theme }) => (theme.media.isMobile ? "column" : "row")};
+  flex-direction: ${({ theme }) =>
+    theme.media.isMobile ? "column" : theme.media.isTablet ? "column" : "row"};
   gap: 40px;
   align-items: center;
 `;

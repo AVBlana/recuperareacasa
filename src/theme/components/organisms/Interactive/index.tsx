@@ -148,14 +148,18 @@ const InteractiveBox: React.FC = () => {
 
 const StyledInteractiveBox = styled.div`
   display: flex;
-  flex-direction: ${({ theme }) => (theme.media.isMobile ? "column" : "row")};
+  flex-direction: ${({ theme }) =>
+    theme.media.isMobile ? "column" : theme.media.isTablet ? "column" : "row"};
   align-items: center;
   justify-content: center;
-  padding-left: ${({ theme }) => (theme.media.isMobile ? "20" : "80")}px;
-  padding-right: ${({ theme }) => (theme.media.isMobile ? "20" : "80")}px;
+  padding-left: ${({ theme }) =>
+    theme.media.isMobile ? "20" : theme.media.isTablet ? "40" : "80"}px;
+  padding-right: ${({ theme }) =>
+    theme.media.isMobile ? "20" : theme.media.isTablet ? "40" : "80"}px;
   padding-bottom: 100px;
   max-width: 1440px;
-  gap: ${({ theme }) => (theme.media.isMobile ? "20" : "160")}px;
+  gap: ${({ theme }) =>
+    theme.media.isMobile ? "20" : theme.media.isTablet ? "40" : "160"}px;
 `;
 
 const LeftBox = styled.div`

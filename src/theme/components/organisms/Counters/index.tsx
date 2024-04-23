@@ -64,11 +64,18 @@ const Counters = () => {
 
 const StyledCountersBox = styled.div`
   display: flex;
-  flex-wrap: ${({ theme }) => (theme.media.isMobile ? "wrap" : "nowrap")};
+  flex-wrap: ${({ theme }) =>
+    theme.media.isMobile ? "wrap" : theme.media.isTablet ? "wrap" : "nowrap"};
   justify-content: center;
-  padding: ${({ theme }) => (theme.media.isMobile ? "40px 0px" : "100px 80px")};
+  padding: ${({ theme }) =>
+    theme.media.isMobile
+      ? "40px 0px"
+      : theme.media.isTablet
+      ? "100px 40px"
+      : "100px 80px"};
   max-width: 1440px;
-  gap: ${({ theme }) => (theme.media.isMobile ? "20px" : 0)};
+  gap: ${({ theme }) =>
+    theme.media.isMobile ? "20px" : theme.media.isTablet ? "20px" : 0};
 `;
 
 export default Counters;

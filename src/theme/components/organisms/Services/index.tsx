@@ -609,7 +609,8 @@ const StyledServicesBox = styled.div`
   flex-direction: ${({ theme }) => (theme.media.isMobile ? "column" : "row")};
   padding-top: ${({ theme }) => (theme.media.isMobile ? "40" : "100")}px;
   padding-bottom: ${({ theme }) => (theme.media.isMobile ? "40" : "100")}px;
-  padding-left: ${({ theme }) => (theme.media.isMobile ? "20" : "80")}px;
+  padding-left: ${({ theme }) =>
+    theme.media.isMobile ? "20" : theme.media.isTablet ? "40" : "80"}px;
   padding-right: ${({ theme }) => (theme.media.isMobile ? "20" : "0")}px;
 `;
 

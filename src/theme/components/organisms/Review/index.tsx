@@ -154,7 +154,7 @@ const Review = () => {
             maxWidth: 1500,
             justifyContent: "space-between",
             flexDirection: theme.media.isMobile ? "column" : "row",
-            gap: theme.media.isMobile ? 40 : 80,
+            gap: theme.media.isMobile ? 40 : theme.media.isTablet ? 40 : 80,
           }}
         >
           <Box style={{ gap: 40 }}>
@@ -198,7 +198,8 @@ const NotificationMessage = styled.div`
 
 const StyledReviewContainer = styled.div`
   position: relative;
-  min-height: ${({ theme }) => (theme.media.isMobile ? "850px" : "650px")};
+  min-height: ${({ theme }) =>
+    theme.media.isMobile ? "850px" : theme.media.isTablet ? "850px" : "650px"};
 `;
 
 const StyledGradientBox = styled.div`
@@ -221,7 +222,11 @@ const StyledReviewBox = styled.div`
   right: 0;
   bottom: 0;
   padding: ${({ theme }) =>
-    theme.media.isMobile ? "40px 20px" : "100px 80px"};
+    theme.media.isMobile
+      ? "40px 20px"
+      : theme.media.isTablet
+      ? "100px 40px"
+      : "100px 80px"};
   z-index: 2;
 `;
 

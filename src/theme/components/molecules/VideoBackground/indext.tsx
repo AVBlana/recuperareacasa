@@ -35,7 +35,13 @@ const VideoBackground: React.FC = () => {
       opts={opts}
       onReady={onReady}
       onEnd={onEnd}
-      style={{ height: theme.media.isMobile ? "100vh" : "150vh" }}
+      style={{
+        height: theme.media.isMobile
+          ? "100vh"
+          : theme.media.isTablet
+          ? "100vh"
+          : "150vh",
+      }}
     />
   );
 };

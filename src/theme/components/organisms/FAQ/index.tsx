@@ -69,7 +69,11 @@ const StyledFAQBox = styled.div`
   display: flex;
   flex-direction: column;
   padding: ${({ theme }) =>
-    theme.media.isMobile ? "40px 20px" : "100px 80px"};
+    theme.media.isMobile
+      ? "40px 20px"
+      : theme.media.isTablet
+      ? "100px 20px"
+      : "100px 80px"};
   max-width: 1440px;
 `;
 

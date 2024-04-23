@@ -27,10 +27,22 @@ const Slider = () => {
             justifyContent: "center",
             alignItems: "center",
             gap: theme.media.isMobile ? 40 : 30,
-            paddingLeft: theme.media.isMobile ? 20 : 80,
-            paddingRight: theme.media.isMobile ? 20 : 80,
+            paddingLeft: theme.media.isMobile
+              ? 20
+              : theme.media.isTablet
+              ? 40
+              : 80,
+            paddingRight: theme.media.isMobile
+              ? 20
+              : theme.media.isTablet
+              ? 40
+              : 80,
             paddingTop: theme.media.isMobile ? 20 : 100,
-            maxWidth: theme.media.isMobile ? "100%" : "75%",
+            maxWidth: theme.media.isMobile
+              ? "100%"
+              : theme.media.isTablet
+              ? "100%"
+              : "75%",
           }}
         >
           <Box
@@ -44,7 +56,11 @@ const Slider = () => {
               secondaryFont
               white
               style={{
-                fontSize: theme.media.isMobile ? "34px" : "100px",
+                fontSize: theme.media.isMobile
+                  ? "34px"
+                  : theme.media.isTablet
+                  ? "90px"
+                  : "100px",
                 textAlign: "center",
               }}
             >
@@ -131,8 +147,8 @@ const SliderButton = styled.div`
   align-items: center;
   background: ${({ theme }) => theme.color.secondary};
   cursor: pointer;
-  border-top-right-radius: ${({ theme }) => theme.spacings.medium}px;
-  border-bottom-right-radius: ${({ theme }) => theme.spacings.medium}px;
+  border-top-right-radius: ${({ theme }) => theme.spacings.big}px;
+  border-bottom-right-radius: ${({ theme }) => theme.spacings.big}px;
   border-style: solid;
   border-color: ${({ theme }) => theme.color.primary};
 
@@ -182,16 +198,20 @@ const GradientLayer = styled.div`
 
 const VideoBackgroundWrapper = styled.div`
   position: relative;
-  height: ${({ theme }) => (theme.media.isMobile ? "100vh" : "100vh")};
+  height: ${({ theme }) =>
+    theme.media.isMobile ? "100vh" : theme.media.isTablet ? "90vh" : "100vh"};
   width: 100%;
   overflow: hidden;
 `;
 
 const StyledVideoBG = styled.div`
   position: absolute;
-  top: ${({ theme }) => (theme.media.isMobile ? "-10px" : "-30%")};
-  left: ${({ theme }) => (theme.media.isMobile ? "-100%" : "-10%")};
-  width: ${({ theme }) => (theme.media.isMobile ? "310%" : "110%")};
+  top: ${({ theme }) =>
+    theme.media.isMobile ? "-10px" : theme.media.isTablet ? "-10%" : "-30%"};
+  left: ${({ theme }) =>
+    theme.media.isMobile ? "-100%" : theme.media.isTablet ? "-60%" : "-10%"};
+  width: ${({ theme }) =>
+    theme.media.isMobile ? "310%" : theme.media.isTablet ? "200%" : "110%"};
   height: ${({ theme }) => (theme.media.isMobile ? "100%" : "110%")};
 `;
 const ContentContainer = styled.div`

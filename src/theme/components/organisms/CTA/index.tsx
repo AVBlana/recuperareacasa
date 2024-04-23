@@ -96,7 +96,12 @@ const StyledCtaBox = styled.div`
   flex-direction: ${({ theme }) => (theme.media.isMobile ? "column" : "row")};
   align-items: center;
   justify-content: space-between;
-  padding: ${({ theme }) => (theme.media.isMobile ? "0px 20px" : "40px 80px")};
+  padding: ${({ theme }) =>
+    theme.media.isMobile
+      ? "0px 20px"
+      : theme.media.isTablet
+      ? "0px 40px"
+      : "40px 80px"};
   z-index: 3;
 
   &:hover {

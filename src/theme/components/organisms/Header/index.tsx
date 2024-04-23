@@ -53,8 +53,8 @@ const Header = () => {
           style={{
             display: theme.media.isMobile ? "none" : "flex",
             background: theme.color.primary,
-            paddingLeft: 80,
-            paddingRight: 80,
+            paddingLeft: theme.media.isTablet ? 40 : 80,
+            paddingRight: theme.media.isTablet ? 40 : 80,
             marginLeft: -theme.spacings.smaller,
             marginRight: -theme.spacings.smaller,
             justifyContent: "space-between",
@@ -109,8 +109,16 @@ const Header = () => {
         </Flex>
         <Flex
           style={{
-            paddingLeft: theme.media.isMobile ? 20 : 80,
-            paddingRight: theme.media.isMobile ? 20 : 80,
+            paddingLeft: theme.media.isMobile
+              ? 20
+              : theme.media.isTablet
+              ? 40
+              : 80,
+            paddingRight: theme.media.isMobile
+              ? 20
+              : theme.media.isTablet
+              ? 40
+              : 80,
             height: theme.media.isMobile ? "auto" : 80,
             background: theme.color.white,
             borderBottom: "solid",
@@ -295,7 +303,8 @@ const Header = () => {
 };
 
 const MiniHeaderButton = styled.div`
-  display: ${({ theme }) => (theme.media.isMobile ? "flex" : "none")};
+  display: ${({ theme }) =>
+    theme.media.isMobile ? "flex" : theme.media.isTablet ? "flex" : "none"};
   flex-direction: row;
   justify-content: center;
   font-size: ${({ theme }) => theme.text.small}px;
@@ -309,13 +318,18 @@ const MiniHeaderButton = styled.div`
   padding-right: ${({ theme }) => theme.spacings.medium}px;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
+  border-top-right-radius: ${({ theme }) =>
+    theme.media.isTablet ? "10" : "0"}px;
+  border-bottom-right-radius: ${({ theme }) =>
+    theme.media.isTablet ? "10" : "0"}px;
   cursor: pointer;
 `;
 
 const StyledLogo = styled.div``;
 
 const HeaderButton = styled.div`
-  display: ${({ theme }) => (theme.media.isMobile ? "none" : "flex")};
+  display: ${({ theme }) =>
+    theme.media.isMobile ? "none" : theme.media.isTablet ? "none" : "flex"};
   flex-direction: row;
   justify-content: center;
   gap: ${({ theme }) => theme.spacings.tiny}px;

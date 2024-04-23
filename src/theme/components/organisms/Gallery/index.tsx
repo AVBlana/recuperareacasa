@@ -210,8 +210,16 @@ const Gallery = () => {
           <Flex
             style={{
               flexWrap: "wrap",
-              paddingLeft: theme.media.isMobile ? 20 : 80,
-              paddingRight: theme.media.isMobile ? 20 : 80,
+              paddingLeft: theme.media.isMobile
+                ? 20
+                : theme.media.isTablet
+                ? 20
+                : 80,
+              paddingRight: theme.media.isMobile
+                ? 20
+                : theme.media.isTablet
+                ? 20
+                : 80,
               gap: 10,
               justifyContent: "center",
               paddingBottom: theme.media.isMobile ? 20 : 40,

@@ -23,8 +23,10 @@ const Footer = () => {
       <StyledBackgroundBox>
         <Flex
           style={{
-            gap: theme.media.isMobile ? 40 : 60,
+            gap: theme.media.isMobile ? 40 : theme.media.isTablet ? 40 : 60,
             flexDirection: theme.media.isMobile ? "column" : "row",
+            flexWrap: theme.media.isTablet ? "wrap" : "nowrap",
+            justifyContent: "space-between",
           }}
         >
           <Box
@@ -275,7 +277,9 @@ const StyledBackgroundBox = styled.div`
   background-image: url(./assets/footer-bg.png);
   padding-top: 40px;
   padding-bottom: 20px;
-  padding-left: ${({ theme }) => (theme.media.isMobile ? "20" : "80")}px;
-  padding-right: ${({ theme }) => (theme.media.isMobile ? "20" : "40")}px;
+  padding-left: ${({ theme }) =>
+    theme.media.isMobile ? "20" : theme.media.isTablet ? "40" : "80"}px;
+  padding-right: ${({ theme }) =>
+    theme.media.isMobile ? "20" : theme.media.isTablet ? "20" : "40"}px;
 `;
 export default Footer;

@@ -117,8 +117,16 @@ const Steps = () => {
         style={{
           gap: theme.media.isMobile ? 40 : 80,
           paddingBottom: theme.media.isMobile ? 40 : 100,
-          paddingLeft: theme.media.isMobile ? 20 : 80,
-          paddingRight: theme.media.isMobile ? 20 : 80,
+          paddingLeft: theme.media.isMobile
+            ? 20
+            : theme.media.isTablet
+            ? 40
+            : 80,
+          paddingRight: theme.media.isMobile
+            ? 20
+            : theme.media.isTablet
+            ? 40
+            : 80,
           marginTop: theme.media.isMobile ? 0 : 80,
           maxWidth: 1440,
         }}
@@ -127,7 +135,11 @@ const Steps = () => {
           style={{
             gap: 20,
             lineHeight: "140%",
-            alignItems: theme.media.isMobile ? "center" : "start",
+            alignItems: theme.media.isMobile
+              ? "center"
+              : theme.media.isTablet
+              ? "center"
+              : "start",
           }}
         >
           <Text secondaryFont primary huge>

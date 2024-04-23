@@ -36,10 +36,13 @@ const Team = () => {
 
 const StyleTeamBox = styled.div`
   display: flex;
-  flex-direction: ${({ theme }) => (theme.media.isMobile ? "column" : "row")};
+  flex-direction: ${({ theme }) =>
+    theme.media.isMobile ? "column" : theme.media.isTablet ? "column" : "row"};
   max-width: 1440px;
-  padding-left: ${({ theme }) => (theme.media.isMobile ? "20" : "80")}px;
-  padding-right: ${({ theme }) => (theme.media.isMobile ? "20" : "80")}px;
+  padding-left: ${({ theme }) =>
+    theme.media.isMobile ? "20" : theme.media.isTablet ? "40" : "80"}px;
+  padding-right: ${({ theme }) =>
+    theme.media.isMobile ? "20" : theme.media.isTablet ? "40" : "80"}px;
   padding-top: 100px;
   padding-bottom: ${({ theme }) => (theme.media.isMobile ? "60" : "0")}px;
   align-items: center;
