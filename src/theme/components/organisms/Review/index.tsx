@@ -14,6 +14,19 @@ const Review = () => {
   const reviews = [
     {
       rating: 5,
+      text: "Il recomand cu incredere pe acest tanar cu experienta, cu mult bun simt, intotdeauna cauta sa ajute, este foarte pregatit profesional si iti explica in detaliu. Il recomand din toata inima! Cu cea mai mare incredere, este persoana potrivită sa ajute!",
+      reviewer: "Ada",
+      title: "Administrator",
+    },
+    {
+      rating: 5,
+      text: "Îl recomand cu drag pe Alex, mereu ne dă sfaturi super bune, și simți că vrea să te ajute cu adevărat, nu o face doar pentru un profit.",
+      reviewer: "Norbi Major",
+      title: "Pacient",
+    },
+
+    {
+      rating: 5,
       text: "Îl recomand pe Alex! Este foarte priceput in ceea ce face si explica si foarte bine. Este un om cu mult bun simt si respect.",
       reviewer: "Welther Ramona-Franziska",
       title: "Pacient",
