@@ -24,6 +24,12 @@ const Review = () => {
       reviewer: "Norbi Major",
       title: "Pacient",
     },
+    {
+      rating: 5,
+      text: "Prima sedinta de kineto a decurs foarte bine, spatele meu e deja mai fericit.Iar faptul ca vine acasa e un mare plus pentru mine, fiind mama cu un bebelus de 5 luni. Pe langa punctualitate, energie pozitiva si calma (apreciez mult asta caci da o stare de bine si de relaxare per total), imi mai place ca Alexandru explica foarte bine ceea ce face. De asemenea, e tare de omenie. Intr-un cuvant: PROFESIONALISM",
+      reviewer: "Cristina Angela Varariu",
+      title: "Pacienta",
+    },
 
     {
       rating: 5,
