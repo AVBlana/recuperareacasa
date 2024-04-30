@@ -36,7 +36,7 @@ export default async function handler(req, res) {
 
     const mailOptions = {
       from: "contact@recuperareacasa.ro",
-      to: "vataselu.alex@yahoo.com",
+      to: "recuperareacasa@gmail.com",
       subject: "New Form Submission",
       text: `
         Selected Scopes: ${selectedScopes.join(", ")}
