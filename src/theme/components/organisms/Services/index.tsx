@@ -21,6 +21,27 @@ const Services = () => {
 
   const services = [
     {
+      label: "1 Sedinta / 3 Sedinte",
+      title: "Card Cadou",
+      svg: "/assets/manualTherapy2.svg",
+      image: "/assets/plicuri3_websize.jpg",
+      desc: (
+        <>
+          Descoperă serviciul nostru de recuperare medicală și oferă-i cuiva
+          drag un card cadou special!
+          <br />
+          <br />
+          Ajută-i să-și recapete sănătatea și vitalitatea cu ajutorul
+          terapeuților noștri calificați.
+          <br />
+          <br />
+          Un cadou memorabil pentru cei dragi! Valabilitatea cardului este de o
+          lună din momentul plății, oferindu-le beneficiarilor oportunitatea de
+          a profita de serviciile noastre într-un interval rezonabil de timp.
+        </>
+      ),
+    },
+    {
       label: "510 Ron / 3 Sedinte",
       title: "Abonament Terapie Manuala",
       svg: "/assets/manualTherapy2.svg",
