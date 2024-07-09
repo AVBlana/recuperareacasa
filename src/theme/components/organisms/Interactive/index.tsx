@@ -28,7 +28,7 @@ const interacts = [
   },
   {
     number: "05",
-    label: "Schimbam tratamentul",
+    label: "Schimbăm tratamentul",
     image: "/assets/planRecuperare5.jpg",
   },
   {

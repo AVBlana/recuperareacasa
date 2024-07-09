@@ -94,7 +94,7 @@ const Services = () => {
       ),
     },
     {
-      label: "1200 Ron / 10 Sedinte",
+      label: "1350 Ron / 10 Sedinte",
       title: "Abonament Kinetoterapie",
       svg: "/assets/kineto.svg",
       image: "/assets/serviciiKinetoterapie.jpg",
@@ -120,7 +120,7 @@ const Services = () => {
       ),
     },
     {
-      label: "1400 Ron / 10 Sedinte",
+      label: "1450 Ron / 10 Sedinte",
       title: "Abonament Mixt",
       svg: "/assets/manualTherapy2.svg",
       image: "/assets/serviciiTerapieManuala.jpg",

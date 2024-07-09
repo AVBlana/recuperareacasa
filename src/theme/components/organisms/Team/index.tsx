@@ -16,10 +16,10 @@ const Team = () => {
       "Terapeut dry needling de peste 4 ani",
     ],
     experiences: [
-      "+7 ani de experienta",
-      "- Specializat in terapia manuala ortopedica de recuperare",
+      "+7 ani de experiență",
+      "- Specializat în terapia manuala ortopedica de recuperare",
       "- Maseur la Spa dOr",
-      "- Kinetoterapeur la KineticPlus Brasov",
+      "- Kinetoterapeut la KineticPlus Brasov",
       "- Fondator RecuperareAcasa",
       "- Fizioterapeut al echipei de baschet feminin Corona Brașov LIGA 1",
       "- Kinetoterapeut al Novoegrama Cluj Napoca",
