@@ -174,6 +174,36 @@ const Services = () => {
       ),
     },
     {
+      label: "100 Ron",
+      title: "Dry Needling",
+      svg: "/assets/accupuncture.svg",
+      image: "/assets/serviciiDryNeedling.jpg",
+      desc: (
+        <>
+          Descoperiți beneficiile terapiei cu ac uscat (dry needling) în cadrul
+          serviciilor noastre specializate.
+          <br />
+          <br />
+          Cu ajutorul acestei tehnici precise, terapeuții noștri introduc
+          acupunctura în puncte trigger ale mușchilor, eliberând tensiunea și
+          ameliorând disconfortul.
+          <br />
+          <br />
+          Procedura non-invazivă contribuie la relaxarea mușchilor,
+          îmbunătățirea circulației sanguine și accelerarea procesului de
+          vindecare.
+          <br />
+          <br />
+          Redescoperiți mobilitatea și confortul într-o manieră eficientă și
+          personalizată.
+          <br />
+          <br />
+          Dry needling este o procedură inclusă în cadrul serviciului de terapie
+          manuală, astfel încât nu este necesar să fie achitat separate.
+        </>
+      ),
+    },
+    {
       label: "140 Ron",
       title: "Kinetoterapie",
       svg: "/assets/kineto.svg",
@@ -299,36 +329,7 @@ const Services = () => {
         </>
       ),
     },
-    {
-      label: "100 Ron",
-      title: "Dry Needling",
-      svg: "/assets/accupuncture.svg",
-      image: "/assets/serviciiDryNeedling.jpg",
-      desc: (
-        <>
-          Descoperiți beneficiile terapiei cu ac uscat (dry needling) în cadrul
-          serviciilor noastre specializate.
-          <br />
-          <br />
-          Cu ajutorul acestei tehnici precise, terapeuții noștri introduc
-          acupunctura în puncte trigger ale mușchilor, eliberând tensiunea și
-          ameliorând disconfortul.
-          <br />
-          <br />
-          Procedura non-invazivă contribuie la relaxarea mușchilor,
-          îmbunătățirea circulației sanguine și accelerarea procesului de
-          vindecare.
-          <br />
-          <br />
-          Redescoperiți mobilitatea și confortul într-o manieră eficientă și
-          personalizată.
-          <br />
-          <br />
-          Dry needling este o procedură inclusă în cadrul serviciului de terapie
-          manuală, astfel încât nu este necesar să fie achitat separate.
-        </>
-      ),
-    },
+
     {
       label: "50 Ron",
       title: "Evaluare Neuro-Musculo-Scheletală",

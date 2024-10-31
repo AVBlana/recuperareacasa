@@ -14,6 +14,72 @@ const Review = () => {
   const reviews = [
     {
       rating: 5,
+      text: "Am ajuns la Alex la recomandarea mătușii mele, care lucrează ca recepționer la clinica unde el era terapeut. Faptul că a fost recomandat de un membru al familiei mi-a inspirat încredere de la bun început, dar după ce am lucrat cu el, am înțeles perfect de ce este atât de căutat. Alex este un terapeut manual extrem de profesionist și empatic, care m-a ajutat enorm. M-am simțit în siguranță și înțeles pe parcursul tratamentului, iar rezultatele au vorbit de la sine.Îl recomand cu toată încrederea oricui caută un specialist dedicat și de încredere!",
+      reviewer: "Flaviu Balint",
+      title: "Student-actor",
+    },
+    {
+      rating: 5,
+      text: "Foarte bun in ceea ce face, apreciez rabadrea si impilcarea lui Alex. Astept de fiecare data sa revina la mine acasa pentru un masaj revigorant !",
+      reviewer: "Luca Oarga",
+      title: "Consultant Imobiliar",
+    },
+    {
+      rating: 5,
+      text: "Dupa multe vizite medicale care doar au dust la mai multe analize si alte vizite, recuperarea medicala oferita de Alex m-a scapat de dureri si m-a ajutat sa revin la o viata mai activa, flexibila si fara durere. Apreciez foarte mult faptul ca de fiecare mi-a explicat starea in care ma aflam si ma indrumat in sedintele noastre. Recomand cu incredere si caldura serviciile, de altfel cum am si recomandat altor pacienti de ai lui.",
+      reviewer: "Constantin",
+      title: "Inginer",
+    },
+    {
+      rating: 5,
+      text: "Am avut placerea de a lucra impreuna cu Alex inca din iunie 2022 la o problema la un deget, aveam mobilitatea degetului redus drastica dar cu ajutor lui Alex am reusit sa imi recapat in proportie de 93% mobilitatea. . Am continuat sa lucrez impreuna cu el si cu orice alta accidentare de care m am lovit ca sportiv. Este un kinetoterapeut exceptional si profesionist. Intotdeauna este deschis sa ti raspunda la orice intrebari ai avea si sa te indrume sa intelege ce este de evitat si ce este recolandat sa faci ca sa te mentii sanatos, sa scapi de probleme si sa eviti accidentarile.",
+      reviewer: "Szabi Kis",
+      title: "Agent Vanzari",
+    },
+    {
+      rating: 5,
+      text: "Il recomand pe Alex pentru competenta lui profesionala, capacitatea de a rezolva cazuri mai deosebite si pentru ca este empatic si pune suflet in ceea ce face! Si face bine!",
+      reviewer: "Camelia",
+      title: "",
+    },
+    {
+      rating: 5,
+      text: "Apelez cu foarte mare încredere la serviciile lui Valentin! Este profesionist în adevaratul sens al cuvantului!",
+      reviewer: "Todea Gabriel",
+      title: "Antreprenor",
+    },
+    {
+      rating: 5,
+      text: "Alex e de un profesionalism desăvârșit, își ia timp să analizeze informațiile, explică clar potențialele cauze ale afecțiunilor, precum și modul în care acționează tratamentul aplicat. E foarte dedicat în rezolvarea problemei, nu fușerește și oferă soluții gândite și de bun simț. Recomand cu încredere!",
+      reviewer: "Lia",
+      title: "IT",
+    },
+    {
+      rating: 5,
+      text: "Dupa antrenamentele intense sau cursele de alergare, apelez cu incredere la Alex sa ma puna inapoi pe picioare si sa imi revitalizeze musculatura.",
+      reviewer: "Anca",
+      title: "Programator",
+    },
+    {
+      rating: 5,
+      text: "Sunt foarte mulțumit de serviciile lui Valentin, mi-a explicat de la început problema pe care o aveam, cauza acesteia și în cele din urmă rezolvarea. Totul ca la carte, recomand cu încredere.",
+      reviewer: "Cătălin",
+      title: "Inginer",
+    },
+    {
+      rating: 5,
+      text: "VA multmesc frumos pentru modul profesional si dariurea in recuperarea mamei mele dupa operatie, recomand",
+      reviewer: "Cecilia Stoian",
+      title: "",
+    },
+    {
+      rating: 5,
+      text: "Profesionist, energie faină, îl recomand cu încredere!",
+      reviewer: "Hutanu Călin",
+      title: "Tehnician dentar",
+    },
+    {
+      rating: 5,
       text: "Il recomand cu incredere pe acest tanar cu experienta, cu mult bun simt, intotdeauna cauta sa ajute, este foarte pregatit profesional si iti explica in detaliu. Il recomand din toata inima! Cu cea mai mare incredere, este persoana potrivită sa ajute!",
       reviewer: "Ada",
       title: "Administrator",
