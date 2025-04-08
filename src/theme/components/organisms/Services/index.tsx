@@ -109,7 +109,7 @@ const Services = () => {
       ),
     },
     {
-      label: "1400 Ron / 10 Sedinte",
+      label: "1500 Ron / 10 Sedinte",
       title: "Abonament Kinetoterapie",
       svg: "/assets/kineto.svg",
       image: "/assets/serviciiKinetoterapie.jpg",
