@@ -42,7 +42,7 @@ const Services = () => {
       ),
     },
     {
-      label: "510 Ron / 3 Sedinte",
+      label: "580 Ron / 3 Sedinte",
       title: "Abonament Terapie Manuala",
       svg: "/assets/manualTherapy2.svg",
       image: "/assets/serviciiTerapieManuala.jpg",
@@ -69,7 +69,7 @@ const Services = () => {
     },
 
     {
-      label: "1500 Ron / 10 Sedinte",
+      label: "1600 Ron / 10 Sedinte",
       title: "Abonament Masaj",
       svg: "/assets/massage.svg",
       image: "/assets/serviciiMasajDeRelaxare.jpg",
@@ -94,7 +94,7 @@ const Services = () => {
       ),
     },
     {
-      label: "1350 Ron / 10 Sedinte",
+      label: "1400 Ron / 10 Sedinte",
       title: "Abonament Kinetoterapie",
       svg: "/assets/kineto.svg",
       image: "/assets/serviciiKinetoterapie.jpg",
@@ -120,7 +120,7 @@ const Services = () => {
       ),
     },
     {
-      label: "1450 Ron / 10 Sedinte",
+      label: "1500 Ron / 10 Sedinte",
       title: "Abonament Mixt",
       svg: "/assets/manualTherapy2.svg",
       image: "/assets/serviciiTerapieManuala.jpg",
@@ -148,7 +148,7 @@ const Services = () => {
       ),
     },
     {
-      label: "200 Ron",
+      label: "220 Ron",
       title: "Terapie Manuală",
       svg: "/assets/manualTherapy2.svg",
       image: "/assets/galerieTerapieManuala2.jpg",
@@ -205,7 +205,7 @@ const Services = () => {
     },
 
     {
-      label: "140 Ron",
+      label: "160 Ron",
       title: "Kinetoterapie",
       svg: "/assets/kineto.svg",
       image: "/assets/serviciiKinetoterapie.jpg",
@@ -235,7 +235,7 @@ const Services = () => {
       ),
     },
     {
-      label: "170 Ron",
+      label: "175 Ron",
       title: "Masaj Terapeutic",
       svg: "/assets/legPain.svg",
       image: "/assets/serviciiMasajSportiv.jpg",
@@ -257,7 +257,7 @@ const Services = () => {
       ),
     },
     {
-      label: "150 Ron",
+      label: "160 Ron",
       title: "Masaj de Relaxare",
       svg: "/assets/massage.svg",
       image: "/assets/serviciiMasajDeRelaxare.jpg",
@@ -332,7 +332,7 @@ const Services = () => {
     },
 
     {
-      label: "50 Ron",
+      label: "70 Ron",
       title: "Evaluare Neuro-Musculo-Scheletală",
       svg: "/assets/bodyScan2.svg",
       image: "/assets/planRecuperare1.jpg",
