@@ -31,6 +31,14 @@ const Services = () => {
           drag un card cadou special!
           <br />
           <br />
+          Alege Tipul de Cadou pe Care Dorești Să îl Oferi:
+          <br />
+          <br />
+          • O ședință - 200 RON
+          <br />
+          • Trei ședințe - 510 RON
+          <br />
+          <br />
           Ajută-i să-și recapete sănătatea și vitalitatea cu ajutorul
           terapeuților noștri calificați.
           <br />
@@ -38,6 +46,13 @@ const Services = () => {
           Un cadou memorabil pentru cei dragi! Valabilitatea cardului este de o
           lună din momentul plății, oferindu-le beneficiarilor oportunitatea de
           a profita de serviciile noastre într-un interval rezonabil de timp.
+          <br />
+          <br />
+          Detalii: Prețul este calculat pentru Terapia Manuală, un serviciu care
+          oferă atât posibilitatea unei evaluări inițiale, cât și demararea unui
+          plan terapeutic personalizat. Pacientul beneficiază de suport complet,
+          indiferent dacă dorește un simplu masaj de relaxare sau are nevoie de
+          tratament pentru dureri cronice sau acute.
         </>
       ),
     },
