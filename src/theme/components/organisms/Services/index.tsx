@@ -189,7 +189,7 @@ const Services = () => {
       ),
     },
     {
-      label: "100 Ron",
+      label: "160 Ron",
       title: "Dry Needling",
       svg: "/assets/accupuncture.svg",
       image: "/assets/serviciiDryNeedling.jpg",
