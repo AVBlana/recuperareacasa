@@ -135,7 +135,7 @@ const Services = () => {
       ),
     },
     {
-      label: "1500 Ron / 10 Sedinte",
+      label: "1580 Ron / 10 Sedinte",
       title: "Abonament Mixt",
       svg: "/assets/manualTherapy2.svg",
       image: "/assets/serviciiTerapieManuala.jpg",

@@ -283,6 +283,7 @@ const NotificationMessage = styled.div`
 
 const StyledReviewContainer = styled.div`
   position: relative;
+  height: auto;
   min-height: ${({ theme }) =>
     theme.media.isMobile ? "850px" : theme.media.isTablet ? "850px" : "650px"};
 `;
@@ -301,11 +302,7 @@ const StyledGradientBox = styled.div`
 `;
 
 const StyledReviewBox = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  position: relative;
   padding: ${({ theme }) =>
     theme.media.isMobile
       ? "40px 20px"
@@ -313,6 +310,7 @@ const StyledReviewBox = styled.div`
       ? "100px 40px"
       : "100px 80px"};
   z-index: 2;
+  height: auto;
 `;
 
 const StyledImageBox = styled.div`
