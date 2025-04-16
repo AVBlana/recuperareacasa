@@ -178,16 +178,19 @@ const Footer = () => {
             </Box>
           </Box>
 
-          {/* About Us and Logo Section */}
+          {/* About Us , Map and Logo Section */}
           <Flex
             style={{
-              justifyContent: theme.media.isMobile ? "center" : "space-between",
+              justifyContent: "space-between",
+              alignItems: theme.media.isMobile ? "center" : "flex-start",
               width: "100%",
+              gap: theme.media.isMobile ? 40 : 60,
               marginTop: theme.media.isMobile
                 ? 0
                 : theme.media.isTablet
                 ? 20
                 : 0,
+              flexDirection: theme.media.isMobile ? "column" : "row",
             }}
           >
             <Flex
