@@ -1,12 +1,14 @@
+"use client";
+
 import Link from "next/link";
-import { FbIcon, SvgIcon, Text, YtIcon } from "../..";
+import { FbIcon, Text, YtIcon } from "../..";
 import Box from "../../atoms/Box";
 import Flex from "../../atoms/Flex";
 import styled, { useTheme } from "styled-components";
 import NavItem from "../../atoms/NavItem";
 import Image from "../../atoms/Image";
-import WhatsAppButton from "../../molecules/WhatsAppButton";
 import { WhatsappIcon } from "../../molecules/Icons/WhatsappIcon";
+import { useState, useCallback } from "react";
 
 const Footer = () => {
   const theme = useTheme();
@@ -29,10 +31,12 @@ const Footer = () => {
             justifyContent: "space-between",
           }}
         >
+          {/* Contact Section */}
           <Box
             style={{
               gap: theme.media.isMobile ? 20 : 30,
               alignItems: theme.media.isMobile ? "center" : "start",
+              flex: theme.media.isTablet ? "1 0 40%" : "1",
             }}
           >
             <Text secondaryFont big primary>
@@ -95,10 +99,13 @@ const Footer = () => {
               </Link>
             </Flex>
           </Box>
+
+          {/* Company Section */}
           <Box
             style={{
               gap: 30,
               display: theme.media.isMobile ? "none" : "flex",
+              flex: theme.media.isTablet ? "1 0 40%" : "1",
             }}
           >
             <Text big secondaryFont>
@@ -132,11 +139,14 @@ const Footer = () => {
               />
             </Box>
           </Box>
+
+          {/* Working Hours Section */}
           <Box
             style={{
               minWidth: 140,
               gap: theme.media.isMobile ? 20 : 30,
               alignItems: theme.media.isMobile ? "center" : "start",
+              flex: theme.media.isTablet ? "1 0 40%" : "1",
             }}
           >
             <Text big secondaryFont>
@@ -167,10 +177,17 @@ const Footer = () => {
               </Box>
             </Box>
           </Box>
+
+          {/* About Us and Logo Section */}
           <Flex
             style={{
               justifyContent: theme.media.isMobile ? "center" : "space-between",
               width: "100%",
+              marginTop: theme.media.isMobile
+                ? 0
+                : theme.media.isTablet
+                ? 20
+                : 0,
             }}
           >
             <Flex
@@ -201,6 +218,38 @@ const Footer = () => {
                 </Box>
               </Box>
             </Flex>
+
+            {/* Location Map Section */}
+            <Box
+              style={{
+                gap: theme.media.isMobile ? 20 : 30,
+                alignItems: theme.media.isMobile ? "center" : "start",
+                flex: theme.media.isTablet ? "1 0 40%" : "1",
+              }}
+            >
+              <Text big secondaryFont>
+                Locația Noastră
+              </Text>
+              <Box
+                style={{
+                  width: "100%",
+                  height: theme.media.isMobile ? "200px" : "150px",
+                  borderRadius: "12px",
+                  overflow: "hidden",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                }}
+              >
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2732.1234567890123!2d23.4995405!3d46.7434508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47490f4532c4e24f%3A0xcfdb9e92fccc12ab!2sRecuperareAcasa%20SRL%20(Masaj%2FKinetoterapie%20la%20domiciliu)%20Cluj!5e0!3m2!1sen!2sro!4v1234567890"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </Box>
+            </Box>
             <Box>
               <Link href={"/"}>
                 <StyledLogo>
@@ -215,12 +264,14 @@ const Footer = () => {
             </Box>
           </Flex>
         </Flex>
+
+        {/* Copyright Section */}
         <Flex
           style={{
             justifyContent: "center",
             alignItems: "center",
             gap: 10,
-            paddingTop: theme.media.isMobile ? 20 : 0,
+            paddingTop: theme.media.isMobile ? 20 : 30,
             flexDirection: theme.media.isMobile ? "column" : "row",
           }}
         >
@@ -250,9 +301,10 @@ const Footer = () => {
 };
 
 const StyledLogo = styled.div`
-transition: transform 0.3s ease;
-&:hover {
-  transform: translateX(-20px) scale(1.3);
+  transition: transform 0.3s ease;
+  &:hover {
+    transform: translateX(-20px) scale(1.3);
+  }
 `;
 
 const StyledSocialBox = styled.div`
@@ -282,4 +334,5 @@ const StyledBackgroundBox = styled.div`
   padding-right: ${({ theme }) =>
     theme.media.isMobile ? "20" : theme.media.isTablet ? "20" : "40"}px;
 `;
+
 export default Footer;
