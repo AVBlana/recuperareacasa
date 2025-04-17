@@ -231,7 +231,7 @@ const Footer = () => {
               }}
             >
               <Text big secondaryFont>
-                Locația Noastră
+                Vezi locația noastră pe hartă și citește recenziile clienților!
               </Text>
               <Box
                 style={{
