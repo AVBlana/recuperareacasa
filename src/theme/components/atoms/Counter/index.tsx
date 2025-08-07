@@ -41,7 +41,7 @@ const Counter: React.FC<CounterProps> = ({
       <Text bold secondaryFont big style={{ color: theme.color.secondary }}>
         {title}
       </Text>
-      <AnimatedNumber animate={displayedValue >= targetValue}>
+      <AnimatedNumber $animate={displayedValue >= targetValue}>
         +
         {`${
           displayedValue > 1000
@@ -69,10 +69,11 @@ const StyledCounterBox = styled.div`
   min-width: ${({ theme }) => (theme.media.isMobile ? "auto" : "270px")};
 `;
 
-const AnimatedNumber = styled.span<{ animate: boolean }>`
-  transition: color ${(props) => (props.animate ? "0.05s" : "0.2s")} ease-in-out;
+const AnimatedNumber = styled.span<{ $animate: boolean }>`
+  transition: color ${(props) => (props.$animate ? "0.05s" : "0.2s")}
+    ease-in-out;
   color: ${(props) =>
-    props.animate
+    props.$animate
       ? ({ theme }) => theme.color.primary
       : ({ theme }) => theme.color.secondary};
   font-size: ${({ theme }) => (theme.media.isMobile ? "40" : "100")}px;

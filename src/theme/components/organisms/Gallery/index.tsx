@@ -1,5 +1,5 @@
 import styled, { useTheme } from "styled-components";
-import { Text } from "../..";
+import { Text, StyledText } from "../..";
 import Box from "../../atoms/Box";
 import Flex from "../../atoms/Flex";
 import GalleryItem from "../../molecules/GalleryItem";
@@ -291,6 +291,10 @@ const Gallery = () => {
   );
 };
 
+const StyledFilterText = styled(StyledText)`
+  transition: color 0.2s ease;
+`;
+
 const FilterButton = styled.div`
   /* Your styling for the filter button */
   display: flex;
@@ -298,7 +302,7 @@ const FilterButton = styled.div`
   border-radius: 20px;
   padding: 8px 24px;
   background: ${({ theme }) => theme.color.primary};
-  ${Text} {
+  ${StyledFilterText} {
     font-size: ${({ theme }) => theme.text.medium};
     color: ${({ theme }) => theme.color.white};
   }

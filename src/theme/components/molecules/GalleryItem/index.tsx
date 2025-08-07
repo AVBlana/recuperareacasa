@@ -55,7 +55,7 @@ const GalleryItem = ({
       onMouseLeave={handleMouseLeave}
     >
       {isHovered && (
-        <StyledOverlay visible>
+        <StyledOverlay $visible>
           <Box
             style={{
               height: 100,
@@ -201,7 +201,7 @@ const overlayVisibleStyle = css`
   background: rgba(0, 0, 0, 0.5);
 `;
 
-const StyledOverlay = styled.div<{ visible: boolean }>`
+const StyledOverlay = styled.div<{ $visible: boolean }>`
   position: absolute;
   z-index: 0;
   top: 0;
@@ -216,7 +216,7 @@ const StyledOverlay = styled.div<{ visible: boolean }>`
     theme.media.isMobile ? theme.spacings.smallest : theme.spacings.big}px;
   transition: opacity 0.3s, background 0.3s;
 
-  ${({ visible }) => visible && overlayVisibleStyle}
+  ${({ $visible }) => $visible && overlayVisibleStyle}
 `;
 
 const StyledGalleryItem = styled.div`

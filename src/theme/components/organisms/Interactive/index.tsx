@@ -61,17 +61,14 @@ interface IPropsInteractive {
 
 const InteractiveBox: React.FC = () => {
   const theme = useTheme();
-  const [hoveredLabel, setHoveredLabel] = useState<string | null>(
-    interacts[0].label
-  );
+  const [hoveredLabel, setHoveredLabel] = useState<string | null>(null);
 
   const handleLabelHover = (label: string | null) => {
     setHoveredLabel(label);
   };
 
-  useEffect(() => {
-    setHoveredLabel(interacts[0].label);
-  }, []);
+  // Use the first item's label as default, but only after component mounts
+  const defaultLabel = hoveredLabel || interacts[0].label;
 
   return (
     <Box style={{ alignItems: "center" }}>
@@ -84,8 +81,8 @@ const InteractiveBox: React.FC = () => {
               key={interact.number}
               onMouseEnter={() => handleLabelHover(interact.label)}
               onMouseLeave={() => handleLabelHover(null)}
-              hovered={hoveredLabel === interact.label}
-              isFirst={index === 0}
+              $hovered={hoveredLabel === interact.label}
+              $isFirst={index === 0}
             >
               <Text
                 big
@@ -127,7 +124,7 @@ const InteractiveBox: React.FC = () => {
               width={theme.media.isMobile ? 260 : 600}
               height={theme.media.isMobile ? 260 : 600}
               src={
-                interacts.find((i) => i.label === hoveredLabel)?.image ||
+                interacts.find((i) => i.label === defaultLabel)?.image ||
                 interacts[0].image
               }
               alt=""
@@ -167,11 +164,11 @@ const LeftBox = styled.div`
   flex-direction: column;
 `;
 
-const StyledLabelBox = styled.div<{ hovered: boolean; isFirst: boolean }>`
+const StyledLabelBox = styled.div<{ $hovered: boolean; $isFirst: boolean }>`
   display: flex;
   flex-direction: row;
   gap: 8px;
-  cursor: ${({ hovered }) => (hovered ? "pointer" : "default")};
+  cursor: ${({ $hovered }) => ($hovered ? "pointer" : "default")};
   padding: ${({ theme }) =>
     theme.media.isMobile ? theme.spacings.tiny : theme.spacings.small}px;
   transition: color 0.3s, transform 0.3s;
@@ -181,9 +178,9 @@ const StyledLabelBox = styled.div<{ hovered: boolean; isFirst: boolean }>`
     transform: scale(1.1); // Increase the scale value as needed
   }
 
-  ${({ isFirst, hovered }) =>
-    isFirst &&
-    !hovered &&
+  ${({ $isFirst, $hovered }) =>
+    $isFirst &&
+    !$hovered &&
     `
     color: ${theme.color.secondary};
   `}

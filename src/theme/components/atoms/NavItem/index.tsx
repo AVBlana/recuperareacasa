@@ -1,6 +1,6 @@
 // NavItem.tsx
 import styled from "styled-components";
-import { Text } from "..";
+import { Text, StyledText } from "..";
 
 interface NavItemProps {
   onClick: () => void;
@@ -11,9 +11,9 @@ interface NavItemProps {
 const NavItem = ({ onClick, label, alignLeft = false }: NavItemProps) => {
   return (
     <StyledNavItem alignLeft={alignLeft} onClick={onClick}>
-      <Text primary big semiBold secondaryFont>
+      <StyledNavText $primary $big $semiBold $secondaryFont>
         {label}
-      </Text>
+      </StyledNavText>
     </StyledNavItem>
   );
 };
@@ -21,6 +21,10 @@ const NavItem = ({ onClick, label, alignLeft = false }: NavItemProps) => {
 interface StyledNavItemProps {
   alignLeft?: boolean;
 }
+
+const StyledNavText = styled(StyledText)`
+  transition: color 0.1s ease, transform 0.1s ease;
+`;
 
 const StyledNavItem = styled.div<StyledNavItemProps>`
   cursor: pointer;
@@ -31,8 +35,8 @@ const StyledNavItem = styled.div<StyledNavItemProps>`
   align-items: ${({ alignLeft }) => (alignLeft ? "flex-start" : "center")};
   transition: transform 0.1s ease;
 
-  &:hover ${Text} {
-    color: ${({ theme }) => theme.color.secondary};
+  &:hover ${StyledNavText} {
+    color: ${({ theme }) => theme.color.secondary} !important;
     transform: scale(1.5);
   }
 `;

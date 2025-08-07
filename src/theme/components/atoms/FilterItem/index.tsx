@@ -1,6 +1,6 @@
 import styled, { useTheme } from "styled-components";
 import { theme } from "@/theme/constants";
-import { Text } from "..";
+import { Text, StyledText } from "..";
 
 const FilterItem = ({
   label,
@@ -15,9 +15,9 @@ const FilterItem = ({
   return (
     <>
       <StyledFilterItem onClick={onClick} selected={selected}>
-        <Text
-          primary
-          semiBold
+        <StyledFilterText
+          $primary
+          $semiBold
           style={{
             fontSize: theme.media.isMobile
               ? theme.text.smaller
@@ -25,11 +25,15 @@ const FilterItem = ({
           }}
         >
           {label}
-        </Text>
+        </StyledFilterText>
       </StyledFilterItem>
     </>
   );
 };
+
+const StyledFilterText = styled(StyledText)`
+  transition: color 0.2s ease;
+`;
 
 const StyledFilterItem = styled.div<{ selected: boolean }>`
   display: flex;
@@ -38,7 +42,7 @@ const StyledFilterItem = styled.div<{ selected: boolean }>`
   padding: 8px 24px;
   &:hover {
     background: ${theme.color.primary};
-    ${Text} {
+    ${StyledFilterText} {
       color: ${theme.color.white};
     }
   }
@@ -46,7 +50,7 @@ const StyledFilterItem = styled.div<{ selected: boolean }>`
     selected &&
     `
     background: ${theme.color.primary};
-    ${Text} {
+    ${StyledFilterText} {
       color: ${theme.color.white};
     }
   `}

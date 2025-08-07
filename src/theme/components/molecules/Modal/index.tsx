@@ -16,6 +16,11 @@ const Modal = ({
   onClose: () => void;
 }) => {
   const theme = useTheme();
+
+  if (!isVisible) {
+    return null;
+  }
+
   return (
     <Portal>
       <Box
@@ -28,8 +33,8 @@ const Modal = ({
           background: rgba(theme.color.black, 0.8),
           alignItems: "center",
           justifyContent: "center",
-          opacity: isVisible ? 1 : 0,
-          pointerEvents: isVisible ? "auto" : "none",
+          opacity: 1,
+          pointerEvents: "auto",
           zIndex: 1000,
         }}
       >

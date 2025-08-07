@@ -1,8 +1,45 @@
 "use client";
 
 import styled, { css } from "styled-components";
+import React from "react";
 
 export interface IText {
+  $secondaryFont?: boolean;
+  $lineHeight?: number | string;
+  $letterSpacing?: number;
+  $light?: boolean;
+  $semiBold?: boolean;
+  $bold?: boolean;
+  $bolder?: boolean;
+  $textAlign?: string;
+  $whiteSpace?: string;
+  $textOverflow?: string;
+  $ellipsis?: boolean;
+  $uppercase?: boolean;
+  $lowercase?: boolean;
+  $capitalize?: boolean;
+
+  $color?: string;
+  $primary?: boolean;
+  $red?: boolean;
+  $white?: boolean;
+  $black?: boolean;
+  $yellow?: boolean;
+
+  $size?: string | number;
+  $tiny?: boolean;
+  $smallest?: boolean;
+  $smaller?: boolean;
+  $small?: boolean;
+  $medium?: boolean;
+  $big?: boolean;
+  $bigger?: boolean;
+  $biggest?: boolean;
+  $huge?: boolean;
+}
+
+// Legacy props interface for backward compatibility
+export interface ILegacyText {
   secondaryFont?: boolean;
   lineHeight?: number | string;
   letterSpacing?: number;
@@ -37,21 +74,21 @@ export interface IText {
   huge?: boolean;
 }
 
-export const Text = styled.span<IText>`
-  text-align: ${({ textAlign }) => textAlign || "left"};
+const StyledText = styled.span<IText>`
+  text-align: ${({ $textAlign }) => $textAlign || "left"};
 
-  ${({ theme, secondaryFont }) => {
-    if (secondaryFont) {
+  ${({ theme, $secondaryFont }) => {
+    if ($secondaryFont) {
       return css`
         font-family: ${theme.text.secondary}, sans-serif;
       `;
     }
   }}
 
-  ${({ whiteSpace }) => {
-    if (whiteSpace) {
+  ${({ $whiteSpace }) => {
+    if ($whiteSpace) {
       return css`
-        white-space: ${whiteSpace};
+        white-space: ${$whiteSpace};
       `;
     }
     return css`
@@ -59,50 +96,50 @@ export const Text = styled.span<IText>`
     `;
   }}
   
-  ${({ textOverflow }) => {
-    if (textOverflow) {
+  ${({ $textOverflow }) => {
+    if ($textOverflow) {
       return css`
-        text-overflow: ${textOverflow};
+        text-overflow: ${$textOverflow};
       `;
     }
   }}
 
-  ${({ ellipsis }) => {
-    if (ellipsis)
+  ${({ $ellipsis }) => {
+    if ($ellipsis)
       return css`
         text-overflow: ellipsis;
         white-space: nowrap;
       `;
   }}
 
-  ${({ uppercase, lowercase, capitalize }) => {
-    if (uppercase)
+  ${({ $uppercase, $lowercase, $capitalize }) => {
+    if ($uppercase)
       return css`
         text-transform: uppercase;
       `;
-    if (lowercase)
+    if ($lowercase)
       return css`
         text-transform: lowercase;
       `;
-    if (capitalize)
+    if ($capitalize)
       return css`
         text-transform: capitalize;
       `;
   }};
 
-  ${({ bold, bolder, semiBold }) => {
-    if (bolder) {
+  ${({ $bold, $bolder, $semiBold }) => {
+    if ($bolder) {
       return css`
         font-weight: 900;
       `;
     }
-    if (bold) {
+    if ($bold) {
       return css`
         font-weight: 700;
         /* Replace with your font family for bold */
       `;
     }
-    if (semiBold) {
+    if ($semiBold) {
       return css`
         font-weight: 600;
         /* Replace with your font family for semiBold */
@@ -115,28 +152,28 @@ export const Text = styled.span<IText>`
     `;
   }};
 
-  ${({ color, theme, primary, red, white, black, yellow }) => {
-    if (color)
+  ${({ $color, theme, $primary, $red, $white, $black, $yellow }) => {
+    if ($color)
       return css`
-        color: ${color};
+        color: ${$color};
       `;
-    if (primary)
+    if ($primary)
       return css`
         color: ${theme.color.primary};
       `;
-    if (black)
+    if ($black)
       return css`
         color: ${theme.color.black};
       `;
-    if (red)
+    if ($red)
       return css`
         color: ${theme.color.red};
       `;
-    if (white)
+    if ($white)
       return css`
         color: ${theme.color.white};
       `;
-    if (yellow)
+    if ($yellow)
       return css`
         color: ${theme.color.yellow};
       `;
@@ -147,49 +184,49 @@ export const Text = styled.span<IText>`
 
   ${({
     theme,
-    tiny,
-    smallest,
-    smaller,
-    small,
-    big,
-    bigger,
-    biggest,
-    huge,
-    size,
+    $tiny,
+    $smallest,
+    $smaller,
+    $small,
+    $big,
+    $bigger,
+    $biggest,
+    $huge,
+    $size,
   }) => {
-    if (size)
+    if ($size)
       return css`
-        font-size: ${typeof size === "number" ? size + "px" : size};
+        font-size: ${typeof $size === "number" ? $size + "px" : $size};
       `;
-    if (tiny)
+    if ($tiny)
       return css`
         font-size: ${theme.text.tiny}px;
       `;
-    if (smallest)
+    if ($smallest)
       return css`
         font-size: ${theme.text.smallest}px;
       `;
-    if (smaller)
+    if ($smaller)
       return css`
         font-size: ${theme.text.smaller}px;
       `;
-    if (small)
+    if ($small)
       return css`
         font-size: ${theme.text.small}px;
       `;
-    if (big)
+    if ($big)
       return css`
         font-size: ${theme.text.big}px;
       `;
-    if (bigger)
+    if ($bigger)
       return css`
         font-size: ${theme.text.bigger}px;
       `;
-    if (biggest)
+    if ($biggest)
       return css`
         font-size: ${theme.text.biggest}px;
       `;
-    if (huge)
+    if ($huge)
       return css`
         font-size: ${theme.text.huge}px;
       `;
@@ -198,3 +235,80 @@ export const Text = styled.span<IText>`
     `;
   }};
 `;
+
+export { StyledText };
+
+// Wrapper component that transforms legacy props to transient props
+export const Text: React.FC<
+  ILegacyText & React.HTMLAttributes<HTMLSpanElement>
+> = (props) => {
+  const {
+    secondaryFont,
+    lineHeight,
+    letterSpacing,
+    light,
+    semiBold,
+    bold,
+    bolder,
+    textAlign,
+    whiteSpace,
+    textOverflow,
+    ellipsis,
+    uppercase,
+    lowercase,
+    capitalize,
+    color,
+    primary,
+    red,
+    white,
+    black,
+    yellow,
+    size,
+    tiny,
+    smallest,
+    smaller,
+    small,
+    medium,
+    big,
+    bigger,
+    biggest,
+    huge,
+    ...restProps
+  } = props;
+
+  return (
+    <StyledText
+      $secondaryFont={secondaryFont}
+      $lineHeight={lineHeight}
+      $letterSpacing={letterSpacing}
+      $light={light}
+      $semiBold={semiBold}
+      $bold={bold}
+      $bolder={bolder}
+      $textAlign={textAlign}
+      $whiteSpace={whiteSpace}
+      $textOverflow={textOverflow}
+      $ellipsis={ellipsis}
+      $uppercase={uppercase}
+      $lowercase={lowercase}
+      $capitalize={capitalize}
+      $color={color}
+      $primary={primary}
+      $red={red}
+      $white={white}
+      $black={black}
+      $yellow={yellow}
+      $size={size}
+      $tiny={tiny}
+      $smallest={smallest}
+      $smaller={smaller}
+      $small={small}
+      $medium={medium}
+      $big={big}
+      $bigger={bigger}
+      $biggest={biggest}
+      $huge={huge}
+      {...restProps}
+    />
+  );
+};

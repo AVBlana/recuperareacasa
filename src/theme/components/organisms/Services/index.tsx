@@ -450,15 +450,20 @@ const Services = () => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visibleCards, setVisibleCards] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    if (containerRef.current) {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (containerRef.current && isMounted) {
       const containerWidth = containerRef.current.offsetWidth;
       const cardWidth = 400;
       const visibleCardsCount = Math.floor(containerWidth / cardWidth);
       setVisibleCards(visibleCardsCount);
     }
-  }, []);
+  }, [isMounted]);
 
   const handleNextCard = () => {
     const lastVisibleIndex = services.length - visibleCards;

@@ -13,6 +13,7 @@ import InteractiveBox from "@/theme/components/organisms/Interactive";
 import About from "@/theme/components/organisms/About";
 import Steps from "@/theme/components/organisms/Steps";
 import Team from "@/theme/components/organisms/Team";
+import Awards from "@/theme/components/organisms/Awards";
 import { StepsProvider } from "@/theme/components/organisms/StepsForm/context";
 import { ReviewProvider } from "@/theme/components/organisms/Review/ReviewContext";
 import Accordion from "@/theme/components/molecules/Accordion";
@@ -40,6 +41,8 @@ export const HomeScreen = () => {
       </SectionBox>
 
       <MovingText />
+
+      <Awards />
 
       <SectionBox id="despre">
         <StepsProvider>
