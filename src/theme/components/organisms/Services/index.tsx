@@ -27,138 +27,119 @@ const Services = () => {
       image: "/assets/plicuri3_websize.jpg",
       desc: (
         <>
-          Descoperă serviciul nostru de recuperare medicală și oferă-i cuiva
-          drag un card cadou special!
+          Oferă celor dragi 1 sau 3 şedințe de Kinetoterapie, Masaj Terapeutic
+          sau Terapie Manuală (prețurile conform tarifelor afişate).
           <br />
           <br />
-          Alege Tipul de Cadou pe Care Dorești Să îl Oferi:
+          Beneficiarul care primeşte 3 şedințe cadou poate continua cu un
+          abonament suplimentar, necesar sau dorit pentru tratament, beneficiind
+          de 10% reducere la plata cash pentru primul abonament.
           <br />
           <br />
-          • O ședință - 200 RON
-          <br />
-          • Trei ședințe - 510 RON
-          <br />
-          <br />
-          Ajută-i să-și recapete sănătatea și vitalitatea cu ajutorul
-          terapeuților noștri calificați.
-          <br />
-          <br />
-          Un cadou memorabil pentru cei dragi! Valabilitatea cardului este de o
-          lună din momentul plății, oferindu-le beneficiarilor oportunitatea de
-          a profita de serviciile noastre într-un interval rezonabil de timp.
-          <br />
-          <br />
-          Detalii: Prețul este calculat pentru Terapia Manuală, un serviciu care
-          oferă atât posibilitatea unei evaluări inițiale, cât și demararea unui
-          plan terapeutic personalizat. Pacientul beneficiază de suport complet,
-          indiferent dacă dorește un simplu masaj de relaxare sau are nevoie de
-          tratament pentru dureri cronice sau acute.
+          Cardul este valabil o lună de la achiziție, oferind flexibilitate
+          pentru programarea şedințelor.
         </>
       ),
     },
     {
       label: "580 Ron / 3 Sedinte",
-      title: "Abonament Terapie Manuala",
+      title: "Abonament Terapie Manuala Avansată",
       svg: "/assets/manualTherapy2.svg",
       image: "/assets/serviciiTerapieManuala.jpg",
       desc: (
         <>
-          Abonamentul nostru de terapie manuală îți permite să experimentezi
-          vindecarea și relaxarea într-un mod convenabil și accesibil în trei
-          ședințe.
+          Abonamentul nostru de Terapie Manuală Avansată îți oferă acces la
+          tehnici terapeutice complexe şi personalizate, efectuate de
+          specialişti, direct la domiciliu.
           <br />
           <br />
-          Oferind o varietate de tehnici terapeutice, de la masaj terapeutic la
-          manipulare osteopatică, Dryneedling, Flossing, Cupping, IATSM,
-          Kinesiotape.
+          Include o varietate de metode, de la masaj terapeutic, manipulări
+          osteopatice, Dryneedling, Flossing, Cupping, IASTM pånă la
+          Kinesiotaping, pentru recuperare, ameliorarea durerii şi relaxare
+          profundă.
           <br />
           <br />
-          Cu abonamentul nostru, beneficiezi de o evaluare inițială gratuită.
-          <br />
-          <br />
-          Valabilitatea abonamentului este pe o perioadă de o lună, iar plata se
-          face integral pentru a-ți oferi o experiență fără griji și pentru a te
-          bucura de beneficiile terapiei manuale fără nicio grijă financiară.
+          Beneficiezi de o evaluare inițială gratuită, iar abonamentul este
+          valabil pe o lună, cu plata integrală, pentru a-ți asigura o
+          experiență fără griji şi rezultate optime.
         </>
       ),
     },
 
+    // {
+    //   label: "1600 Ron / 10 Sedinte",
+    //   title: "Abonament Masaj",
+    //   svg: "/assets/massage.svg",
+    //   image: "/assets/serviciiMasajDeRelaxare.jpg",
+    //   desc: (
+    //     <>
+    //       Cu acest abonament, te poți bucura de o serie de sesiuni de masaj
+    //       terapeutic de înaltă calitate.
+    //       <br />
+    //       <br />
+    //       Este important să ții cont că evaluarea inițială este tarifată separat
+    //       de abonament și nu este inclusă în prețul acestuia.
+    //       <br />
+    //       <br />
+    //       Abonamentul nostru se concentrează exclusiv pe masajul terapeutic, iar
+    //       alte servicii sau tratamente vor fi suplimentare și tarifate separat.
+    //       <br />
+    //       <br />
+    //       Valabilitatea abonamentului este pe o perioadă de 6 luni iar plata se
+    //       face în două tranșe pentru a-ți oferi o experiență fără griji pe tot
+    //       parcursul acestei perioade.
+    //     </>
+    //   ),
+    // },
     {
       label: "1600 Ron / 10 Sedinte",
-      title: "Abonament Masaj",
-      svg: "/assets/massage.svg",
-      image: "/assets/serviciiMasajDeRelaxare.jpg",
-      desc: (
-        <>
-          Cu acest abonament, te poți bucura de o serie de sesiuni de masaj
-          terapeutic de înaltă calitate.
-          <br />
-          <br />
-          Este important să ții cont că evaluarea inițială este tarifată separat
-          de abonament și nu este inclusă în prețul acestuia.
-          <br />
-          <br />
-          Abonamentul nostru se concentrează exclusiv pe masajul terapeutic, iar
-          alte servicii sau tratamente vor fi suplimentare și tarifate separat.
-          <br />
-          <br />
-          Valabilitatea abonamentului este pe o perioadă de 6 luni iar plata se
-          face în două tranșe pentru a-ți oferi o experiență fără griji pe tot
-          parcursul acestei perioade.
-        </>
-      ),
-    },
-    {
-      label: "1500 Ron / 10 Sedinte",
-      title: "Abonament Kinetoterapie",
+      title: "Abonament Kinetoterapie Echipată",
       svg: "/assets/kineto.svg",
       image: "/assets/serviciiKinetoterapie.jpg",
       desc: (
         <>
-          Conceput exclusiv pentru terapia prin exerciții, acest abonament îți
-          oferă oportunitatea de a-ți îmbunătăți sănătatea și mobilitatea
-          într-un mod sigur și eficient.
+          Acest abonament oferă kinetoteranie la domiciliu cu echipamente
+          Scripeți şi accesorii profesionate, pentru Exerciții mult mai
+          eficiente decât cele standard.
           <br />
           <br />
-          Vei lucra îndeaproape cu terapeuții noștri specializați pentru a
-          dezvolta un plan de tratament personalizat, adaptat nevoilor tale
-          specifice.
+          Este ideal pentru recuperare neurologică (paralizii, AVC), recuperare
+          post-operatorie (genunchi, şold, protezare), dar şi pentru tonifiere,
+          creşterea mobilității şi performanță fizică generală.
           <br />
           <br />
-          Evaluare inițială se tarifează separat.
+          Vei lucra îndeaproape cu terapeuți specializați, care îți dezvoltă un
+          plan personalizat adaptat nevoilor tale, pentru rezultate vizibile şi
+          sigure.
           <br />
           <br />
-          Valabilitatea abonamentului este pe o perioadă de 3 luni iar plata
-          abonamentului se face în două tranșe pentru a-ți oferi mai multă
-          flexibilitate financiară.
+          Evaluarea inițială se tarifează separat. Abonamentul este valabil pe 3
+          luni, cu plata în două tranşe pentru flexibilitate financiară.
+          <br />
+          <br />
+          Şedința de masaj terapeutic inclusă se poate efectua suplimentar la 20
+          RON per şedință.
         </>
       ),
     },
     {
-      label: "1580 Ron / 10 Sedinte",
-      title: "Abonament Mixt",
+      label: "1650 Ron / 10 Sedinte",
+      title: "Abonament Masaj Terapeutic de Bază",
       svg: "/assets/manualTherapy2.svg",
       image: "/assets/serviciiTerapieManuala.jpg",
       desc: (
         <>
-          Abonamentul mixt oferă soluții complete pentru îmbunătățirea sănătății
-          la domiciliu, adresând diverse probleme medicale precum cele
-          neurologice, post-AVC, spasticitate, post-traumatic, post operator în
-          cazul protezei totale de șold sau genunchi și altele.
+          Acest abonament oferă şedințe de masaj terapeutic orientat spre
+          relaxare şi recuperarea musculaturii, ideale pentru sportivi sau
+          pentru persoanele care doresc detensionarea muşchilor.
           <br />
           <br />
-          Combinația de kinetoterapie și terapie manuală asigură pacienților
-          îngrijire specializată și eficientă în confortul propriului cămin.
+          Se folosesc tehnici de detensionare, stretching şi masaj clasic, fără
+          evaluare medicală sau abordări clinice complexe.
           <br />
           <br />
-          Sesiunea poate include 20 de minute de terapie manuală și 30 de minute
-          de kinetoterapie, sau terapia manuală poate fi integrată în
-          exercițiile de kinetoterapie pe parcursul întregii sesiuni.
-          <br />
-          <br />
-          Pentru terapia manuală extinsă de 50 de minute, se poate achiziționa o
-          ședință suplimentară cu un cost adițional de 60 de lei. Plata
-          abonamentului se face în două tranșe.
+          Fără nevoie de evaluare inițială, şedințele sunt accesibile şi
+          eficiente pentru menținerea confortului muscular şi relaxare.
         </>
       ),
     },
@@ -220,59 +201,56 @@ const Services = () => {
     },
 
     {
-      label: "160 Ron",
-      title: "Kinetoterapie",
+      label: "165 Ron",
+      title: "Kinetoterapie Echipată",
       svg: "/assets/kineto.svg",
       image: "/assets/serviciiKinetoterapie.jpg",
       desc: (
         <>
-          Serviciul nostru de kinetoterapie se adresează cu precădere
-          persoanelor care suferă de AVC, probleme neurologice sau traumatisme,
-          oferindu-le un suport specializat în recuperarea funcțională.
+          Şedința individuală de kinetoterapie la domiciliu concepută pentru
+          a-ți menține mobilitatea, tonusul muscular şi postura, folosind
+          exerciții adaptate nivelului tău.
           <br />
           <br />
-          Prin intermediul terapiei prin mișcare, ne concentrăm pe restabilirea
-          și consolidarea funcțiilor motorii afectate, îmbunătățirea
-          flexibilității și a forței musculare, precum și pe redobândirea
-          independenței și a calității vieții.
+          Exercițiile se pot realiza cu echipamentul pacientului sau cu dotări
+          minime furnizate de noi, precum bastoane, benzi elastice sau greutatea
+          propriului corp.
           <br />
           <br />
-          Terapeuții noștri specializați lucrează îndeaproape cu fiecare pacient
-          pentru a dezvolta un program de exerciții adaptat nevoilor lor
-          individuale, astfel încât să obțină progrese semnificative în procesul
-          de recuperare.
+          Ideal pentru persoanele care doresc un program simplu, sigur şi
+          eficient, fără echipamente complexe sau şedințe cu aparatură
+          profesională.
           <br />
           <br />
-          Serviciul nostru de kinetoterapie se concentrează exclusiv pe terapia
-          prin mișcare, oferind un sprijin specializat pentru recuperare
-          medicală.
+          Evaluarea inițială se tarifează separat. Abonamentul este valabil pe 3
+          luni, cu plata în două tranşe pentru flexibilitate financiară.
         </>
       ),
     },
     {
-      label: "175 Ron",
-      title: "Masaj Terapeutic",
+      label: "180 Ron",
+      title: "Masaj Terapeutic de Bază",
       svg: "/assets/legPain.svg",
       image: "/assets/serviciiMasajSportiv.jpg",
       desc: (
         <>
-          Experimentați beneficiile revitalizante ale masajului sportiv și de
-          recuperare oferit de echipa noastră dedicată.
+          Şedința individuală de Masaj Terapeutic de Bază este concepută pentru
+          detensionarea musculară, relaxare şi recuperarea uşoară a
+          musculaturii, folosind tehnici simple de masaj, stretching şi
+          mobilizare.
           <br />
           <br />
-          Proiectat special pentru atleți și persoane active, acest tip de masaj
-          nu doar calmează tensiunea musculară, ci și accelerează procesul de
-          recuperare după antrenamente intense sau leziuni minore.
+          Nu necesită evaluare medicală şi nu include abordări clinice complexe.
+          Este ideală pentru sportivi sau persoane care doresc să-şi mențină
+          confortul muscular şi flexibilitatea.
           <br />
           <br />
-          Prin tehnici experte și personalizate, masajul sportiv și de
-          recuperare pe care-l oferim vizează restabilirea flexibilității,
-          reducerea inflamației și îmbunătățirea performanței generale.
+          Durata şi prețul şedinței se stabilesc conform programării.
         </>
       ),
     },
     {
-      label: "160 Ron",
+      label: "165 Ron",
       title: "Masaj de Relaxare",
       svg: "/assets/massage.svg",
       image: "/assets/serviciiMasajDeRelaxare.jpg",
