@@ -157,7 +157,7 @@ const Awards = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <img
+                      <Image
                         src="https://www.soimiisanatatii.ro/images/medals/281452/laureat300_black_2_ro.png"
                         alt="RecuperareAcasa - Florești"
                         title="RecuperareAcasa - Florești"
@@ -171,7 +171,7 @@ const Awards = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <img
+                      <Image
                         src="https://www.firmadeaur.ro/company-image/4384711-dark.png"
                         alt="RecuperareAcasa SRL (Masaj/Kinetoterapie la domiciliu) Cluj - Florești"
                         title="RecuperareAcasa SRL (Masaj/Kinetoterapie la domiciliu) Cluj - Florești"
