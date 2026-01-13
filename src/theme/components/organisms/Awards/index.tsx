@@ -1,23 +1,94 @@
-import styled, { useTheme } from "styled-components";
+import { useState } from "react";
+import styled, { useTheme, keyframes } from "styled-components";
 import Box from "../../atoms/Box";
 import Flex from "../../atoms/Flex";
 import Image from "../../atoms/Image";
 import { Text } from "../..";
 
+/* -------------------- DATA -------------------- */
+
+const awards = [
+  {
+    id: "google-reviews-excellence",
+    tabLabel: "Șoimii Sănătății",
+    title: "Premiul Șoimii Sănătății - 2025",
+    description: [
+      {
+        text: "Suntem onorați să fim recunoscuți ca lideri în sănătate în Florești, Cluj, fiind considerați #1 în servicii de recuperare medicală, pe baza evaluărilor și recenziilor independente online.",
+        strong: true,
+      },
+      {
+        text: "Acest premiu reflectă feedback-ul real al pacienților și poziționarea noastră ca prima alegere pentru recuperare și îngrijire de calitate.",
+      },
+      {
+        text: "Mulțumim pacienților noștri pentru încredere și susținere.",
+      },
+    ],
+    image: "/assets/soimiiSanatatii.jpg",
+    type: "external-badge",
+  },
+  {
+    id: "golden-5-2025",
+    tabLabel: "Golden 5 – 2025",
+    title: "Premiul Golden 5 - 2025",
+    description: [
+      {
+        text: "Suntem onorați să fim premiați la nivel național cu distincția “Golden 5 / 2025”, fiind incluși în Top 5 firme din România cu cele mai apreciate servicii de recuperare medicală!",
+        strong: true,
+      },
+      {
+        text: "Cu sediul în Florești, Cluj, oferim servicii de kinetoterapie la domiciliu, masaj terapeutic, terapie manuală, chiropractica și exerciții post-AVC.",
+      },
+      {
+        text: "Avem un rating de 5 din 5 stele pe Google Maps, bazat pe peste 127 de recenzii reale de la pacienți mulțumiți.",
+      },
+      {
+        text: "Când cauți kinetoterapie la domiciliu în Cluj sau o firmă de aur în recuperare medicală, ai ajuns exact unde trebuie!",
+      },
+    ],
+    image: "/assets/googleAward1.jpeg",
+    type: "external-badge",
+  },
+];
+
+/* -------------------- COMPONENT -------------------- */
+
 const Awards = () => {
   const theme = useTheme();
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activeAward = awards[activeIndex];
 
   return (
     <StyledAwardsBox>
       <Box
         style={{
-          alignItems: "center",
           justifyContent: "center",
           maxWidth: theme.media.isMobile ? "100%" : 1440,
           margin: "0 auto",
         }}
       >
-        {/* Main Content Section */}
+        {/* SECTION TITLE */}
+        <Box
+          style={{
+            alignItems: "flex-start",
+            gap: 16,
+            marginBottom: theme.media.isMobile ? 2 : 12,
+          }}
+        >
+          <Text
+            big
+            semiBold
+            secondaryFont
+            style={{
+              color: theme.color.secondary,
+              paddingBottom: 8,
+              width: "100%",
+            }}
+          >
+            Premii și recunoașteri
+          </Text>
+        </Box>
+
         <Flex
           style={{
             flexDirection: theme.media.isMobile ? "column-reverse" : "row",
@@ -26,7 +97,7 @@ const Awards = () => {
             justifyContent: "center",
           }}
         >
-          {/* Content Section - Left Side */}
+          {/* LEFT CONTENT */}
           <Box
             style={{
               flex: 1,
@@ -35,205 +106,185 @@ const Awards = () => {
               alignItems: theme.media.isMobile ? "center" : "flex-start",
             }}
           >
-            {/* Header Section */}
-            <Box
-              style={{
-                gap: theme.media.isMobile ? 12 : 16,
-                alignItems: theme.media.isMobile ? "center" : "flex-start",
-              }}
-            >
+            {/* Tabs */}
+            <AwardsTabs>
+              {awards.map((award, index) => (
+                <TabButton
+                  key={award.id}
+                  active={index === activeIndex}
+                  onClick={() => setActiveIndex(index)}
+                >
+                  {award.tabLabel}
+                </TabButton>
+              ))}
+            </AwardsTabs>
+
+            {/* Animated Content */}
+            <AnimatedContent key={activeAward.id}>
               <Text
                 big
                 semiBold
                 secondaryFont
-                style={{
-                  color: theme.color.secondary,
-                  paddingBottom: 4,
-                }}
+                style={{ color: theme.color.secondary }}
               >
-                Premii si recunoașteri
-              </Text>
-              <Text
-                huge
-                secondaryFont
-                primary
-                style={{
-                  lineHeight: "120%",
-                  fontSize: theme.media.isMobile
-                    ? theme.text.biggest
-                    : theme.text.huge,
-                }}
-              >
-                Premiul Golden 5 - 2025
-              </Text>
-              <Text
-                style={{
-                  color: theme.color.primary,
-                  fontSize: theme.media.isMobile
-                    ? theme.text.medium
-                    : theme.text.big,
-                  lineHeight: "140%",
-                }}
-              >
-                Oferit firmelor din România cu cel mai înalt nivel de
-                satisfactie a clientilor.
-              </Text>
-            </Box>
-
-            {/* Content Details */}
-            <Box
-              style={{
-                gap: theme.media.isMobile ? 16 : 24,
-              }}
-            >
-              <Text
-                style={{
-                  lineHeight: "150%",
-                  fontSize: theme.media.isMobile
-                    ? theme.text.medium
-                    : theme.text.big,
-                  color: theme.color.primary,
-                  fontWeight: 600,
-                }}
-              >
-                🏆 Suntem onorați să fim premiați la nivel național cu
-                distincția &ldquo;Golden 5 / 2025&rdquo;, fiind incluși în Top 5
-                firme din România cu cele mai apreciate servicii de recuperare
-                medicală!
+                {activeAward.title}
               </Text>
 
-              <Text
-                style={{
-                  lineHeight: "150%",
-                  fontSize: theme.media.isMobile
-                    ? theme.text.small
-                    : theme.text.medium,
-                  color: theme.color.primary,
-                }}
-              >
-                📍 Cu sediul în Florești, Cluj, oferim servicii de kinetoterapie
-                la domiciliu, masaj terapeutic, terapie manuală, chiropractica
-                și exerciții post-AVC.
-              </Text>
+              <Box style={{ gap: theme.media.isMobile ? 16 : 24 }}>
+                {activeAward.description.map((item, idx) => (
+                  <Text
+                    key={idx}
+                    style={{
+                      lineHeight: "150%",
+                      fontSize: theme.media.isMobile
+                        ? theme.text.small
+                        : theme.text.medium,
+                      color: theme.color.primary,
+                      fontWeight: item.strong ? 600 : 400,
+                    }}
+                  >
+                    {item.text}
+                  </Text>
+                ))}
+              </Box>
 
-              <Text
-                style={{
-                  lineHeight: "150%",
-                  fontSize: theme.media.isMobile
-                    ? theme.text.small
-                    : theme.text.medium,
-                  color: theme.color.primary,
-                }}
-              >
-                ⭐ Avem un rating de 5 din 5 stele pe Google Maps, bazat pe
-                peste 127 de recenzii reale de la pacienți mulțumiți.
-              </Text>
+              {/* CONDITIONAL CTA */}
+              {activeAward.type === "external-badge" && (
+                <ExternalBadgeWrapper>
+                  {activeAward.id === "google-reviews-excellence" && (
+                    <a
+                      href="https://www.soimiisanatatii.ro/profile-281452-recuperareacasa"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <img
+                        src="https://www.soimiisanatatii.ro/images/medals/281452/laureat300_black_2_ro.png"
+                        alt="RecuperareAcasa - Florești"
+                        title="RecuperareAcasa - Florești"
+                      />
+                    </a>
+                  )}
 
-              <Text
-                style={{
-                  lineHeight: "150%",
-                  fontSize: theme.media.isMobile
-                    ? theme.text.small
-                    : theme.text.medium,
-                  color: theme.color.primary,
-                }}
-              >
-                Când cauți kinetoterapie la domiciliu în Cluj sau o firmă de aur
-                în recuperare medicală, ai ajuns exact unde trebuie!
-              </Text>
-            </Box>
-
-            {/* CTA Button - Matching page design */}
-            <AwardsButton
-              onClick={() =>
-                window.open("https://share.google/5IEjsuQDI8zsciZni", "_blank")
-              }
-            >
-              👉 Pentru detalii despre premiu și recenzii
-            </AwardsButton>
+                  {activeAward.id === "golden-5-2025" && (
+                    <a
+                      href="https://www.firmadeaur.ro/company/recuperareacasa-srl-masaj-kinetoterapie-la-domiciliu-cluj-4384711"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <img
+                        src="https://www.firmadeaur.ro/company-image/4384711-dark.png"
+                        alt="RecuperareAcasa SRL (Masaj/Kinetoterapie la domiciliu) Cluj - Florești"
+                        title="RecuperareAcasa SRL (Masaj/Kinetoterapie la domiciliu) Cluj - Florești"
+                      />
+                    </a>
+                  )}
+                </ExternalBadgeWrapper>
+              )}
+            </AnimatedContent>
           </Box>
 
-          {/* Image Section - Right Side */}
-          <Box
-            style={{
-              flex: 1,
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <Box
-              style={{
-                position: "relative",
-                borderRadius: 24,
-                overflow: "hidden",
-                boxShadow: theme.shadow.big,
-                transform: "scale(1)",
-                transition: "transform 0.3s ease, box-shadow 0.3s ease",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "scale(1.02)";
-                e.currentTarget.style.boxShadow =
-                  "0px 8px 24px rgba(0, 0, 0, 0.15)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "scale(1)";
-                e.currentTarget.style.boxShadow = theme.shadow.big;
-              }}
-            >
-              <Image
-                width={theme.media.isMobile ? 320 : 600}
-                height={theme.media.isMobile ? 240 : 450}
-                src="/assets/googleAward1.jpeg"
-                alt="Google Award"
+          {/* IMAGE */}
+          <AnimatedContent key={`${activeAward.id}-image`}>
+            <Box style={{ flex: 1, alignItems: "center" }}>
+              <Box
                 style={{
-                  objectFit: "cover",
                   borderRadius: 24,
+                  overflow: "hidden",
+                  boxShadow: theme.shadow.big,
                 }}
-              />
+              >
+                <Image
+                  width={theme.media.isMobile ? 320 : 600}
+                  height={theme.media.isMobile ? 240 : 450}
+                  src={activeAward.image}
+                  alt={activeAward.title}
+                  style={{ objectFit: "cover" }}
+                />
+              </Box>
             </Box>
-          </Box>
+          </AnimatedContent>
         </Flex>
       </Box>
     </StyledAwardsBox>
   );
 };
 
+/* -------------------- STYLES -------------------- */
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
+const AnimatedContent = styled.div`
+  animation: ${fadeIn} 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacings.medium}px;
+`;
+
+const AwardsTabs = styled.div`
+  display: flex;
+  gap: ${({ theme }) => theme.spacings.small}px;
+  flex-wrap: wrap;
+`;
+
+const TabButton = styled.button<{ active: boolean }>`
+  background: ${({ theme, active }) =>
+    active ? theme.color.secondary : theme.color.white};
+  color: ${({ theme, active }) =>
+    active ? theme.color.white : theme.color.secondary};
+  border: 1px solid ${({ theme }) => theme.color.secondary};
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: ${({ theme }) => theme.text.small}px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+`;
+
 const AwardsButton = styled.div`
   display: flex;
-  flex-direction: row;
   justify-content: center;
-  gap: ${({ theme }) => theme.spacings.tiny}px;
   align-items: center;
   color: ${({ theme }) => theme.color.white};
   background: ${({ theme }) => theme.color.secondary};
-  padding-top: ${({ theme }) =>
-    theme.media.isMobile ? theme.spacings.tiny : theme.spacings.medium}px;
-  padding-bottom: ${({ theme }) =>
-    theme.media.isMobile ? theme.spacings.tiny : theme.spacings.medium}px;
-  padding-left: ${({ theme }) =>
-    theme.media.isMobile ? theme.spacings.medium : theme.spacings.bigger}px;
-  padding-right: ${({ theme }) =>
-    theme.media.isMobile ? theme.spacings.medium : theme.spacings.bigger}px;
+  padding: ${({ theme }) => theme.spacings.medium}px
+    ${({ theme }) => theme.spacings.bigger}px;
   border-radius: 20px;
   cursor: pointer;
-  border-style: solid;
-  border-color: ${({ theme }) => theme.color.secondary};
-  transition: transform 0.3s ease;
+  border: 1px solid ${({ theme }) => theme.color.secondary};
   max-width: fit-content;
-  font-size: ${({ theme }) =>
-    theme.media.isMobile ? theme.text.small : theme.text.medium}px;
+  transition: transform 0.2s ease;
 
   &:hover {
     background: ${({ theme }) => theme.color.white};
     color: ${({ theme }) => theme.color.secondary};
-    border-color: ${({ theme }) => theme.color.secondary};
-    transform: scale(1.1);
+    transform: scale(1.05);
+  }
+`;
+
+const ExternalBadgeWrapper = styled.div`
+  margin-top: ${({ theme }) => theme.spacings.small}px;
+
+  img {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
   }
 `;
 
 const StyledAwardsBox = styled.div`
   display: flex;
-  flex-direction: column;
   padding: ${({ theme }) =>
     theme.media.isMobile
       ? "80px 20px"
@@ -252,9 +303,9 @@ const StyledAwardsBox = styled.div`
     height: 1px;
     background: linear-gradient(
       90deg,
-      transparent 0%,
-      ${({ theme }) => theme.color.secondary} 50%,
-      transparent 100%
+      transparent,
+      ${({ theme }) => theme.color.secondary},
+      transparent
     );
   }
 `;

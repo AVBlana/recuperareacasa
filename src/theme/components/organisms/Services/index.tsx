@@ -42,7 +42,7 @@ const Services = () => {
       ),
     },
     {
-      label: "580 Ron / 3 Sedinte",
+      label: "600 Ron / 3 Sedinte",
       title: "Abonament Terapie Manuala Avansată",
       svg: "/assets/manualTherapy2.svg",
       image: "/assets/serviciiTerapieManuala.jpg",
@@ -123,7 +123,7 @@ const Services = () => {
       ),
     },
     {
-      label: "1650 Ron / 10 Sedinte",
+      label: "1700 Ron / 10 Sedinte",
       title: "Abonament Masaj Terapeutic de Bază",
       svg: "/assets/manualTherapy2.svg",
       image: "/assets/serviciiTerapieManuala.jpg",
