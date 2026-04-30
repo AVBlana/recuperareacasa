@@ -4,6 +4,9 @@ const nextConfig = {
   swcMinify: true,
   transpilePackages: ["styled-components"],
   compiler: { styledComponents: true },
+  images: {
+    domains: ["www.soimiisanatatii.ro", "www.firmadeaur.ro"],
+  },
   // experimental: {
   //   forceSwcTransforms: true,
   //   swcPlugins: [

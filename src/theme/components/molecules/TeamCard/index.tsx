@@ -1,10 +1,8 @@
-// components/TeamHero.tsx
 import React from "react";
 import styled, { useTheme } from "styled-components";
 import Image from "../../atoms/Image";
 import { SvgIcon, Text } from "../..";
 import Box from "../../atoms/Box";
-import { theme } from "@/theme/constants";
 import Flex from "../../atoms/Flex";
 
 interface TeamHeroProps {
@@ -13,6 +11,7 @@ interface TeamHeroProps {
   imageSrc: string;
   skills: string[];
   experiences: string[];
+  imageFit?: "cover" | "contain";
 }
 
 const TeamCard: React.FC<TeamHeroProps> = ({
@@ -21,111 +20,139 @@ const TeamCard: React.FC<TeamHeroProps> = ({
   imageSrc,
   skills,
   experiences,
+  imageFit = "cover",
 }) => {
   const theme = useTheme();
+
   return (
     <StyledTeamCard>
-      <Box style={{ gap: 40 }}>
-        <Box>
-          <Text
-            big
-            semiBold
-            secondaryFont
-            style={{ color: theme.color.secondary }}
-          >
-            Echipa
-          </Text>
-          <Text primary huge secondaryFont>
-            Cunoaste personalul
-          </Text>
-        </Box>
-        <Box style={{ gap: 20 }}>
-          <Text primary secondaryFont semiBold bigger>
-            Calificari:
-          </Text>
-          <Box style={{ gap: 10 }}>
-            {skills.map((skill, index) => (
-              <Flex key={index} style={{ alignItems: "center", gap: 10 }}>
-                <Box>
-                  <SvgIcon
-                    src="/assets/checkedSVG.svg"
-                    size={theme.media.isMobile ? 14 : 20}
-                  />
-                </Box>
+      <PhotoWrapper>
+        <Image
+          src={imageSrc}
+          alt={name}
+          fill
+          style={{ objectFit: imageFit, objectPosition: "center top" }}
+        />
+      </PhotoWrapper>
 
-                <Text
-                  style={{
-                    fontSize: theme.media.isMobile
-                      ? theme.text.smaller
-                      : theme.text.big,
-                  }}
-                >
-                  {skill}
-                </Text>
-              </Flex>
-            ))}
-          </Box>
-        </Box>
-        <Box style={{ gap: 20 }}>
-          <Text primary secondaryFont semiBold bigger>
-            Experiente:
-          </Text>
-          <Box style={{ gap: 10 }}>
-            {experiences.map((experience, index) => (
-              <Box key={index} style={{ gap: 10 }}>
-                <Text
-                  style={{
-                    fontSize: theme.media.isMobile
-                      ? theme.text.smaller
-                      : theme.text.big,
-                  }}
-                >
-                  {experience}
-                </Text>
-              </Box>
-            ))}
-          </Box>
-        </Box>
-      </Box>
-      <Box style={{ alignItems: theme.media.isMobile ? "center" : "baseline" }}>
-        <Box>
-          <Image
-            src={imageSrc}
-            alt={""}
-            width={theme.media.isMobile ? 280 : 400}
-            height={theme.media.isMobile ? 280 : 510}
-            style={{ objectFit: "contain", borderRadius: 20 }}
-          />
-        </Box>
-        <Box style={{ alignItems: "center", paddingTop: 20 }}>
+      <CardContent>
+        <IdentityRow>
           <Text
-            huge
             secondaryFont
             primary
+            semiBold
             style={{
-              fontSize: theme.media.isMobile
-                ? theme.text.biggest
-                : theme.text.huge,
+              fontSize: theme.media.isMobile ? theme.text.biggest : theme.text.huge,
+              lineHeight: "115%",
             }}
           >
             {name}
           </Text>
-          <Text bigger secondaryFont style={{ color: theme.color.secondary }}>
+          <Text
+            secondaryFont
+            style={{
+              color: theme.color.secondary,
+              fontSize: theme.media.isMobile ? theme.text.small : theme.text.big,
+            }}
+          >
             {title}
           </Text>
-        </Box>
-      </Box>
+        </IdentityRow>
+
+        <Divider />
+
+        <TwoColumns>
+          <Section>
+            <Text primary secondaryFont semiBold style={{ fontSize: theme.text.big, paddingBottom: 10 }}>
+              Calificări
+            </Text>
+            <Box style={{ gap: 8 }}>
+              {skills.map((skill, index) => (
+                <Flex key={index} style={{ alignItems: "flex-start", gap: 8 }}>
+                  <Box style={{ paddingTop: 3, flexShrink: 0 }}>
+                    <SvgIcon src="/assets/checkedSVG.svg" size={14} />
+                  </Box>
+                  <Text style={{ fontSize: theme.text.small, lineHeight: "145%" }}>
+                    {skill}
+                  </Text>
+                </Flex>
+              ))}
+            </Box>
+          </Section>
+
+          <Section>
+            <Text primary secondaryFont semiBold style={{ fontSize: theme.text.big, paddingBottom: 10 }}>
+              Experiență
+            </Text>
+            <Box style={{ gap: 8 }}>
+              {experiences.map((experience, index) => (
+                <Text
+                  key={index}
+                  style={{ fontSize: theme.text.small, lineHeight: "145%" }}
+                >
+                  {experience}
+                </Text>
+              ))}
+            </Box>
+          </Section>
+        </TwoColumns>
+      </CardContent>
     </StyledTeamCard>
   );
 };
 
 const StyledTeamCard = styled.div`
   display: flex;
-  align-items: center;
-  flex-direction: ${({ theme }) =>
-    theme.media.isMobile ? "column" : theme.media.isTablet ? "column" : "row"};
-  gap: ${({ theme }) =>
-    theme.media.isMobile ? "60" : theme.media.isTablet ? "60" : "230"}px;
+  flex-direction: ${({ theme }) => (theme.media.isMobile ? "column" : "row")};
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
+  background: ${({ theme }) => theme.color.white};
+  min-height: ${({ theme }) => (theme.media.isMobile ? "auto" : "300px")};
+`;
+
+const PhotoWrapper = styled.div`
+  position: relative;
+  flex-shrink: 0;
+  align-self: stretch;
+  width: ${({ theme }) => (theme.media.isMobile ? "100%" : "240px")};
+  height: ${({ theme }) => (theme.media.isMobile ? "280px" : "auto")};
+`;
+
+const CardContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: ${({ theme }) => (theme.media.isMobile ? "20px" : "20px 24px")};
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+`;
+
+const IdentityRow = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+`;
+
+const Divider = styled.div`
+  height: 1px;
+  background: ${({ theme }) => theme.color.gray};
+  opacity: 0.35;
+  flex-shrink: 0;
+`;
+
+const TwoColumns = styled.div`
+  display: grid;
+  grid-template-columns: ${({ theme }) =>
+    theme.media.isMobile ? "1fr" : "1fr 1fr"};
+  gap: ${({ theme }) => (theme.media.isMobile ? "16px" : "24px")};
+  flex: 1;
+`;
+
+const Section = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
 `;
 
 export default TeamCard;

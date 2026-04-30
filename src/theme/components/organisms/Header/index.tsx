@@ -1,5 +1,5 @@
 import React, { useContext, useRef, useState } from "react";
-import { FbIcon, MenuIcon, SvgIcon, Text, YtIcon } from "../..";
+import { FbIcon, InstaIcon, MenuIcon, SvgIcon, Text, YtIcon } from "../..";
 import Image from "../../atoms/Image";
 import styled, { useTheme } from "styled-components";
 import Button from "../../atoms/Button";
@@ -74,7 +74,7 @@ const Header = () => {
             </Flex>
           </Link>
           <Flex style={{ gap: theme.spacings.tiny }}>
-            <Link href="phone:+40 727 860 759">
+            <Link href="tel:+40727860759">
               <Flex style={{ alignItems: "center" }}>
                 <IconBox>
                   <PhoneIcon size={16} fill={theme.color.secondary} />
@@ -94,9 +94,14 @@ const Header = () => {
                   />
                 </IconBox>
               </Link>
-              <Link href={""}>
+              <Link href={"https://facebook.com/profile.php/?id=100094398126446"}>
                 <IconBox>
                   <FbIcon size={16} fill={theme.color.white} />
+                </IconBox>
+              </Link>
+              <Link href={"https://www.instagram.com/recuperareacasa"}>
+                <IconBox>
+                  <InstaIcon size={16} fill={theme.color.white} />
                 </IconBox>
               </Link>
               <Link href={"https://www.youtube.com/@RecuperareAcasa"}>
@@ -255,13 +260,14 @@ const Header = () => {
                       />
                     </IconBox>
                   </Link>
-                  <Link
-                    href={
-                      "https://facebook.com/profile.php/?id=100094398126446"
-                    }
-                  >
+                  <Link href={"https://facebook.com/profile.php/?id=100094398126446"}>
                     <IconBox>
                       <FbIcon size={16} fill={theme.color.primary} />
+                    </IconBox>
+                  </Link>
+                  <Link href={"https://www.instagram.com/recuperareacasa"}>
+                    <IconBox>
+                      <InstaIcon size={16} fill={theme.color.primary} />
                     </IconBox>
                   </Link>
                   <Link href={"https://www.youtube.com/@RecuperareAcasa"}>
@@ -270,7 +276,7 @@ const Header = () => {
                     </IconBox>
                   </Link>
                 </Flex>
-                <Link href="phone:+40 727 860 759">
+                <Link href="tel:+40727860759">
                   <Flex style={{ alignItems: "center" }}>
                     <IconBox>
                       <PhoneIcon size={16} fill={theme.color.primary} />
