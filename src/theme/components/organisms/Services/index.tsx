@@ -42,7 +42,7 @@ const Services = () => {
       ),
     },
     {
-      label: "600 Ron / 3 Sedinte",
+      label: "660 Ron / 3 Sedinte",
       title: "Abonament Terapie Manuala Avansată",
       svg: "/assets/manualTherapy2.svg",
       image: "/assets/serviciiTerapieManuala.jpg",
@@ -144,7 +144,7 @@ const Services = () => {
       ),
     },
     {
-      label: "220 Ron",
+      label: "250 Ron",
       title: "Terapie Manuală",
       svg: "/assets/manualTherapy2.svg",
       image: "/assets/galerieTerapieManuala2.jpg",
@@ -166,6 +166,48 @@ const Services = () => {
           <br />
           Descoperiți beneficiile unei terapii manuale comprehensive pentru
           sănătatea și mobilitatea dumneavoastră.
+        </>
+      ),
+    },
+    {
+      label: "Taxă urgență: +80 lei / ședință",
+      title: "Programări în Regim de Urgență",
+      svg: "/assets/kineto.svg",
+      image: "/assets/serviciiUrgenta.jpg",
+      desc: (
+        <>
+          Oferim posibilitatea programărilor în regim de urgență, pentru
+          situațiile în care aveți nevoie de o ședință în aceeași zi sau de pe o
+          zi pe alta.
+          <br />
+          <br />
+          Acest tip de programare implică reorganizarea programului
+          terapeutului, motiv pentru care se aplică un cost suplimentar.
+          <br />
+          <br />
+          Costuri:
+          <br />
+          - Taxă de urgență: +80 lei / ședință
+          <br />
+          - Se achită separat față de ședința de kinetoterapie / terapie manuală
+          <br />
+          <br />
+          Condiții de aplicare:
+          <br />
+          - Se aplică doar pentru ședințe individuale (nu este inclusă în
+          abonament)
+          <br />
+          - În cazul pacienților cu abonament: se consumă o ședință din
+          abonament, se achită diferența până la prețul standard, plus taxa de
+          urgență de 80 lei
+          <br />
+          <br />
+          Important:
+          <br />
+          - Veți fi informat în prealabil dacă programarea este în regim de
+          urgență
+          <br />- Programarea se confirmă doar după acceptul dvs. asupra
+          acestor condiții
         </>
       ),
     },
